@@ -1,0 +1,1678 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Video Processing Library (oneVPL) &mdash; oneAPI Specification 0.6.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicons.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Math Kernel Library (oneMKL)" href="../../oneMKL/source/index.html" />
+    <link rel="prev" title="tick_count class" href="../../oneTBB/source/timing/tick_count_cls.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="https://oneapi.com" class="icon icon-home"> oneAPI Specification
+          
+
+          
+            
+            <img src="../../../_static/oneAPI-rgb-rev-100.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture.html">Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../library-interop.html">Library Interoperability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">oneAPI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dpcpp/source/index.html">DPC++ (DPC++)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneDPL/source/index.html">DPC++ Library (oneDPL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneDNN/source/index.html">Deep Neural Network Library (oneDNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneCCL/source/index.html">Collective Communications Library (oneCCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../l0/source/index.html">Level Zero (Level Zero)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneDAL/source/index.html">Data Analytics Library (oneDAL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneTBB/source/nested-index.html">Threading Building Blocks (oneTBB)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Video Processing Library (oneVPL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workstreams">Workstreams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decode">Decode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-codecs">Supported Codecs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-video-post-processing-operations">Supported Video Post Processing Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decoding-sequence">Decoding Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#memory">Memory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-memory-objects">Creating memory objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-class-for-simplifying-image-data-access">Helper Class for Simplifying Image Data Access</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#vpl-encode-api">VPL Encode API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpl-transcode-api">VPL Transcode API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpl-video-analytics-pipeline">VPL Video Analytics Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpl-object-tracking-and-optical-flow-library">VPL Object Tracking and Optical Flow Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpl-device-discovery-and-device-capability-query">VPL Device Discovery and Device Capability Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpl-api-reference">VPL API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#error-handling">Error Handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vplstatus">vplStatus</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#workstream-api">Workstreams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vplworkstreamtype">VplWorkstreamType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplworkstreamprop">VplWorkstreamProp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplworkstream">vplWorkstream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplsetconfigproperty">vplSetConfigProperty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplgetconfigproperty">vplGetConfigProperty</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Decode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vpl-decode">vpl::Decode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-cpu-image">vplm::cpu_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-memory">vplm::memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-cpu-memory">vplm::cpu::memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">vplm::cpu::image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-cpu-make-memory">vplm::cpu::make_memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-opencl-memory">vplm::opencl::memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-opencl-image">vplm::opencl::image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-opencl-make-memory">vplm::opencl::make_memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-sycl-memory">vplm::sycl::memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-sycl-image">vplm::sycl::image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-sycl-make-memory">vplm::sycl::make_memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-vaapi-memory">vplm::vaapi::memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-vaapi-image">vplm::vaapi::image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vplm-vaapi-make-memory">vplm::vaapi::make_memory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vplfourcc">VplFourCC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vpltargetdevice">VplTargetDevice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneMKL/source/index.html">Math Kernel Library (oneMKL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versions.html">HTML and PDF Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notices.html">Legal Notices and Disclaimers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">oneAPI Specification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">oneAPI Specification</a> &raquo;</li>
+        
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/oneapi-src/oneapi-spec/blob/master/source/elements/oneVPL/source/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vpl-full-name-onevpl">
+<span id="onevpl-section"></span><h1>Video Processing Library (oneVPL)<a class="headerlink" href="#vpl-full-name-onevpl" title="Permalink to this headline">¶</a></h1>
+<p>The Video Processing Library is a programming interface for all video/image
+related usages, with focus on portable media pipeline on CPU, GPU, AI
+accelerators and FPGA, media and compute/render interoperability, to
+provide the best cross domain pipeline experience.  The Video
+Processing Library provides the following features:</p>
+<ol class="arabic simple">
+<li><p>Decode and Video Post Processing</p></li>
+<li><p>VPL-Memory Library for Image Object passing between media and
+compute/render, zero Buffer Copy among Different HW Engines</p></li>
+<li><p>Encode</p></li>
+<li><p>Transcoding Pipeline</p></li>
+<li><p>Video Analytics Pipeline</p></li>
+<li><p>Object Tracking and Optical Flow Library</p></li>
+<li><p>Device Discovery and Device Capability Query</p></li>
+</ol>
+<p>Intel’s implementation of VPL will be hosted at
+<a class="reference external" href="https://software.intel.com/en-us/oneapi">https://software.intel.com/en-us/oneapi</a>/vpl# after release to public.</p>
+<p>See <a class="reference internal" href="#vpl-api-reference">VPL API Reference</a> for a detailed API description.</p>
+<div class="section" id="workstreams">
+<h2>Workstreams<a class="headerlink" href="#workstreams" title="Permalink to this headline">¶</a></h2>
+<p>The VPL API is defined around workstreams, which are referenced by
+<a class="reference internal" href="#_CPPv413vplWorkstream" title="vplWorkstream"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">vplWorkstream</span></code></a>, an opaque pointer. See
+<a class="reference internal" href="#workstream-api"><span class="std std-ref">Workstreams</span></a> for all workstream APIs.</p>
+<p>A Workstream defines a set of settable and gettable properties to configure:</p>
+<ul class="simple">
+<li><p><em>Input and output</em>: image formats, frame rates, resolutions,
+cropping, aspect ratios</p></li>
+<li><p><em>Internal settings</em>: maximum number of decoded image buffers,
+internal input raw data buffer size</p></li>
+<li><p><em>Encoding preset and heuristics</em>: encoding bitrates, scenarios and
+target usage</p></li>
+</ul>
+<p><a class="reference internal" href="#_CPPv417VplWorkstreamProp" title="VplWorkstreamProp"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">VplWorkstreamProp</span></code></a> names all the properties. Get and set
+the properites with <a class="reference internal" href="#_CPPv420vplGetConfigProperty13vplWorkstream17VplWorkstreamPropPvP6size_t" title="vplGetConfigProperty"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">vplGetConfigProperty</span></code></a> and
+<a class="reference internal" href="#_CPPv420vplSetConfigProperty13vplWorkstream17VplWorkstreamPropPv6size_t" title="vplSetConfigProperty"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vplSetConfigProperty()</span></code></a>.</p>
+</div>
+<div class="section" id="decode">
+<h2>Decode<a class="headerlink" href="#decode" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4N3vpl6DecodeE" title="vpl::Decode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vpl::Decode</span></code></a> Workstream defines the API for video
+decode and certain post processing of decoded frames. Inputs are
+elementary bitstreams. Outputs are raw frames. The memory location of
+a decoded image is stored in a <a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::memory</span></code></a> object, a
+device independent memory abstraction for multi-hardware portability
+and zero-copying memory sharing.</p>
+<div class="section" id="supported-codecs">
+<h3>Supported Codecs<a class="headerlink" href="#supported-codecs" title="Permalink to this headline">¶</a></h3>
+<p>VPL can decode the following elementary bitstream formats:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Codec</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AVC/H264</p></td>
+<td><p>8 bit 4:2:0</p></td>
+</tr>
+<tr class="row-odd"><td><p>HEVC/H265</p></td>
+<td><p>8 bit 4:2:0 main profile</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <a class="reference internal" href="#_CPPv4N3vpl6Decode6DecodeE9VplFourCC15VplTargetDevice" title="vpl::Decode::Decode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::Decode()</span></code></a> constructor takes a source format as
+defined in <a class="reference internal" href="#_CPPv49VplFourCC" title="VplFourCC"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">VplFourCC</span></code></a> and a targeted decoding devices in
+<a class="reference internal" href="#_CPPv415VplTargetDevice" title="VplTargetDevice"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">VplTargetDevice</span></code></a>, where <a class="reference internal" href="#_CPPv425VPL_TARGET_DEVICE_DEFAULT" title="VPL_TARGET_DEVICE_DEFAULT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">VPL_TARGET_DEVICE_DEFAULT</span></code></a> let the runtime to
+choose the best target device.</p>
+</div>
+<div class="section" id="supported-video-post-processing-operations">
+<h3>Supported Video Post Processing Operations<a class="headerlink" href="#supported-video-post-processing-operations" title="Permalink to this headline">¶</a></h3>
+<p>VPL decode API also supports the following video post processing operations to
+on the decoded outputs:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Codec</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Color space conversion</p></td>
+<td><p>to NV12, I420, and RGBA</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resize</p></td>
+<td><p>up to 1920x1080</p></td>
+</tr>
+</tbody>
+</table>
+<p>To add Video Post Processing Operations to the default decode
+operation, a programmer can use the <a class="reference internal" href="#_CPPv420vplSetConfigProperty13vplWorkstream17VplWorkstreamPropPv6size_t" title="vplSetConfigProperty"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vplSetConfigProperty()</span></code></a>
+to set various output color space formats and sizes.</p>
+<p>Decode workstream state is defined in <a class="reference internal" href="#_CPPv418vplWorkstreamState" title="vplWorkstreamState"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">vplWorkstreamState</span></code></a>.</p>
+</div>
+<div class="section" id="decoding-sequence">
+<h3>Decoding Sequence<a class="headerlink" href="#decoding-sequence" title="Permalink to this headline">¶</a></h3>
+<p>Member function for decoding a bitstream input and returning the decoded frames is
+<a class="reference internal" href="#_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t" title="vpl::Decode::DecodeFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::DecodeFrame()</span></code></a></p>
+<p>New input data are passed to the decoder when <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">pbs</span> <span class="pre">!=</span> <span class="pre">NULL</span> <span class="pre">&amp;&amp;</span> <span class="pre">size</span> <span class="pre">!=</span> <span class="pre">0</span></code>. A pair of functions: <a class="reference internal" href="#_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t" title="vpl::Decode::DecodeFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::DecodeFrame()</span></code></a>
+and <a class="reference internal" href="#_CPPv4N3vpl6Decode8GetStateEv" title="vpl::Decode::GetState"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::GetState()</span></code></a> work together to form a decoding
+loop where the decoder can request the caller to send more data or
+request it to retrieve decoded frames without sending new data.</p>
+<p>By default, decoder returns the decoded frames in display order. It
+will hold over one or more decoded frames if they are not the earliest
+in the display order.  Hence, there are two conditions when it needs
+additional inputs:</p>
+<ul class="simple">
+<li><p>The existing input does not contain a full frame of data to decode.</p></li>
+<li><p>The existing input does not contain the next to output frame data in
+display order.</p></li>
+<li><p>When either of the two above conditions occurs, Decode sets the
+<a class="reference internal" href="#_CPPv420VPL_STATE_READ_INPUT" title="VPL_STATE_READ_INPUT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">VPL_STATE_READ_INPUT</span></code></a> state for new input data.</p>
+<ul>
+<li><p>Caller should call <a class="reference internal" href="#_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t" title="vpl::Decode::DecodeFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::DecodeFrame()</span></code></a> passing new inputs in pbs and
+bs_size arguments. Decode will return a decoded frame when it is
+the next in display order.</p></li>
+<li><p>If Decode has additional outputs in display order to return, it
+sets the <a class="reference internal" href="#_CPPv427VPL_STATE_INPUT_BUFFER_FULL" title="VPL_STATE_INPUT_BUFFER_FULL"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">VPL_STATE_INPUT_BUFFER_FULL</span></code></a> state.  Caller
+should call <a class="reference internal" href="#_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t" title="vpl::Decode::DecodeFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::DecodeFrame()</span></code></a> with bs_size = 0 to retrieve the remaining
+outputs until Decode again sets the
+<a class="reference internal" href="#_CPPv420VPL_STATE_READ_INPUT" title="VPL_STATE_READ_INPUT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">VPL_STATE_READ_INPUT</span></code></a> state for new input data.</p></li>
+</ul>
+</li>
+<li><p>If the caller has no more data to decode, it can call <a class="reference internal" href="#_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t" title="vpl::Decode::DecodeFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">vpl::Decode::DecodeFrame()</span></code></a>
+with <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">pbs</span> <span class="pre">==</span> <span class="pre">NULL</span> <span class="pre">||</span> <span class="pre">bs_size</span> <span class="pre">==</span> <span class="pre">0</span></code> indicating input has reached the
+End of Sequence (EOS).  Decode will return the remaining holdover
+frames one-by-one until there is no more output.  Decode then sets
+<a class="reference internal" href="#_CPPv426VPL_STATE_END_OF_OPERATION" title="VPL_STATE_END_OF_OPERATION"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">VPL_STATE_END_OF_OPERATION</span></code></a> state and terminate the Workstream.</p></li>
+</ul>
+<p>The Decode state transition diagram is illustrated below.</p>
+<img alt="../../../_images/decode-state-transition.png" src="../../../_images/decode-state-transition.png" />
+</div>
+<div class="section" id="example-code">
+<h3>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h3>
+<p>Create a decoder workstream which decodes an H264 bitstream and
+reformat the frames to RGBA and resize to 352x288.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create decoder, default device is GPU</span>
+<span class="n">vpl</span><span class="o">::</span><span class="n">Decode</span> <span class="n">decoder</span><span class="p">(</span><span class="n">VPL_FOURCC_H264</span><span class="p">);</span>
+<span class="c1">// Set output color format</span>
+<span class="n">decoder</span><span class="p">.</span><span class="n">SetConfig</span><span class="p">(</span><span class="n">VPL_PROP_DST_FORMAT</span><span class="p">,</span> <span class="n">VPL_FOURCC_RGBA</span><span class="p">);</span>
+<span class="c1">// Set output resolution</span>
+<span class="n">VplVideoSurfaceResolution</span> <span class="n">output_size</span> <span class="o">=</span> <span class="p">{</span><span class="mi">352</span><span class="p">,</span> <span class="mi">288</span><span class="p">};</span>
+<span class="n">decoder</span><span class="p">.</span><span class="n">SetConfig</span><span class="p">(</span><span class="n">VPL_PROP_OUTPUT_RESOLUTION</span><span class="p">,</span> <span class="n">output_size</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Main loop – read input bitstream and write to file.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vplWorkstreamState</span> <span class="n">decode_state</span> <span class="o">=</span> <span class="n">VPL_STATE_READ_INPUT</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(;</span> <span class="n">decode_state</span> <span class="o">!=</span> <span class="n">VPL_STATE_END_OF_OPERATION</span> <span class="o">&amp;&amp;</span>
+  <span class="n">decode_state</span> <span class="o">!=</span> <span class="n">VPL_STATE_ERROR</span><span class="p">;</span>
+  <span class="n">decode_state</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">GetState</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// read more input if state indicates buffer space</span>
+  <span class="c1">// is available</span>
+  <span class="kt">uint32_t</span> <span class="n">bs_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">decode_state</span> <span class="o">==</span> <span class="n">VPL_STATE_READ_INPUT</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bs_size</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">fread</span><span class="p">(</span><span class="n">pbs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BUFFER_SIZE</span><span class="p">,</span> <span class="n">fInput</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// Attempt to decode a frame. If more data is needed read again</span>
+  <span class="n">vplm_mem</span> <span class="n">image</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">DecodeFrame</span><span class="p">(</span><span class="n">pbs</span><span class="p">,</span> <span class="n">bs_size</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">image</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+  <span class="c1">// If decode resulted in a frame of output write it to file</span>
+  <span class="n">vplWriteData</span><span class="p">(</span><span class="n">fOutput</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="memory">
+<h2>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
+<p>The Memory API provides sharing of 1D buffers and 2D images across
+different frameworks (e.g. SYCL, OpenCL, VAAPI, DXVA2) and different
+devices (CPU, GPU).  Buffer sharing across the decode, compute and
+encode pipeline is important for both performance and portability.</p>
+<p>The buffer sharing mechanisms can be classified into 3 types:</p>
+<ol class="arabic simple">
+<li><p><em>Direct</em> sharing when access is granted to the primary object’s
+representation in physical memory, but this happens via different
+framework specific logical memory objects (like VAAPI surface or
+OpenCL memory). That’s the case when handle from one framework can
+be converted to the handle of another framework. For example, via
+OpenCL VAAPI Sharing Extension.</p></li>
+<li><p><em>Mapping</em> when object is being mapped to the device memory and
+framework handle is generated. That’s a typical case for CPU (HOST)
+access to the video memory. Underneath implementation might
+significantly vary and result in a kind of direct access or
+accessing a copy of the memory object with the set of associated
+copy and on-the-fly conversion operations. For example, OpenCL
+provides two sets of functions: clEnqueueReadBuffer,
+clEnqueueWriteBuffer for copying, and clEnqueueMapBuffer for direct
+mapping between CPU and OpenCL device.</p></li>
+<li><p><em>Coherent</em> sharing when memory object has unified addressing the
+physical memory and the underlying hardware and software system
+layers assures coherency between these representations as in a
+unified shared memory mode.</p></li>
+</ol>
+<p>The Memory API aims to provide a sharing mechanism with the highest
+performance. From this perspective, the library uses “direct” sharing
+whenever possible. However, currently, there are a lot of various
+restrictions coming from all over the software stack which makes
+“direct” sharing unavailable:</p>
+<ol class="arabic simple">
+<li><p>Framework restrictions where some color formats are not supported,
+or lack of capability to import certain memory handle</p></li>
+<li><p>Underlying driver implementation (or even HW) restrictions</p></li>
+</ol>
+<p>As oneAPI software stack evolves, we intend to eliminate the <em>direct</em>
+sharing restrictions in the underlying frameworks and drivers through
+API extension and implementation enhancement.</p>
+<p>The current VPL Memory Library provides the following <em>direct</em> sharing
+capabilities:</p>
+<ul class="simple">
+<li><p>Sharing of CPU (HOST) allocated memory on Linux (via userptr):</p>
+<ul>
+<li><p>With VAAPI driver</p></li>
+<li><p>With OpenCL driver and SYCL</p></li>
+</ul>
+</li>
+<li><p>Sharing of VAAPI allocated memory:</p>
+<ul>
+<li><p>With OpenCL, SYCL</p></li>
+</ul>
+</li>
+<li><p>Exporting dmabuf handle:</p>
+<ul>
+<li><p>From VAAPI memory object</p></li>
+</ul>
+</li>
+</ul>
+<p>Recall that oneAPI platform is a host and a collection of devices; and
+each device has an associated command queue.  Operations on the
+devices are executed through submitting tasks to devices’ command
+queues.  In the application domain of video processing pipeline, each
+device may have multiple command queues corresponding to the media
+driver, OpenCL and SYCL compute drivers and 3D graphics drivers.  For
+Intel’s GPU on Linux, a VAAPI driver executes tasks for video
+decoding, post processing and encoding, an OpenCL driver executes
+tasks for compute such as DL inference, and an OpenGL driver executes
+tasks for 3D rendering. Buffers and images allocated by these drivers
+are initially only accessible in the context of their corresponding
+command queues.  To share a buffer between a source and a sink command
+queues, VPL Memory library must extract the buffer address from the
+source command queue context, map the address to the sink command
+queue context, such that, tasks in the sink command queue can now read
+or write to the buffer.  We call this &lt;command_queue,buffer&gt; pair a
+memory handler. Memory handlers are encapsulated in the
+<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::memory</span></code></a> class hierarchy.</p>
+<p>To share a buffer to a device driver command queue context, just
+simply constructs a new memory handler of the corresponding derived
+class from the base <a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::memory</span></code></a> object.  For instance,
+the code above converts a CPU allocated memory to a GPU VAAPI surface
+for media processing.</p>
+<p>In addition to the buffer sharing API in vplm::*:memory
+subclass constructors, VPL Memory API also provides:</p>
+<ul class="simple">
+<li><p>API to import memory already allocated by the application external
+to VPL Memory library</p></li>
+<li><p>API to allocate memory</p></li>
+</ul>
+<p>The memory import and allocation functions are defined in
+<a class="reference internal" href="#vplm::cpu::make_memory__vplm::cpu_imageCR">vplm::cpu::make_memory</a>, <a class="reference internal" href="#vplm::opencl::make_memory__cl_command_queue.vplm::cl_imageR">vplm::opencl::make_memory</a>,
+<a class="reference internal" href="#vplm-sycl-make-memory">vplm::sycl::make_memory</a>, and <a class="reference internal" href="#vplm-vaapi-make-memory">vplm::vaapi::make_memory</a>.</p>
+<div class="section" id="creating-memory-objects">
+<h3>Creating memory objects<a class="headerlink" href="#creating-memory-objects" title="Permalink to this headline">¶</a></h3>
+<p>An application can use the VPL Memory Library to create a memory
+object for one of the supported frameworks. For example, the following
+code allocates memory in system memory (we count CPU (HOST) as one of
+the frameworks):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;om++.h&gt;</span><span class="cp"></span>
+
+<span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">memory</span> <span class="n">yuv_image</span> <span class="o">=</span> <span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">make_memory</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="n">VPLM_PIXEL_FORMAT_NV12</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>or it can allocate memory externally and request the VPL Memory
+Library to manage it as in the following example for VAAPI:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;om++.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;om_vaapi++.h&gt;</span><span class="cp"></span>
+
+<span class="n">VADisplay</span> <span class="n">dpy</span><span class="p">;</span>
+<span class="n">VASurfaceID</span> <span class="n">id</span><span class="p">;</span>
+<span class="n">vaCreateSurfaces</span><span class="p">(</span><span class="n">dpy</span><span class="p">,</span> <span class="n">VA_RT_FORMAT_RGB32</span><span class="p">,</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">attribs</span><span class="p">,</span> <span class="n">num_attribs</span><span class="p">);</span>
+
+<span class="n">vplm</span><span class="o">::</span><span class="n">vaapi</span><span class="o">::</span><span class="n">memory</span> <span class="n">rgb_image</span> <span class="o">=</span> <span class="n">vplm</span><span class="o">::</span><span class="n">vaapi</span><span class="o">::</span><span class="n">make_surface</span><span class="p">(</span><span class="n">dpy</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In either case, it ends up with the framework specific C++ object (in
+our examples <a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::cpu::memory</span></code></a> or
+<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::vaapi::memory</span></code></a>), and hence, have access to the
+framework specific API defined by VPL Memory for this object. For
+example, the following code will access CPU allocated image (via
+<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::cpu_image</span></code></a> representation):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vplm</span><span class="o">::</span><span class="n">cpu_image</span> <span class="n">image</span><span class="p">;</span>
+<span class="n">yuv_image</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">VPLM_ACCESS_MODE_READ</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+
+<span class="c1">// do something with the image since you have access to data pointers:</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Y data pointer: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+
+<span class="n">yuv_image</span><span class="p">.</span><span class="n">unmap</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helper-class-for-simplifying-image-data-access">
+<h3>Helper Class for Simplifying Image Data Access<a class="headerlink" href="#helper-class-for-simplifying-image-data-access" title="Permalink to this headline">¶</a></h3>
+<p>In the examples above we directly used a memory object to access its
+data. While this is possible, there is a simpler way. Most frameworks
+require a program to acquire and release access to data. For the CPU
+access example, we saw calls to map and unmap to acquire/release
+access to the data. Using the <a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::cpu_image</span></code></a> helper
+class eliminates the need to map and unmap:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">image</span> <span class="n">cpu_image</span><span class="p">(</span><span class="n">yuv_image</span><span class="p">,</span> <span class="n">VPLM_ACCESS_MODE_READ</span><span class="p">);</span>
+
+  <span class="c1">// do something with the image since you have access to data pointers:</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Y data pointer: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This helper class issues acquire and release operations to mark
+start/stop data access in constructor and destructor.  Another
+“feature” of these helper classes is that they accept base
+memory object (<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::memory</span></code></a>) in constructors. This means that we can
+use helper classes to make implicit convertion between different
+framework objects. For example, with the following we will map our
+VAAPI image on to CPU:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">image</span> <span class="n">cpu_image</span><span class="p">(</span><span class="n">rgb_image</span><span class="p">,</span> <span class="n">VPLM_ACCESS_MODE_WRITE</span><span class="p">);</span>
+
+  <span class="c1">// do something with the image since you have access to data pointers:</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;R data pointer: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Usage example
+The following example summarize the key usage scenario:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;om++.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;om_vaapi++.h&gt;</span><span class="cp"></span>
+
+<span class="n">VADisplay</span> <span class="n">dpy</span> <span class="o">=</span> <span class="n">init_vaapi</span><span class="p">();</span>
+<span class="n">VASurfaceID</span> <span class="n">id</span> <span class="o">=</span> <span class="n">create_per_my_needs</span><span class="p">();</span> <span class="c1">// calls vaCreateSurfaces inside</span>
+
+<span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">memory</span> <span class="n">yuv_image</span> <span class="o">=</span> <span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">make_memory</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="n">VPLM_PIXEL_FORMAT_NV12</span><span class="p">);</span>
+<span class="n">vplm</span><span class="o">::</span><span class="n">vaapi</span><span class="o">::</span><span class="n">memory</span> <span class="n">rgb_image</span> <span class="o">=</span> <span class="n">vplm</span><span class="o">::</span><span class="n">vaapi</span><span class="o">::</span><span class="n">make_surface</span><span class="p">(</span><span class="n">dpy</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+
+<span class="p">{</span>
+  <span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">image</span> <span class="n">cpu_image</span><span class="p">(</span><span class="n">yuv_image</span><span class="p">,</span> <span class="n">VPLM_ACCESS_MODE_WRITE</span><span class="p">);</span>
+
+  <span class="c1">// do something with the image since you have access to data pointers:</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Y data pointer: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+  <span class="c1">// for example, write data into the surface</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+  <span class="n">vplm</span><span class="o">::</span><span class="n">vaapi</span><span class="o">::</span><span class="n">image</span> <span class="n">vaapi_cpu_image</span><span class="p">(</span><span class="n">dpy</span><span class="p">,</span> <span class="n">yuv_image</span><span class="p">);</span>
+  <span class="n">vplm</span><span class="o">::</span><span class="n">vaapi</span><span class="o">::</span><span class="n">image</span> <span class="n">vaapi_rgb_image</span><span class="p">(</span><span class="n">dpy</span><span class="p">,</span> <span class="n">rgb_image</span><span class="p">);</span> <span class="c1">// just for consistency</span>
+
+  <span class="c1">// do something with surfaces via VAAPI since we have access to them</span>
+  <span class="c1">// for example, convert yuv which we just wrote on CPU to rgb format</span>
+  <span class="n">convert_yuv_to_rgb</span><span class="p">(</span><span class="n">vaapi_cpu_image</span><span class="p">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">vaapi_rgb_image</span><span class="p">.</span><span class="n">id</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+  <span class="n">vplm</span><span class="o">::</span><span class="n">cpu</span><span class="o">::</span><span class="n">image</span> <span class="n">cpu_image</span><span class="p">(</span><span class="n">rgb_image</span><span class="p">,</span> <span class="n">VPLM_ACCESS_MODE_READ</span><span class="p">);</span>
+
+  <span class="c1">// now we can read from the CPU data which we got in rgb image after VAAPI conversion:</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;R data pointer: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The VPL API defines 4 different helper classes, one for each supported device context:
+<a class="reference internal" href="#_CPPv4N4vplm3cpu5imageE" title="vplm::cpu::image"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::cpu::image</span></code></a>
+<a class="reference internal" href="#_CPPv4N4vplm6opencl5imageE" title="vplm::opencl::image"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::opencl::image</span></code></a>,
+<a class="reference internal" href="#_CPPv4N4vplm4sycl6memoryE" title="vplm::sycl::memory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::sycl::memory</span></code></a> and
+<a class="reference internal" href="#_CPPv4N4vplm5vaapi5imageE" title="vplm::vaapi::image"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vplm::vaapi::image</span></code></a>.</p>
+</div>
+</div>
+<div class="section" id="vpl-encode-api">
+<h2>VPL Encode API<a class="headerlink" href="#vpl-encode-api" title="Permalink to this headline">¶</a></h2>
+<p>The oneVPL Encode API will be released in sync with Intel’s oneAPI reference
+implementation release in 2020.</p>
+</div>
+<div class="section" id="vpl-transcode-api">
+<h2>VPL Transcode API<a class="headerlink" href="#vpl-transcode-api" title="Permalink to this headline">¶</a></h2>
+<p>The oneVPL Transcode API will be released in sync with Intel’s oneAPI
+reference implementation release in 2020.</p>
+</div>
+<div class="section" id="vpl-video-analytics-pipeline">
+<h2>VPL Video Analytics Pipeline<a class="headerlink" href="#vpl-video-analytics-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>The oneVPL Video Analytics Pipeline API will be released in sync with
+Intel’s oneAPI reference implementation release in 2020.</p>
+</div>
+<div class="section" id="vpl-object-tracking-and-optical-flow-library">
+<h2>VPL Object Tracking and Optical Flow Library<a class="headerlink" href="#vpl-object-tracking-and-optical-flow-library" title="Permalink to this headline">¶</a></h2>
+<p>The oneVPL Object Tracking and Optical Flow Library API API will be
+released in sync with Intel’s oneAPI reference implementation release
+in 2020.</p>
+</div>
+<div class="section" id="vpl-device-discovery-and-device-capability-query">
+<h2>VPL Device Discovery and Device Capability Query<a class="headerlink" href="#vpl-device-discovery-and-device-capability-query" title="Permalink to this headline">¶</a></h2>
+<p>The oneVPL Device Discovery and Device Capability Query API will be
+released in sync with Intel’s oneAPI reference implementation release
+in 2020.</p>
+</div>
+<div class="section" id="vpl-api-reference">
+<h2>VPL API Reference<a class="headerlink" href="#vpl-api-reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="error-handling">
+<h3>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vplstatus">
+<h4>vplStatus<a class="headerlink" href="#vplstatus" title="Permalink to this headline">¶</a></h4>
+<dl class="enum">
+<dt id="_CPPv49vplStatus">
+<span id="_CPPv39vplStatus"></span><span id="_CPPv29vplStatus"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4e"></span><em class="property">enum </em><code class="sig-name descname">vplStatus</code><a class="headerlink" href="#_CPPv49vplStatus" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>status codes </p>
+<p><em>Values:</em></p>
+<dl class="enumerator">
+<dt id="_CPPv46VPL_OK">
+<span id="_CPPv36VPL_OK"></span><span id="_CPPv26VPL_OK"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea7d94b72694ffb22d49781e5e195ecce7"></span><code class="sig-name descname">VPL_OK</code> = 0<a class="headerlink" href="#_CPPv46VPL_OK" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_ERR_NOT_SUPPORTED">
+<span id="_CPPv321VPL_ERR_NOT_SUPPORTED"></span><span id="_CPPv221VPL_ERR_NOT_SUPPORTED"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4eaf637884c5456dcbb7e8f880127cc3103"></span><code class="sig-name descname">VPL_ERR_NOT_SUPPORTED</code> = -1<a class="headerlink" href="#_CPPv421VPL_ERR_NOT_SUPPORTED" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv420VPL_ERR_NULL_POINTER">
+<span id="_CPPv320VPL_ERR_NULL_POINTER"></span><span id="_CPPv220VPL_ERR_NULL_POINTER"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea4b3444869409ce576273b23b2dc11f18"></span><code class="sig-name descname">VPL_ERR_NULL_POINTER</code> = -2<a class="headerlink" href="#_CPPv420VPL_ERR_NULL_POINTER" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv417VPL_ERR_NOT_FOUND">
+<span id="_CPPv317VPL_ERR_NOT_FOUND"></span><span id="_CPPv217VPL_ERR_NOT_FOUND"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4eaedaa29869a6ff9f34f62fbd18ece6662"></span><code class="sig-name descname">VPL_ERR_NOT_FOUND</code> = -3<a class="headerlink" href="#_CPPv417VPL_ERR_NOT_FOUND" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_ERR_HW_UNAVALIBLE">
+<span id="_CPPv321VPL_ERR_HW_UNAVALIBLE"></span><span id="_CPPv221VPL_ERR_HW_UNAVALIBLE"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea173c5d5bb9dd497fd8970311bf418486"></span><code class="sig-name descname">VPL_ERR_HW_UNAVALIBLE</code> = -4<a class="headerlink" href="#_CPPv421VPL_ERR_HW_UNAVALIBLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_ERR_INVALID_FRAME">
+<span id="_CPPv321VPL_ERR_INVALID_FRAME"></span><span id="_CPPv221VPL_ERR_INVALID_FRAME"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea8942d2f217e6faeba9f95128d6a04520"></span><code class="sig-name descname">VPL_ERR_INVALID_FRAME</code> = -5<a class="headerlink" href="#_CPPv421VPL_ERR_INVALID_FRAME" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_ERR_OUT_OF_RESOURCES">
+<span id="_CPPv324VPL_ERR_OUT_OF_RESOURCES"></span><span id="_CPPv224VPL_ERR_OUT_OF_RESOURCES"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea825597c695242e20a4766f7af45a9bae"></span><code class="sig-name descname">VPL_ERR_OUT_OF_RESOURCES</code> = -6<a class="headerlink" href="#_CPPv424VPL_ERR_OUT_OF_RESOURCES" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv422VPL_ERR_INTERNAL_ERROR">
+<span id="_CPPv322VPL_ERR_INTERNAL_ERROR"></span><span id="_CPPv222VPL_ERR_INTERNAL_ERROR"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4eadf0fc13c1e6c21c1b2f4c6311bdcdc79"></span><code class="sig-name descname">VPL_ERR_INTERNAL_ERROR</code> = -7<a class="headerlink" href="#_CPPv422VPL_ERR_INTERNAL_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv420VPL_ERR_INVALID_SIZE">
+<span id="_CPPv320VPL_ERR_INVALID_SIZE"></span><span id="_CPPv220VPL_ERR_INVALID_SIZE"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea6fc61ed0e22da19c653742da482c256b"></span><code class="sig-name descname">VPL_ERR_INVALID_SIZE</code> = -8<a class="headerlink" href="#_CPPv420VPL_ERR_INVALID_SIZE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_ERR_INVALID_PROPERTY">
+<span id="_CPPv324VPL_ERR_INVALID_PROPERTY"></span><span id="_CPPv224VPL_ERR_INVALID_PROPERTY"></span><span class="target" id="vpl__types_8h_1a5a3c6f0ffa1f41bddf03a11b44636c4ea838ec040517eb57a70658c9d0aad7b80"></span><code class="sig-name descname">VPL_ERR_INVALID_PROPERTY</code> = -9<a class="headerlink" href="#_CPPv424VPL_ERR_INVALID_PROPERTY" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="workstream-api">
+<span id="id1"></span><h3>Workstreams<a class="headerlink" href="#workstream-api" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vplworkstreamtype">
+<h4>VplWorkstreamType<a class="headerlink" href="#vplworkstreamtype" title="Permalink to this headline">¶</a></h4>
+<dl class="enum">
+<dt id="_CPPv417VplWorkstreamType">
+<span id="_CPPv317VplWorkstreamType"></span><span id="_CPPv217VplWorkstreamType"></span><span class="target" id="vpl__types_8h_1ab79bcef5ad77ca0d3d68228e0ed8dc2b"></span><em class="property">enum </em><code class="sig-name descname">VplWorkstreamType</code><a class="headerlink" href="#_CPPv417VplWorkstreamType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>workstream type </p>
+<p><em>Values:</em></p>
+<dl class="enumerator">
+<dt id="_CPPv421VPL_WORKSTREAM_DECODE">
+<span id="_CPPv321VPL_WORKSTREAM_DECODE"></span><span id="_CPPv221VPL_WORKSTREAM_DECODE"></span><span class="target" id="vpl__types_8h_1ab79bcef5ad77ca0d3d68228e0ed8dc2ba7b01aa6e151d2349f40d258945d412a3"></span><code class="sig-name descname">VPL_WORKSTREAM_DECODE</code> = 0<a class="headerlink" href="#_CPPv421VPL_WORKSTREAM_DECODE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_WORKSTREAM_ENCODE">
+<span id="_CPPv321VPL_WORKSTREAM_ENCODE"></span><span id="_CPPv221VPL_WORKSTREAM_ENCODE"></span><span class="target" id="vpl__types_8h_1ab79bcef5ad77ca0d3d68228e0ed8dc2bae2bc90c316b83a56e6aae84feb75eeed"></span><code class="sig-name descname">VPL_WORKSTREAM_ENCODE</code><a class="headerlink" href="#_CPPv421VPL_WORKSTREAM_ENCODE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_WORKSTREAM_TRANSCODE">
+<span id="_CPPv324VPL_WORKSTREAM_TRANSCODE"></span><span id="_CPPv224VPL_WORKSTREAM_TRANSCODE"></span><span class="target" id="vpl__types_8h_1ab79bcef5ad77ca0d3d68228e0ed8dc2ba6274c672843c7ef5ff4908e56ebe5d7a"></span><code class="sig-name descname">VPL_WORKSTREAM_TRANSCODE</code><a class="headerlink" href="#_CPPv424VPL_WORKSTREAM_TRANSCODE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vplworkstreamprop">
+<h4>VplWorkstreamProp<a class="headerlink" href="#vplworkstreamprop" title="Permalink to this headline">¶</a></h4>
+<dl class="enum">
+<dt id="_CPPv417VplWorkstreamProp">
+<span id="_CPPv317VplWorkstreamProp"></span><span id="_CPPv217VplWorkstreamProp"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258"></span><em class="property">enum </em><code class="sig-name descname">VplWorkstreamProp</code><a class="headerlink" href="#_CPPv417VplWorkstreamProp" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Settable/Gettable properties for workstreams. </p>
+<p><em>Values:</em></p>
+<dl class="enumerator">
+<dt id="_CPPv424VPL_PROP_WORKSTREAM_TYPE">
+<span id="_CPPv324VPL_PROP_WORKSTREAM_TYPE"></span><span id="_CPPv224VPL_PROP_WORKSTREAM_TYPE"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a445fbe755ae244f5e0686ca23a93be6e"></span><code class="sig-name descname">VPL_PROP_WORKSTREAM_TYPE</code><a class="headerlink" href="#_CPPv424VPL_PROP_WORKSTREAM_TYPE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv416VPL_PROP_VERSION">
+<span id="_CPPv316VPL_PROP_VERSION"></span><span id="_CPPv216VPL_PROP_VERSION"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a796b0aaae2e199d0e9735d8f095e56de"></span><code class="sig-name descname">VPL_PROP_VERSION</code><a class="headerlink" href="#_CPPv416VPL_PROP_VERSION" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv423VPL_PROP_VERSION_STRING">
+<span id="_CPPv323VPL_PROP_VERSION_STRING"></span><span id="_CPPv223VPL_PROP_VERSION_STRING"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a7fd49b357dd025f5cbc1dbe9dd1ee5c2"></span><code class="sig-name descname">VPL_PROP_VERSION_STRING</code><a class="headerlink" href="#_CPPv423VPL_PROP_VERSION_STRING" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv428VPL_PROP_DECODED_BUFFER_SIZE">
+<span id="_CPPv328VPL_PROP_DECODED_BUFFER_SIZE"></span><span id="_CPPv228VPL_PROP_DECODED_BUFFER_SIZE"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258af08a50bcceee573d0b2824fafbede5cb"></span><code class="sig-name descname">VPL_PROP_DECODED_BUFFER_SIZE</code><a class="headerlink" href="#_CPPv428VPL_PROP_DECODED_BUFFER_SIZE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv432VPL_MAX_NUMBER_OF_DECODED_IMAGES">
+<span id="_CPPv332VPL_MAX_NUMBER_OF_DECODED_IMAGES"></span><span id="_CPPv232VPL_MAX_NUMBER_OF_DECODED_IMAGES"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a563a382963e15e067aac771e2dc0284d"></span><code class="sig-name descname">VPL_MAX_NUMBER_OF_DECODED_IMAGES</code><a class="headerlink" href="#_CPPv432VPL_MAX_NUMBER_OF_DECODED_IMAGES" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv423VPL_PROP_ENCODE_BITRATE">
+<span id="_CPPv323VPL_PROP_ENCODE_BITRATE"></span><span id="_CPPv223VPL_PROP_ENCODE_BITRATE"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258aec965a4ae5e653319cf8851a895bcb1f"></span><code class="sig-name descname">VPL_PROP_ENCODE_BITRATE</code><a class="headerlink" href="#_CPPv423VPL_PROP_ENCODE_BITRATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_PROP_ENCODE_SCENARIO">
+<span id="_CPPv324VPL_PROP_ENCODE_SCENARIO"></span><span id="_CPPv224VPL_PROP_ENCODE_SCENARIO"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a718ede2d8444ac6c727503a9f97c9ea5"></span><code class="sig-name descname">VPL_PROP_ENCODE_SCENARIO</code><a class="headerlink" href="#_CPPv424VPL_PROP_ENCODE_SCENARIO" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv427VPL_PROP_ENCODE_TARGETUSAGE">
+<span id="_CPPv327VPL_PROP_ENCODE_TARGETUSAGE"></span><span id="_CPPv227VPL_PROP_ENCODE_TARGETUSAGE"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258af2d78db88f4657f05ba04b4921c205f4"></span><code class="sig-name descname">VPL_PROP_ENCODE_TARGETUSAGE</code><a class="headerlink" href="#_CPPv427VPL_PROP_ENCODE_TARGETUSAGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv419VPL_PROP_SRC_FORMAT">
+<span id="_CPPv319VPL_PROP_SRC_FORMAT"></span><span id="_CPPv219VPL_PROP_SRC_FORMAT"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a3e3565f1bf67b0a6a22727dac09741d1"></span><code class="sig-name descname">VPL_PROP_SRC_FORMAT</code><a class="headerlink" href="#_CPPv419VPL_PROP_SRC_FORMAT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv419VPL_PROP_DST_FORMAT">
+<span id="_CPPv319VPL_PROP_DST_FORMAT"></span><span id="_CPPv219VPL_PROP_DST_FORMAT"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a93c6f548016ee6c3e6fe919022ebab60"></span><code class="sig-name descname">VPL_PROP_DST_FORMAT</code><a class="headerlink" href="#_CPPv419VPL_PROP_DST_FORMAT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_PROP_INPUT_FRAMERATE">
+<span id="_CPPv324VPL_PROP_INPUT_FRAMERATE"></span><span id="_CPPv224VPL_PROP_INPUT_FRAMERATE"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a880e45b29ea1127d8cc5d17d8c4a0266"></span><code class="sig-name descname">VPL_PROP_INPUT_FRAMERATE</code><a class="headerlink" href="#_CPPv424VPL_PROP_INPUT_FRAMERATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv425VPL_PROP_OUTPUT_FRAMERATE">
+<span id="_CPPv325VPL_PROP_OUTPUT_FRAMERATE"></span><span id="_CPPv225VPL_PROP_OUTPUT_FRAMERATE"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a23e3c376c00938682eccb0894fb94e88"></span><code class="sig-name descname">VPL_PROP_OUTPUT_FRAMERATE</code><a class="headerlink" href="#_CPPv425VPL_PROP_OUTPUT_FRAMERATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv425VPL_PROP_INPUT_RESOLUTION">
+<span id="_CPPv325VPL_PROP_INPUT_RESOLUTION"></span><span id="_CPPv225VPL_PROP_INPUT_RESOLUTION"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258ab9e6eb451b3e804888747836dbf35ada"></span><code class="sig-name descname">VPL_PROP_INPUT_RESOLUTION</code><a class="headerlink" href="#_CPPv425VPL_PROP_INPUT_RESOLUTION" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv426VPL_PROP_OUTPUT_RESOLUTION">
+<span id="_CPPv326VPL_PROP_OUTPUT_RESOLUTION"></span><span id="_CPPv226VPL_PROP_OUTPUT_RESOLUTION"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a86435f2abe2746b0f7d44951dcb96cdc"></span><code class="sig-name descname">VPL_PROP_OUTPUT_RESOLUTION</code><a class="headerlink" href="#_CPPv426VPL_PROP_OUTPUT_RESOLUTION" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv420VPL_PROP_INPUT_CROPS">
+<span id="_CPPv320VPL_PROP_INPUT_CROPS"></span><span id="_CPPv220VPL_PROP_INPUT_CROPS"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a30671d16f3c3e955224ad7b8ec93d55f"></span><code class="sig-name descname">VPL_PROP_INPUT_CROPS</code><a class="headerlink" href="#_CPPv420VPL_PROP_INPUT_CROPS" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_PROP_OUTPUT_CROPS">
+<span id="_CPPv321VPL_PROP_OUTPUT_CROPS"></span><span id="_CPPv221VPL_PROP_OUTPUT_CROPS"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258ab0d4cbfc9e37e1a806701b7f052250d9"></span><code class="sig-name descname">VPL_PROP_OUTPUT_CROPS</code><a class="headerlink" href="#_CPPv421VPL_PROP_OUTPUT_CROPS" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv426VPL_PROP_INPUT_ASPECTRATIO">
+<span id="_CPPv326VPL_PROP_INPUT_ASPECTRATIO"></span><span id="_CPPv226VPL_PROP_INPUT_ASPECTRATIO"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a86bc659f531a664490975da4f54e549f"></span><code class="sig-name descname">VPL_PROP_INPUT_ASPECTRATIO</code><a class="headerlink" href="#_CPPv426VPL_PROP_INPUT_ASPECTRATIO" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv427VPL_PROP_OUTPUT_ASPECTRATIO">
+<span id="_CPPv327VPL_PROP_OUTPUT_ASPECTRATIO"></span><span id="_CPPv227VPL_PROP_OUTPUT_ASPECTRATIO"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a7406341bef584172f39203106cb5ee1e"></span><code class="sig-name descname">VPL_PROP_OUTPUT_ASPECTRATIO</code><a class="headerlink" href="#_CPPv427VPL_PROP_OUTPUT_ASPECTRATIO" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_PROP_INPUT_PICSTRUCT">
+<span id="_CPPv324VPL_PROP_INPUT_PICSTRUCT"></span><span id="_CPPv224VPL_PROP_INPUT_PICSTRUCT"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258ade746e10f966ff4fd86ec271b95011a3"></span><code class="sig-name descname">VPL_PROP_INPUT_PICSTRUCT</code><a class="headerlink" href="#_CPPv424VPL_PROP_INPUT_PICSTRUCT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv425VPL_PROP_OUTPUT_PICSTRUCT">
+<span id="_CPPv325VPL_PROP_OUTPUT_PICSTRUCT"></span><span id="_CPPv225VPL_PROP_OUTPUT_PICSTRUCT"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a45143eff37f6b02decba269dd7a23ced"></span><code class="sig-name descname">VPL_PROP_OUTPUT_PICSTRUCT</code><a class="headerlink" href="#_CPPv425VPL_PROP_OUTPUT_PICSTRUCT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv424VPL_PROP_STATUS_CALLBACK">
+<span id="_CPPv324VPL_PROP_STATUS_CALLBACK"></span><span id="_CPPv224VPL_PROP_STATUS_CALLBACK"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a04f4932736b7a57579e61531120f0864"></span><code class="sig-name descname">VPL_PROP_STATUS_CALLBACK</code><a class="headerlink" href="#_CPPv424VPL_PROP_STATUS_CALLBACK" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv429VPL_PROP_STATUS_CALLBACK_DATA">
+<span id="_CPPv329VPL_PROP_STATUS_CALLBACK_DATA"></span><span id="_CPPv229VPL_PROP_STATUS_CALLBACK_DATA"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a54d5200722d3eeefddb9f9be5beade54"></span><code class="sig-name descname">VPL_PROP_STATUS_CALLBACK_DATA</code><a class="headerlink" href="#_CPPv429VPL_PROP_STATUS_CALLBACK_DATA" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_PROP_STATUS_LEVEL">
+<span id="_CPPv321VPL_PROP_STATUS_LEVEL"></span><span id="_CPPv221VPL_PROP_STATUS_LEVEL"></span><span class="target" id="vpl__types_8h_1a9dbf1492070888888bc199e37ad85258a87b2a978e13515b81d2e78696e03c53e"></span><code class="sig-name descname">VPL_PROP_STATUS_LEVEL</code><a class="headerlink" href="#_CPPv421VPL_PROP_STATUS_LEVEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vplworkstream">
+<h4>vplWorkstream<a class="headerlink" href="#vplworkstream" title="Permalink to this headline">¶</a></h4>
+<dl class="type">
+<dt id="_CPPv413vplWorkstream">
+<span id="_CPPv313vplWorkstream"></span><span id="_CPPv213vplWorkstream"></span><span id="vplWorkstream"></span><span class="target" id="vpl__types_8h_1a13bc0489390696c8fa3fb2f46f9e67ae"></span><em class="property">typedef </em><em class="property">struct</em> _vplWorkstream *<code class="sig-name descname">vplWorkstream</code><a class="headerlink" href="#_CPPv413vplWorkstream" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="vplsetconfigproperty">
+<h4>vplSetConfigProperty<a class="headerlink" href="#vplsetconfigproperty" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="_CPPv420vplSetConfigProperty13vplWorkstream17VplWorkstreamPropPv6size_t">
+<span id="_CPPv320vplSetConfigProperty13vplWorkstream17VplWorkstreamPropPv6size_t"></span><span id="_CPPv220vplSetConfigProperty13vplWorkstream17VplWorkstreamPropPv6size_t"></span><span id="vplSetConfigProperty__vplWorkstream.VplWorkstreamProp.voidP.s"></span><span class="target" id="vpl__video_8h_1a5ccf0b313a6b253658c7d791ac116e1a"></span><a class="reference internal" href="#_CPPv49vplStatus" title="vplStatus">vplStatus</a> <code class="sig-name descname">vplSetConfigProperty</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413vplWorkstream" title="vplWorkstream">vplWorkstream</a> <em>ws</em>, <a class="reference internal" href="#_CPPv417VplWorkstreamProp" title="VplWorkstreamProp">VplWorkstreamProp</a> <em>prop</em>, void *<em>value</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420vplSetConfigProperty13vplWorkstream17VplWorkstreamPropPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set a workstream property. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="vplgetconfigproperty">
+<h4>vplGetConfigProperty<a class="headerlink" href="#vplgetconfigproperty" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="_CPPv420vplGetConfigProperty13vplWorkstream17VplWorkstreamPropPvP6size_t">
+<span id="_CPPv320vplGetConfigProperty13vplWorkstream17VplWorkstreamPropPvP6size_t"></span><span id="_CPPv220vplGetConfigProperty13vplWorkstream17VplWorkstreamPropPvP6size_t"></span><span id="vplGetConfigProperty__vplWorkstream.VplWorkstreamProp.voidP.sP"></span><span class="target" id="vpl__video_8h_1a4151265ab19272ee384e5aa70a9dc3b1"></span><a class="reference internal" href="#_CPPv49vplStatus" title="vplStatus">vplStatus</a> <code class="sig-name descname">vplGetConfigProperty</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413vplWorkstream" title="vplWorkstream">vplWorkstream</a> <em>workstream</em>, <a class="reference internal" href="#_CPPv417VplWorkstreamProp" title="VplWorkstreamProp">VplWorkstreamProp</a> <em>prop</em>, void *<em>out_value</em>, size_t *<em>out_size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420vplGetConfigProperty13vplWorkstream17VplWorkstreamPropPvP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a workstream property. </p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Decode<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vpl-decode">
+<h4>vpl::Decode<a class="headerlink" href="#vpl-decode" title="Permalink to this headline">¶</a></h4>
+<dl class="enum">
+<dt id="_CPPv418vplWorkstreamState">
+<span id="_CPPv318vplWorkstreamState"></span><span id="_CPPv218vplWorkstreamState"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925f"></span><em class="property">enum </em><code class="sig-name descname">vplWorkstreamState</code><a class="headerlink" href="#_CPPv418vplWorkstreamState" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>workstream state communicates next steps to the application </p>
+<p><em>Values:</em></p>
+<dl class="enumerator">
+<dt id="_CPPv420VPL_STATE_READ_INPUT">
+<span id="_CPPv320VPL_STATE_READ_INPUT"></span><span id="_CPPv220VPL_STATE_READ_INPUT"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925fa56ac1511a1f6bc106b380c914b3683bc"></span><code class="sig-name descname">VPL_STATE_READ_INPUT</code> = 1000<a class="headerlink" href="#_CPPv420VPL_STATE_READ_INPUT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Decoder needs additional input bitstream data to decode. </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv425VPL_STATE_CLOSED_TO_INPUT">
+<span id="_CPPv325VPL_STATE_CLOSED_TO_INPUT"></span><span id="_CPPv225VPL_STATE_CLOSED_TO_INPUT"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925fa0969497f4982e534db46521dc9cc9dcd"></span><code class="sig-name descname">VPL_STATE_CLOSED_TO_INPUT</code> = 1001<a class="headerlink" href="#_CPPv425VPL_STATE_CLOSED_TO_INPUT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_STATE_ERROR">
+<span id="_CPPv315VPL_STATE_ERROR"></span><span id="_CPPv215VPL_STATE_ERROR"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925faa5c02f399e6cece94faf92915da28fa9"></span><code class="sig-name descname">VPL_STATE_ERROR</code> = 1002<a class="headerlink" href="#_CPPv415VPL_STATE_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Decoder has encountered an error and entered error state. </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv427VPL_STATE_INPUT_BUFFER_FULL">
+<span id="_CPPv327VPL_STATE_INPUT_BUFFER_FULL"></span><span id="_CPPv227VPL_STATE_INPUT_BUFFER_FULL"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925fae30afd54950e4b94a9e0627aa4201dc1"></span><code class="sig-name descname">VPL_STATE_INPUT_BUFFER_FULL</code> = 1003<a class="headerlink" href="#_CPPv427VPL_STATE_INPUT_BUFFER_FULL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Decoder internal input buffer is full. Caller must retrieve the decoded frames before supplying new bitstream data. </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv435VPL_STATE_INPUT_EXCEEDS_BUFFER_SIZE">
+<span id="_CPPv335VPL_STATE_INPUT_EXCEEDS_BUFFER_SIZE"></span><span id="_CPPv235VPL_STATE_INPUT_EXCEEDS_BUFFER_SIZE"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925fa3381381725fa595c76e81da65680b7e8"></span><code class="sig-name descname">VPL_STATE_INPUT_EXCEEDS_BUFFER_SIZE</code> = 1004<a class="headerlink" href="#_CPPv435VPL_STATE_INPUT_EXCEEDS_BUFFER_SIZE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The input data exceeds the capacity of the input buffer. </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv426VPL_STATE_END_OF_OPERATION">
+<span id="_CPPv326VPL_STATE_END_OF_OPERATION"></span><span id="_CPPv226VPL_STATE_END_OF_OPERATION"></span><span class="target" id="vpl__types_8h_1ae5c9f94f7b1ef594ec842e8195a7925fade41d1dffb4ea3ee371d4f13d43720c4"></span><code class="sig-name descname">VPL_STATE_END_OF_OPERATION</code> = 1005<a class="headerlink" href="#_CPPv426VPL_STATE_END_OF_OPERATION" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>All decoded frames have been retrieved by the caller. Decoder workstream ends. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv4N3vpl6DecodeE">
+<span id="_CPPv3N3vpl6DecodeE"></span><span id="_CPPv2N3vpl6DecodeE"></span><span id="vpl::Decode"></span><span class="target" id="classvpl_1_1_decode"></span><em class="property">class </em><code class="sig-name descname">Decode</code><a class="headerlink" href="#_CPPv4N3vpl6DecodeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classvpl_1_1_decode"><span class="std std-ref">Decode</span></a> + frame processing workstream. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N3vpl6Decode6DecodeE9VplFourCC15VplTargetDevice">
+<span id="_CPPv3N3vpl6Decode6DecodeE9VplFourCC15VplTargetDevice"></span><span id="_CPPv2N3vpl6Decode6DecodeE9VplFourCC15VplTargetDevice"></span><span id="vpl::Decode::Decode__VplFourCC.VplTargetDevice"></span><span class="target" id="classvpl_1_1_decode_1a4d347ce7011505b8770ca0673669bfa2"></span><code class="sig-name descname">Decode</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49VplFourCC" title="VplFourCC">VplFourCC</a> <em>src_format</em>, <a class="reference internal" href="#_CPPv415VplTargetDevice" title="VplTargetDevice">VplTargetDevice</a> <em>device</em> = <a class="reference internal" href="#_CPPv425VPL_TARGET_DEVICE_DEFAULT" title="VPL_TARGET_DEVICE_DEFAULT">VPL_TARGET_DEVICE_DEFAULT</a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3vpl6Decode6DecodeE9VplFourCC15VplTargetDevice" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor for decode workstream. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">src_format</span></code>: VplFourCC codec the workstream will decode </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">(optional)</span></code>: target device </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N3vpl6DecodeD0Ev">
+<span id="_CPPv3N3vpl6DecodeD0Ev"></span><span id="_CPPv2N3vpl6DecodeD0Ev"></span><span id="vpl::Decode::~Decode__void"></span><span class="target" id="classvpl_1_1_decode_1a73248e12e811e42879cc225485035cd6"></span><em class="property">virtual</em> <code class="sig-name descname">~Decode</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3vpl6DecodeD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destructor for decode workstream. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t">
+<span id="_CPPv3N3vpl6Decode11DecodeFrameEPKv6size_t"></span><span id="_CPPv2N3vpl6Decode11DecodeFrameEPKv6size_t"></span><span id="vpl::Decode::DecodeFrame__voidCP.s"></span><span class="target" id="classvpl_1_1_decode_1a752fcf442c1f128beed8fab61c85ff38"></span>vplm_mem *<code class="sig-name descname">DecodeFrame</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>pbs</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3vpl6Decode11DecodeFrameEPKv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor for decode workstream. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">*pbs</span></code>: bitstream input data </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">size</span></code>: size of input data in bytes </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N3vpl6Decodecv13vplWorkstreamEv">
+<span id="_CPPv3N3vpl6Decodecv13vplWorkstreamEv"></span><span id="_CPPv2N3vpl6Decodecv13vplWorkstreamEv"></span><span id="vpl::Decode::castto-vplWorkstream-operator"></span><span class="target" id="classvpl_1_1_decode_1a99369b01f6a925ef8c384d39e536f4af"></span><code class="sig-name descname">operator vplWorkstream</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3vpl6Decodecv13vplWorkstreamEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Cast operator for C++/C API interoperability. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N3vpl6Decode8GetStateEv">
+<span id="_CPPv3N3vpl6Decode8GetStateEv"></span><span id="_CPPv2N3vpl6Decode8GetStateEv"></span><span id="vpl::Decode::GetState"></span><span class="target" id="classvpl_1_1_decode_1a6fcf4dcadb29f1d70dfeb358a514d786"></span><a class="reference internal" href="#_CPPv418vplWorkstreamState" title="vplWorkstreamState">vplWorkstreamState</a> <code class="sig-name descname">GetState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3vpl6Decode8GetStateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get workstream state. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4I0EN3vpl6Decode9SetConfigE9vplStatus17VplWorkstreamProp1T">
+<span id="_CPPv3I0EN3vpl6Decode9SetConfigE17VplWorkstreamProp1T"></span><span id="_CPPv2I0EN3vpl6Decode9SetConfigE17VplWorkstreamProp1T"></span><span class="target" id="classvpl_1_1_decode_1a8a480549dd18ec369227ee76ed1030ec"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><a class="reference internal" href="#_CPPv49vplStatus" title="vplStatus">vplStatus</a> <code class="sig-name descname">SetConfig</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417VplWorkstreamProp" title="VplWorkstreamProp">VplWorkstreamProp</a> <em>prop</em>, <a class="reference internal" href="#_CPPv4I0EN3vpl6Decode9SetConfigE9vplStatus17VplWorkstreamProp1T" title="vpl::Decode::SetConfig::T">T</a> <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN3vpl6Decode9SetConfigE9vplStatus17VplWorkstreamProp1T" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set workstream parameter. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4I0EN3vpl6Decode9GetConfigE9vplStatus17VplWorkstreamPropR1T">
+<span id="_CPPv3I0EN3vpl6Decode9GetConfigE17VplWorkstreamPropR1T"></span><span id="_CPPv2I0EN3vpl6Decode9GetConfigE17VplWorkstreamPropR1T"></span><span class="target" id="classvpl_1_1_decode_1a031fbd890384b4572efe430d2333a071"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><a class="reference internal" href="#_CPPv49vplStatus" title="vplStatus">vplStatus</a> <code class="sig-name descname">GetConfig</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417VplWorkstreamProp" title="VplWorkstreamProp">VplWorkstreamProp</a> <em>prop</em>, <a class="reference internal" href="#_CPPv4I0EN3vpl6Decode9GetConfigE9vplStatus17VplWorkstreamPropR1T" title="vpl::Decode::GetConfig::T">T</a> &amp;<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN3vpl6Decode9GetConfigE9vplStatus17VplWorkstreamPropR1T" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get workstream parameter value. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv4N3vpl6Decode12m_workstreamE">
+<span id="_CPPv3N3vpl6Decode12m_workstreamE"></span><span id="_CPPv2N3vpl6Decode12m_workstreamE"></span><span id="vpl::Decode::m_workstream__vplWorkstream"></span><span class="target" id="classvpl_1_1_decode_1a0599ecbf06fbc6e5b151bf9eb2490a75"></span><a class="reference internal" href="#_CPPv413vplWorkstream" title="vplWorkstream">vplWorkstream</a> <code class="sig-name descname">m_workstream</code><a class="headerlink" href="#_CPPv4N3vpl6Decode12m_workstreamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Memory<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vplm-cpu-image">
+<h4>vplm::cpu_image<a class="headerlink" href="#vplm-cpu-image" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm9cpu_imageE">
+<span id="_CPPv3N4vplm9cpu_imageE"></span><span id="_CPPv2N4vplm9cpu_imageE"></span><span id="vplm::cpu_image"></span><span class="target" id="classvplm_1_1cpu__image"></span><em class="property">class </em><code class="sig-name descname">cpu_image</code> : <em class="property">public</em> vplm::wrapper&lt;vplm_cpu_image&gt;<a class="headerlink" href="#_CPPv4N4vplm9cpu_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="#classvplm_1_1cpu_1_1image"><span class="std std-ref">vplm::cpu::image</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm9cpu_image6bufferEv">
+<span id="_CPPv3N4vplm9cpu_image6bufferEv"></span><span id="_CPPv2N4vplm9cpu_image6bufferEv"></span><span id="vplm::cpu_image::buffer"></span><span class="target" id="classvplm_1_1cpu__image_1a04df03987adc5f2612c8279314d83fff"></span>uint8_t *<code class="sig-name descname">buffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm9cpu_image6bufferEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm9cpu_image11buffer_sizeEv">
+<span id="_CPPv3N4vplm9cpu_image11buffer_sizeEv"></span><span id="_CPPv2N4vplm9cpu_image11buffer_sizeEv"></span><span id="vplm::cpu_image::buffer_size"></span><span class="target" id="classvplm_1_1cpu__image_1a178a412df8aaedae3c61852ed17d5a14"></span>size_t <code class="sig-name descname">buffer_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm9cpu_image11buffer_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm9cpu_image4dataE6size_t">
+<span id="_CPPv3N4vplm9cpu_image4dataE6size_t"></span><span id="_CPPv2N4vplm9cpu_image4dataE6size_t"></span><span id="vplm::cpu_image::data__s"></span><span class="target" id="classvplm_1_1cpu__image_1a84485ee7e65df6468ab288dc76be61e2"></span>uint8_t *<code class="sig-name descname">data</code><span class="sig-paren">(</span>size_t <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm9cpu_image4dataE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm9cpu_image4dataEv">
+<span id="_CPPv3N4vplm9cpu_image4dataEv"></span><span id="_CPPv2N4vplm9cpu_image4dataEv"></span><span id="vplm::cpu_image::data"></span><span class="target" id="classvplm_1_1cpu__image_1a487c7e5b365a12e04aaa6a42cd87c29e"></span>std::vector&lt;uint8_t *&gt; <code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm9cpu_image4dataEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm9cpu_image6strideE6size_t">
+<span id="_CPPv3N4vplm9cpu_image6strideE6size_t"></span><span id="_CPPv2N4vplm9cpu_image6strideE6size_t"></span><span id="vplm::cpu_image::stride__s"></span><span class="target" id="classvplm_1_1cpu__image_1ac84fd5561f77dbe70f9e3802d143815e"></span>uint32_t <code class="sig-name descname">stride</code><span class="sig-paren">(</span>size_t <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm9cpu_image6strideE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm9cpu_image7stridesEv">
+<span id="_CPPv3N4vplm9cpu_image7stridesEv"></span><span id="_CPPv2N4vplm9cpu_image7stridesEv"></span><span id="vplm::cpu_image::strides"></span><span class="target" id="classvplm_1_1cpu__image_1aa910e41b82cdc28f3e835eb80a31590a"></span>std::vector&lt;uint32_t&gt; <code class="sig-name descname">strides</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm9cpu_image7stridesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-memory">
+<h4>vplm::memory<a class="headerlink" href="#vplm-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm6memoryE">
+<span id="_CPPv3N4vplm6memoryE"></span><span id="_CPPv2N4vplm6memoryE"></span><span id="vplm::memory"></span><span class="target" id="classvplm_1_1memory"></span><em class="property">class </em><code class="sig-name descname">memory</code> : <em class="property">public</em> vplm::wrapper&lt;<em class="property">const</em> vplm_mem *&gt;<a class="headerlink" href="#_CPPv4N4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Base C++ VPL Memory object. </p>
+<p>This class wraps C memory handle and provides access to generic VPL Memory API calls independent from the HW frameworks like getting/setting properties.</p>
+<p>To access underlying memory object within some framework (like Opencl or VAAPI), VPL Memory C++ API defines framework specific memory handlers inherited from this base class. The key thing to note is that end user can construct framework handler from the base memory object. For example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;vplmemory/vplm++.h&gt;</span>
+<span class="c1">#include &lt;vplmemory/vplm_vaapi++.h&gt;</span>
+
+<span class="n">vplm</span><span class="p">::</span><span class="n">memory</span> <span class="n">mem</span> <span class="o">=</span> <span class="n">get_from_somewhere</span><span class="p">();</span>
+<span class="n">vplm</span><span class="p">::</span><span class="n">vaapi</span><span class="p">::</span><span class="n">memory</span> <span class="n">va_mem</span><span class="p">(</span><span class="n">mem</span><span class="p">);</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt; VASurfaceID=</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">va_mem</span><span class="o">.</span><span class="n">getSurfaceId</span><span class="p">());</span>
+</pre></div>
+</div>
+ </p>
+<p>Subclassed by <a class="reference internal" href="#classvplm_1_1cpu_1_1memory"><span class="std std-ref">vplm::cpu::memory</span></a>, <a class="reference internal" href="#classvplm_1_1opencl_1_1memory"><span class="std std-ref">vplm::opencl::memory</span></a>, <a class="reference internal" href="#classvplm_1_1vaapi_1_1memory"><span class="std std-ref">vplm::vaapi::memory</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory6memoryEv">
+<span id="_CPPv3N4vplm6memory6memoryEv"></span><span id="_CPPv2N4vplm6memory6memoryEv"></span><span id="vplm::memory::memory"></span><span class="target" id="classvplm_1_1memory_1a51a1cc567ee2f0b4b61fdb547ca1013a"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory6memoryEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory6memoryEPK8vplm_mem">
+<span id="_CPPv3N4vplm6memory6memoryEPK8vplm_mem"></span><span id="_CPPv2N4vplm6memory6memoryEPK8vplm_mem"></span><span id="vplm::memory::memory__vplm_memCP"></span><span class="target" id="classvplm_1_1memory_1a39c2d1dd6119cca72e714e0a55540374"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm_mem *<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory6memoryEPK8vplm_mem" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory6memoryERK6memory">
+<span id="_CPPv3N4vplm6memory6memoryERK6memory"></span><span id="_CPPv2N4vplm6memory6memoryERK6memory"></span><span id="vplm::memory::memory__memoryCR"></span><span class="target" id="classvplm_1_1memory_1a4aa1655d01252df2cd5657a94efb4664"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4vplm6memory6memoryEv" title="vplm::memory::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory6memoryERK6memory" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memoryD0Ev">
+<span id="_CPPv3N4vplm6memoryD0Ev"></span><span id="_CPPv2N4vplm6memoryD0Ev"></span><span id="vplm::memory::~memory"></span><span class="target" id="classvplm_1_1memory_1a51bf9d6381db0376b81fa50fee6c5be3"></span><code class="sig-name descname">~memory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memoryD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memoryaSERK6memory">
+<span id="_CPPv3N4vplm6memoryaSERK6memory"></span><span id="_CPPv2N4vplm6memoryaSERK6memory"></span><span id="vplm::memory::assign-operator__memoryCR"></span><span class="target" id="classvplm_1_1memory_1af2989a4bd0570a12dd199b9ea4e3c3cb"></span><a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memoryaSERK6memory" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory11setPropertyE7int32_tN4vplm7variantE">
+<span id="_CPPv3N4vplm6memory11setPropertyE7int32_tN4vplm7variantE"></span><span id="_CPPv2N4vplm6memory11setPropertyE7int32_tN4vplm7variantE"></span><span id="vplm::memory::setProperty__int32_t.vplm::variant"></span><span class="target" id="classvplm_1_1memory_1a28734d8c51231cdddec604e00a7cd0ed"></span>vplm_status <code class="sig-name descname">setProperty</code><span class="sig-paren">(</span>int32_t <em>key</em>, vplm::variant <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory11setPropertyE7int32_tN4vplm7variantE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory11getPropertyE7int32_t">
+<span id="_CPPv3N4vplm6memory11getPropertyE7int32_t"></span><span id="_CPPv2N4vplm6memory11getPropertyE7int32_t"></span><span id="vplm::memory::getProperty__int32_t"></span><span class="target" id="classvplm_1_1memory_1af8af48198a2c82c8ec466b67abef48e5"></span>vplm::variant <code class="sig-name descname">getProperty</code><span class="sig-paren">(</span>int32_t <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory11getPropertyE7int32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory15clearPropertiesEv">
+<span id="_CPPv3N4vplm6memory15clearPropertiesEv"></span><span id="_CPPv2N4vplm6memory15clearPropertiesEv"></span><span id="vplm::memory::clearProperties"></span><span class="target" id="classvplm_1_1memory_1acb08cd96221e79b87bb01d80baf1178f"></span>vplm_status <code class="sig-name descname">clearProperties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory15clearPropertiesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory3refEv">
+<span id="_CPPv3N4vplm6memory3refEv"></span><span id="_CPPv2N4vplm6memory3refEv"></span><span id="vplm::memory::ref"></span><span class="target" id="classvplm_1_1memory_1adaaaeb902992c533a2d36d05166d064f"></span>void <code class="sig-name descname">ref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory3refEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6memory5unrefEv">
+<span id="_CPPv3N4vplm6memory5unrefEv"></span><span id="_CPPv2N4vplm6memory5unrefEv"></span><span id="vplm::memory::unref"></span><span class="target" id="classvplm_1_1memory_1acbb66b03175265a08dbcd0c4f5e974b1"></span>void <code class="sig-name descname">unref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6memory5unrefEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-cpu-memory">
+<h4>vplm::cpu::memory<a class="headerlink" href="#vplm-cpu-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm3cpu6memoryE">
+<span id="_CPPv3N4vplm3cpu6memoryE"></span><span id="_CPPv2N4vplm3cpu6memoryE"></span><span id="vplm::cpu::memory"></span><span class="target" id="classvplm_1_1cpu_1_1memory"></span><em class="property">class </em><code class="sig-name descname">memory</code> : <em class="property">public</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a><a class="headerlink" href="#_CPPv4N4vplm3cpu6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>CPU (HOST) memory accessor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu6memory6memoryEPK8vplm_mem">
+<span id="_CPPv3N4vplm3cpu6memory6memoryEPK8vplm_mem"></span><span id="_CPPv2N4vplm3cpu6memory6memoryEPK8vplm_mem"></span><span id="vplm::cpu::memory::memory__vplm_memCP"></span><span class="target" id="classvplm_1_1cpu_1_1memory_1a211c7859dc3669fe09dd510e065816f0"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm_mem *<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu6memory6memoryEPK8vplm_mem" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu6memory6memoryERKN4vplm6memoryE">
+<span id="_CPPv3N4vplm3cpu6memory6memoryERKN4vplm6memoryE"></span><span id="_CPPv2N4vplm3cpu6memory6memoryERKN4vplm6memoryE"></span><span id="vplm::cpu::memory::memory__vplm::memoryCR"></span><span class="target" id="classvplm_1_1cpu_1_1memory_1ae4b85025682ffde7a55bf90abb8857e4"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu6memory6memoryERKN4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu6memory3mapE8uint64_tRN4vplm9cpu_imageE">
+<span id="_CPPv3N4vplm3cpu6memory3mapE8uint64_tRN4vplm9cpu_imageE"></span><span id="_CPPv2N4vplm3cpu6memory3mapE8uint64_tRN4vplm9cpu_imageE"></span><span id="vplm::cpu::memory::map__uint64_t.vplm::cpu_imageR"></span><span class="target" id="classvplm_1_1cpu_1_1memory_1a359b91017deb2564c0b9d2a92772393a"></span>vplm_status <code class="sig-name descname">map</code><span class="sig-paren">(</span>uint64_t <em>flags</em>, vplm::<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image">cpu_image</a> &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu6memory3mapE8uint64_tRN4vplm9cpu_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu6memory5unmapERN4vplm9cpu_imageE">
+<span id="_CPPv3N4vplm3cpu6memory5unmapERN4vplm9cpu_imageE"></span><span id="_CPPv2N4vplm3cpu6memory5unmapERN4vplm9cpu_imageE"></span><span id="vplm::cpu::memory::unmap__vplm::cpu_imageR"></span><span class="target" id="classvplm_1_1cpu_1_1memory_1ad297df4db1b2c4de9e436ad4073a5cb8"></span>vplm_status <code class="sig-name descname">unmap</code><span class="sig-paren">(</span>vplm::<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image">cpu_image</a> &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu6memory5unmapERN4vplm9cpu_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h4>vplm::cpu::image<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm3cpu5imageE">
+<span id="_CPPv3N4vplm3cpu5imageE"></span><span id="_CPPv2N4vplm3cpu5imageE"></span><span id="vplm::cpu::image"></span><span class="target" id="classvplm_1_1cpu_1_1image"></span><em class="property">class </em><code class="sig-name descname">image</code> : <em class="property">public</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image">cpu_image</a><a class="headerlink" href="#_CPPv4N4vplm3cpu5imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>CPU (HOST) image accessor. </p>
+<p>Helper class which maps memory object for CPU (HOST) access in constructor and unmaps in destructor. Example:</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;vplmemory/vplm++.h&gt;</span>
+
+<span class="n">vplm</span><span class="p">::</span><span class="n">memory</span> <span class="n">mem</span> <span class="o">=</span> <span class="n">get_from_somewhere</span><span class="p">();</span>
+
+<span class="p">{</span>
+    <span class="n">vplm</span><span class="p">::</span><span class="n">cpu</span><span class="p">::</span><span class="n">image</span> <span class="n">image</span><span class="p">(</span><span class="n">mem</span><span class="p">,</span> <span class="n">VPLM_ACCESS_MODE_READ</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt; first plane stride is: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">stride</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu5image5imageERKN4vplm6memoryE8uint64_t">
+<span id="_CPPv3N4vplm3cpu5image5imageERKN4vplm6memoryE8uint64_t"></span><span id="_CPPv2N4vplm3cpu5image5imageERKN4vplm6memoryE8uint64_t"></span><span id="vplm::cpu::image::image__vplm::memoryCR.uint64_t"></span><span class="target" id="classvplm_1_1cpu_1_1image_1aeb00031638afbadf64f6776c3a87bd9c"></span><code class="sig-name descname">image</code><span class="sig-paren">(</span><em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em>, uint64_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu5image5imageERKN4vplm6memoryE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu5imageD0Ev">
+<span id="_CPPv3N4vplm3cpu5imageD0Ev"></span><span id="_CPPv2N4vplm3cpu5imageD0Ev"></span><span id="vplm::cpu::image::~image"></span><span class="target" id="classvplm_1_1cpu_1_1image_1a6cee866311cdece4788e33574de024f4"></span><code class="sig-name descname">~image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu5imageD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-cpu-make-memory">
+<h4>vplm::cpu::make_memory<a class="headerlink" href="#vplm-cpu-make-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="type">
+<dt id="_CPPv4N4vplm3cpuE">
+<span id="_CPPv3N4vplm3cpuE"></span><span id="_CPPv2N4vplm3cpuE"></span><span id="vplm::cpu"></span><span class="target" id="namespacevplm_1_1cpu"></span><em class="property">namespace </em><code class="sig-name descname">cpu</code><a class="headerlink" href="#_CPPv4N4vplm3cpuE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE">
+<span id="_CPPv3N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE"></span><span id="_CPPv2N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE"></span><span id="vplm::cpu::make_memory__vplm::cpu_imageCR"></span><span class="target" id="vplm_09_09_8h_1a990ec2c3e199a4f1010fc76e818eb30a"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image">cpu_image</a> &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu11make_memoryERK15vplm_image_info">
+<span id="_CPPv3N4vplm3cpu11make_memoryERK15vplm_image_info"></span><span id="_CPPv2N4vplm3cpu11make_memoryERK15vplm_image_info"></span><span id="vplm::cpu::make_memory__vplm_image_infoCR"></span><span class="target" id="vplm_09_09_8h_1a53939be4f2d7f74b7422569019dc2714"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm_image_info &amp;<em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryERK15vplm_image_info" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format">
+<span id="_CPPv3N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format"></span><span id="_CPPv2N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format"></span><span id="vplm::cpu::make_memory__uint32_t.uint32_t.vplm_pixel_format"></span><span class="target" id="vplm_09_09_8h_1a4d804b9c209fd1267fb688c724a2a32d"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span>uint32_t <em>width</em>, uint32_t <em>height</em>, vplm_pixel_format <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-opencl-memory">
+<h4>vplm::opencl::memory<a class="headerlink" href="#vplm-opencl-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm6opencl6memoryE">
+<span id="_CPPv3N4vplm6opencl6memoryE"></span><span id="_CPPv2N4vplm6opencl6memoryE"></span><span id="vplm::opencl::memory"></span><span class="target" id="classvplm_1_1opencl_1_1memory"></span><em class="property">class </em><code class="sig-name descname">memory</code> : <em class="property">public</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a><a class="headerlink" href="#_CPPv4N4vplm6opencl6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>OpenCL memory accessor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl6memory6memoryE16cl_command_queuePK8vplm_mem">
+<span id="_CPPv3N4vplm6opencl6memory6memoryE16cl_command_queuePK8vplm_mem"></span><span id="_CPPv2N4vplm6opencl6memory6memoryE16cl_command_queuePK8vplm_mem"></span><span id="vplm::opencl::memory::memory__cl_command_queue.vplm_memCP"></span><span class="target" id="classvplm_1_1opencl_1_1memory_1aefeaf9e91bb77257c844f41b8a8d7ae8"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span>cl_command_queue <em>queue</em>, <em class="property">const</em> vplm_mem *<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl6memory6memoryE16cl_command_queuePK8vplm_mem" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl6memory6memoryE16cl_command_queueRKN4vplm6memoryE">
+<span id="_CPPv3N4vplm6opencl6memory6memoryE16cl_command_queueRKN4vplm6memoryE"></span><span id="_CPPv2N4vplm6opencl6memory6memoryE16cl_command_queueRKN4vplm6memoryE"></span><span id="vplm::opencl::memory::memory__cl_command_queue.vplm::memoryCR"></span><span class="target" id="classvplm_1_1opencl_1_1memory_1a029871446bed6b099b486a2b9c7bf62d"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span>cl_command_queue <em>queue</em>, <em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl6memory6memoryE16cl_command_queueRKN4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl6memory3getERN4vplm8cl_imageE">
+<span id="_CPPv3N4vplm6opencl6memory3getERN4vplm8cl_imageE"></span><span id="_CPPv2N4vplm6opencl6memory3getERN4vplm8cl_imageE"></span><span id="vplm::opencl::memory::get__vplm::cl_imageR"></span><span class="target" id="classvplm_1_1opencl_1_1memory_1a41a2a981338eaeba3dfdae566345b0c1"></span>vplm_status <code class="sig-name descname">get</code><span class="sig-paren">(</span>vplm::cl_image &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl6memory3getERN4vplm8cl_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl6memory3getEv">
+<span id="_CPPv3N4vplm6opencl6memory3getEv"></span><span id="_CPPv2N4vplm6opencl6memory3getEv"></span><span id="vplm::opencl::memory::get"></span><span class="target" id="classvplm_1_1opencl_1_1memory_1afe3ab08bd308e0a1b8d38499accbd7fc"></span>vplm::cl_image <code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl6memory3getEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl6memory12begin_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event">
+<span id="_CPPv3N4vplm6opencl6memory12begin_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event"></span><span id="_CPPv2N4vplm6opencl6memory12begin_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event"></span><span id="vplm::opencl::memory::begin_access__vplm::cl_imageCR.cl_uint.cl_eventCP.cl_eventP"></span><span class="target" id="classvplm_1_1opencl_1_1memory_1a6506ab4f59b790e688815b1bd3fc99fd"></span>vplm_status <code class="sig-name descname">begin_access</code><span class="sig-paren">(</span><em class="property">const</em> vplm::cl_image &amp;<em>clmem</em>, cl_uint <em>num_events_in_wait_list</em>, <em class="property">const</em> cl_event *<em>event_wait_list</em>, cl_event *<em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl6memory12begin_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl6memory10end_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event">
+<span id="_CPPv3N4vplm6opencl6memory10end_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event"></span><span id="_CPPv2N4vplm6opencl6memory10end_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event"></span><span id="vplm::opencl::memory::end_access__vplm::cl_imageCR.cl_uint.cl_eventCP.cl_eventP"></span><span class="target" id="classvplm_1_1opencl_1_1memory_1a37ad4ac2f09feda6b45468c0a49d1dad"></span>vplm_status <code class="sig-name descname">end_access</code><span class="sig-paren">(</span><em class="property">const</em> vplm::cl_image &amp;<em>clmem</em>, cl_uint <em>num_events_in_wait_list</em>, <em class="property">const</em> cl_event *<em>event_wait_list</em>, cl_event *<em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl6memory10end_accessERKN4vplm8cl_imageE7cl_uintPK8cl_eventP8cl_event" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-opencl-image">
+<h4>vplm::opencl::image<a class="headerlink" href="#vplm-opencl-image" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm6opencl5imageE">
+<span id="_CPPv3N4vplm6opencl5imageE"></span><span id="_CPPv2N4vplm6opencl5imageE"></span><span id="vplm::opencl::image"></span><span class="target" id="classvplm_1_1opencl_1_1image"></span><em class="property">class </em><code class="sig-name descname">image</code> : <em class="property">public</em> vplm::cl_image<a class="headerlink" href="#_CPPv4N4vplm6opencl5imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>OpenCL image accessor. </p>
+<p>Helper class which gets access to the memory object as OpenCL image in constructor and releases access in destructor. Example:</p>
+<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;vplmemory/vplm++.h&gt;</span>
+<span class="c1">#include &lt;vplmemory/vplm_opencl++.h&gt;</span>
+
+<span class="n">vplm</span><span class="p">::</span><span class="n">memory</span> <span class="n">mem</span> <span class="o">=</span> <span class="n">get_from_somewhere</span><span class="p">();</span>
+
+<span class="p">{</span>
+    <span class="n">vplm</span><span class="p">::</span><span class="n">opencl</span><span class="p">::</span><span class="n">image</span> <span class="n">image</span><span class="p">(</span><span class="n">mem</span><span class="p">,</span> <span class="n">VPLM_ACCESS_MODE_READ</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt; first plane cl_mem: %p</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl5image5imageE16cl_command_queueRKN4vplm6memoryE">
+<span id="_CPPv3N4vplm6opencl5image5imageE16cl_command_queueRKN4vplm6memoryE"></span><span id="_CPPv2N4vplm6opencl5image5imageE16cl_command_queueRKN4vplm6memoryE"></span><span id="vplm::opencl::image::image__cl_command_queue.vplm::memoryCR"></span><span class="target" id="classvplm_1_1opencl_1_1image_1aa80fb6bc276dde0177ca277ff28e9512"></span><code class="sig-name descname">image</code><span class="sig-paren">(</span>cl_command_queue <em>queue</em>, <em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl5image5imageE16cl_command_queueRKN4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl5imageD0Ev">
+<span id="_CPPv3N4vplm6opencl5imageD0Ev"></span><span id="_CPPv2N4vplm6opencl5imageD0Ev"></span><span id="vplm::opencl::image::~image"></span><span class="target" id="classvplm_1_1opencl_1_1image_1adfb8b4f313a9a6506dd8a2d586edd9f6"></span><code class="sig-name descname">~image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl5imageD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-opencl-make-memory">
+<h4>vplm::opencl::make_memory<a class="headerlink" href="#vplm-opencl-make-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="type">
+<dt id="_CPPv4N4vplm6openclE">
+<span id="_CPPv3N4vplm6openclE"></span><span id="_CPPv2N4vplm6openclE"></span><span id="vplm::opencl"></span><span class="target" id="namespacevplm_1_1opencl"></span><em class="property">namespace </em><code class="sig-name descname">opencl</code><a class="headerlink" href="#_CPPv4N4vplm6openclE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE">
+<span id="_CPPv3N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE"></span><span id="_CPPv2N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE"></span><span id="vplm::opencl::make_memory__cl_command_queue.vplm::cl_imageR"></span><span class="target" id="vplm__opencl_09_09_8h_1af79431008211d87a04b1a487c07c20d2"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm6openclE" title="vplm::opencl">opencl</a>::<a class="reference internal" href="#_CPPv4N4vplm6opencl6memoryE" title="vplm::opencl::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span>cl_command_queue <em>queue</em>, vplm::cl_image &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-sycl-memory">
+<h4>vplm::sycl::memory<a class="headerlink" href="#vplm-sycl-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm4sycl6memoryE">
+<span id="_CPPv3N4vplm4sycl6memoryE"></span><span id="_CPPv2N4vplm4sycl6memoryE"></span><span id="vplm::sycl::memory"></span><span class="target" id="classvplm_1_1sycl_1_1memory"></span><em class="property">class </em><code class="sig-name descname">memory</code><a class="headerlink" href="#_CPPv4N4vplm4sycl6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory6memoryEPK8vplm_mem">
+<span id="_CPPv3N4vplm4sycl6memory6memoryEPK8vplm_mem"></span><span id="_CPPv2N4vplm4sycl6memory6memoryEPK8vplm_mem"></span><span id="vplm::sycl::memory::memory__vplm_memCP"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1ab44c9e6030db4f26a6a1233ad8ae4c7f"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm_mem *<em>vpl_mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory6memoryEPK8vplm_mem" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory6memoryERKN4vplm6memoryE">
+<span id="_CPPv3N4vplm4sycl6memory6memoryERKN4vplm6memoryE"></span><span id="_CPPv2N4vplm4sycl6memory6memoryERKN4vplm6memoryE"></span><span id="vplm::sycl::memory::memory__vplm::memoryCR"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1af93714745e59098d30d740bf3ad28d99"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>vpl_mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory6memoryERKN4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory13acquire_imageERKN2cl4sycl5queueEN2cl4sycl6access4modeE">
+<span id="_CPPv3N4vplm4sycl6memory13acquire_imageERKN2cl4sycl5queueEN2cl4sycl6access4modeE"></span><span id="_CPPv2N4vplm4sycl6memory13acquire_imageERKN2cl4sycl5queueEN2cl4sycl6access4modeE"></span><span id="vplm::sycl::memory::acquire_image__cl::sycl::queueCR.cl::sycl::access::mode"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1a07470f991b6e6f4217a5c088c4801baa"></span>cl::sycl::image&lt;2&gt; <code class="sig-name descname">acquire_image</code><span class="sig-paren">(</span><em class="property">const</em> cl::sycl::queue &amp;<em>sycl_queue</em>, cl::sycl::access::mode <em>access_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory13acquire_imageERKN2cl4sycl5queueEN2cl4sycl6access4modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory13release_imageEv">
+<span id="_CPPv3N4vplm4sycl6memory13release_imageEv"></span><span id="_CPPv2N4vplm4sycl6memory13release_imageEv"></span><span id="vplm::sycl::memory::release_image"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1a0a193e8ae73814add972b597414dc116"></span>void <code class="sig-name descname">release_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory13release_imageEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memoryD0Ev">
+<span id="_CPPv3N4vplm4sycl6memoryD0Ev"></span><span id="_CPPv2N4vplm4sycl6memoryD0Ev"></span><span id="vplm::sycl::memory::~memory"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1aa7b20c1f05c9ec9740543d3e43b23cea"></span><code class="sig-name descname">~memory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memoryD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory14release_handleEv">
+<span id="_CPPv3N4vplm4sycl6memory14release_handleEv"></span><span id="_CPPv2N4vplm4sycl6memory14release_handleEv"></span><span id="vplm::sycl::memory::release_handle"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1ac10a17276219b428737f829ca3b8fd0c"></span>void <code class="sig-name descname">release_handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory14release_handleEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory14vplFormat2SYCLE7int32_t">
+<span id="_CPPv3N4vplm4sycl6memory14vplFormat2SYCLE7int32_t"></span><span id="_CPPv2N4vplm4sycl6memory14vplFormat2SYCLE7int32_t"></span><span id="vplm::sycl::memory::vplFormat2SYCL__int32_t"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1aa65cd8cce14215d4243f3a3c44ebf020"></span>cl::sycl::image_channel_order <code class="sig-name descname">vplFormat2SYCL</code><span class="sig-paren">(</span>int32_t <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory14vplFormat2SYCLE7int32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm4sycl6memory20access_mode_sycl2vplEN2cl4sycl6access4modeE">
+<span id="_CPPv3N4vplm4sycl6memory20access_mode_sycl2vplEN2cl4sycl6access4modeE"></span><span id="_CPPv2N4vplm4sycl6memory20access_mode_sycl2vplEN2cl4sycl6access4modeE"></span><span id="vplm::sycl::memory::access_mode_sycl2vpl__cl::sycl::access::mode"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1a584415a53952a2ed05546ff2475e1e86"></span>vplm_access_flags <code class="sig-name descname">access_mode_sycl2vpl</code><span class="sig-paren">(</span>cl::sycl::access::mode <em>access_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory20access_mode_sycl2vplEN2cl4sycl6access4modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv4N4vplm4sycl6memory4mem_E">
+<span id="_CPPv3N4vplm4sycl6memory4mem_E"></span><span id="_CPPv2N4vplm4sycl6memory4mem_E"></span><span id="vplm::sycl::memory::mem___vplm_memCP"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1acbe4d6462287fb88b248acde7f7e1612"></span><em class="property">const</em> vplm_mem *<code class="sig-name descname">mem_</code><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory4mem_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N4vplm4sycl6memory10cpu_image_E">
+<span id="_CPPv3N4vplm4sycl6memory10cpu_image_E"></span><span id="_CPPv2N4vplm4sycl6memory10cpu_image_E"></span><span id="vplm::sycl::memory::cpu_image___vplm_cpu_image"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1a0dc6ef6fd64d7651638e2b48752641fb"></span>vplm_cpu_image <code class="sig-name descname">cpu_image_</code><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory10cpu_image_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N4vplm4sycl6memory9cl_image_E">
+<span id="_CPPv3N4vplm4sycl6memory9cl_image_E"></span><span id="_CPPv2N4vplm4sycl6memory9cl_image_E"></span><span id="vplm::sycl::memory::cl_image___vplm_cl_image"></span><span class="target" id="classvplm_1_1sycl_1_1memory_1a02776242579068de2da9b6f462569588"></span>vplm_cl_image <code class="sig-name descname">cl_image_</code><a class="headerlink" href="#_CPPv4N4vplm4sycl6memory9cl_image_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-sycl-image">
+<h4>vplm::sycl::image<a class="headerlink" href="#vplm-sycl-image" title="Permalink to this headline">¶</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “vplm::sycl::image” in doxygen xml output for project “oneVPL” from directory: elements/oneVPL/doxygen/xml</p>
+</div>
+</div>
+<div class="section" id="vplm-sycl-make-memory">
+<h4>vplm::sycl::make_memory<a class="headerlink" href="#vplm-sycl-make-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="type">
+<dt id="_CPPv4N4vplm4syclE">
+<span id="_CPPv3N4vplm4syclE"></span><span id="_CPPv2N4vplm4syclE"></span><span id="vplm::sycl"></span><span class="target" id="namespacevplm_1_1sycl"></span><em class="property">namespace </em><code class="sig-name descname">sycl</code><a class="headerlink" href="#_CPPv4N4vplm4syclE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="vplm-vaapi-memory">
+<h4>vplm::vaapi::memory<a class="headerlink" href="#vplm-vaapi-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm5vaapi6memoryE">
+<span id="_CPPv3N4vplm5vaapi6memoryE"></span><span id="_CPPv2N4vplm5vaapi6memoryE"></span><span id="vplm::vaapi::memory"></span><span class="target" id="classvplm_1_1vaapi_1_1memory"></span><em class="property">class </em><code class="sig-name descname">memory</code> : <em class="property">public</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>VAAPI memory accessor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi6memory6memoryE9VADisplayPK8vplm_mem">
+<span id="_CPPv3N4vplm5vaapi6memory6memoryE9VADisplayPK8vplm_mem"></span><span id="_CPPv2N4vplm5vaapi6memory6memoryE9VADisplayPK8vplm_mem"></span><span id="vplm::vaapi::memory::memory__VADisplay.vplm_memCP"></span><span class="target" id="classvplm_1_1vaapi_1_1memory_1a334d57cee87876f63ecd40a8779d1135"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, <em class="property">const</em> vplm_mem *<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memory6memoryE9VADisplayPK8vplm_mem" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi6memory6memoryE9VADisplayRKN4vplm6memoryE">
+<span id="_CPPv3N4vplm5vaapi6memory6memoryE9VADisplayRKN4vplm6memoryE"></span><span id="_CPPv2N4vplm5vaapi6memory6memoryE9VADisplayRKN4vplm6memoryE"></span><span id="vplm::vaapi::memory::memory__VADisplay.vplm::memoryCR"></span><span class="target" id="classvplm_1_1vaapi_1_1memory_1a5185eece9b480e575a0f6d4a460cc17d"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, <em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memory6memoryE9VADisplayRKN4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi6memory11getBufferIdER10VABufferID">
+<span id="_CPPv3N4vplm5vaapi6memory11getBufferIdER10VABufferID"></span><span id="_CPPv2N4vplm5vaapi6memory11getBufferIdER10VABufferID"></span><span id="vplm::vaapi::memory::getBufferId__VABufferIDR"></span><span class="target" id="classvplm_1_1vaapi_1_1memory_1a5391a2679db2c88a3320d2c8307b4ca7"></span>vplm_status <code class="sig-name descname">getBufferId</code><span class="sig-paren">(</span>VABufferID &amp;<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memory11getBufferIdER10VABufferID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi6memory12getSurfaceIdER11VASurfaceID">
+<span id="_CPPv3N4vplm5vaapi6memory12getSurfaceIdER11VASurfaceID"></span><span id="_CPPv2N4vplm5vaapi6memory12getSurfaceIdER11VASurfaceID"></span><span id="vplm::vaapi::memory::getSurfaceId__VASurfaceIDR"></span><span class="target" id="classvplm_1_1vaapi_1_1memory_1a9ae68de0fee44892a06fe7afe13cfcdf"></span>vplm_status <code class="sig-name descname">getSurfaceId</code><span class="sig-paren">(</span>VASurfaceID &amp;<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memory12getSurfaceIdER11VASurfaceID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi6memory11getBufferIdEv">
+<span id="_CPPv3N4vplm5vaapi6memory11getBufferIdEv"></span><span id="_CPPv2N4vplm5vaapi6memory11getBufferIdEv"></span><span id="vplm::vaapi::memory::getBufferId"></span><span class="target" id="classvplm_1_1vaapi_1_1memory_1afa0e2142d60b381bc24bcba3dc7748c6"></span>VABufferID <code class="sig-name descname">getBufferId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memory11getBufferIdEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi6memory12getSurfaceIdEv">
+<span id="_CPPv3N4vplm5vaapi6memory12getSurfaceIdEv"></span><span id="_CPPv2N4vplm5vaapi6memory12getSurfaceIdEv"></span><span id="vplm::vaapi::memory::getSurfaceId"></span><span class="target" id="classvplm_1_1vaapi_1_1memory_1aa49505da782895d80d2310e238427a2e"></span>VASurfaceID <code class="sig-name descname">getSurfaceId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi6memory12getSurfaceIdEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-vaapi-image">
+<h4>vplm::vaapi::image<a class="headerlink" href="#vplm-vaapi-image" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="_CPPv4N4vplm5vaapi5imageE">
+<span id="_CPPv3N4vplm5vaapi5imageE"></span><span id="_CPPv2N4vplm5vaapi5imageE"></span><span id="vplm::vaapi::image"></span><span class="target" id="classvplm_1_1vaapi_1_1image"></span><em class="property">class </em><code class="sig-name descname">image</code><a class="headerlink" href="#_CPPv4N4vplm5vaapi5imageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi5image5imageE9VADisplayRKN4vplm6memoryE">
+<span id="_CPPv3N4vplm5vaapi5image5imageE9VADisplayRKN4vplm6memoryE"></span><span id="_CPPv2N4vplm5vaapi5image5imageE9VADisplayRKN4vplm6memoryE"></span><span id="vplm::vaapi::image::image__VADisplay.vplm::memoryCR"></span><span class="target" id="classvplm_1_1vaapi_1_1image_1a4b99c3f6aa8dacd9089febd4dee896f8"></span><code class="sig-name descname">image</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, <em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm6memoryE" title="vplm::memory">memory</a> &amp;<em>mem</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi5image5imageE9VADisplayRKN4vplm6memoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK4vplm5vaapi5image2idEv">
+<span id="_CPPv3NK4vplm5vaapi5image2idEv"></span><span id="_CPPv2NK4vplm5vaapi5image2idEv"></span><span id="vplm::vaapi::image::idC"></span><span class="target" id="classvplm_1_1vaapi_1_1image_1a6d0a91e1e64ae6a2ca8bffeb10b5db2a"></span>VASurfaceID <code class="sig-name descname">id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4vplm5vaapi5image2idEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="vplm-vaapi-make-memory">
+<h4>vplm::vaapi::make_memory<a class="headerlink" href="#vplm-vaapi-make-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="type">
+<dt id="_CPPv4N4vplm5vaapiE">
+<span id="_CPPv3N4vplm5vaapiE"></span><span id="_CPPv2N4vplm5vaapiE"></span><span id="vplm::vaapi"></span><span class="target" id="namespacevplm_1_1vaapi"></span><em class="property">namespace </em><code class="sig-name descname">vaapi</code><a class="headerlink" href="#_CPPv4N4vplm5vaapiE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID">
+<span id="_CPPv3N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID"></span><span id="_CPPv2N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID"></span><span id="vplm::vaapi::make_surface__VADisplay.VASurfaceID"></span><span class="target" id="vplm__vaapi_09_09_8h_1a421e445979769d83d9ec98791a981959"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm5vaapiE" title="vplm::vaapi">vaapi</a>::<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory">memory</a> <code class="sig-name descname">make_surface</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, VASurfaceID <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N4vplm5vaapi11make_bufferE9VADisplay10VABufferID">
+<span id="_CPPv3N4vplm5vaapi11make_bufferE9VADisplay10VABufferID"></span><span id="_CPPv2N4vplm5vaapi11make_bufferE9VADisplay10VABufferID"></span><span id="vplm::vaapi::make_buffer__VADisplay.VABufferID"></span><span class="target" id="vplm__vaapi_09_09_8h_1ab6f2b43c7a7593687d7baf69ec5f3700"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm5vaapiE" title="vplm::vaapi">vaapi</a>::<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory">memory</a> <code class="sig-name descname">make_buffer</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, VABufferID <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi11make_bufferE9VADisplay10VABufferID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vplfourcc">
+<h4>VplFourCC<a class="headerlink" href="#vplfourcc" title="Permalink to this headline">¶</a></h4>
+<dl class="enum">
+<dt id="_CPPv49VplFourCC">
+<span id="_CPPv39VplFourCC"></span><span id="_CPPv29VplFourCC"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64"></span><em class="property">enum </em><code class="sig-name descname">VplFourCC</code><a class="headerlink" href="#_CPPv49VplFourCC" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>bitstream and raw frame format FourCC codes </p>
+<p><em>Values:</em></p>
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_H264">
+<span id="_CPPv315VPL_FOURCC_H264"></span><span id="_CPPv215VPL_FOURCC_H264"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a4cc76e9e188d45c040c6e3eb55b0831a"></span><code class="sig-name descname">VPL_FOURCC_H264</code> = VPL_MAKEFOURCC('H', '2', '6', '4')<a class="headerlink" href="#_CPPv415VPL_FOURCC_H264" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_H265">
+<span id="_CPPv315VPL_FOURCC_H265"></span><span id="_CPPv215VPL_FOURCC_H265"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64aaece186acd8dcbb0a30ed3738561cae2"></span><code class="sig-name descname">VPL_FOURCC_H265</code> = VPL_MAKEFOURCC('H', '2', '6', '5')<a class="headerlink" href="#_CPPv415VPL_FOURCC_H265" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_NV12">
+<span id="_CPPv315VPL_FOURCC_NV12"></span><span id="_CPPv215VPL_FOURCC_NV12"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64ae5a07927b084e836e3af351569b35b63"></span><code class="sig-name descname">VPL_FOURCC_NV12</code> = VPL_MAKEFOURCC('N', 'V', '1', '2')<a class="headerlink" href="#_CPPv415VPL_FOURCC_NV12" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_YV12">
+<span id="_CPPv315VPL_FOURCC_YV12"></span><span id="_CPPv215VPL_FOURCC_YV12"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a60f823a4c62d437cf174d0a12c09b6d3"></span><code class="sig-name descname">VPL_FOURCC_YV12</code> = VPL_MAKEFOURCC('Y', 'V', '1', '2')<a class="headerlink" href="#_CPPv415VPL_FOURCC_YV12" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_RGB4">
+<span id="_CPPv315VPL_FOURCC_RGB4"></span><span id="_CPPv215VPL_FOURCC_RGB4"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a27350551e355e6c0f659374d071562e3"></span><code class="sig-name descname">VPL_FOURCC_RGB4</code> = VPL_MAKEFOURCC('R', 'G', 'B', '4')<a class="headerlink" href="#_CPPv415VPL_FOURCC_RGB4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_YUY2">
+<span id="_CPPv315VPL_FOURCC_YUY2"></span><span id="_CPPv215VPL_FOURCC_YUY2"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a8171f22a208f261447ea497852a7ccdc"></span><code class="sig-name descname">VPL_FOURCC_YUY2</code> = VPL_MAKEFOURCC('Y', 'U', 'Y', '2')<a class="headerlink" href="#_CPPv415VPL_FOURCC_YUY2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_P210">
+<span id="_CPPv315VPL_FOURCC_P210"></span><span id="_CPPv215VPL_FOURCC_P210"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64aa89daeab1ec9deace576ec4a84cc261a"></span><code class="sig-name descname">VPL_FOURCC_P210</code> = VPL_MAKEFOURCC('P', '2', '1', '0')<a class="headerlink" href="#_CPPv415VPL_FOURCC_P210" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_BGR4">
+<span id="_CPPv315VPL_FOURCC_BGR4"></span><span id="_CPPv215VPL_FOURCC_BGR4"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a3d3b5116959354268c3990eba73b4f36"></span><code class="sig-name descname">VPL_FOURCC_BGR4</code> = VPL_MAKEFOURCC('B', 'G', 'R', '4')<a class="headerlink" href="#_CPPv415VPL_FOURCC_BGR4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv418VPL_FOURCC_A2RGB10">
+<span id="_CPPv318VPL_FOURCC_A2RGB10"></span><span id="_CPPv218VPL_FOURCC_A2RGB10"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64aff1cc8742f8b34d362bb857824b7603e"></span><code class="sig-name descname">VPL_FOURCC_A2RGB10</code> = VPL_MAKEFOURCC('R', 'G', '1', '0')<a class="headerlink" href="#_CPPv418VPL_FOURCC_A2RGB10" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_AYUV">
+<span id="_CPPv315VPL_FOURCC_AYUV"></span><span id="_CPPv215VPL_FOURCC_AYUV"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a4d31da41f58c2fb870fd3e3fcb738ed7"></span><code class="sig-name descname">VPL_FOURCC_AYUV</code> = VPL_MAKEFOURCC('A', 'Y', 'U', 'V')<a class="headerlink" href="#_CPPv415VPL_FOURCC_AYUV" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_UYVY">
+<span id="_CPPv315VPL_FOURCC_UYVY"></span><span id="_CPPv215VPL_FOURCC_UYVY"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a8cf89f84ca22f0b3be1dc5ca65b50a6b"></span><code class="sig-name descname">VPL_FOURCC_UYVY</code> = VPL_MAKEFOURCC('U', 'Y', 'V', 'Y')<a class="headerlink" href="#_CPPv415VPL_FOURCC_UYVY" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_Y210">
+<span id="_CPPv315VPL_FOURCC_Y210"></span><span id="_CPPv215VPL_FOURCC_Y210"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64acb8939351af0738dc55c4b0b33008ae9"></span><code class="sig-name descname">VPL_FOURCC_Y210</code> = VPL_MAKEFOURCC('Y', '2', '1', '0')<a class="headerlink" href="#_CPPv415VPL_FOURCC_Y210" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_Y410">
+<span id="_CPPv315VPL_FOURCC_Y410"></span><span id="_CPPv215VPL_FOURCC_Y410"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a60fd7fc9384777e37479ceb8aa93bdcf"></span><code class="sig-name descname">VPL_FOURCC_Y410</code> = VPL_MAKEFOURCC('Y', '4', '1', '0')<a class="headerlink" href="#_CPPv415VPL_FOURCC_Y410" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_Y216">
+<span id="_CPPv315VPL_FOURCC_Y216"></span><span id="_CPPv215VPL_FOURCC_Y216"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a513bfe936583b995734541b4b68e3ab9"></span><code class="sig-name descname">VPL_FOURCC_Y216</code> = VPL_MAKEFOURCC('Y', '2', '1', '6')<a class="headerlink" href="#_CPPv415VPL_FOURCC_Y216" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_Y416">
+<span id="_CPPv315VPL_FOURCC_Y416"></span><span id="_CPPv215VPL_FOURCC_Y416"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a9a52b95b54fb5dfab513304c0019b612"></span><code class="sig-name descname">VPL_FOURCC_Y416</code> = VPL_MAKEFOURCC('Y', '4', '1', '6')<a class="headerlink" href="#_CPPv415VPL_FOURCC_Y416" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_I420">
+<span id="_CPPv315VPL_FOURCC_I420"></span><span id="_CPPv215VPL_FOURCC_I420"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64a4bb3eb0446f385ed5d063049e8031f68"></span><code class="sig-name descname">VPL_FOURCC_I420</code> = VPL_MAKEFOURCC('I', '4', '2', '0')<a class="headerlink" href="#_CPPv415VPL_FOURCC_I420" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv415VPL_FOURCC_RGBA">
+<span id="_CPPv315VPL_FOURCC_RGBA"></span><span id="_CPPv215VPL_FOURCC_RGBA"></span><span class="target" id="vpl__types_8h_1a7ff952c9342c8c9e424bd7b7a2c32f64ab1f79c0f2c5d7c42b76cd9b1125d5f49"></span><code class="sig-name descname">VPL_FOURCC_RGBA</code> = VPL_MAKEFOURCC('R', 'G', 'B', 'A')<a class="headerlink" href="#_CPPv415VPL_FOURCC_RGBA" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vpltargetdevice">
+<h4>VplTargetDevice<a class="headerlink" href="#vpltargetdevice" title="Permalink to this headline">¶</a></h4>
+<dl class="enum">
+<dt id="_CPPv415VplTargetDevice">
+<span id="_CPPv315VplTargetDevice"></span><span id="_CPPv215VplTargetDevice"></span><span class="target" id="vpl__types_8h_1ac4c8ea20c8a8cd32b11e6751c5c26cbf"></span><em class="property">enum </em><code class="sig-name descname">VplTargetDevice</code><a class="headerlink" href="#_CPPv415VplTargetDevice" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Target device specifies which extension will be loaded. </p>
+<p><em>Values:</em></p>
+<dl class="enumerator">
+<dt id="_CPPv425VPL_TARGET_DEVICE_DEFAULT">
+<span id="_CPPv325VPL_TARGET_DEVICE_DEFAULT"></span><span id="_CPPv225VPL_TARGET_DEVICE_DEFAULT"></span><span class="target" id="vpl__types_8h_1ac4c8ea20c8a8cd32b11e6751c5c26cbfae6a3981374d1a4dfe0bc25931b87771f"></span><code class="sig-name descname">VPL_TARGET_DEVICE_DEFAULT</code><a class="headerlink" href="#_CPPv425VPL_TARGET_DEVICE_DEFAULT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv421VPL_TARGET_DEVICE_CPU">
+<span id="_CPPv321VPL_TARGET_DEVICE_CPU"></span><span id="_CPPv221VPL_TARGET_DEVICE_CPU"></span><span class="target" id="vpl__types_8h_1ac4c8ea20c8a8cd32b11e6751c5c26cbfacfd554894dfac713909605c99f5b4561"></span><code class="sig-name descname">VPL_TARGET_DEVICE_CPU</code><a class="headerlink" href="#_CPPv421VPL_TARGET_DEVICE_CPU" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv425VPL_TARGET_DEVICE_GPU_GEN">
+<span id="_CPPv325VPL_TARGET_DEVICE_GPU_GEN"></span><span id="_CPPv225VPL_TARGET_DEVICE_GPU_GEN"></span><span class="target" id="vpl__types_8h_1ac4c8ea20c8a8cd32b11e6751c5c26cbfa51a8ccd9e4119f7f4bbf9684850c7469"></span><code class="sig-name descname">VPL_TARGET_DEVICE_GPU_GEN</code><a class="headerlink" href="#_CPPv425VPL_TARGET_DEVICE_GPU_GEN" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv425VPL_TARGET_DEVICE_GPU_VSI">
+<span id="_CPPv325VPL_TARGET_DEVICE_GPU_VSI"></span><span id="_CPPv225VPL_TARGET_DEVICE_GPU_VSI"></span><span class="target" id="vpl__types_8h_1ac4c8ea20c8a8cd32b11e6751c5c26cbfa302f13b69efb7621d5875d50d2caa3bf"></span><code class="sig-name descname">VPL_TARGET_DEVICE_GPU_VSI</code><a class="headerlink" href="#_CPPv425VPL_TARGET_DEVICE_GPU_VSI" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv422VPL_TARGET_DEVICE_FPGA">
+<span id="_CPPv322VPL_TARGET_DEVICE_FPGA"></span><span id="_CPPv222VPL_TARGET_DEVICE_FPGA"></span><span class="target" id="vpl__types_8h_1ac4c8ea20c8a8cd32b11e6751c5c26cbfa298a26b1e0a4cc8a0b3ae63b89f5b2bc"></span><code class="sig-name descname">VPL_TARGET_DEVICE_FPGA</code><a class="headerlink" href="#_CPPv422VPL_TARGET_DEVICE_FPGA" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../oneMKL/source/index.html" class="btn btn-neutral float-right" title="Math Kernel Library (oneMKL)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../oneTBB/source/timing/tick_count_cls.html" class="btn btn-neutral float-left" title="tick_count class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Intel Corporation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
