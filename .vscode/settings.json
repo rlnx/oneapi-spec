@@ -1,7 +1,0 @@
-{
-  "restructuredtext.confPath": "${workspaceFolder}\\source",
-  "restructuredtext.sphinxBuildPath": "C:\\miniconda3\\Scripts\\sphinx-build.exe",
-  "[restructuredtext]": {
-    "editor.tabSize": 3
-  }
-}
