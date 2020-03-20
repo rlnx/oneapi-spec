@@ -213,100 +213,213 @@ minimize the objective function</p>
 \[\Phi_{X}(C)=\sum_{x_i \in X}d(x_i, C),\]</div>
 <p>where <span class="math notranslate nohighlight">\(d(x_i, C)\)</span> is the distance from <span class="math notranslate nohighlight">\(x_i\)</span> to the closest center
 in <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<div class="section" id="usage-example">
+<h2>Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span><span class="o">::</span><span class="n">model</span> <span class="n">run_training</span><span class="p">(</span><span class="k">const</span> <span class="n">onedal</span><span class="o">::</span><span class="n">table</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">,</span>
+                                   <span class="k">const</span> <span class="n">onedal</span><span class="o">::</span><span class="n">table</span><span class="o">&amp;</span> <span class="n">initial_centroids</span><span class="p">)</span> <span class="p">{</span>
+
+   <span class="k">const</span> <span class="k">auto</span> <span class="n">kmeans_desc</span> <span class="o">=</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span><span class="o">::</span><span class="n">desc</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">{}</span>
+      <span class="p">.</span><span class="n">set_cluster_count</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">set_max_iteration_count</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+      <span class="p">.</span><span class="n">set_accuracy_threshold</span><span class="p">(</span><span class="mf">1e-4</span><span class="p">);</span>
+
+   <span class="k">const</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="n">onedal</span><span class="o">::</span><span class="n">train</span><span class="p">(</span><span class="n">kmeans_desc</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">initial_centroids</span><span class="p">);</span>
+
+   <span class="n">print_table</span><span class="p">(</span><span class="s">&quot;labels&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">get_labels</span><span class="p">());</span>
+   <span class="n">print_table</span><span class="p">(</span><span class="s">&quot;centroids&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">get_model</span><span class="p">().</span><span class="n">get_centroids</span><span class="p">());</span>
+   <span class="n">print_value</span><span class="p">(</span><span class="s">&quot;objective&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">get_objective_function_value</span><span class="p">());</span>
+
+   <span class="k">return</span> <span class="n">result</span><span class="p">.</span><span class="n">get_model</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">onedal</span><span class="o">::</span><span class="n">table</span> <span class="n">run_inference</span><span class="p">(</span><span class="k">const</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span><span class="o">::</span><span class="n">model</span><span class="o">&amp;</span> <span class="n">model</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">onedal</span><span class="o">::</span><span class="n">table</span><span class="o">&amp;</span> <span class="n">new_data</span><span class="p">)</span> <span class="p">{</span>
+
+   <span class="k">const</span> <span class="k">auto</span> <span class="n">kmeans_desc</span> <span class="o">=</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span><span class="o">::</span><span class="n">desc</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">{}</span>
+      <span class="p">.</span><span class="n">set_cluster_count</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">get_cluster_count</span><span class="p">());</span>
+
+   <span class="k">const</span> <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="n">onedal</span><span class="o">::</span><span class="n">infer</span><span class="p">(</span><span class="n">kmeans_desc</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">new_data</span><span class="p">);</span>
+
+   <span class="n">print_table</span><span class="p">(</span><span class="s">&quot;labels&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">get_labels</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="descriptor">
 <h3>Descriptor<a class="headerlink" href="#descriptor" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span> <span class="p">{</span>
-
-<span class="k">namespace</span> <span class="n">method</span> <span class="p">{</span>
-<span class="k">struct</span> <span class="n">lloyd</span> <span class="p">{};</span>
-<span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">lloyd</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">method</span> <span class="p">{</span>
+   <span class="k">struct</span> <span class="n">lloyd</span> <span class="p">{};</span>
+   <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">lloyd</span><span class="p">;</span>
 <span class="p">}</span> <span class="c1">// namespace method</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Float</span> <span class="o">=</span> <span class="kt">float</span><span class="p">,</span>
           <span class="k">typename</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">method</span><span class="o">::</span><span class="n">by_default</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">desc</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
-   <span class="kt">double</span> <span class="n">get_gamma</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="n">desc</span><span class="p">();</span>
+
+   <span class="kt">int64_t</span> <span class="nf">get_cluster_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="kt">int64_t</span> <span class="nf">get_max_iteration_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
    <span class="kt">double</span> <span class="nf">get_accuracy_threshold</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-   <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">get_cluster_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-   <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">get_max_iteration_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-   <span class="n">desc</span><span class="o">&amp;</span> <span class="n">set_gamma</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+   <span class="n">desc</span><span class="o">&amp;</span> <span class="n">set_cluster_count</span><span class="p">(</span><span class="kt">int64_t</span><span class="p">);</span>
+   <span class="n">desc</span><span class="o">&amp;</span> <span class="n">set_max_iteration_count</span><span class="p">(</span><span class="kt">int64_t</span><span class="p">);</span>
    <span class="n">desc</span><span class="o">&amp;</span> <span class="n">set_accuracy_threshold</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
-   <span class="n">desc</span><span class="o">&amp;</span> <span class="n">set_cluster_count</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="p">);</span>
-   <span class="n">desc</span><span class="o">&amp;</span> <span class="n">set_max_iteration_count</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="p">);</span>
 <span class="p">};</span>
-
-<span class="p">}</span> <span class="c1">// namespace onedal::kmeans</span>
 </pre></div>
 </div>
+<dl>
+<dt>cluster_count <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">2</span></code></dt><dd><p>The number of clusters.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cluster_count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>max_iterations <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">100</span></code></dt><dd><p>The maximum number of iterations.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">max_iterations</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>accuracy_threshold <code class="docutils literal notranslate"><span class="pre">double</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">0.0</span></code></dt><dd><p>The threshold for termination.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">accuracy_threshold</span> <span class="pre">&gt;=</span> <span class="pre">0.0</span></code></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 <div class="section" id="model">
 <h3>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">model</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">model</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
    <span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">get_centroids</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="kt">int64_t</span> <span class="nf">get_cluster_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
+<dl>
+<dt>centroids <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{cluster_count} \times \text{feature_count}]\)</span> table with the
+cluster centroids. Each row of the table stores one centroid.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">centroids.is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
 </div>
-<div class="section" id="training">
-<h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
+</dd>
+</dl>
+</dd>
+<dt>cluster_count, <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>Number of clusters in the trained model.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cluster_count</span> <span class="pre">==</span> <span class="pre">centroids.get_row_count()</span></code></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="training-onedal-train">
+<h3>Training <code class="docutils literal notranslate"><span class="pre">onedal::train(...)</span></code><a class="headerlink" href="#training-onedal-train" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="input">
 <h4>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span> <span class="p">{</span>
-
-<span class="k">class</span> <span class="nc">train_input</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">train_input</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
    <span class="n">train_input</span><span class="p">();</span>
    <span class="n">train_input</span><span class="p">(</span><span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">);</span>
    <span class="n">train_input</span><span class="p">(</span><span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">initial_centroids</span><span class="p">);</span>
 
+   <span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">get_data</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">get_initial_centroids</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
    <span class="n">train_input</span><span class="o">&amp;</span> <span class="n">set_data</span><span class="p">(</span><span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span><span class="p">);</span>
    <span class="n">train_input</span><span class="o">&amp;</span> <span class="n">set_initial_centroids</span><span class="p">(</span><span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span><span class="p">);</span>
 <span class="p">};</span>
-
-<span class="p">}</span> <span class="c1">// namespace onedal::kmeans</span>
 </pre></div>
 </div>
+<dl class="simple">
+<dt>data <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">table()</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{observation_count} \times \text{feature_count}]\)</span> table with the data
+to be clustered, where each row stores one observation.</p>
+</dd>
+<dt>initial_centroids <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">table()</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{cluster_count} \times \text{feature_count}]\)</span> table with the
+initial centroids, where each row stores one centroid.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="result">
 <h4>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span> <span class="p">{</span>
-
-<span class="k">class</span> <span class="nc">train_result</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">train_result</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
    <span class="k">const</span> <span class="n">model</span><span class="o">&amp;</span> <span class="n">get_model</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
    <span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">get_labels</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-   <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">get_iteration_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="kt">int64_t</span> <span class="nf">get_iteration_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
    <span class="kt">double</span> <span class="nf">get_objective_function_value</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 <span class="p">};</span>
-
-<span class="p">}</span> <span class="c1">// namespace onedal::kmeans</span>
 </pre></div>
 </div>
+<dl>
+<dt>model <code class="docutils literal notranslate"><span class="pre">kmeans::model</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>The trained K-means model.</p>
+</dd>
+<dt>labels <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{observation_count} \times 1]\)</span> table with assignments of cluster
+indices to feature vectors in the input data.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">labels.is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
 </div>
-<div class="section" id="usage-example">
-<h4>Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="k">auto</span> <span class="n">kmeans_desc</span> <span class="o">=</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span><span class="o">::</span><span class="n">desc</span><span class="p">{}</span>
-      <span class="p">.</span><span class="n">set_cluster_count</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-
-   <span class="n">onedal</span><span class="o">::</span><span class="n">train</span><span class="p">(</span><span class="n">kmeans_desc</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_train_centroids</span><span class="p">);</span>
-<span class="p">}</span>
+</dd>
+</dl>
+</dd>
+<dt>iteration_count <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>Actual number of iterations performed by the algorithm.</p>
+<dl>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">iteration_count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>objective_function_value <code class="docutils literal notranslate"><span class="pre">double</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>The value of the objective function.</p>
+<dl>
+<dt>Invariantss</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">objective_function_value</span> <span class="pre">&gt;=</span> <span class="pre">0.0</span></code></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="operation-semantics">
+<h4>Operation semantics<a class="headerlink" href="#operation-semantics" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span><span class="o">::</span><span class="n">train_result</span> <span class="n">train</span><span class="p">(</span><span class="k">const</span> <span class="n">kmeans</span><span class="o">::</span><span class="n">desc</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">kmeans</span><span class="o">::</span><span class="n">train_input</span><span class="o">&amp;</span><span class="p">);</span>
 </pre></div>
 </div>
+<dl>
+<dt><strong>Preconditions</strong></dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">input.get_data().is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">input.get_initial_centroids().is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">input.get_data().get_column_count()</span> <span class="pre">==</span> <span class="pre">input.get_initial_centroids().get_column_count()</span></code></div>
+</div>
+</dd>
+<dt><strong>Postconditions</strong></dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result.get_labels().get_row_count()</span> <span class="pre">==</span> <span class="pre">input.get_data().get_row_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result.get_model().get_clusters().get_row_count()</span> <span class="pre">==</span> <span class="pre">desc.get_cluster_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result.get_model().get_clusters().get_column_count()</span> <span class="pre">==</span> <span class="pre">input.get_data().get_column_count()</span></code></div>
+</div>
+</dd>
+</dl>
 </div>
 </div>
-<div class="section" id="inference">
-<h3>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="inference-onedal-infer">
+<h3>Inference <code class="docutils literal notranslate"><span class="pre">onedal::infer(...)</span></code><a class="headerlink" href="#inference-onedal-infer" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id1">
 <h4>Input<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span> <span class="p">{</span>
-
-<span class="k">class</span> <span class="nc">infer_input</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">infer_input</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
    <span class="n">infer_input</span><span class="p">();</span>
    <span class="n">infer_input</span><span class="p">(</span><span class="k">const</span> <span class="n">model</span><span class="o">&amp;</span> <span class="n">m</span><span class="p">);</span>
@@ -315,21 +428,15 @@ in <span class="math notranslate nohighlight">\(C\)</span>.</p>
    <span class="n">infer_input</span><span class="o">&amp;</span> <span class="n">set_model</span><span class="p">(</span><span class="k">const</span> <span class="n">model</span><span class="o">&amp;</span><span class="p">);</span>
    <span class="n">infer_input</span><span class="o">&amp;</span> <span class="n">set_data</span><span class="p">(</span><span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span><span class="p">);</span>
 <span class="p">};</span>
-
-<span class="p">}</span> <span class="c1">// namespace onedal::kmeans</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h4>Result<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::</span><span class="n">kmeans</span> <span class="p">{</span>
-
-<span class="k">class</span> <span class="nc">infer_result</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">infer_result</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
    <span class="k">const</span> <span class="n">table</span><span class="o">&amp;</span> <span class="n">get_labels</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 <span class="p">};</span>
-
-<span class="p">}</span> <span class="c1">// namespace onedal::kmeans</span>
 </pre></div>
 </div>
 </div>
