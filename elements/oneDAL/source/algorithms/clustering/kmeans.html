@@ -311,7 +311,7 @@ in <span class="math notranslate nohighlight">\(C\)</span>.</p>
 cluster centroids. Each row of the table stores one centroid.</p>
 <dl>
 <dt>Invariants</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">centroids.is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">centroids.is_empty</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
 </div>
 </dd>
 </dl>
@@ -319,7 +319,7 @@ cluster centroids. Each row of the table stores one centroid.</p>
 <dt>cluster_count <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>Number of clusters in the trained model.</p>
 <dl>
 <dt>Invariants</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">cluster_count</span> <span class="pre">==</span> <span class="pre">centroids.get_row_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cluster_count</span> <span class="pre">==</span> <span class="pre">centroids.row_count</span></code></div>
 </div>
 </dd>
 </dl>
@@ -371,7 +371,7 @@ initial centroids, where each row stores one centroid.</p>
 indices to feature vectors in the input data.</p>
 <dl>
 <dt>Invariants</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">labels.is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">labels.is_empty</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
 </div>
 </dd>
 </dl>
@@ -401,15 +401,15 @@ indices to feature vectors in the input data.</p>
 </div>
 <dl>
 <dt><strong>Preconditions</strong></dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">input.get_data().is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">input.get_initial_centroids().is_empty()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">input.get_data().get_column_count()</span> <span class="pre">==</span> <span class="pre">input.get_initial_centroids().get_column_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">input.data.is_empty</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">input.initial_centroids.is_empty</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">input.data.column_count</span> <span class="pre">==</span> <span class="pre">input.initial_centroids.column_count</span></code></div>
 </div>
 </dd>
 <dt><strong>Postconditions</strong></dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">result.get_labels().get_row_count()</span> <span class="pre">==</span> <span class="pre">input.get_data().get_row_count()</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">result.get_model().get_clusters().get_row_count()</span> <span class="pre">==</span> <span class="pre">desc.get_cluster_count()</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">result.get_model().get_clusters().get_column_count()</span> <span class="pre">==</span> <span class="pre">input.get_data().get_column_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result.labels.row_count</span> <span class="pre">==</span> <span class="pre">input.data.row_count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result.model.clusters.row_count</span> <span class="pre">==</span> <span class="pre">desc.cluster_count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">result.model.clusters.column_count</span> <span class="pre">==</span> <span class="pre">input.data.column_count</span></code></div>
 </div>
 </dd>
 </dl>
