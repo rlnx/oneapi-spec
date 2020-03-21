@@ -307,7 +307,7 @@ in <span class="math notranslate nohighlight">\(C\)</span>.</p>
 </pre></div>
 </div>
 <dl>
-<dt>centroids <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{cluster_count} \times \text{feature_count}]\)</span> table with the
+<dt>centroids <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\mathrm{cluster\_count} \times \mathrm{feature\_count}]\)</span> table with the
 cluster centroids. Each row of the table stores one centroid.</p>
 <dl>
 <dt>Invariants</dt><dd><div class="line-block">
@@ -316,7 +316,7 @@ cluster centroids. Each row of the table stores one centroid.</p>
 </dd>
 </dl>
 </dd>
-<dt>cluster_count, <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>Number of clusters in the trained model.</p>
+<dt>cluster_count <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>Number of clusters in the trained model.</p>
 <dl>
 <dt>Invariants</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">cluster_count</span> <span class="pre">==</span> <span class="pre">centroids.get_row_count()</span></code></div>
@@ -345,10 +345,10 @@ cluster centroids. Each row of the table stores one centroid.</p>
 </pre></div>
 </div>
 <dl class="simple">
-<dt>data <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">table()</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{observation_count} \times \text{feature_count}]\)</span> table with the data
+<dt>data <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">table()</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\mathrm{observation\_count} \times \mathrm{feature\_count}]\)</span> table with the data
 to be clustered, where each row stores one observation.</p>
 </dd>
-<dt>initial_centroids <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">table()</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{cluster_count} \times \text{feature_count}]\)</span> table with the
+<dt>initial_centroids <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">=</span> <span class="pre">table()</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\mathrm{cluster\_count} \times \mathrm{feature\_count}]\)</span> table with the
 initial centroids, where each row stores one centroid.</p>
 </dd>
 </dl>
@@ -367,7 +367,7 @@ initial centroids, where each row stores one centroid.</p>
 <dl>
 <dt>model <code class="docutils literal notranslate"><span class="pre">kmeans::model</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p>The trained K-means model.</p>
 </dd>
-<dt>labels <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\text{observation_count} \times 1]\)</span> table with assignments of cluster
+<dt>labels <code class="docutils literal notranslate"><span class="pre">table</span></code> <code class="docutils literal notranslate"><span class="pre">[read-only]</span></code></dt><dd><p><span class="math notranslate nohighlight">\([\mathrm{observation\_count} \times 1]\)</span> table with assignments of cluster
 indices to feature vectors in the input data.</p>
 <dl>
 <dt>Invariants</dt><dd><div class="line-block">
