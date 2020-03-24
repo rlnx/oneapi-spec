@@ -37,6 +37,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -98,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="library-interop.html">Library Interoperability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements/elements.html">oneAPI Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements/dpcpp/source/index.html">DPC++ (DPC++)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneDPL/source/index.html">DPC++ Library (oneDPL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneDNN/source/index.html">Deep Neural Network Library (oneDNN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneCCL/source/index.html">Collective Communications Library (oneCCL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/l0/source/index.html">Level Zero (Level Zero)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneDAL/source/index.html">Data Analytics Library (oneDAL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneTBB/source/nested-index.html">Threading Building Blocks (oneTBB)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneVPL/source/index.html">Video Processing Library (oneVPL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneMKL/source/index.html">Math Kernel Library (oneMKL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneDPL/source/index.html">oneAPI DPC++ Library (oneDPL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneDNN/source/index.html">oneAPI Deep Neural Network Library (oneDNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneCCL/source/index.html">oneAPI Collective Communications Library (oneCCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/l0/source/index.html">oneAPI Level Zero (Level Zero)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneDAL/source/index.html">oneAPI Data Analytics Library (oneDAL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneTBB/source/nested-index.html">oneAPI Threading Building Blocks (oneTBB)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneVPL/source/index.html">oneAPI Video Processing Library (oneVPL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneMKL/source/index.html">oneAPI Math Kernel Library (oneMKL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versions.html">HTML and PDF Versions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notices.html">Legal Notices and Disclaimers</a></li>
@@ -210,7 +211,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elements/dpcpp/source/index.html#testing">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneDPL/source/index.html">DPC++ Library (oneDPL)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneDPL/source/index.html">oneAPI DPC++ Library (oneDPL)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDPL/source/index.html#namespaces">Namespaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDPL/source/index.html#supported-c-standard-library-apis-and-algorithms">Supported C++ Standard Library APIs and Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDPL/source/index.html#extensions-to-parallel-stl">Extensions to Parallel STL</a><ul>
@@ -221,7 +222,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDPL/source/index.html#specific-api-of-onedpl">Specific API of oneDPL</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneDNN/source/index.html">Deep Neural Network Library (oneDNN)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneDNN/source/index.html">oneAPI Deep Neural Network Library (oneDNN)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDNN/source/index.html#open-source-implementation">Open Source Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDNN/source/index.html#api">API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneDNN/source/api/engine.html">Engine</a></li>
@@ -314,7 +315,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDNN/source/index.html#testing">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneCCL/source/index.html">Collective Communications Library (oneCCL)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneCCL/source/index.html">oneAPI Collective Communications Library (oneCCL)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneCCL/source/introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneCCL/source/definitions.html">Definitions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneCCL/source/spec/main_objects.html">oneCCL Concepts</a><ul>
@@ -363,12 +364,13 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/l0/source/index.html">Level Zero (Level Zero)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/l0/source/index.html">oneAPI Level Zero (Level Zero)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/l0/source/index.html#detailed-api-descriptions">Detailed API Descriptions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneDAL/source/index.html">Data Analytics Library (oneDAL)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneDAL/source/index.html">oneAPI Data Analytics Library (oneDAL)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDAL/source/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elements/oneDAL/source/terminology.html">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDAL/source/programming_model/index.html">Programming model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneDAL/source/programming_model/basic_usage_scenario.html">Basic usage scenario</a></li>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneDAL/source/programming_model/memory_objects.html">Memory objects</a></li>
@@ -404,14 +406,11 @@
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDAL/source/algorithms/index.html">Algorithms</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/index.html">Clustering</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html">K-Means</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#lloyd-s-method">Lloyd’s method</a></li>
-<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#usage-example">Usage example</a></li>
 <li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#api">API</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#methods">Methods</a></li>
 <li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#descriptor">Descriptor</a></li>
 <li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#model">Model</a></li>
-<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#training-onedal-train">Training <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">train</span><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#inference-onedal-infer">Inference <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">infer</span><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#training">Training</a></li>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/clustering/kmeans.html#inference">Inference</a></li>
 </ul>
 </li>
 </ul>
@@ -423,7 +422,21 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/index.html">Decomposition</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html">Principal Components Analysis (PCA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html">Principal Components Analysis (PCA)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#covariance-based-method">Covariance-based method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#svd-based-method">SVD-based method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#sign-flip-technique">Sign-flip technique</a></li>
+<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#usage-example">Usage example</a></li>
+<li class="toctree-l5"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#api">API</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#methods">Methods</a></li>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#descriptor">Descriptor</a></li>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#model">Model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#training-onedal-train">Training <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">train</span><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="elements/oneDAL/source/algorithms/decomposition/pca.html#inference-onedal-infer">Inference <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">infer</span><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -431,7 +444,7 @@
 <li class="toctree-l2"><a class="reference internal" href="elements/oneDAL/source/bibliography.html">Bibliography</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneTBB/source/nested-index.html">Threading Building Blocks (oneTBB)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneTBB/source/nested-index.html">oneAPI Threading Building Blocks (oneTBB)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneTBB/source/nested-gen-info.html">General Information</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneTBB/source/intro.html">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneTBB/source/general.html">General Information</a><ul>
@@ -1321,43 +1334,57 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneVPL/source/index.html">Video Processing Library (oneVPL)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#workstreams">Workstreams</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#decode">Decode</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#supported-codecs">Supported Codecs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#supported-video-post-processing-operations">Supported Video Post Processing Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#decoding-sequence">Decoding Sequence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#example-code">Example Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneVPL/source/index.html">oneAPI Video Processing Library (oneVPL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#device-discovery">Device Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#device-context">Device Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream-settings">Workstream Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#workstreams">Workstreams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream-internals">Workstream Internals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#initialization-sequence">Initialization Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#dynamic-setting-control">Dynamic Setting Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#decode">Decode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#encode">Encode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#video-processing">Video Processing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#memory">Memory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-memory">VPL Memory</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#creating-memory-objects">Creating memory objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#helper-class-for-simplifying-image-data-access">Helper Class for Simplifying Image Data Access</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-encode-api">VPL Encode API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-transcode-api">VPL Transcode API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-video-analytics-pipeline">VPL Video Analytics Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-object-tracking-and-optical-flow-library">VPL Object Tracking and Optical Flow Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-device-discovery-and-device-capability-query">VPL Device Discovery and Device Capability Query</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-api-reference">VPL API Reference</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#error-handling">Error Handling</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplstatus">vplStatus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#device">Device</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-deviceinfo">vpl::DeviceInfo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#device-context-api">Device Context</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-devicecontext">vpl::DeviceContext</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#config-setting-api">Workstream Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-vplparams">vpl::VplParams</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#decode-settings">Decode Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-vplparamsdecode">vpl::VplParamsDecode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#encode-settings">Encode Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-vplparamsencode">vpl::VplParamsEncode</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream-api">Workstreams</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplworkstreamtype">VplWorkstreamType</a></li>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplworkstreamprop">VplWorkstreamProp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplworkstream">vplWorkstream</a></li>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplsetconfigproperty">vplSetConfigProperty</a></li>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplgetconfigproperty">vplGetConfigProperty</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#id2">Decode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-decode">vpl::Decode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream">Workstream</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpl-workstream">vpl::Workstream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream-decode">Workstream::Decode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream-encode">Workstream::Encode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#workstream-videoprocess">Workstream::VideoProcess</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#id3">Memory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#memory">Memory</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-cpu-image">vplm::cpu_image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-memory">vplm::memory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-cpu-memory">vplm::cpu::memory</a></li>
@@ -1367,7 +1394,6 @@
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-opencl-image">vplm::opencl::image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-opencl-make-memory">vplm::opencl::make_memory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-sycl-memory">vplm::sycl::memory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-sycl-image">vplm::sycl::image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-sycl-make-memory">vplm::sycl::make_memory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-vaapi-memory">vplm::vaapi::memory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplm-vaapi-image">vplm::vaapi::image</a></li>
@@ -1375,15 +1401,24 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="elements/oneVPL/source/index.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplstatus">vplStatus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplcodectype">VplCodecType</a></li>
 <li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplfourcc">VplFourCC</a></li>
-<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vpltargetdevice">VplTargetDevice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplcrop">VplCrop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplaspectratio">VplAspectRatio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplencodepreset">VplEncodePreset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplencodescenario">VplEncodeScenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplbrc">VplBRC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplframerate">VplFrameRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplversion">VplVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="elements/oneVPL/source/index.html#vplloglevel">vplLogLevel</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="elements/oneMKL/source/index.html">Math Kernel Library (oneMKL)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements/oneMKL/source/index.html">oneAPI Math Kernel Library (oneMKL)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements/oneMKL/source/index.html#detailed-api-descriptions">Detailed API Descriptions</a></li>
 </ul>
 </li>
