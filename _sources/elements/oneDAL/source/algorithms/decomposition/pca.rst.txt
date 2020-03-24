@@ -114,7 +114,7 @@ Methods
    namespace method {
       struct cov {};
       struct svd {};
-      using by_default = pca;
+      using by_default = cov;
    } // namespace method
 
 
@@ -130,7 +130,7 @@ Methods
    Tag-type that denotes `SVD-based method`_.
 
 
-.. type:: by_default = svd
+.. type:: by_default = cov
 
    Alias tag-type for the `Covariance-based method`_.
 
