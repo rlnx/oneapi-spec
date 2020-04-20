@@ -243,7 +243,7 @@ training set.</p>
 <p>Given the training set <span class="math notranslate nohighlight">\(X = \{ x_1, \ldots, x_n \}\)</span> of
 <span class="math notranslate nohighlight">\(p\)</span>-dimensional feature vectors, the vector of class labels <span class="math notranslate nohighlight">\(y\)</span> and
 a positive integer <span class="math notranslate nohighlight">\(k\)</span>, where <span class="math notranslate nohighlight">\(y_i \in \{ 0, \ldots, c-1 \}\)</span>,
-<span class="math notranslate nohighlight">\(1 \leq i \leq n\)</span>, <span class="math notranslate nohighlight">\(c\)</span> is the number of classes and <span class="math notranslate nohighlight">\(k\)</span> is
+<span class="math notranslate nohighlight">\(1 \leq i \leq n\)</span>, <span class="math notranslate nohighlight">\(c\)</span> is the number of classes and <span class="math notranslate nohighlight">\(k\)</span> is the
 number of nearest neighbors specified by the user. The problem is to build a
 model that allows efficient distance computation between the feature vectors in
 <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(X'\)</span> at the inference stage.</p>
@@ -254,16 +254,16 @@ feature vectors from the initial training set <span class="math notranslate nohi
 </div>
 <div class="section" id="training-method-k-d-tree">
 <span id="t-math-kd-tree"></span><h4>Training method: <em>k-d tree</em><a class="headerlink" href="#training-method-k-d-tree" title="Permalink to this headline">¶</a></h4>
-<p>The training operation builds a <span class="math notranslate nohighlight">\(k\)</span>-<span class="math notranslate nohighlight">\(d\)</span> tree (for more details, see
-<a class="reference internal" href="../../appendix/kd_tree.html#kd-tree"><span class="std std-ref">Appendix: k-d Tree</span></a>) that partitions the training set <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>The training operation builds a <span class="math notranslate nohighlight">\(k\)</span>-<span class="math notranslate nohighlight">\(d\)</span> tree that partitions the
+training set <span class="math notranslate nohighlight">\(X\)</span> (for more details, see <a class="reference internal" href="../../appendix/kd_tree.html#kd-tree"><span class="std std-ref">k-d Tree</span></a>).</p>
 </div>
 </div>
 <div class="section" id="inference">
 <span id="i-math"></span><h3>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h3>
 <p>Given the set <span class="math notranslate nohighlight">\(X' = \{ x_1', \ldots, x_m' \}\)</span> of <span class="math notranslate nohighlight">\(p\)</span>-dimensional
-feature vectors, the user defined number of nearest neighbors <span class="math notranslate nohighlight">\(k\)</span> and the
-model produced by the training operation. The inference operation predicts the
-label for each <span class="math notranslate nohighlight">\(x_i'\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq n\)</span>, by performing the
+feature vectors, the user-defined number of nearest neighbors <span class="math notranslate nohighlight">\(k\)</span>, and the
+model produced by the training operation, the problem is to predicts the label
+<span class="math notranslate nohighlight">\(y_i'\)</span> for each <span class="math notranslate nohighlight">\(x_i'\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq m\)</span>, by performing the
 following steps:</p>
 <ol class="arabic">
 <li><p>Identify the set <span class="math notranslate nohighlight">\(N(x_i') \subseteq X\)</span> of the <span class="math notranslate nohighlight">\(k\)</span> feature vectors
@@ -275,12 +275,12 @@ fraction of vectors in <span class="math notranslate nohighlight">\(N(x_i')\)</s
 <div class="math notranslate nohighlight" id="equation-p-predict">
 <span class="eqno">(1)<a class="headerlink" href="#equation-p-predict" title="Permalink to this equation">¶</a></span>\[P(y_i' = l \; | \; x_i') = \frac{1}{| N(x_i') |}
 \Big| \big\{ x_r \in N(x_i') : y_r = l \big\} \Big|,
-\quad 1 \leq i \leq m, \; 0 \leq l \lt c.\]</div>
+\quad 1 \leq i \leq m, \; 0 \leq l &lt; c.\]</div>
 </li>
-<li><p>Use the class with the largest probability as prediction for the feature
-vector <span class="math notranslate nohighlight">\(x_i'\)</span>:</p>
+<li><p>Predict the class that has the highest probability for the feature vector
+<span class="math notranslate nohighlight">\(x_i'\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-y-predict">
-<span class="eqno">(2)<a class="headerlink" href="#equation-y-predict" title="Permalink to this equation">¶</a></span>\[y_i' = \mathrm{arg}\max_{0 \leq l \lt c} P(y_i' = l \; | \; x_i'),
+<span class="eqno">(2)<a class="headerlink" href="#equation-y-predict" title="Permalink to this equation">¶</a></span>\[y_i' = \mathrm{arg}\max_{0 \leq l &lt; c} P(y_i' = l \; | \; x_i'),
 \quad 1 \leq i \leq m.\]</div>
 </li>
 </ol>
@@ -304,7 +304,7 @@ The final prediction is computed according to the equations <a class="reference 
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">method</span> <span class="p">{</span>
    <span class="k">struct</span> <span class="n">bruteforce</span> <span class="p">{};</span>
    <span class="k">struct</span> <span class="n">kd_tree</span> <span class="p">{};</span>
-   <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">brutforce</span><span class="p">;</span>
+   <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">bruteforce</span><span class="p">;</span>
 <span class="p">}</span> <span class="c1">// namespace method</span>
 </pre></div>
 </div>
