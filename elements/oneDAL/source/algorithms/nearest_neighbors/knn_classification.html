@@ -262,26 +262,26 @@ training set <span class="math notranslate nohighlight">\(X\)</span> (for more d
 <span id="i-math"></span><h3>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h3>
 <p>Given the set <span class="math notranslate nohighlight">\(X' = \{ x_1', \ldots, x_m' \}\)</span> of <span class="math notranslate nohighlight">\(p\)</span>-dimensional
 feature vectors, the user-defined number of nearest neighbors <span class="math notranslate nohighlight">\(k\)</span>, and the
-model produced by the training operation, the problem is to predicts the label
-<span class="math notranslate nohighlight">\(y_i'\)</span> for each <span class="math notranslate nohighlight">\(x_i'\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq m\)</span>, by performing the
+model produced by the training operation, the problem is to predict the label
+<span class="math notranslate nohighlight">\(y_j'\)</span> for each <span class="math notranslate nohighlight">\(x_j'\)</span>, <span class="math notranslate nohighlight">\(1 \leq j \leq m\)</span>, by performing the
 following steps:</p>
 <ol class="arabic">
-<li><p>Identify the set <span class="math notranslate nohighlight">\(N(x_i') \subseteq X\)</span> of the <span class="math notranslate nohighlight">\(k\)</span> feature vectors
-in the training set that are nearest to <span class="math notranslate nohighlight">\(x_i'\)</span> with respect to the
+<li><p>Identify the set <span class="math notranslate nohighlight">\(N(x_j') \subseteq X\)</span> of the <span class="math notranslate nohighlight">\(k\)</span> feature vectors
+in the training set that are nearest to <span class="math notranslate nohighlight">\(x_j'\)</span> with respect to the
 Euclidean distance.</p></li>
 <li><p>Estimate the conditional probability for the <span class="math notranslate nohighlight">\(l\)</span>-th class as the
-fraction of vectors in <span class="math notranslate nohighlight">\(N(x_i')\)</span> whose labels <span class="math notranslate nohighlight">\(y_i\)</span> are equal to
+fraction of vectors in <span class="math notranslate nohighlight">\(N(x_j')\)</span> whose labels <span class="math notranslate nohighlight">\(y_j\)</span> are equal to
 <span class="math notranslate nohighlight">\(l\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-p-predict">
-<span class="eqno">(1)<a class="headerlink" href="#equation-p-predict" title="Permalink to this equation">¶</a></span>\[P(y_i' = l \; | \; x_i') = \frac{1}{| N(x_i') |}
-\Big| \big\{ x_r \in N(x_i') : y_r = l \big\} \Big|,
-\quad 1 \leq i \leq m, \; 0 \leq l &lt; c.\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-p-predict" title="Permalink to this equation">¶</a></span>\[P(y_j' = l \; | \; x_j') = \frac{1}{| N(x_j') |}
+\Big| \big\{ x_r \in N(x_j') : y_r = l \big\} \Big|,
+\quad 1 \leq j \leq m, \; 0 \leq l &lt; c.\]</div>
 </li>
 <li><p>Predict the class that has the highest probability for the feature vector
-<span class="math notranslate nohighlight">\(x_i'\)</span>:</p>
+<span class="math notranslate nohighlight">\(x_j'\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-y-predict">
-<span class="eqno">(2)<a class="headerlink" href="#equation-y-predict" title="Permalink to this equation">¶</a></span>\[y_i' = \mathrm{arg}\max_{0 \leq l &lt; c} P(y_i' = l \; | \; x_i'),
-\quad 1 \leq i \leq m.\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-y-predict" title="Permalink to this equation">¶</a></span>\[y_j' = \mathrm{arg}\max_{0 \leq l &lt; c} P(y_j' = l \; | \; x_j'),
+\quad 1 \leq j \leq m.\]</div>
 </li>
 </ol>
 <div class="section" id="inference-method-brute-force">
@@ -294,6 +294,16 @@ The final prediction is computed according to the equations <a class="reference 
 </div>
 <div class="section" id="inference-method-k-d-tree">
 <span id="i-math-kd-tree"></span><h4>Inference method: <em>k-d tree</em><a class="headerlink" href="#inference-method-k-d-tree" title="Permalink to this headline">¶</a></h4>
+<p>The inference operation traverses the <span class="math notranslate nohighlight">\(k\)</span>-<span class="math notranslate nohighlight">\(d\)</span> tree to find feature
+vectors associated with a leaf node that are closest to <span class="math notranslate nohighlight">\(x_j'\)</span>, <span class="math notranslate nohighlight">\(1
+\leq j \leq m\)</span>. The set <span class="math notranslate nohighlight">\(\tilde{n}(x_j')\)</span> of the currently-known nearest
+<span class="math notranslate nohighlight">\(k\)</span>-th neighbors is progressively updated during tree traversal. The
+search algorithm limits exploration of the nodes for which the distance between
+the <span class="math notranslate nohighlight">\(x_j'\)</span> and respective part of the feature space is not less than the
+distance between <span class="math notranslate nohighlight">\(x_j'\)</span> and the most distant feature vector from
+<span class="math notranslate nohighlight">\(\tilde{n}(x_j')\)</span>. Once tree traversal is finished, <span class="math notranslate nohighlight">\(\tilde{n}(x_j')
+\equiv N(x_j')\)</span>. The final prediction is computed according to the equations
+<a class="reference internal" href="#equation-p-predict">(1)</a> and <a class="reference internal" href="#equation-y-predict">(2)</a>.</p>
 </div>
 </div>
 </div>
