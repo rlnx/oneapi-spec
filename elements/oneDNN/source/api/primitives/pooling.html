@@ -219,19 +219,19 @@
 <p>A primitive to perform max or average pooling.</p>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl15pooling_forwardE">
 <span id="_CPPv3N4dnnl15pooling_forwardE"></span><span id="_CPPv2N4dnnl15pooling_forwardE"></span><span id="dnnl::pooling_forward"></span><span class="target" id="structdnnl_1_1pooling__forward"></span><em class="property">struct </em><code class="sig-name descname">pooling_forward</code> : <em class="property">public</em> dnnl::<a class="reference internal" href="common.html#_CPPv4N4dnnl9primitiveE" title="dnnl::primitive">primitive</a><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forwardE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Pooling forward propagation primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl15pooling_forward15pooling_forwardEv">
 <span id="_CPPv3N4dnnl15pooling_forward15pooling_forwardEv"></span><span id="_CPPv2N4dnnl15pooling_forward15pooling_forwardEv"></span><span id="dnnl::pooling_forward::pooling_forward"></span><span class="target" id="structdnnl_1_1pooling__forward_1af5dccc84ad6c6aa5c4936d824246fec9"></span><code class="sig-name descname">pooling_forward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward15pooling_forwardEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Default constructor. Produces an empty object. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl15pooling_forward15pooling_forwardERK14primitive_desc">
 <span id="_CPPv3N4dnnl15pooling_forward15pooling_forwardERK14primitive_desc"></span><span id="_CPPv2N4dnnl15pooling_forward15pooling_forwardERK14primitive_desc"></span><span id="dnnl::pooling_forward::pooling_forward__primitive_descCR"></span><span class="target" id="structdnnl_1_1pooling__forward_1abccc5797009b6c1fa2f2c6f761a5faac"></span><code class="sig-name descname">pooling_forward</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_descE" title="dnnl::pooling_forward::primitive_desc">primitive_desc</a> &amp;<em>pd</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward15pooling_forwardERK14primitive_desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a pooling forward propagation primitive. <dl class="simple">
@@ -244,23 +244,23 @@
 </dd></dl>
 
 </div>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl15pooling_forward4descE">
 <span id="_CPPv3N4dnnl15pooling_forward4descE"></span><span id="_CPPv2N4dnnl15pooling_forward4descE"></span><span id="dnnl::pooling_forward::desc"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1desc"></span><em class="property">struct </em><code class="sig-name descname">desc</code><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward4descE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Descriptor for a pooling forward propagation primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl15pooling_forward4desc4descE9prop_kind9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE">
 <span id="_CPPv3N4dnnl15pooling_forward4desc4descE9prop_kind9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE"></span><span id="_CPPv2N4dnnl15pooling_forward4desc4descE9prop_kind9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE"></span><span id="dnnl::pooling_forward::desc::desc__prop_kind.algorithm.memory::descCR.memory::descCR.memory::dimsCR.memory::dimsCR.memory::dimsCR.memory::dimsCR"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1desc_1a10fa8b4b3736e1056ff54e91cb5f3294"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward4desc4descE9prop_kind9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE" title="dnnl::pooling_forward::desc::desc::prop_kind">prop_kind</a> <em>prop_kind</em>, <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward4desc4descE9prop_kind9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE" title="dnnl::pooling_forward::desc::desc::algorithm">algorithm</a> <em>algorithm</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>src_desc</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>dst_desc</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>strides</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>kernel</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>padding_l</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>padding_r</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward4desc4descE9prop_kind9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a descriptor for pooling forward propagation primitive.</p>
 <p>Inputs:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1af42e791f493e636c086e13c6d4c06b43"><span class="std std-ref">dnnl::primitive_desc_base::src_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a31ee74fc65986558ac11db590945811a"><span class="std std-ref">dnnl::primitive_desc_base::src_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
 </ul>
 </p>
 <p>Outputs:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dst</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a495ee7c8e1ec3eab35f6329fdcd352bb"><span class="std std-ref">dnnl::primitive_desc_base::dst_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">workspace</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1ad26f416a149cb44cc5cfc130012c614e"><span class="std std-ref">dnnl::primitive_desc_base::workspace_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)), if <code class="docutils literal notranslate"><span class="pre">alg_kind</span></code> = <a class="reference internal" href="attributes.html#group__dnnl__api__attributes_1gga00377dd4982333e42e8ae1d09a309640a8c73d4bb88a0497586a74256bb338e88"><span class="std std-ref">dnnl::algorithm::pooling_max</span></a> and <code class="docutils literal notranslate"><span class="pre">prop_kind</span></code> = <a class="reference internal" href="attributes.html#group__dnnl__api__attributes_1ggac7db48f6583aa9903e54c2a39d65438fa24775787fab8f13aa4809e1ce8f82aeb"><span class="std std-ref">dnnl::prop_kind::forward_training</span></a>; must be queried for using <a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a35d24b553ba6aa807516e9470fdd7d16"><span class="std std-ref">dnnl::primitive_desc_base::query_md()</span></a> after a corresponding primitive descriptor is created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dst</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a0b724a92606a86a7ac9b6b9b07935529"><span class="std std-ref">dnnl::primitive_desc_base::dst_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workspace</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1aaf33632e215a1f2b066a6111836ecbb3"><span class="std std-ref">dnnl::primitive_desc_base::workspace_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)), if <code class="docutils literal notranslate"><span class="pre">alg_kind</span></code> = <a class="reference internal" href="attributes.html#group__dnnl__api__attributes_1gga00377dd4982333e42e8ae1d09a309640a8c73d4bb88a0497586a74256bb338e88"><span class="std std-ref">dnnl::algorithm::pooling_max</span></a> and <code class="docutils literal notranslate"><span class="pre">prop_kind</span></code> = <a class="reference internal" href="attributes.html#group__dnnl__api__attributes_1ggac7db48f6583aa9903e54c2a39d65438fa24775787fab8f13aa4809e1ce8f82aeb"><span class="std std-ref">dnnl::prop_kind::forward_training</span></a>; must be queried for using <a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1ac2ec36092718ed89bece0fec7f5f3171"><span class="std std-ref">dnnl::primitive_desc_base::query_md()</span></a> after a corresponding primitive descriptor is created</p></li>
 </ul>
 </p>
 <p><dl class="simple">
@@ -282,21 +282,21 @@
 </div>
 </dd></dl>
 
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl15pooling_forward14primitive_descE">
 <span id="_CPPv3N4dnnl15pooling_forward14primitive_descE"></span><span id="_CPPv2N4dnnl15pooling_forward14primitive_descE"></span><span id="dnnl::pooling_forward::primitive_desc"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc"></span><em class="property">struct </em><code class="sig-name descname">primitive_desc</code> : <em class="property">public</em> dnnl::primitive_desc<a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward14primitive_descE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Primitive descriptor for a pooling forward propagation primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descEv">
 <span id="_CPPv3N4dnnl15pooling_forward14primitive_desc14primitive_descEv"></span><span id="_CPPv2N4dnnl15pooling_forward14primitive_desc14primitive_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::primitive_desc"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1a2300c976dd1c6a3c86a067848be1a8e4"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Default constructor. Produces an empty object. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb">
-<span id="_CPPv3N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb"></span><span id="_CPPv2N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb"></span><span id="dnnl::pooling_forward::primitive_desc::primitive_desc__descCR.engineCR.b"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1aab96c5250e7a2c2ea2b167b2daafffeb"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward4descE" title="dnnl::pooling_forward::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> &amp;<em>engine</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb"></span><span id="_CPPv2N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb"></span><span id="dnnl::pooling_forward::primitive_desc::primitive_desc__descCR.engineCR.b"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1aab96c5250e7a2c2ea2b167b2daafffeb"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb" title="dnnl::pooling_forward::primitive_desc::primitive_desc::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb" title="dnnl::pooling_forward::primitive_desc::primitive_desc::engine">engine</a> &amp;<em>engine</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK6engineb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a primitive descriptor for a pooling forward propagation primitive.</p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -309,9 +309,9 @@
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb">
-<span id="_CPPv3N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb"></span><span id="_CPPv2N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb"></span><span id="dnnl::pooling_forward::primitive_desc::primitive_desc__descCR.primitive_attrCR.engineCR.b"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1a3ae91e4f90aa61bde703f7824c6a7261"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward4descE" title="dnnl::pooling_forward::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em>, <em class="property">const</em> <a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> &amp;<em>engine</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb"></span><span id="_CPPv2N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb"></span><span id="dnnl::pooling_forward::primitive_desc::primitive_desc__descCR.primitive_attrCR.engineCR.b"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1a3ae91e4f90aa61bde703f7824c6a7261"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb" title="dnnl::pooling_forward::primitive_desc::primitive_desc::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb" title="dnnl::pooling_forward::primitive_desc::primitive_desc::engine">engine</a> &amp;<em>engine</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl15pooling_forward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a primitive descriptor for a pooling forward propagation primitive.</p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -325,37 +325,34 @@
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl15pooling_forward14primitive_desc8src_descEv">
-<span id="_CPPv3NK4dnnl15pooling_forward14primitive_desc8src_descEv"></span><span id="_CPPv2NK4dnnl15pooling_forward14primitive_desc8src_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::src_descC"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1a74d06e6a0132733cd7bdd7155acd90d1"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">src_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl15pooling_forward14primitive_desc8src_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns a source memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl15pooling_forward14primitive_desc8src_descEv"></span><span id="_CPPv2NK4dnnl15pooling_forward14primitive_desc8src_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::src_descC"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1ac7175f2b0c9d627184b3cf82b7b47aab"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">src_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl15pooling_forward14primitive_desc8src_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a source memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Source memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not have a source parameter. </p>
+<p>A zero memory descriptor if the primitive does not have a source parameter. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl15pooling_forward14primitive_desc8dst_descEv">
-<span id="_CPPv3NK4dnnl15pooling_forward14primitive_desc8dst_descEv"></span><span id="_CPPv2NK4dnnl15pooling_forward14primitive_desc8dst_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::dst_descC"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1a507e60d22313a7adba7446644d51ba29"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">dst_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl15pooling_forward14primitive_desc8dst_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns a destination memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl15pooling_forward14primitive_desc8dst_descEv"></span><span id="_CPPv2NK4dnnl15pooling_forward14primitive_desc8dst_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::dst_descC"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1a2be6f4a208fc5ed50a31f3626aee0c51"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">dst_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl15pooling_forward14primitive_desc8dst_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a destination memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Destination memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not have a destination parameter. </p>
+<p>A zero memory descriptor if the primitive does not have a destination parameter. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl15pooling_forward14primitive_desc14workspace_descEv">
-<span id="_CPPv3NK4dnnl15pooling_forward14primitive_desc14workspace_descEv"></span><span id="_CPPv2NK4dnnl15pooling_forward14primitive_desc14workspace_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::workspace_descC"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1acf4ef6c3ff264e6a3abf556a93e91e88"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">workspace_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl15pooling_forward14primitive_desc14workspace_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns the workspace memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl15pooling_forward14primitive_desc14workspace_descEv"></span><span id="_CPPv2NK4dnnl15pooling_forward14primitive_desc14workspace_descEv"></span><span id="dnnl::pooling_forward::primitive_desc::workspace_descC"></span><span class="target" id="structdnnl_1_1pooling__forward_1_1primitive__desc_1ada4d39a6940ab6f15f5f0050b9676432"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">workspace_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl15pooling_forward14primitive_desc14workspace_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the workspace memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Workspace memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not require workspace parameter. </p>
+<p>A zero memory descriptor if the primitive does not require workspace parameter. </p>
 </dd>
 </dl>
 </p>
@@ -366,19 +363,19 @@
 
 </dd></dl>
 
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl16pooling_backwardE">
 <span id="_CPPv3N4dnnl16pooling_backwardE"></span><span id="_CPPv2N4dnnl16pooling_backwardE"></span><span id="dnnl::pooling_backward"></span><span class="target" id="structdnnl_1_1pooling__backward"></span><em class="property">struct </em><code class="sig-name descname">pooling_backward</code> : <em class="property">public</em> dnnl::<a class="reference internal" href="common.html#_CPPv4N4dnnl9primitiveE" title="dnnl::primitive">primitive</a><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backwardE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Pooling backward propagation primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl16pooling_backward16pooling_backwardEv">
 <span id="_CPPv3N4dnnl16pooling_backward16pooling_backwardEv"></span><span id="_CPPv2N4dnnl16pooling_backward16pooling_backwardEv"></span><span id="dnnl::pooling_backward::pooling_backward"></span><span class="target" id="structdnnl_1_1pooling__backward_1ad00ffa2040ee6d623fb6103c96a18567"></span><code class="sig-name descname">pooling_backward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward16pooling_backwardEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Default constructor. Produces an empty object. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl16pooling_backward16pooling_backwardERK14primitive_desc">
 <span id="_CPPv3N4dnnl16pooling_backward16pooling_backwardERK14primitive_desc"></span><span id="_CPPv2N4dnnl16pooling_backward16pooling_backwardERK14primitive_desc"></span><span id="dnnl::pooling_backward::pooling_backward__primitive_descCR"></span><span class="target" id="structdnnl_1_1pooling__backward_1ad002497e9938c6407fd2d38abd15cad2"></span><code class="sig-name descname">pooling_backward</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward14primitive_descE" title="dnnl::pooling_backward::primitive_desc">primitive_desc</a> &amp;<em>pd</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward16pooling_backwardERK14primitive_desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a pooling backward propagation primitive. <dl class="simple">
@@ -391,23 +388,23 @@
 </dd></dl>
 
 </div>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl16pooling_backward4descE">
 <span id="_CPPv3N4dnnl16pooling_backward4descE"></span><span id="_CPPv2N4dnnl16pooling_backward4descE"></span><span id="dnnl::pooling_backward::desc"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1desc"></span><em class="property">struct </em><code class="sig-name descname">desc</code><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward4descE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Descriptor for a pooling backward propagation primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl16pooling_backward4desc4descE9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE">
 <span id="_CPPv3N4dnnl16pooling_backward4desc4descE9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE"></span><span id="_CPPv2N4dnnl16pooling_backward4desc4descE9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE"></span><span id="dnnl::pooling_backward::desc::desc__algorithm.memory::descCR.memory::descCR.memory::dimsCR.memory::dimsCR.memory::dimsCR.memory::dimsCR"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1desc_1a6773c6fb2ed5fb7602046685fced8dda"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward4desc4descE9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE" title="dnnl::pooling_backward::desc::desc::algorithm">algorithm</a> <em>algorithm</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>diff_src_desc</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>diff_dst_desc</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>strides</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>kernel</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>padding_l</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>padding_r</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward4desc4descE9algorithmRKN6memory4descERKN6memory4descERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsERKN6memory4dimsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a descriptor for pooling backward propagation primitive.</p>
 <p>Inputs:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">diff_dst</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a60f17d04c493c42e4a50ad5feff5c8ca"><span class="std std-ref">dnnl::primitive_desc_base::diff_dst_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">workspace</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1ad26f416a149cb44cc5cfc130012c614e"><span class="std std-ref">dnnl::primitive_desc_base::workspace_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)), if <code class="docutils literal notranslate"><span class="pre">alg_kind</span></code> = <a class="reference internal" href="attributes.html#group__dnnl__api__attributes_1gga00377dd4982333e42e8ae1d09a309640a8c73d4bb88a0497586a74256bb338e88"><span class="std std-ref">dnnl::algorithm::pooling_max</span></a>; must be queried for using <a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a35d24b553ba6aa807516e9470fdd7d16"><span class="std std-ref">dnnl::primitive_desc_base::query_md()</span></a> after a corresponding primitive descriptor is created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff_dst</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1aa95dd1711a45923204ffddc3f02ea546"><span class="std std-ref">dnnl::primitive_desc_base::diff_dst_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workspace</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1aaf33632e215a1f2b066a6111836ecbb3"><span class="std std-ref">dnnl::primitive_desc_base::workspace_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)), if <code class="docutils literal notranslate"><span class="pre">alg_kind</span></code> = <a class="reference internal" href="attributes.html#group__dnnl__api__attributes_1gga00377dd4982333e42e8ae1d09a309640a8c73d4bb88a0497586a74256bb338e88"><span class="std std-ref">dnnl::algorithm::pooling_max</span></a>; must be queried for using <a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1ac2ec36092718ed89bece0fec7f5f3171"><span class="std std-ref">dnnl::primitive_desc_base::query_md()</span></a> after a corresponding primitive descriptor is created</p></li>
 </ul>
 </p>
 <p>Outputs:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">diff_src</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a733e6ff4e78a758e69ae6232e8955871"><span class="std std-ref">dnnl::primitive_desc_base::diff_src_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff_src</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1aeb499ab1390d20eb071d97ec4628029f"><span class="std std-ref">dnnl::primitive_desc_base::diff_src_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
 </ul>
 </p>
 <p><dl class="simple">
@@ -428,21 +425,21 @@
 </div>
 </dd></dl>
 
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl16pooling_backward14primitive_descE">
 <span id="_CPPv3N4dnnl16pooling_backward14primitive_descE"></span><span id="_CPPv2N4dnnl16pooling_backward14primitive_descE"></span><span id="dnnl::pooling_backward::primitive_desc"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc"></span><em class="property">struct </em><code class="sig-name descname">primitive_desc</code> : <em class="property">public</em> dnnl::primitive_desc<a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward14primitive_descE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Primitive descriptor for a pooling backward propagation primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descEv">
 <span id="_CPPv3N4dnnl16pooling_backward14primitive_desc14primitive_descEv"></span><span id="_CPPv2N4dnnl16pooling_backward14primitive_desc14primitive_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::primitive_desc"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1a4d813502e0562539e7ddb2c936dd2015"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Default constructor. Produces an empty object. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb">
-<span id="_CPPv3N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="_CPPv2N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="dnnl::pooling_backward::primitive_desc::primitive_desc__descCR.engineCR.pooling_forward::primitive_descCR.b"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1abffbb0bec3f0c9339ec53fcf4a22056e"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward4descE" title="dnnl::pooling_backward::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> &amp;<em>engine</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forwardE" title="dnnl::pooling_forward">pooling_forward</a>::<a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_descE" title="dnnl::pooling_forward::primitive_desc">primitive_desc</a> &amp;<em>hint_fwd_pd</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="_CPPv2N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="dnnl::pooling_backward::primitive_desc::primitive_desc__descCR.engineCR.pooling_forward::primitive_descCR.b"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1abffbb0bec3f0c9339ec53fcf4a22056e"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb" title="dnnl::pooling_backward::primitive_desc::primitive_desc::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb" title="dnnl::pooling_backward::primitive_desc::primitive_desc::engine">engine</a> &amp;<em>engine</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forwardE" title="dnnl::pooling_forward">pooling_forward</a>::<a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_descE" title="dnnl::pooling_forward::primitive_desc">primitive_desc</a> &amp;<em>hint_fwd_pd</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK6engineRKN15pooling_forward14primitive_descEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a primitive descriptor for a pooling backward propagation primitive.</p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -456,9 +453,9 @@
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb">
-<span id="_CPPv3N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="_CPPv2N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="dnnl::pooling_backward::primitive_desc::primitive_desc__descCR.primitive_attrCR.engineCR.pooling_forward::primitive_descCR.b"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1a729e6caf01cd639f44750c2a1f4d0cce"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward4descE" title="dnnl::pooling_backward::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em>, <em class="property">const</em> <a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> &amp;<em>engine</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forwardE" title="dnnl::pooling_forward">pooling_forward</a>::<a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_descE" title="dnnl::pooling_forward::primitive_desc">primitive_desc</a> &amp;<em>hint_fwd_pd</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="_CPPv2N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb"></span><span id="dnnl::pooling_backward::primitive_desc::primitive_desc__descCR.primitive_attrCR.engineCR.pooling_forward::primitive_descCR.b"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1a729e6caf01cd639f44750c2a1f4d0cce"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb" title="dnnl::pooling_backward::primitive_desc::primitive_desc::desc">desc</a> &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb" title="dnnl::pooling_backward::primitive_desc::primitive_desc::engine">engine</a> &amp;<em>engine</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl15pooling_forwardE" title="dnnl::pooling_forward">pooling_forward</a>::<a class="reference internal" href="#_CPPv4N4dnnl15pooling_forward14primitive_descE" title="dnnl::pooling_forward::primitive_desc">primitive_desc</a> &amp;<em>hint_fwd_pd</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl16pooling_backward14primitive_desc14primitive_descERK4descRK14primitive_attrRK6engineRKN15pooling_forward14primitive_descEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a primitive descriptor for a pooling backward propagation primitive.</p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -473,37 +470,34 @@
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv">
-<span id="_CPPv3NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv"></span><span id="_CPPv2NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::diff_src_descC"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1af7f7a7752b30fbf77f6a4b21a70b23fe"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">diff_src_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns a source memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv"></span><span id="_CPPv2NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::diff_src_descC"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1a56925e67ca030e781c4cd3e80dccd186"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">diff_src_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl16pooling_backward14primitive_desc13diff_src_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a source memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Source memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not have a source parameter. </p>
+<p>A zero memory descriptor if the primitive does not have a source parameter. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv">
-<span id="_CPPv3NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv"></span><span id="_CPPv2NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::diff_dst_descC"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1ac1da8cdf8dcf3740da177c148b79f718"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">diff_dst_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns a diff destination memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv"></span><span id="_CPPv2NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::diff_dst_descC"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1aa50c55ab0bade838825641e111be9df4"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">diff_dst_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl16pooling_backward14primitive_desc13diff_dst_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a diff destination memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Diff destination memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not have a diff destination parameter. </p>
+<p>A zero memory descriptor if the primitive does not have a diff destination parameter. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl16pooling_backward14primitive_desc14workspace_descEv">
-<span id="_CPPv3NK4dnnl16pooling_backward14primitive_desc14workspace_descEv"></span><span id="_CPPv2NK4dnnl16pooling_backward14primitive_desc14workspace_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::workspace_descC"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1ae579ebaab0505dd3e1d67557fc9b8039"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">workspace_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl16pooling_backward14primitive_desc14workspace_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns the workspace memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl16pooling_backward14primitive_desc14workspace_descEv"></span><span id="_CPPv2NK4dnnl16pooling_backward14primitive_desc14workspace_descEv"></span><span id="dnnl::pooling_backward::primitive_desc::workspace_descC"></span><span class="target" id="structdnnl_1_1pooling__backward_1_1primitive__desc_1a55eb80a1bd06eea4511cb72752490919"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">workspace_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl16pooling_backward14primitive_desc14workspace_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the workspace memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Workspace memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not require workspace parameter. </p>
+<p>A zero memory descriptor if the primitive does not require workspace parameter. </p>
 </dd>
 </dl>
 </p>

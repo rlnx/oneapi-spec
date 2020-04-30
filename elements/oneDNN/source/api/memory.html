@@ -244,55 +244,55 @@ is ill-defined and is considered to be an error by the library because there
 is no clear definition on what the output values should be.</p></li>
 </ul>
 <p>Data handle of a zero-volume memory is never accessed.</p>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl6memoryE">
 <span id="_CPPv3N4dnnl6memoryE"></span><span id="_CPPv2N4dnnl6memoryE"></span><span id="dnnl::memory"></span><span class="target" id="structdnnl_1_1memory"></span><em class="property">struct </em><code class="sig-name descname">memory</code><a class="headerlink" href="#_CPPv4N4dnnl6memoryE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Memory object.</p>
 <p>A memory object encapsulates a handle to a memory buffer allocated on a specific engine, tensor dimensions, data type, and memory format, which is the way tensor indices map to offsets in linear memory space. Memory objects are passed to primitives during execution. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Types</p>
-<dl class="enum">
+<dl class="cpp enum">
 <dt id="_CPPv4N4dnnl6memory9data_typeE">
 <span id="_CPPv3N4dnnl6memory9data_typeE"></span><span id="_CPPv2N4dnnl6memory9data_typeE"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dce"></span><em class="property">enum </em><code class="sig-name descname">data_type</code><a class="headerlink" href="#_CPPv4N4dnnl6memory9data_typeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Data type specification. </p>
 <p><em>Values:</em></p>
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5undefE">
 <span id="_CPPv3N4dnnl6memory5undefE"></span><span id="_CPPv2N4dnnl6memory5undefE"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dceaf31ee5e3824f1f5e5d206bdf3029f22b"></span><code class="sig-name descname">undef</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5undefE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Undefined data type (used for empty memory descriptors). </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3f16E">
 <span id="_CPPv3N4dnnl6memory3f16E"></span><span id="_CPPv2N4dnnl6memory3f16E"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dceaa2449b6477c1fef79be4202906486876"></span><code class="sig-name descname">f16</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3f16E" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>16-bit/half-precision floating point. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4bf16E">
 <span id="_CPPv3N4dnnl6memory4bf16E"></span><span id="_CPPv2N4dnnl6memory4bf16E"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dceafe2904d9fb3b0f4a81c92b03dec11424"></span><code class="sig-name descname">bf16</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4bf16E" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>non-standard 16-bit floating point with 7-bit mantissa. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3f32E">
 <span id="_CPPv3N4dnnl6memory3f32E"></span><span id="_CPPv2N4dnnl6memory3f32E"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dcea512dc597be7ae761876315165dc8bd2e"></span><code class="sig-name descname">f32</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3f32E" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>32-bit/single-precision floating point. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3s32E">
 <span id="_CPPv3N4dnnl6memory3s32E"></span><span id="_CPPv2N4dnnl6memory3s32E"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dceaa860868d23f3a68323a2e3f6563d7f31"></span><code class="sig-name descname">s32</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3s32E" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>32-bit signed integer. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2s8E">
 <span id="_CPPv3N4dnnl6memory2s8E"></span><span id="_CPPv2N4dnnl6memory2s8E"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dcea3e8d88fdd85d7153525e0647cdd97686"></span><code class="sig-name descname">s8</code><a class="headerlink" href="#_CPPv4N4dnnl6memory2s8E" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>8-bit signed integer. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2u8E">
 <span id="_CPPv3N4dnnl6memory2u8E"></span><span id="_CPPv2N4dnnl6memory2u8E"></span><span class="target" id="structdnnl_1_1memory_1a8e83474ec3a50e08e37af76c8c075dcea077393852be20e37026d6281827662f2"></span><code class="sig-name descname">u8</code><a class="headerlink" href="#_CPPv4N4dnnl6memory2u8E" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>8-bit unsigned integer. </p>
@@ -300,7 +300,7 @@ is no clear definition on what the output values should be.</p></li>
 
 </dd></dl>
 
-<dl class="enum">
+<dl class="cpp enum">
 <dt id="_CPPv4N4dnnl6memory10format_tagE">
 <span id="_CPPv3N4dnnl6memory10format_tagE"></span><span id="_CPPv2N4dnnl6memory10format_tagE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3f"></span><em class="property">enum </em><code class="sig-name descname">format_tag</code><a class="headerlink" href="#_CPPv4N4dnnl6memory10format_tagE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Memory format tag specification.</p>
@@ -319,379 +319,379 @@ is no clear definition on what the output values should be.</p></li>
 </ul>
 </p>
 <p><em>Values:</em></p>
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5undefE">
 <span id="_CPPv3N4dnnl6memory5undefE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faf31ee5e3824f1f5e5d206bdf3029f22b"></span><code class="sig-name descname">undef</code><br /></dt>
 <dd><p>Undefined memory format tag. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3anyE">
 <span id="_CPPv3N4dnnl6memory3anyE"></span><span id="_CPPv2N4dnnl6memory3anyE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f171f97a1ec"></span><code class="sig-name descname">any</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3anyE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Placeholder memory format tag. Used to instruct the primitive to select a format automatically. </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory1aE">
 <span id="_CPPv3N4dnnl6memory1aE"></span><span id="_CPPv2N4dnnl6memory1aE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa0cc175b9c0f1b6a831c399e269772661"></span><code class="sig-name descname">a</code><a class="headerlink" href="#_CPPv4N4dnnl6memory1aE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 1D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2abE">
 <span id="_CPPv3N4dnnl6memory2abE"></span><span id="_CPPv2N4dnnl6memory2abE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa187ef4436122d1cc2f40dc2b92f0eba0"></span><code class="sig-name descname">ab</code><a class="headerlink" href="#_CPPv4N4dnnl6memory2abE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 2D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2baE">
 <span id="_CPPv3N4dnnl6memory2baE"></span><span id="_CPPv2N4dnnl6memory2baE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa07159c47ee1b19ae4fb9c40d480856c4"></span><code class="sig-name descname">ba</code><a class="headerlink" href="#_CPPv4N4dnnl6memory2baE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 2D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3abcE">
 <span id="_CPPv3N4dnnl6memory3abcE"></span><span id="_CPPv2N4dnnl6memory3abcE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa900150983cd24fb0d6963f7d28e17f72"></span><code class="sig-name descname">abc</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3abcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 3D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3acbE">
 <span id="_CPPv3N4dnnl6memory3acbE"></span><span id="_CPPv2N4dnnl6memory3acbE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5ff832d9bca8241d653279756f3ccd11"></span><code class="sig-name descname">acb</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3acbE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 3D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3bacE">
 <span id="_CPPv3N4dnnl6memory3bacE"></span><span id="_CPPv2N4dnnl6memory3bacE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa79ec16df80b57696a03bb364410061f3"></span><code class="sig-name descname">bac</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3bacE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 3D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3bcaE">
 <span id="_CPPv3N4dnnl6memory3bcaE"></span><span id="_CPPv2N4dnnl6memory3bcaE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab64eab8ce39e013604e243089c687e4f"></span><code class="sig-name descname">bca</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3bcaE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 3D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3cbaE">
 <span id="_CPPv3N4dnnl6memory3cbaE"></span><span id="_CPPv2N4dnnl6memory3cbaE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa3944b025c9ca7eec3154b44666ae04a0"></span><code class="sig-name descname">cba</code><a class="headerlink" href="#_CPPv4N4dnnl6memory3cbaE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 3D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4abcdE">
 <span id="_CPPv3N4dnnl6memory4abcdE"></span><span id="_CPPv2N4dnnl6memory4abcdE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae2fc714c4727ee9395f324cd2e7f331f"></span><code class="sig-name descname">abcd</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4abcdE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 4D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4acdbE">
 <span id="_CPPv3N4dnnl6memory4acdbE"></span><span id="_CPPv2N4dnnl6memory4acdbE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa776649ab3d00664587b889457db87da7"></span><code class="sig-name descname">acdb</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4acdbE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 4D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4bacdE">
 <span id="_CPPv3N4dnnl6memory4bacdE"></span><span id="_CPPv2N4dnnl6memory4bacdE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5a3b732e0600663606054f6d8dfd465e"></span><code class="sig-name descname">bacd</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4bacdE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 4D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4bcdaE">
 <span id="_CPPv3N4dnnl6memory4bcdaE"></span><span id="_CPPv2N4dnnl6memory4bcdaE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa078c4e73146ba90c3e4e9daa1facac28"></span><code class="sig-name descname">bcda</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4bcdaE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 4D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4cdbaE">
 <span id="_CPPv3N4dnnl6memory4cdbaE"></span><span id="_CPPv2N4dnnl6memory4cdbaE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faff2458511a39d703bd273eabbb1395d6"></span><code class="sig-name descname">cdba</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4cdbaE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 4D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5abcdeE">
 <span id="_CPPv3N4dnnl6memory5abcdeE"></span><span id="_CPPv2N4dnnl6memory5abcdeE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faab56b4d92b40713acc5af89985d4b786"></span><code class="sig-name descname">abcde</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5abcdeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5abdecE">
 <span id="_CPPv3N4dnnl6memory5abdecE"></span><span id="_CPPv2N4dnnl6memory5abdecE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa7a05226d93263d6fc613f52400f7416d"></span><code class="sig-name descname">abdec</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5abdecE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5acbdeE">
 <span id="_CPPv3N4dnnl6memory5acbdeE"></span><span id="_CPPv2N4dnnl6memory5acbdeE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae0e56a95aff0ee48fc44e8a4faf69adb"></span><code class="sig-name descname">acbde</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5acbdeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5acdebE">
 <span id="_CPPv3N4dnnl6memory5acdebE"></span><span id="_CPPv2N4dnnl6memory5acdebE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faf95d333a023ac787b43babc5b5c480ae"></span><code class="sig-name descname">acdeb</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5acdebE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5bcdeaE">
 <span id="_CPPv3N4dnnl6memory5bcdeaE"></span><span id="_CPPv2N4dnnl6memory5bcdeaE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa6debec47fc73823aa65cc49b94b7e1fb"></span><code class="sig-name descname">bcdea</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5bcdeaE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5cdebaE">
 <span id="_CPPv3N4dnnl6memory5cdebaE"></span><span id="_CPPv2N4dnnl6memory5cdebaE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fafafcbfdfcede01281676ab63df88a919"></span><code class="sig-name descname">cdeba</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5cdebaE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5decabE">
 <span id="_CPPv3N4dnnl6memory5decabE"></span><span id="_CPPv2N4dnnl6memory5decabE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab9a152e018d02395e6e94c5619da4a91"></span><code class="sig-name descname">decab</code><a class="headerlink" href="#_CPPv4N4dnnl6memory5decabE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>permuted 5D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory6abcdefE">
 <span id="_CPPv3N4dnnl6memory6abcdefE"></span><span id="_CPPv2N4dnnl6memory6abcdefE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae80b5017098950fc58aad83c8c14978e"></span><code class="sig-name descname">abcdef</code><a class="headerlink" href="#_CPPv4N4dnnl6memory6abcdefE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 6D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory6acbdefE">
 <span id="_CPPv3N4dnnl6memory6acbdefE"></span><span id="_CPPv2N4dnnl6memory6acbdefE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa66fd87374b1ec6be9fdbea534e17adeb"></span><code class="sig-name descname">acbdef</code><a class="headerlink" href="#_CPPv4N4dnnl6memory6acbdefE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 6D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory6defcabE">
 <span id="_CPPv3N4dnnl6memory6defcabE"></span><span id="_CPPv2N4dnnl6memory6defcabE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fac9cdbbb9640597fea44206cee7f8a151"></span><code class="sig-name descname">defcab</code><a class="headerlink" href="#_CPPv4N4dnnl6memory6defcabE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>plain 6D tensor </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory1xE">
 <span id="_CPPv3N4dnnl6memory1xE"></span><span id="_CPPv2N4dnnl6memory1xE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa9dd4e461268c8034f5c8564e155c67a6"></span><code class="sig-name descname">x</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory1aE" title="dnnl::memory::a">a</a><a class="headerlink" href="#_CPPv4N4dnnl6memory1xE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>1D tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa0cc175b9c0f1b6a831c399e269772661"><span class="std std-ref">dnnl::memory::format_tag::a</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2ncE">
 <span id="_CPPv3N4dnnl6memory2ncE"></span><span id="_CPPv2N4dnnl6memory2ncE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa1e7342845e24eb3b5b3554490da1c128"></span><code class="sig-name descname">nc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory2abE" title="dnnl::memory::ab">ab</a><a class="headerlink" href="#_CPPv4N4dnnl6memory2ncE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>2D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa187ef4436122d1cc2f40dc2b92f0eba0"><span class="std std-ref">dnnl::memory::format_tag::ab</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2cnE">
 <span id="_CPPv3N4dnnl6memory2cnE"></span><span id="_CPPv2N4dnnl6memory2cnE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa7efdfc94655a25dcea3ec85e9bb703fa"></span><code class="sig-name descname">cn</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory2baE" title="dnnl::memory::ba">ba</a><a class="headerlink" href="#_CPPv4N4dnnl6memory2cnE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>2D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa07159c47ee1b19ae4fb9c40d480856c4"><span class="std std-ref">dnnl::memory::format_tag::ba</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2tnE">
 <span id="_CPPv3N4dnnl6memory2tnE"></span><span id="_CPPv2N4dnnl6memory2tnE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faaafb96b2fa8806be307c4496867bad56"></span><code class="sig-name descname">tn</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory2abE" title="dnnl::memory::ab">ab</a><a class="headerlink" href="#_CPPv4N4dnnl6memory2tnE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>2D RNN statistics tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa187ef4436122d1cc2f40dc2b92f0eba0"><span class="std std-ref">dnnl::memory::format_tag::ab</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2ntE">
 <span id="_CPPv3N4dnnl6memory2ntE"></span><span id="_CPPv2N4dnnl6memory2ntE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa25930e3036f13852cb0b29694bbab611"></span><code class="sig-name descname">nt</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory2baE" title="dnnl::memory::ba">ba</a><a class="headerlink" href="#_CPPv4N4dnnl6memory2ntE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>2D RNN statistics tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa07159c47ee1b19ae4fb9c40d480856c4"><span class="std std-ref">dnnl::memory::format_tag::ba</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3ncwE">
 <span id="_CPPv3N4dnnl6memory3ncwE"></span><span id="_CPPv2N4dnnl6memory3ncwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fabc4eee572ad38f8a5c2534e0b2533100"></span><code class="sig-name descname">ncw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3abcE" title="dnnl::memory::abc">abc</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3ncwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa900150983cd24fb0d6963f7d28e17f72"><span class="std std-ref">dnnl::memory::format_tag::abc</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3nwcE">
 <span id="_CPPv3N4dnnl6memory3nwcE"></span><span id="_CPPv2N4dnnl6memory3nwcE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faccc0543dc9272f9fffd720fe55f818e4"></span><code class="sig-name descname">nwc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3acbE" title="dnnl::memory::acb">acb</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3nwcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5ff832d9bca8241d653279756f3ccd11"><span class="std std-ref">dnnl::memory::format_tag::acb</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4nchwE">
 <span id="_CPPv3N4dnnl6memory4nchwE"></span><span id="_CPPv2N4dnnl6memory4nchwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faded7ac40158367123c5467281d44cbeb"></span><code class="sig-name descname">nchw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4abcdE" title="dnnl::memory::abcd">abcd</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4nchwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae2fc714c4727ee9395f324cd2e7f331f"><span class="std std-ref">dnnl::memory::format_tag::abcd</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4nhwcE">
 <span id="_CPPv3N4dnnl6memory4nhwcE"></span><span id="_CPPv2N4dnnl6memory4nhwcE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa763cbf7ba1b7b8793dcdc6e2157b5c42"></span><code class="sig-name descname">nhwc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4acdbE" title="dnnl::memory::acdb">acdb</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4nhwcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa776649ab3d00664587b889457db87da7"><span class="std std-ref">dnnl::memory::format_tag::acdb</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4chwnE">
 <span id="_CPPv3N4dnnl6memory4chwnE"></span><span id="_CPPv2N4dnnl6memory4chwnE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fafd2263500e815d8ce46e79e6b178a10a"></span><code class="sig-name descname">chwn</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4bcdaE" title="dnnl::memory::bcda">bcda</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4chwnE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa078c4e73146ba90c3e4e9daa1facac28"><span class="std std-ref">dnnl::memory::format_tag::bcda</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5ncdhwE">
 <span id="_CPPv3N4dnnl6memory5ncdhwE"></span><span id="_CPPv2N4dnnl6memory5ncdhwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae7a84f08ef10d4fe3096307c6d9770fd"></span><code class="sig-name descname">ncdhw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5abcdeE" title="dnnl::memory::abcde">abcde</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5ncdhwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faab56b4d92b40713acc5af89985d4b786"><span class="std std-ref">dnnl::memory::format_tag::abcde</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5ndhwcE">
 <span id="_CPPv3N4dnnl6memory5ndhwcE"></span><span id="_CPPv2N4dnnl6memory5ndhwcE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fad2f2770ca9883423f680fd4a29481d64"></span><code class="sig-name descname">ndhwc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5acdebE" title="dnnl::memory::acdeb">acdeb</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5ndhwcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN activations tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faf95d333a023ac787b43babc5b5c480ae"><span class="std std-ref">dnnl::memory::format_tag::acdeb</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2oiE">
 <span id="_CPPv3N4dnnl6memory2oiE"></span><span id="_CPPv2N4dnnl6memory2oiE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faa2e63ee01401aaeca78be023dfbb8c59"></span><code class="sig-name descname">oi</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory2abE" title="dnnl::memory::ab">ab</a><a class="headerlink" href="#_CPPv4N4dnnl6memory2oiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>2D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa187ef4436122d1cc2f40dc2b92f0eba0"><span class="std std-ref">dnnl::memory::format_tag::ab</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory2ioE">
 <span id="_CPPv3N4dnnl6memory2ioE"></span><span id="_CPPv2N4dnnl6memory2ioE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faf98ed07a4d5f50f7de1410d905f1477f"></span><code class="sig-name descname">io</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory2baE" title="dnnl::memory::ba">ba</a><a class="headerlink" href="#_CPPv4N4dnnl6memory2ioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>2D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa07159c47ee1b19ae4fb9c40d480856c4"><span class="std std-ref">dnnl::memory::format_tag::ba</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3oiwE">
 <span id="_CPPv3N4dnnl6memory3oiwE"></span><span id="_CPPv2N4dnnl6memory3oiwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa3a8cb832bca6da72735b742014560a5b"></span><code class="sig-name descname">oiw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3abcE" title="dnnl::memory::abc">abc</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3oiwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa900150983cd24fb0d6963f7d28e17f72"><span class="std std-ref">dnnl::memory::format_tag::abc</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3owiE">
 <span id="_CPPv3N4dnnl6memory3owiE"></span><span id="_CPPv2N4dnnl6memory3owiE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa55e9a1b1cc2aaf0f5b7417d8098ea4b3"></span><code class="sig-name descname">owi</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3acbE" title="dnnl::memory::acb">acb</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3owiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5ff832d9bca8241d653279756f3ccd11"><span class="std std-ref">dnnl::memory::format_tag::acb</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3wioE">
 <span id="_CPPv3N4dnnl6memory3wioE"></span><span id="_CPPv2N4dnnl6memory3wioE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5b12270b2f1c52cb9ae37905880a5a6f"></span><code class="sig-name descname">wio</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3cbaE" title="dnnl::memory::cba">cba</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3wioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa3944b025c9ca7eec3154b44666ae04a0"><span class="std std-ref">dnnl::memory::format_tag::cba</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3iwoE">
 <span id="_CPPv3N4dnnl6memory3iwoE"></span><span id="_CPPv2N4dnnl6memory3iwoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa7afa5d2c0d2aa139eb213430ec70d91d"></span><code class="sig-name descname">iwo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3bcaE" title="dnnl::memory::bca">bca</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3iwoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab64eab8ce39e013604e243089c687e4f"><span class="std std-ref">dnnl::memory::format_tag::bca</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4oihwE">
 <span id="_CPPv3N4dnnl6memory4oihwE"></span><span id="_CPPv2N4dnnl6memory4oihwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa14b72a467aeefa06a5cb802ec4a7743c"></span><code class="sig-name descname">oihw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4abcdE" title="dnnl::memory::abcd">abcd</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4oihwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae2fc714c4727ee9395f324cd2e7f331f"><span class="std std-ref">dnnl::memory::format_tag::abcd</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4hwioE">
 <span id="_CPPv3N4dnnl6memory4hwioE"></span><span id="_CPPv2N4dnnl6memory4hwioE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fadd942f902c741de7193e1869b13ba55a"></span><code class="sig-name descname">hwio</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4cdbaE" title="dnnl::memory::cdba">cdba</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4hwioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faff2458511a39d703bd273eabbb1395d6"><span class="std std-ref">dnnl::memory::format_tag::cdba</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4ohwiE">
 <span id="_CPPv3N4dnnl6memory4ohwiE"></span><span id="_CPPv2N4dnnl6memory4ohwiE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab889a0cb4d051674706433941a2e867f"></span><code class="sig-name descname">ohwi</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4acdbE" title="dnnl::memory::acdb">acdb</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4ohwiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa776649ab3d00664587b889457db87da7"><span class="std std-ref">dnnl::memory::format_tag::acdb</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4ihwoE">
 <span id="_CPPv3N4dnnl6memory4ihwoE"></span><span id="_CPPv2N4dnnl6memory4ihwoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa56fe35ca9f339b4948384c2a2fa02de5"></span><code class="sig-name descname">ihwo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4bcdaE" title="dnnl::memory::bcda">bcda</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4ihwoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa078c4e73146ba90c3e4e9daa1facac28"><span class="std std-ref">dnnl::memory::format_tag::bcda</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4iohwE">
 <span id="_CPPv3N4dnnl6memory4iohwE"></span><span id="_CPPv2N4dnnl6memory4iohwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fac16710619e6550753801926b5388bef8"></span><code class="sig-name descname">iohw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4bacdE" title="dnnl::memory::bacd">bacd</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4iohwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5a3b732e0600663606054f6d8dfd465e"><span class="std std-ref">dnnl::memory::format_tag::bacd</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5oidhwE">
 <span id="_CPPv3N4dnnl6memory5oidhwE"></span><span id="_CPPv2N4dnnl6memory5oidhwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa98407962f915285419b23f5b0a223882"></span><code class="sig-name descname">oidhw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5abcdeE" title="dnnl::memory::abcde">abcde</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5oidhwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faab56b4d92b40713acc5af89985d4b786"><span class="std std-ref">dnnl::memory::format_tag::abcde</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5dhwioE">
 <span id="_CPPv3N4dnnl6memory5dhwioE"></span><span id="_CPPv2N4dnnl6memory5dhwioE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faeafcb3d831eef23cde0b46f64646327c"></span><code class="sig-name descname">dhwio</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5cdebaE" title="dnnl::memory::cdeba">cdeba</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5dhwioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fafafcbfdfcede01281676ab63df88a919"><span class="std std-ref">dnnl::memory::format_tag::cdeba</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5odhwiE">
 <span id="_CPPv3N4dnnl6memory5odhwiE"></span><span id="_CPPv2N4dnnl6memory5odhwiE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fabf55006478a9dae3506eb67923703a1d"></span><code class="sig-name descname">odhwi</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5acdebE" title="dnnl::memory::acdeb">acdeb</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5odhwiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faf95d333a023ac787b43babc5b5c480ae"><span class="std std-ref">dnnl::memory::format_tag::acdeb</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5idhwoE">
 <span id="_CPPv3N4dnnl6memory5idhwoE"></span><span id="_CPPv2N4dnnl6memory5idhwoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa2b3d6389089fb08059ece8a9642b8991"></span><code class="sig-name descname">idhwo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5bcdeaE" title="dnnl::memory::bcdea">bcdea</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5idhwoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa6debec47fc73823aa65cc49b94b7e1fb"><span class="std std-ref">dnnl::memory::format_tag::bcdea</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4goiwE">
 <span id="_CPPv3N4dnnl6memory4goiwE"></span><span id="_CPPv2N4dnnl6memory4goiwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa1f1bc797706732c22eb9987e3cea3e54"></span><code class="sig-name descname">goiw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4abcdE" title="dnnl::memory::abcd">abcd</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4goiwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae2fc714c4727ee9395f324cd2e7f331f"><span class="std std-ref">dnnl::memory::format_tag::abcd</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5goihwE">
 <span id="_CPPv3N4dnnl6memory5goihwE"></span><span id="_CPPv2N4dnnl6memory5goihwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa3dc0e53430a6368210356118196f821a"></span><code class="sig-name descname">goihw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5abcdeE" title="dnnl::memory::abcde">abcde</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5goihwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faab56b4d92b40713acc5af89985d4b786"><span class="std std-ref">dnnl::memory::format_tag::abcde</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5hwigoE">
 <span id="_CPPv3N4dnnl6memory5hwigoE"></span><span id="_CPPv2N4dnnl6memory5hwigoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fafd710c828421b3c91725b0e5aa53ecc6"></span><code class="sig-name descname">hwigo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5decabE" title="dnnl::memory::decab">decab</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5hwigoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab9a152e018d02395e6e94c5619da4a91"><span class="std std-ref">dnnl::memory::format_tag::decab</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5giohwE">
 <span id="_CPPv3N4dnnl6memory5giohwE"></span><span id="_CPPv2N4dnnl6memory5giohwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa5f1d6f8a3a8842611d15affa574b864f"></span><code class="sig-name descname">giohw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5acbdeE" title="dnnl::memory::acbde">acbde</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5giohwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae0e56a95aff0ee48fc44e8a4faf69adb"><span class="std std-ref">dnnl::memory::format_tag::acbde</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory6goidhwE">
 <span id="_CPPv3N4dnnl6memory6goidhwE"></span><span id="_CPPv2N4dnnl6memory6goidhwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3faa678de4e5a5e34c9a71a632b8f334b8b"></span><code class="sig-name descname">goidhw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory6abcdefE" title="dnnl::memory::abcdef">abcdef</a><a class="headerlink" href="#_CPPv4N4dnnl6memory6goidhwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>6D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae80b5017098950fc58aad83c8c14978e"><span class="std std-ref">dnnl::memory::format_tag::abcdef</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory6giodhwE">
 <span id="_CPPv3N4dnnl6memory6giodhwE"></span><span id="_CPPv2N4dnnl6memory6giodhwE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa4f2399cfdc9861fee9d39cb1d703aadc"></span><code class="sig-name descname">giodhw</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory6acbdefE" title="dnnl::memory::acbdef">acbdef</a><a class="headerlink" href="#_CPPv4N4dnnl6memory6giodhwE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>6D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fae80b5017098950fc58aad83c8c14978e"><span class="std std-ref">dnnl::memory::format_tag::abcdef</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory6dhwigoE">
 <span id="_CPPv3N4dnnl6memory6dhwigoE"></span><span id="_CPPv2N4dnnl6memory6dhwigoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab291a9717fdf353288d2d6082d578059"></span><code class="sig-name descname">dhwigo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory6defcabE" title="dnnl::memory::defcab">defcab</a><a class="headerlink" href="#_CPPv4N4dnnl6memory6dhwigoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>6D CNN weights tensor with groups; an alias for <a class="reference internal" href="#structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fac9cdbbb9640597fea44206cee7f8a151"><span class="std std-ref">dnnl::memory::format_tag::defcab</span></a> </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3tncE">
 <span id="_CPPv3N4dnnl6memory3tncE"></span><span id="_CPPv2N4dnnl6memory3tncE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fac775cf954921a129a65eb929476de911"></span><code class="sig-name descname">tnc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3abcE" title="dnnl::memory::abc">abc</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3tncE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D RNN data tensor in the format (seq_length, batch, input channels). </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory3ntcE">
 <span id="_CPPv3N4dnnl6memory3ntcE"></span><span id="_CPPv2N4dnnl6memory3ntcE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa6758344f9f89d390953c6718f34e9be1"></span><code class="sig-name descname">ntc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory3bacE" title="dnnl::memory::bac">bac</a><a class="headerlink" href="#_CPPv4N4dnnl6memory3ntcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>3D RNN data tensor in the format (batch, seq_length, input channels). </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4ldncE">
 <span id="_CPPv3N4dnnl6memory4ldncE"></span><span id="_CPPv2N4dnnl6memory4ldncE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab49be97ff353a86d84d06d98f846b61d"></span><code class="sig-name descname">ldnc</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4abcdE" title="dnnl::memory::abcd">abcd</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4ldncE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D RNN states tensor in the format (num_layers, num_directions, batch, state channels). </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5ldigoE">
 <span id="_CPPv3N4dnnl6memory5ldigoE"></span><span id="_CPPv2N4dnnl6memory5ldigoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa4e62e330c56963f9ead98490cd57ef7b"></span><code class="sig-name descname">ldigo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5abcdeE" title="dnnl::memory::abcde">abcde</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5ldigoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D RNN weights tensor in the format (num_layers, num_directions, input_channels, num_gates, output_channels).</p>
@@ -702,7 +702,7 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory5ldgoiE">
 <span id="_CPPv3N4dnnl6memory5ldgoiE"></span><span id="_CPPv2N4dnnl6memory5ldgoiE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa4c850fa02c9e56a4c20dbfde737f1f8d"></span><code class="sig-name descname">ldgoi</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory5abdecE" title="dnnl::memory::abdec">abdec</a><a class="headerlink" href="#_CPPv4N4dnnl6memory5ldgoiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>5D RNN weights tensor in the format (num_layers, num_directions, num_gates, output_channels, input_channels).</p>
@@ -713,7 +713,7 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="enumerator">
+<dl class="cpp enumerator">
 <dt id="_CPPv4N4dnnl6memory4ldgoE">
 <span id="_CPPv3N4dnnl6memory4ldgoE"></span><span id="_CPPv2N4dnnl6memory4ldgoE"></span><span class="target" id="structdnnl_1_1memory_1a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fab8690cd92ccee6a0ad55faccc0346aab"></span><code class="sig-name descname">ldgo</code> = <a class="reference internal" href="#_CPPv4N4dnnl6memory4abcdE" title="dnnl::memory::abcd">abcd</a><a class="headerlink" href="#_CPPv4N4dnnl6memory4ldgoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>4D RNN bias tensor in the format (num_layers, num_directions, num_gates, output_channels).</p>
@@ -726,13 +726,13 @@ is no clear definition on what the output values should be.</p></li>
 
 </dd></dl>
 
-<dl class="type">
+<dl class="cpp type">
 <dt id="_CPPv4N4dnnl6memory3dimE">
 <span id="_CPPv3N4dnnl6memory3dimE"></span><span id="_CPPv2N4dnnl6memory3dimE"></span><span class="target" id="structdnnl_1_1memory_1af647d5cd96f05e7876a5826ac83d9bd6"></span><em class="property">using </em><code class="sig-name descname">dim</code> = int64_t<a class="headerlink" href="#_CPPv4N4dnnl6memory3dimE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Integer type for representing dimension sizes and indices. </p>
 </dd></dl>
 
-<dl class="type">
+<dl class="cpp type">
 <dt id="_CPPv4N4dnnl6memory4dimsE">
 <span id="_CPPv3N4dnnl6memory4dimsE"></span><span id="_CPPv2N4dnnl6memory4dimsE"></span><span class="target" id="structdnnl_1_1memory_1a7d9f4b6ad8caf3969f436cd9ff27e9bb"></span><em class="property">using </em><code class="sig-name descname">dims</code> = std::vector&lt;<a class="reference internal" href="#_CPPv4N4dnnl6memory3dimE" title="dnnl::memory::dim">dim</a>&gt;<a class="headerlink" href="#_CPPv4N4dnnl6memory4dimsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Vector of dimensions. Implementations are free to force a limit on the vector’s length. </p>
@@ -741,7 +741,7 @@ is no clear definition on what the output values should be.</p></li>
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl6memory6memoryERK4descRK6enginePv">
 <span id="_CPPv3N4dnnl6memory6memoryERK4descRK6enginePv"></span><span id="_CPPv2N4dnnl6memory6memoryERK4descRK6enginePv"></span><span id="dnnl::memory::memory__descCR.engineCR.voidP"></span><span class="target" id="structdnnl_1_1memory_1a7349cd8dd17e53fbde7648fd7dc108a9"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>md</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory6memoryERK4descRK6enginePv" title="dnnl::memory::memory::engine">engine</a> &amp;<em>engine</em>, void *<em>handle</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory6memoryERK4descRK6enginePv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory object.</p>
@@ -756,7 +756,7 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE">
 <span id="_CPPv3I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE"></span><span id="_CPPv2I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE"></span><span class="target" id="structdnnl_1_1memory_1a8ae911088bc89746e49146c18d86ac3a"></span>template&lt;typename <code class="sig-name descname">T</code>, int <code class="sig-name descname">ndims</code> = 1&gt;<br /><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>md</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE" title="dnnl::memory::memory::engine">engine</a> &amp;<em>engine</em>, cl::sycl::buffer&lt;<a class="reference internal" href="#_CPPv4I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE" title="dnnl::memory::memory::T">T</a>, <a class="reference internal" href="#_CPPv4I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE" title="dnnl::memory::memory::ndims">ndims</a>&gt; &amp;<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0_iEN4dnnl6memory6memoryERK4descRK6engineRN2cl4sycl6bufferI1T5ndimsEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory object from a SYCL buffer.</p>
@@ -771,9 +771,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl6memory6memoryERK4descRK6engine">
-<span id="_CPPv3N4dnnl6memory6memoryERK4descRK6engine"></span><span id="_CPPv2N4dnnl6memory6memoryERK4descRK6engine"></span><span id="dnnl::memory::memory__descCR.engineCR"></span><span class="target" id="structdnnl_1_1memory_1aa28e9a81e89a97b90b49535dc3a5c96e"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>md</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory6memoryERK4descRK6enginePv" title="dnnl::memory::memory::engine">engine</a> &amp;<em>engine</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory6memoryERK4descRK6engine" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl6memory6memoryERK4descRK6engine"></span><span id="_CPPv2N4dnnl6memory6memoryERK4descRK6engine"></span><span id="dnnl::memory::memory__descCR.engineCR"></span><span class="target" id="structdnnl_1_1memory_1aa28e9a81e89a97b90b49535dc3a5c96e"></span><code class="sig-name descname">memory</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>md</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory6memoryERK4descRK6engine" title="dnnl::memory::memory::engine">engine</a> &amp;<em>engine</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory6memoryERK4descRK6engine" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory object.</p>
 <p>The underlying storage for the memory will be allocated by the library.</p>
 <p><dl class="simple">
@@ -786,41 +786,41 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory8get_descEv">
-<span id="_CPPv3NK4dnnl6memory8get_descEv"></span><span id="_CPPv2NK4dnnl6memory8get_descEv"></span><span id="dnnl::memory::get_descC"></span><span class="target" id="structdnnl_1_1memory_1ad8a1ad28ed7acf9c34c69e4b882c6e92"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">get_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory8get_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory8get_descEv"></span><span id="_CPPv2NK4dnnl6memory8get_descEv"></span><span id="dnnl::memory::get_descC"></span><span class="target" id="structdnnl_1_1memory_1a6bfc99db50d87d133c6b3b4f438b967a"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">get_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory8get_descEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the associated memory descriptor. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory10get_engineEv">
-<span id="_CPPv3NK4dnnl6memory10get_engineEv"></span><span id="_CPPv2NK4dnnl6memory10get_engineEv"></span><span id="dnnl::memory::get_engineC"></span><span class="target" id="structdnnl_1_1memory_1a9074709c5af8dc9d25dd9a98c4d1dbd3"></span><a class="reference internal" href="engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> <code class="sig-name descname">get_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory10get_engineEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory10get_engineEv"></span><span id="_CPPv2NK4dnnl6memory10get_engineEv"></span><span id="dnnl::memory::get_engineC"></span><span class="target" id="structdnnl_1_1memory_1a4494aca5ff97774b73e707f4f951972d"></span><a class="reference internal" href="engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> <code class="sig-name descname">get_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory10get_engineEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the associated engine. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory15get_data_handleEv">
-<span id="_CPPv3NK4dnnl6memory15get_data_handleEv"></span><span id="_CPPv2NK4dnnl6memory15get_data_handleEv"></span><span id="dnnl::memory::get_data_handleC"></span><span class="target" id="structdnnl_1_1memory_1a8968c24c4a95255f68ab2a483769343d"></span>void *<code class="sig-name descname">get_data_handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory15get_data_handleEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory15get_data_handleEv"></span><span id="_CPPv2NK4dnnl6memory15get_data_handleEv"></span><span id="dnnl::memory::get_data_handleC"></span><span class="target" id="structdnnl_1_1memory_1a1b81db911a391cefc31e35bbe9ca95fe"></span>void *<code class="sig-name descname">get_data_handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory15get_data_handleEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the underlying memory buffer.</p>
 <p>On the CPU engine, or when using USM, this is a pointer to the allocated memory. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory15set_data_handleEPv">
-<span id="_CPPv3NK4dnnl6memory15set_data_handleEPv"></span><span id="_CPPv2NK4dnnl6memory15set_data_handleEPv"></span><span id="dnnl::memory::set_data_handle__voidPC"></span><span class="target" id="structdnnl_1_1memory_1ab0ca87db309b17d747ec8e0d3adcdd15"></span>void <code class="sig-name descname">set_data_handle</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory15set_data_handleEPv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory15set_data_handleEPv"></span><span id="_CPPv2NK4dnnl6memory15set_data_handleEPv"></span><span id="dnnl::memory::set_data_handle__voidPC"></span><span class="target" id="structdnnl_1_1memory_1aaf3c13ed6f4af1b719ef7413ee36f63d"></span>void <code class="sig-name descname">set_data_handle</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory15set_data_handleEPv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sets memory buffer.</p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">handle</span></code>: Memory buffer to use as the underlying storage. It must have at least <a class="reference internal" href="#structdnnl_1_1memory_1ad8a1ad28ed7acf9c34c69e4b882c6e92"><span class="std std-ref">get_desc()</span></a>.get_size() bytes allocated. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle</span></code>: Memory buffer to use as the underlying storage. It must have at least <a class="reference internal" href="#structdnnl_1_1memory_1a6bfc99db50d87d133c6b3b4f438b967a"><span class="std std-ref">get_desc()</span></a>.get_size() bytes allocated. </p></li>
 </ul>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t">
-<span id="_CPPv3I0_iENK4dnnl6memory15get_sycl_bufferEP6size_t"></span><span id="_CPPv2I0_iENK4dnnl6memory15get_sycl_bufferEP6size_t"></span><span class="target" id="structdnnl_1_1memory_1a170571437afeabe2923477fdd6eea2fd"></span>template&lt;typename <code class="sig-name descname">T</code>, int <code class="sig-name descname">ndims</code> = 1&gt;<br />cl::sycl::buffer&lt;<a class="reference internal" href="#_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t" title="dnnl::memory::get_sycl_buffer::T">T</a>, <a class="reference internal" href="#_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t" title="dnnl::memory::get_sycl_buffer::ndims">ndims</a>&gt; <code class="sig-name descname">get_sycl_buffer</code><span class="sig-paren">(</span>size_t *<em>offset</em> = nullptr<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3I0_iENK4dnnl6memory15get_sycl_bufferEP6size_t"></span><span id="_CPPv2I0_iENK4dnnl6memory15get_sycl_bufferEP6size_t"></span><span class="target" id="structdnnl_1_1memory_1aa3a6104e28abd0f990d84e8bda324f93"></span>template&lt;typename <code class="sig-name descname">T</code>, int <code class="sig-name descname">ndims</code> = 1&gt;<br />cl::sycl::buffer&lt;<a class="reference internal" href="#_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t" title="dnnl::memory::get_sycl_buffer::T">T</a>, <a class="reference internal" href="#_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t" title="dnnl::memory::get_sycl_buffer::ndims">ndims</a>&gt; <code class="sig-name descname">get_sycl_buffer</code><span class="sig-paren">(</span>size_t *<em>offset</em> = nullptr<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4I0_iENK4dnnl6memory15get_sycl_bufferEN2cl4sycl6bufferI1T5ndimsEEP6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the underlying SYCL buffer object.</p>
 <p><dl class="simple">
 <dt><strong>Template Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -836,7 +836,7 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4I0_iEN4dnnl6memory15set_sycl_bufferEvRN2cl4sycl6bufferI1T5ndimsEE">
 <span id="_CPPv3I0_iEN4dnnl6memory15set_sycl_bufferERN2cl4sycl6bufferI1T5ndimsEE"></span><span id="_CPPv2I0_iEN4dnnl6memory15set_sycl_bufferERN2cl4sycl6bufferI1T5ndimsEE"></span><span class="target" id="structdnnl_1_1memory_1aaf55a9972d3af57d6a4997520c6067e4"></span>template&lt;typename <code class="sig-name descname">T</code>, int <code class="sig-name descname">ndims</code>&gt;<br />void <code class="sig-name descname">set_sycl_buffer</code><span class="sig-paren">(</span>cl::sycl::buffer&lt;<a class="reference internal" href="#_CPPv4I0_iEN4dnnl6memory15set_sycl_bufferEvRN2cl4sycl6bufferI1T5ndimsEE" title="dnnl::memory::set_sycl_buffer::T">T</a>, <a class="reference internal" href="#_CPPv4I0_iEN4dnnl6memory15set_sycl_bufferEvRN2cl4sycl6bufferI1T5ndimsEE" title="dnnl::memory::set_sycl_buffer::ndims">ndims</a>&gt; &amp;<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0_iEN4dnnl6memory15set_sycl_bufferEvRN2cl4sycl6bufferI1T5ndimsEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sets the underlying buffer to the given SYCL buffer.</p>
@@ -855,21 +855,21 @@ is no clear definition on what the output values should be.</p></li>
 </dd></dl>
 
 </div>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl6memory4descE">
 <span id="_CPPv3N4dnnl6memory4descE"></span><span id="_CPPv2N4dnnl6memory4descE"></span><span id="dnnl::memory::desc"></span><span class="target" id="structdnnl_1_1memory_1_1desc"></span><em class="property">struct </em><code class="sig-name descname">desc</code><a class="headerlink" href="#_CPPv4N4dnnl6memory4descE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A memory descriptor. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl6memory4desc4descEv">
 <span id="_CPPv3N4dnnl6memory4desc4descEv"></span><span id="_CPPv2N4dnnl6memory4desc4descEv"></span><span id="dnnl::memory::desc::desc"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a2a12f9b43aae8c214d695b321b543b5c"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory4desc4descEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a zero (empty) memory descriptor. Such a memory descriptor can be used to indicate absence of an argument. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb">
-<span id="_CPPv3N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb"></span><span id="_CPPv2N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb"></span><span id="dnnl::memory::desc::desc__memory::dimsCR.data_type.format_tag.b"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1af8efdb0761b98bfe82d71786a4e1d39e"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, <a class="reference internal" href="#_CPPv4NK4dnnl6memory4desc9data_typeEv" title="dnnl::memory::desc::data_type">data_type</a> <em>data_type</em>, <a class="reference internal" href="#_CPPv4N4dnnl6memory10format_tagE" title="dnnl::memory::format_tag">format_tag</a> <em>format_tag</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb"></span><span id="_CPPv2N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb"></span><span id="dnnl::memory::desc::desc__memory::dimsCR.data_type.format_tag.b"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1af8efdb0761b98bfe82d71786a4e1d39e"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, <a class="reference internal" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb" title="dnnl::memory::desc::desc::data_type">data_type</a> <em>data_type</em>, <a class="reference internal" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb" title="dnnl::memory::desc::desc::format_tag">format_tag</a> <em>format_tag</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_type10format_tagb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory descriptor.</p>
 <p><dl class="simple">
 <dt><strong>Note</strong></dt><dd><p>The logical order of dimensions corresponds to the <code class="docutils literal notranslate"><span class="pre">abc...</span></code> format tag, and the physical meaning of the dimensions depends on both the primitive that consumes the memory and the context of that consumption.</p>
@@ -885,9 +885,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb">
-<span id="_CPPv3N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb"></span><span id="_CPPv2N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb"></span><span id="dnnl::memory::desc::desc__memory::dimsCR.data_type.memory::dimsCR.b"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1aa37dd11b790b39442c29cd74ea75a166"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, <a class="reference internal" href="#_CPPv4NK4dnnl6memory4desc9data_typeEv" title="dnnl::memory::desc::data_type">data_type</a> <em>data_type</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>strides</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb"></span><span id="_CPPv2N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb"></span><span id="dnnl::memory::desc::desc__memory::dimsCR.data_type.memory::dimsCR.b"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1aa37dd11b790b39442c29cd74ea75a166"></span><code class="sig-name descname">desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, <a class="reference internal" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb" title="dnnl::memory::desc::desc::data_type">data_type</a> <em>data_type</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>strides</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl6memory4desc4descERKN6memory4dimsE9data_typeRKN6memory4dimsEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory descriptor by strides.</p>
 <p><dl class="simple">
 <dt><strong>Note</strong></dt><dd><p>The logical order of dimensions corresponds to the <code class="docutils literal notranslate"><span class="pre">abc...</span></code> format tag, and the physical meaning of the dimensions depends on both the primitive that consumes the memory and the context of that consumption.</p>
@@ -903,9 +903,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb">
-<span id="_CPPv3NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb"></span><span id="_CPPv2NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb"></span><span id="dnnl::memory::desc::submemory_desc__memory::dimsCR.memory::dimsCR.bC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a3573d45ed89399339ad2af05b8097a3a"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">submemory_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>offsets</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb"></span><span id="_CPPv2NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb"></span><span id="dnnl::memory::desc::submemory_desc__memory::dimsCR.memory::dimsCR.bC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a3d017ecf635aae91cc3856a9dfe0721c"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">submemory_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>offsets</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc14submemory_descERKN6memory4dimsERKN6memory4dimsEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory descriptor for a region inside an area described by this memory descriptor. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>A memory descriptor for the region. </p>
 </dd>
@@ -919,9 +919,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb">
-<span id="_CPPv3NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb"></span><span id="_CPPv2NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb"></span><span id="dnnl::memory::desc::reshape__memory::dimsCR.bC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1accdc5b253fedb7243c72a9ed4b3b3f7f"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">reshape</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb"></span><span id="_CPPv2NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb"></span><span id="dnnl::memory::desc::reshape__memory::dimsCR.bC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a0325f155fdaf54443a31df5bd7a1ab88"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">reshape</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> &amp;<em>dims</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc7reshapeERKN6memory4dimsEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory descriptor by reshaping an existing one. The new memory descriptor inherits the data type.</p>
 <p>The operation ensures that the transformation of the physical memory format corresponds to the transformation of the logical dimensions. If such transformation is impossible, the function either throws an exception (default) or returns a zero memory descriptor depending on the <code class="docutils literal notranslate"><span class="pre">allow_empty</span></code> flag.</p>
 <p>The reshape operation can be described as a combination of the following basic operations:<ol class="arabic simple">
@@ -949,9 +949,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb">
-<span id="_CPPv3NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb"></span><span id="_CPPv2NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb"></span><span id="dnnl::memory::desc::permute_axes__std::vector:i:CR.bC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a70e831b990a91d61bc44e57f6e895a83"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">permute_axes</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;int&gt; &amp;<em>permutation</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb"></span><span id="_CPPv2NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb"></span><span id="dnnl::memory::desc::permute_axes__std::vector:i:CR.bC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a9dd8e97d94b247910fcf2473da12844d"></span><a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">permute_axes</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;int&gt; &amp;<em>permutation</em>, bool <em>allow_empty</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc12permute_axesERKNSt6vectorIiEEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a memory descriptor by permuting axes in an existing one.</p>
 <p>The physical memory layout representation is adjusted accordingly to maintain the consistency between the logical and physical parts of the memory descriptor. The new memory descriptor inherits the data type.</p>
 <p>The logical axes will be permuted in the following manner: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ndims</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -982,9 +982,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc4dimsEv">
-<span id="_CPPv3NK4dnnl6memory4desc4dimsEv"></span><span id="_CPPv2NK4dnnl6memory4desc4dimsEv"></span><span id="dnnl::memory::desc::dimsC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1aaf95c174b7d7f5ea59646886719d0a2b"></span><a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> <code class="sig-name descname">dims</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc4dimsEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc4dimsEv"></span><span id="_CPPv2NK4dnnl6memory4desc4dimsEv"></span><span id="dnnl::memory::desc::dimsC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a491d7a286f274fc21a0202e678fb06e9"></span><a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory4dimsE" title="dnnl::memory::dims">dims</a> <code class="sig-name descname">dims</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc4dimsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns dimensions of the memory descriptor.</p>
 <p>Potentially expensive due to the data copy involved. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>A copy of the dimensions vector. </p>
@@ -993,9 +993,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc9data_typeEv">
-<span id="_CPPv3NK4dnnl6memory4desc9data_typeEv"></span><span id="_CPPv2NK4dnnl6memory4desc9data_typeEv"></span><span id="dnnl::memory::desc::data_typeC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1ab3cb5e5f28d660a0105eb7580e5ab213"></span><a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory9data_typeE" title="dnnl::memory::data_type">data_type</a> <code class="sig-name descname">data_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc9data_typeEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc9data_typeEv"></span><span id="_CPPv2NK4dnnl6memory4desc9data_typeEv"></span><span id="dnnl::memory::desc::data_typeC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a13a55bc177f0397a337222c3de6fd102"></span><a class="reference internal" href="#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="#_CPPv4N4dnnl6memory9data_typeE" title="dnnl::memory::data_type">data_type</a> <code class="sig-name descname">data_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc9data_typeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the data type of the memory descriptor. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>The data type. </p>
 </dd>
@@ -1003,9 +1003,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc8get_sizeEv">
-<span id="_CPPv3NK4dnnl6memory4desc8get_sizeEv"></span><span id="_CPPv2NK4dnnl6memory4desc8get_sizeEv"></span><span id="dnnl::memory::desc::get_sizeC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1ac20108bc192912382aa4a95ae27df804"></span>size_t <code class="sig-name descname">get_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc8get_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc8get_sizeEv"></span><span id="_CPPv2NK4dnnl6memory4desc8get_sizeEv"></span><span id="dnnl::memory::desc::get_sizeC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a3a12698f833b44ed55af9fc6621c4917"></span>size_t <code class="sig-name descname">get_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc8get_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns size of the memory descriptor in bytes. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>The number of bytes required to allocate a memory buffer for the memory object described by this memory descriptor including the padding area. </p>
 </dd>
@@ -1013,9 +1013,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desc7is_zeroEv">
-<span id="_CPPv3NK4dnnl6memory4desc7is_zeroEv"></span><span id="_CPPv2NK4dnnl6memory4desc7is_zeroEv"></span><span id="dnnl::memory::desc::is_zeroC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1aa162a1ba5621a799c8a909c726f021a2"></span>bool <code class="sig-name descname">is_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc7is_zeroEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desc7is_zeroEv"></span><span id="_CPPv2NK4dnnl6memory4desc7is_zeroEv"></span><span id="dnnl::memory::desc::is_zeroC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a517663e910e8c1795b3a935f49579652"></span>bool <code class="sig-name descname">is_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desc7is_zeroEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Checks whether the memory descriptor is zero (empty). <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the memory descriptor describes an empty memory and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
 </dd>
@@ -1023,9 +1023,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4desceqERK4desc">
-<span id="_CPPv3NK4dnnl6memory4desceqERK4desc"></span><span id="_CPPv2NK4dnnl6memory4desceqERK4desc"></span><span id="dnnl::memory::desc::eq-operator__descCRC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a9d623dab6f8a8ebc34b0da95814e3728"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>other</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desceqERK4desc" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4desceqERK4desc"></span><span id="_CPPv2NK4dnnl6memory4desceqERK4desc"></span><span id="dnnl::memory::desc::eq-operator__descCRC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a16d4cd7dfcc61b101ff1b82927cd6c16"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>other</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4desceqERK4desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An equality operator. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>Whether this and the other memory descriptors have the same format tag, dimensions, strides, blocking, etc. </p>
 </dd>
@@ -1037,9 +1037,9 @@ is no clear definition on what the output values should be.</p></li>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl6memory4descneERK4desc">
-<span id="_CPPv3NK4dnnl6memory4descneERK4desc"></span><span id="_CPPv2NK4dnnl6memory4descneERK4desc"></span><span id="dnnl::memory::desc::neq-operator__descCRC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1a5a1bc8d3b88a2c304fd9535ea45fbb72"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>other</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4descneERK4desc" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl6memory4descneERK4desc"></span><span id="_CPPv2NK4dnnl6memory4descneERK4desc"></span><span id="dnnl::memory::desc::neq-operator__descCRC"></span><span class="target" id="structdnnl_1_1memory_1_1desc_1ac4e2e2af3d52c3812cc73493726091ab"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>other</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl6memory4descneERK4desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An inequality operator. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>Whether this and the other memory descriptors describe different memory. </p>
 </dd>

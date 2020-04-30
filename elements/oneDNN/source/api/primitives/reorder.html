@@ -220,19 +220,19 @@
 used to change the way that the data is laid out in memory.</p>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl7reorderE">
 <span id="_CPPv3N4dnnl7reorderE"></span><span id="_CPPv2N4dnnl7reorderE"></span><span id="dnnl::reorder"></span><span class="target" id="structdnnl_1_1reorder"></span><em class="property">struct </em><code class="sig-name descname">reorder</code> : <em class="property">public</em> dnnl::<a class="reference internal" href="common.html#_CPPv4N4dnnl9primitiveE" title="dnnl::primitive">primitive</a><a class="headerlink" href="#_CPPv4N4dnnl7reorderE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reorder primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder7reorderEv">
 <span id="_CPPv3N4dnnl7reorder7reorderEv"></span><span id="_CPPv2N4dnnl7reorder7reorderEv"></span><span id="dnnl::reorder::reorder"></span><span class="target" id="structdnnl_1_1reorder_1a52a3e3afb773f6b5c77e964c1fa37fde"></span><code class="sig-name descname">reorder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder7reorderEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Default constructor. Produces an empty object. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder7reorderERK14primitive_desc">
 <span id="_CPPv3N4dnnl7reorder7reorderERK14primitive_desc"></span><span id="_CPPv2N4dnnl7reorder7reorderERK14primitive_desc"></span><span id="dnnl::reorder::reorder__primitive_descCR"></span><span class="target" id="structdnnl_1_1reorder_1a8052aeb588fa278d3e56ef85490b6690"></span><code class="sig-name descname">reorder</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4dnnl7reorder14primitive_descE" title="dnnl::reorder::primitive_desc">primitive_desc</a> &amp;<em>pd</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder7reorderERK14primitive_desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a reorder primitive. <dl class="simple">
@@ -244,7 +244,7 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder7reorderERK6memoryRK6memoryRK14primitive_attr">
 <span id="_CPPv3N4dnnl7reorder7reorderERK6memoryRK6memoryRK14primitive_attr"></span><span id="_CPPv2N4dnnl7reorder7reorderERK6memoryRK6memoryRK14primitive_attr"></span><span id="dnnl::reorder::reorder__memoryCR.memoryCR.primitive_attrCR"></span><span class="target" id="structdnnl_1_1reorder_1af04b380a824816defecb488a724bfb37"></span><code class="sig-name descname">reorder</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>src</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>dst</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em> = <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a>()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder7reorderERK6memoryRK6memoryRK14primitive_attr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a reorder primitive that would reorder data between memory objects having the same memory descriptors as memory objects <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">dst</span></code>.</p>
@@ -259,7 +259,7 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder7executeE6streamR6memoryR6memory">
 <span id="_CPPv3N4dnnl7reorder7executeE6streamR6memoryR6memory"></span><span id="_CPPv2N4dnnl7reorder7executeE6streamR6memoryR6memory"></span><span id="dnnl::reorder::execute__stream.memoryR.memoryR"></span><span class="target" id="structdnnl_1_1reorder_1a1332845d212dca21e45ebe08c9a77e2f"></span>void <code class="sig-name descname">execute</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N4dnnl7reorder7executeE6streamR6memoryR6memory" title="dnnl::reorder::execute::stream">stream</a> <em>stream</em>, <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>src</em>, <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>dst</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder7executeE6streamR6memoryR6memory" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Executes the reorder primitive.</p>
@@ -274,7 +274,7 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder12execute_syclER6streamR6memoryR6memoryRKNSt6vectorIN2cl4sycl5eventEEE">
 <span id="_CPPv3N4dnnl7reorder12execute_syclER6streamR6memoryR6memoryRKNSt6vectorIN2cl4sycl5eventEEE"></span><span id="_CPPv2N4dnnl7reorder12execute_syclER6streamR6memoryR6memoryRKNSt6vectorIN2cl4sycl5eventEEE"></span><span id="dnnl::reorder::execute_sycl__streamR.memoryR.memoryR.std::vector:cl::sycl::event:CR"></span><span class="target" id="structdnnl_1_1reorder_1a813ed1a442b89d113eeb3055026006bf"></span>cl::sycl::event <code class="sig-name descname">execute_sycl</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N4dnnl7reorder12execute_syclER6streamR6memoryR6memoryRKNSt6vectorIN2cl4sycl5eventEEE" title="dnnl::reorder::execute_sycl::stream">stream</a> &amp;<em>stream</em>, <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>src</em>, <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>dst</em>, <em class="property">const</em> std::vector&lt;cl::sycl::event&gt; &amp;<em>deps</em> = {}<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder12execute_syclER6streamR6memoryR6memoryRKNSt6vectorIN2cl4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Executes the reorder primitive (SYCL-aware version)</p>
@@ -293,28 +293,28 @@ used to change the way that the data is laid out in memory.</p>
 </dd></dl>
 
 </div>
-<dl class="class">
+<dl class="cpp struct">
 <dt id="_CPPv4N4dnnl7reorder14primitive_descE">
 <span id="_CPPv3N4dnnl7reorder14primitive_descE"></span><span id="_CPPv2N4dnnl7reorder14primitive_descE"></span><span id="dnnl::reorder::primitive_desc"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc"></span><em class="property">struct </em><code class="sig-name descname">primitive_desc</code> : <em class="property">public</em> dnnl::<a class="reference internal" href="../utilities.html#_CPPv4N4dnnl19primitive_desc_baseE" title="dnnl::primitive_desc_base">primitive_desc_base</a><a class="headerlink" href="#_CPPv4N4dnnl7reorder14primitive_descE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Primitive descriptor for a reorder primitive. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder14primitive_desc14primitive_descEv">
 <span id="_CPPv3N4dnnl7reorder14primitive_desc14primitive_descEv"></span><span id="_CPPv2N4dnnl7reorder14primitive_desc14primitive_descEv"></span><span id="dnnl::reorder::primitive_desc::primitive_desc"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1a9db95f00490222c15d31778e93a0ac45"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder14primitive_desc14primitive_descEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Default constructor. Produces an empty object. </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder14primitive_desc14primitive_descERK6engineRKN6memory4descERK6engineRKN6memory4descERK14primitive_attr">
 <span id="_CPPv3N4dnnl7reorder14primitive_desc14primitive_descERK6engineRKN6memory4descERK6engineRKN6memory4descERK14primitive_attr"></span><span id="_CPPv2N4dnnl7reorder14primitive_desc14primitive_descERK6engineRKN6memory4descERK6engineRKN6memory4descERK14primitive_attr"></span><span id="dnnl::reorder::primitive_desc::primitive_desc__engineCR.memory::descCR.engineCR.memory::descCR.primitive_attrCR"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1ae9078780b5b1baf1b0b48e256d8312b2"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> &amp;<em>src_engine</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>src_md</em>, <em class="property">const</em> <a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> &amp;<em>dst_engine</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> &amp;<em>dst_md</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em> = <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a>()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder14primitive_desc14primitive_descERK6engineRKN6memory4descERK6engineRKN6memory4descERK14primitive_attr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a primitive descriptor for reorder primitive.</p>
 <p>Inputs:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1af42e791f493e636c086e13c6d4c06b43"><span class="std std-ref">dnnl::primitive_desc_base::src_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a31ee74fc65986558ac11db590945811a"><span class="std std-ref">dnnl::primitive_desc_base::src_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
 </ul>
 </p>
 <p>Outputs:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dst</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a495ee7c8e1ec3eab35f6329fdcd352bb"><span class="std std-ref">dnnl::primitive_desc_base::dst_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dst</span></code> (<a class="reference internal" href="../utilities.html#structdnnl_1_1primitive__desc__base_1a0b724a92606a86a7ac9b6b9b07935529"><span class="std std-ref">dnnl::primitive_desc_base::dst_desc</span></a> (<code class="docutils literal notranslate"><span class="pre">0</span></code>))</p></li>
 </ul>
 </p>
 <p><dl class="simple">
@@ -330,7 +330,7 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4N4dnnl7reorder14primitive_desc14primitive_descERK6memoryRK6memoryRK14primitive_attr">
 <span id="_CPPv3N4dnnl7reorder14primitive_desc14primitive_descERK6memoryRK6memoryRK14primitive_attr"></span><span id="_CPPv2N4dnnl7reorder14primitive_desc14primitive_descERK6memoryRK6memoryRK14primitive_attr"></span><span id="dnnl::reorder::primitive_desc::primitive_desc__memoryCR.memoryCR.primitive_attrCR"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1a6b9ec5ab005bb668e4db7cefeec04c54"></span><code class="sig-name descname">primitive_desc</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>src</em>, <em class="property">const</em> <a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a> &amp;<em>dst</em>, <em class="property">const</em> <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a> &amp;<em>attr</em> = <a class="reference internal" href="attributes.html#_CPPv4N4dnnl14primitive_attrE" title="dnnl::primitive_attr">primitive_attr</a>()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4dnnl7reorder14primitive_desc14primitive_descERK6memoryRK6memoryRK14primitive_attr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructs a primitive descriptor for reorder primitive.</p>
@@ -345,9 +345,9 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl7reorder14primitive_desc14get_src_engineEv">
-<span id="_CPPv3NK4dnnl7reorder14primitive_desc14get_src_engineEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc14get_src_engineEv"></span><span id="dnnl::reorder::primitive_desc::get_src_engineC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1a3793240346a9e432cfa8364eacbc3fac"></span><a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> <code class="sig-name descname">get_src_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc14get_src_engineEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl7reorder14primitive_desc14get_src_engineEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc14get_src_engineEv"></span><span id="dnnl::reorder::primitive_desc::get_src_engineC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1aeaef506802266f06d91f6f8b3ef270d3"></span><a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> <code class="sig-name descname">get_src_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc14get_src_engineEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the engine on which the source memory is allocated. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>The engine on which the source memory is allocated. </p>
 </dd>
@@ -355,9 +355,9 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl7reorder14primitive_desc14get_dst_engineEv">
-<span id="_CPPv3NK4dnnl7reorder14primitive_desc14get_dst_engineEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc14get_dst_engineEv"></span><span id="dnnl::reorder::primitive_desc::get_dst_engineC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1a6667395ce77d7c4651d8d9d11dae4a4b"></span><a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> <code class="sig-name descname">get_dst_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc14get_dst_engineEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4dnnl7reorder14primitive_desc14get_dst_engineEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc14get_dst_engineEv"></span><span id="dnnl::reorder::primitive_desc::get_dst_engineC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1aeea13591e2dc943d337f9617fedec3ff"></span><a class="reference internal" href="../engine.html#_CPPv4N4dnnl6engineE" title="dnnl::engine">engine</a> <code class="sig-name descname">get_dst_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc14get_dst_engineEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the engine on which the destination memory is allocated. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>The engine on which the destination memory is allocated. </p>
 </dd>
@@ -365,25 +365,23 @@ used to change the way that the data is laid out in memory.</p>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl7reorder14primitive_desc8src_descEv">
-<span id="_CPPv3NK4dnnl7reorder14primitive_desc8src_descEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc8src_descEv"></span><span id="dnnl::reorder::primitive_desc::src_descC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1a07491b1aa7302a3d43ecb0671d9a6cd5"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">src_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc8src_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns a source memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl7reorder14primitive_desc8src_descEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc8src_descEv"></span><span id="dnnl::reorder::primitive_desc::src_descC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1ae704247f083934706975623a06b22919"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">src_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc8src_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a source memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Source memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not have a source parameter. </p>
+<p>A zero memory descriptor if the primitive does not have a source parameter. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
-<dl class="function">
+<dl class="cpp function">
 <dt id="_CPPv4NK4dnnl7reorder14primitive_desc8dst_descEv">
-<span id="_CPPv3NK4dnnl7reorder14primitive_desc8dst_descEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc8dst_descEv"></span><span id="dnnl::reorder::primitive_desc::dst_descC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1ab167220e0773c3e8a66782ad62aef373"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">dst_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc8dst_descEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns a destination memory descriptor. <dl class="simple">
+<span id="_CPPv3NK4dnnl7reorder14primitive_desc8dst_descEv"></span><span id="_CPPv2NK4dnnl7reorder14primitive_desc8dst_descEv"></span><span id="dnnl::reorder::primitive_desc::dst_descC"></span><span class="target" id="structdnnl_1_1reorder_1_1primitive__desc_1abbaab1ff8af2e86a412809932b16c90e"></span><a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="../memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">dst_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl7reorder14primitive_desc8dst_descEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a destination memory descriptor. <dl>
 <dt><strong>Return</strong></dt><dd><p>Destination memory descriptor. </p>
-</dd>
-<dt><strong>Return</strong></dt><dd><p>A zero memory descriptor if the primitive does not have a destination parameter. </p>
+<p>A zero memory descriptor if the primitive does not have a destination parameter. </p>
 </dd>
 </dl>
 </p>
