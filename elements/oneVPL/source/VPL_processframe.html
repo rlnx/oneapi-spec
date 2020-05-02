@@ -175,13 +175,14 @@
             
   <p>The <a class="reference internal" href="index.html#_CPPv4N3vpl12VideoProcessE" title="vpl::VideoProcess"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vpl::VideoProcess</span></code></a> class implements a variety of filter operations.
 Current API is limited to single input and single output.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-3f57f93377ab0f9586b483e4774e419969c6d1f1.png" alt="digraph {
   rankdir=LR;
   Raw0 [shape=rect label=&quot;raw&quot; ];
   Decode [shape=record  label=&quot;Decode&quot;];
   Raw [shape=rect label=&quot;raw&quot;];
   Raw0-&gt;Decode-&gt;Raw;
-}<p><strong>Supported Filter Operations</strong>
+}" class="graphviz" /></div>
+<p><strong>Supported Filter Operations</strong>
 The list of filters will expand based on implementation schedule.
 Current release supports the following filters:</p>
 <ul class="simple">
@@ -221,14 +222,15 @@ which controls per session and per frame settings of the encode operations.
 according to the output image specification in the settings.</p>
 <p><strong>Data model</strong>:</p>
 <p>VPL allocates pools of VPL Memory used by frame process and consumers of processed frames.  The application is expected to manage reference counts.  Only surfaces with no external references can be used to for new frame output.</p>
-digraph  {
+<div class="graphviz"><img src="../../../_images/graphviz-6cefac412dda914ba516b7ed0c6d83543a6ae915.png" alt="digraph  {
  rankdir=LR
  node [shape=record];
  struct1 [label=&quot;&lt;f0&gt; surface pool|&lt;f1&gt; ProcessFrame&quot;];
  struct3 [label=&quot;&lt;f1&gt; rest of pipeline&quot;];
 
  struct1:f1 -&gt; struct3:f1 [label=&quot;VPL Memory&quot;];
-}<p><strong>Sample code</strong>:</p>
+}" class="graphviz" /></div>
+<p><strong>Sample code</strong>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;vpl/vpl.hpp&quot;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>

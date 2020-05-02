@@ -174,13 +174,14 @@
            <div itemprop="articleBody">
             
   <p>The <a class="reference internal" href="index.html#_CPPv4N3vpl6DecodeE" title="vpl::Decode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vpl::Decode</span></code></a> implements elementary stream decode from encoded bitstreams and outputs raw frames.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-adf34fd1dba8a87864649b9eff0e217731300c07.png" alt="digraph {
   rankdir=LR;
   Bitstream [shape=record label=&quot;Bitstream&quot; ];
   Decode [shape=record  label=&quot;Decode&quot;];
   Raw [shape=rect];
   Bitstream-&gt;Decode-&gt;Raw;
-}<p><strong>Supported bitstream formats</strong></p>
+}" class="graphviz" /></div>
+<p><strong>Supported bitstream formats</strong></p>
 <ul class="simple">
 <li><p>h264</p></li>
 <li><p>h265</p></li>
@@ -192,7 +193,7 @@ digraph {
 </div>
 <p><strong>States</strong>:</p>
 <p>During execution, state communicates what the application should do next.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-475f85a6d6225f3bfeaa51ef56d855f8918194c8.png" alt="digraph {
   rankdir=LR
 
   start
@@ -217,7 +218,8 @@ digraph {
 
   READ_INPUT-&gt;END_OF_OPERATION[label=&quot;no more to process&quot;]
   END_OF_OPERATION-&gt;end
-}<table class="docutils align-default">
+}" class="graphviz" /></div>
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 81%" />
@@ -247,14 +249,15 @@ digraph {
 which controls per session and per frame settings of the decode operations.</p>
 <p><strong>Data model</strong>:</p>
 <p>VPL allocates pools of VPL Memory used by decode and consumers of decoded frames.  The application is expected to manage reference counts.  Only surfaces with no external references can be used to decode new frames.</p>
-digraph  {
+<div class="graphviz"><img src="../../../_images/graphviz-92257abe204e6e72a2da235b5019e3677426ffb5.png" alt="digraph  {
  rankdir=LR
  node [shape=record];
  struct1 [label=&quot;&lt;f0&gt; surface pool|&lt;f1&gt; DecodeFrame&quot;];
  struct3 [label=&quot;&lt;f1&gt; rest of pipeline&quot;];
 
  struct1:f1 -&gt; struct3:f1 [label=&quot;VPL Memory&quot;];
-}<p><strong>Sample code</strong>:</p>
+}" class="graphviz" /></div>
+<p><strong>Sample code</strong>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;vpl/vpl.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#define BUFFER_SIZE 1024 * 1024</span>
 

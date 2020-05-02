@@ -459,13 +459,14 @@ The following example changes the output resolution in the middle of a decoding 
 <div class="section" id="decode">
 <h3>Decode<a class="headerlink" href="#decode" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#_CPPv4N3vpl6DecodeE" title="vpl::Decode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vpl::Decode</span></code></a> implements elementary stream decode from encoded bitstreams and outputs raw frames.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-21aaf85fe950adb273ba9a922140c55044cba519.png" alt="digraph {
   rankdir=LR;
   Bitstream [shape=record label=&quot;Bitstream&quot; ];
   Decode [shape=record  label=&quot;Decode&quot;];
   Raw [shape=rect];
   Bitstream-&gt;Decode-&gt;Raw;
-}<p><strong>Supported bitstream formats</strong></p>
+}" class="graphviz" /></div>
+<p><strong>Supported bitstream formats</strong></p>
 <ul class="simple">
 <li><p>h264</p></li>
 <li><p>h265</p></li>
@@ -477,7 +478,7 @@ digraph {
 </div>
 <p><strong>States</strong>:</p>
 <p>During execution, state communicates what the application should do next.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-f71c3d12dfb867ce192dbbb3bb2c495ad618de46.png" alt="digraph {
   rankdir=LR
 
   start
@@ -502,7 +503,8 @@ digraph {
 
   READ_INPUT-&gt;END_OF_OPERATION[label=&quot;no more to process&quot;]
   END_OF_OPERATION-&gt;end
-}<table class="docutils align-default">
+}" class="graphviz" /></div>
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 81%" />
@@ -532,14 +534,15 @@ digraph {
 which controls per session and per frame settings of the decode operations.</p>
 <p><strong>Data model</strong>:</p>
 <p>VPL allocates pools of VPL Memory used by decode and consumers of decoded frames.  The application is expected to manage reference counts.  Only surfaces with no external references can be used to decode new frames.</p>
-digraph  {
+<div class="graphviz"><img src="../../../_images/graphviz-9503e1dbaf6834284d16111c9001e17d74e1fa63.png" alt="digraph  {
  rankdir=LR
  node [shape=record];
  struct1 [label=&quot;&lt;f0&gt; surface pool|&lt;f1&gt; DecodeFrame&quot;];
  struct3 [label=&quot;&lt;f1&gt; rest of pipeline&quot;];
 
  struct1:f1 -&gt; struct3:f1 [label=&quot;VPL Memory&quot;];
-}<p><strong>Sample code</strong>:</p>
+}" class="graphviz" /></div>
+<p><strong>Sample code</strong>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;vpl/vpl.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#define BUFFER_SIZE 1024 * 1024</span>
 
@@ -613,13 +616,14 @@ digraph  {
 <div class="section" id="encode">
 <h3>Encode<a class="headerlink" href="#encode" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#_CPPv4N3vpl6EncodeE" title="vpl::Encode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vpl::Encode</span></code></a> class implements elementary stream encode from raw frame to encoded bitstream.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-5cebf3898f93544238e061f2b687e7215ca56709.png" alt="digraph {
   rankdir=LR;
   Bitstream [shape=record label=&quot;Bitstream&quot; ];
   Encode [shape=record  label=&quot;Encode&quot;];
   Raw [shape=rect];
   Raw-&gt;Encode-&gt;Bitstream;
-}<p><strong>Supported bitstream formats</strong></p>
+}" class="graphviz" /></div>
+<p><strong>Supported bitstream formats</strong></p>
 <ul class="simple">
 <li><p>h264</p></li>
 <li><p>h265</p></li>
@@ -631,7 +635,7 @@ digraph {
 </div>
 <p><strong>States</strong>:</p>
 <p>During execution, state communicates what the application should do next.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-904c8cc2a1fdd2d0b0996289ecf64b1e15fbd0f1.png" alt="digraph {
   rankdir=LR
 
   start
@@ -656,7 +660,8 @@ digraph {
 
   READ_INPUT-&gt;END_OF_OPERATION[label=&quot;no more to process&quot;]
   END_OF_OPERATION-&gt;end
-}<table class="docutils align-default">
+}" class="graphviz" /></div>
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 39%" />
 <col style="width: 61%" />
@@ -686,14 +691,15 @@ digraph {
 which controls per session and per frame settings of the encode operations.</p>
 <p><strong>Data model</strong>:</p>
 <p>VPL allocates pools of VPL Memory used by decode and consumers of decoded frames.  The application is expected to manage reference counts.  Only surfaces with no external references can be used to decode new frames.</p>
-digraph  {
+<div class="graphviz"><img src="../../../_images/graphviz-9503e1dbaf6834284d16111c9001e17d74e1fa63.png" alt="digraph  {
  rankdir=LR
  node [shape=record];
  struct1 [label=&quot;&lt;f0&gt; surface pool|&lt;f1&gt; DecodeFrame&quot;];
  struct3 [label=&quot;&lt;f1&gt; rest of pipeline&quot;];
 
  struct1:f1 -&gt; struct3:f1 [label=&quot;VPL Memory&quot;];
-}<p><strong>Sample code</strong>:</p>
+}" class="graphviz" /></div>
+<p><strong>Sample code</strong>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;vpl/vpl.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#define BUFFER_SIZE 1024 * 1024</span>
 
@@ -748,13 +754,14 @@ digraph  {
 <h3>Video Processing<a class="headerlink" href="#video-processing" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#_CPPv4N3vpl12VideoProcessE" title="vpl::VideoProcess"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">vpl::VideoProcess</span></code></a> class implements a variety of filter operations.
 Current API is limited to single input and single output.</p>
-digraph {
+<div class="graphviz"><img src="../../../_images/graphviz-1be5d10c4f2a6c183932a5127705cc178f7afd0d.png" alt="digraph {
   rankdir=LR;
   Raw0 [shape=rect label=&quot;raw&quot; ];
   Decode [shape=record  label=&quot;Decode&quot;];
   Raw [shape=rect label=&quot;raw&quot;];
   Raw0-&gt;Decode-&gt;Raw;
-}<p><strong>Supported Filter Operations</strong>
+}" class="graphviz" /></div>
+<p><strong>Supported Filter Operations</strong>
 The list of filters will expand based on implementation schedule.
 Current release supports the following filters:</p>
 <ul class="simple">
@@ -794,14 +801,15 @@ which controls per session and per frame settings of the encode operations.
 according to the output image specification in the settings.</p>
 <p><strong>Data model</strong>:</p>
 <p>VPL allocates pools of VPL Memory used by frame process and consumers of processed frames.  The application is expected to manage reference counts.  Only surfaces with no external references can be used to for new frame output.</p>
-digraph  {
+<div class="graphviz"><img src="../../../_images/graphviz-02e881985e1244a055ad8d8359b8fe13fa303264.png" alt="digraph  {
  rankdir=LR
  node [shape=record];
  struct1 [label=&quot;&lt;f0&gt; surface pool|&lt;f1&gt; ProcessFrame&quot;];
  struct3 [label=&quot;&lt;f1&gt; rest of pipeline&quot;];
 
  struct1:f1 -&gt; struct3:f1 [label=&quot;VPL Memory&quot;];
-}<p><strong>Sample code</strong>:</p>
+}" class="graphviz" /></div>
+<p><strong>Sample code</strong>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;vpl/vpl.hpp&quot;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
@@ -2509,17 +2517,17 @@ The following example summarize the key usage scenario:</p>
 <p class="breathe-sectiondef-title rubric">Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE">
-<span id="_CPPv3N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE"></span><span id="_CPPv2N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE"></span><span id="vplm::cpu::make_memory__vplm::cpu_imageCR"></span><span class="target" id="namespacevplm_1_1cpu_1a990ec2c3e199a4f1010fc76e818eb30a"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image">cpu_image</a> &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE"></span><span id="_CPPv2N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE"></span><span id="vplm::cpu::make_memory__vplm::cpu_imageCR"></span><span class="target" id="vplm_09_09_8h_1a990ec2c3e199a4f1010fc76e818eb30a"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm::<a class="reference internal" href="#_CPPv4N4vplm9cpu_imageE" title="vplm::cpu_image">cpu_image</a> &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryERKN4vplm9cpu_imageE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N4vplm3cpu11make_memoryERK15vplm_image_info">
-<span id="_CPPv3N4vplm3cpu11make_memoryERK15vplm_image_info"></span><span id="_CPPv2N4vplm3cpu11make_memoryERK15vplm_image_info"></span><span id="vplm::cpu::make_memory__vplm_image_infoCR"></span><span class="target" id="namespacevplm_1_1cpu_1a53939be4f2d7f74b7422569019dc2714"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm_image_info &amp;<em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryERK15vplm_image_info" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4vplm3cpu11make_memoryERK15vplm_image_info"></span><span id="_CPPv2N4vplm3cpu11make_memoryERK15vplm_image_info"></span><span id="vplm::cpu::make_memory__vplm_image_infoCR"></span><span class="target" id="vplm_09_09_8h_1a53939be4f2d7f74b7422569019dc2714"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span><em class="property">const</em> vplm_image_info &amp;<em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryERK15vplm_image_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format">
-<span id="_CPPv3N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format"></span><span id="_CPPv2N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format"></span><span id="vplm::cpu::make_memory__uint32_t.uint32_t.vplm_pixel_format"></span><span class="target" id="namespacevplm_1_1cpu_1a4d804b9c209fd1267fb688c724a2a32d"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span>uint32_t <em>width</em>, uint32_t <em>height</em>, vplm_pixel_format <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format"></span><span id="_CPPv2N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format"></span><span id="vplm::cpu::make_memory__uint32_t.uint32_t.vplm_pixel_format"></span><span class="target" id="vplm_09_09_8h_1a4d804b9c209fd1267fb688c724a2a32d"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm3cpuE" title="vplm::cpu">cpu</a>::<a class="reference internal" href="#_CPPv4N4vplm3cpu6memoryE" title="vplm::cpu::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span>uint32_t <em>width</em>, uint32_t <em>height</em>, vplm_pixel_format <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm3cpu11make_memoryE8uint32_t8uint32_t17vplm_pixel_format" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -2613,7 +2621,7 @@ The following example summarize the key usage scenario:</p>
 <p class="breathe-sectiondef-title rubric">Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE">
-<span id="_CPPv3N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE"></span><span id="_CPPv2N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE"></span><span id="vplm::opencl::make_memory__cl_command_queue.vplm::cl_imageR"></span><span class="target" id="namespacevplm_1_1opencl_1af79431008211d87a04b1a487c07c20d2"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm6openclE" title="vplm::opencl">opencl</a>::<a class="reference internal" href="#_CPPv4N4vplm6opencl6memoryE" title="vplm::opencl::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span>cl_command_queue <em>queue</em>, vplm::cl_image &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE"></span><span id="_CPPv2N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE"></span><span id="vplm::opencl::make_memory__cl_command_queue.vplm::cl_imageR"></span><span class="target" id="vplm__opencl_09_09_8h_1af79431008211d87a04b1a487c07c20d2"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm6openclE" title="vplm::opencl">opencl</a>::<a class="reference internal" href="#_CPPv4N4vplm6opencl6memoryE" title="vplm::opencl::memory">memory</a> <code class="sig-name descname">make_memory</code><span class="sig-paren">(</span>cl_command_queue <em>queue</em>, vplm::cl_image &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm6opencl11make_memoryE16cl_command_queueRN4vplm8cl_imageE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -2756,7 +2764,7 @@ The following example summarize the key usage scenario:</p>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK4vplm5vaapi5image2idEv">
-<span id="_CPPv3NK4vplm5vaapi5image2idEv"></span><span id="_CPPv2NK4vplm5vaapi5image2idEv"></span><span id="vplm::vaapi::image::idC"></span><span class="target" id="classvplm_1_1vaapi_1_1image_1a87867165a15483f19aa62503645a5390"></span>VASurfaceID <code class="sig-name descname">id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4vplm5vaapi5image2idEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4vplm5vaapi5image2idEv"></span><span id="_CPPv2NK4vplm5vaapi5image2idEv"></span><span id="vplm::vaapi::image::idC"></span><span class="target" id="classvplm_1_1vaapi_1_1image_1a6d0a91e1e64ae6a2ca8bffeb10b5db2a"></span>VASurfaceID <code class="sig-name descname">id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4vplm5vaapi5image2idEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -2772,12 +2780,12 @@ The following example summarize the key usage scenario:</p>
 <p class="breathe-sectiondef-title rubric">Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID">
-<span id="_CPPv3N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID"></span><span id="_CPPv2N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID"></span><span id="vplm::vaapi::make_surface__VADisplay.VASurfaceID"></span><span class="target" id="namespacevplm_1_1vaapi_1a421e445979769d83d9ec98791a981959"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm5vaapiE" title="vplm::vaapi">vaapi</a>::<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory">memory</a> <code class="sig-name descname">make_surface</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, VASurfaceID <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID"></span><span id="_CPPv2N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID"></span><span id="vplm::vaapi::make_surface__VADisplay.VASurfaceID"></span><span class="target" id="vplm__vaapi_09_09_8h_1a421e445979769d83d9ec98791a981959"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm5vaapiE" title="vplm::vaapi">vaapi</a>::<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory">memory</a> <code class="sig-name descname">make_surface</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, VASurfaceID <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi12make_surfaceE9VADisplay11VASurfaceID" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N4vplm5vaapi11make_bufferE9VADisplay10VABufferID">
-<span id="_CPPv3N4vplm5vaapi11make_bufferE9VADisplay10VABufferID"></span><span id="_CPPv2N4vplm5vaapi11make_bufferE9VADisplay10VABufferID"></span><span id="vplm::vaapi::make_buffer__VADisplay.VABufferID"></span><span class="target" id="namespacevplm_1_1vaapi_1ab6f2b43c7a7593687d7baf69ec5f3700"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm5vaapiE" title="vplm::vaapi">vaapi</a>::<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory">memory</a> <code class="sig-name descname">make_buffer</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, VABufferID <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi11make_bufferE9VADisplay10VABufferID" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4vplm5vaapi11make_bufferE9VADisplay10VABufferID"></span><span id="_CPPv2N4vplm5vaapi11make_bufferE9VADisplay10VABufferID"></span><span id="vplm::vaapi::make_buffer__VADisplay.VABufferID"></span><span class="target" id="vplm__vaapi_09_09_8h_1ab6f2b43c7a7593687d7baf69ec5f3700"></span>vplm::<a class="reference internal" href="#_CPPv4N4vplm5vaapiE" title="vplm::vaapi">vaapi</a>::<a class="reference internal" href="#_CPPv4N4vplm5vaapi6memoryE" title="vplm::vaapi::memory">memory</a> <code class="sig-name descname">make_buffer</code><span class="sig-paren">(</span>VADisplay <em>dpy</em>, VABufferID <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4vplm5vaapi11make_bufferE9VADisplay10VABufferID" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
