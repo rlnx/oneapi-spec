@@ -241,13 +241,13 @@ training set.</p>
 <h2>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="training">
 <span id="t-math"></span><h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
-<p>Given the training set <span class="math notranslate nohighlight">\(X = \{ x_1, \ldots, x_n \}\)</span> of
-<span class="math notranslate nohighlight">\(p\)</span>-dimensional feature vectors, the vector of class labels <span class="math notranslate nohighlight">\(y\)</span> and
-a positive integer <span class="math notranslate nohighlight">\(k\)</span>, where <span class="math notranslate nohighlight">\(y_i \in \{ 0, \ldots, c-1 \}\)</span>,
-<span class="math notranslate nohighlight">\(1 \leq i \leq n\)</span>, <span class="math notranslate nohighlight">\(c\)</span> is the number of classes and <span class="math notranslate nohighlight">\(k\)</span> is the
-number of nearest neighbors specified by the user. The problem is to build a
-model that allows efficient distance computation between the feature vectors in
-<span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(X'\)</span> at the inference stage.</p>
+<p>Let <span class="math notranslate nohighlight">\(X = \{ x_1, \ldots, x_n \}\)</span> be the training set of
+<span class="math notranslate nohighlight">\(p\)</span>-dimensional feature vectors, let <span class="math notranslate nohighlight">\(Y = \{ y_1, \ldots, y_n \}\)</span> be
+the set of class labels, where <span class="math notranslate nohighlight">\(y_i \in \{ 0, \ldots, c-1 \}\)</span>, <span class="math notranslate nohighlight">\(1
+\leq i \leq n\)</span>. Given <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> and the number of nearest neighbors
+<span class="math notranslate nohighlight">\(k\)</span>, the problem is to build a model that allows efficient distance
+computation between the feature vectors in training and inference sets at the
+inference stage.</p>
 <div class="section" id="training-method-brute-force">
 <span id="t-math-brute-force"></span><h4>Training method: <em>brute-force</em><a class="headerlink" href="#training-method-brute-force" title="Permalink to this headline">¶</a></h4>
 <p>The training operation produces the model that simply stores all the
@@ -261,11 +261,11 @@ training set <span class="math notranslate nohighlight">\(X\)</span> (for more d
 </div>
 <div class="section" id="inference">
 <span id="i-math"></span><h3>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h3>
-<p>Given the set <span class="math notranslate nohighlight">\(X' = \{ x_1', \ldots, x_m' \}\)</span> of <span class="math notranslate nohighlight">\(p\)</span>-dimensional
-feature vectors, the user-defined number of nearest neighbors <span class="math notranslate nohighlight">\(k\)</span>, and the
-model produced by the training operation, the problem is to predict the label
-<span class="math notranslate nohighlight">\(y_j'\)</span> for each <span class="math notranslate nohighlight">\(x_j'\)</span>, <span class="math notranslate nohighlight">\(1 \leq j \leq m\)</span>, by performing the
-following steps:</p>
+<p>Let <span class="math notranslate nohighlight">\(X' = \{ x_1', \ldots, x_m' \}\)</span> be the inference set of
+<span class="math notranslate nohighlight">\(p\)</span>-dimensional feature vectors. Given <span class="math notranslate nohighlight">\(X'\)</span>, the model produced
+at the training stage and the number of nearest neighbors <span class="math notranslate nohighlight">\(k\)</span>, the problem
+is to predict the label <span class="math notranslate nohighlight">\(y_j'\)</span> for each <span class="math notranslate nohighlight">\(x_j'\)</span>, <span class="math notranslate nohighlight">\(1 \leq j \leq
+m\)</span>, by performing the following steps:</p>
 <ol class="arabic">
 <li><p>Identify the set <span class="math notranslate nohighlight">\(N(x_j') \subseteq X\)</span> of the <span class="math notranslate nohighlight">\(k\)</span> feature vectors
 in the training set that are nearest to <span class="math notranslate nohighlight">\(x_j'\)</span> with respect to the
@@ -328,11 +328,15 @@ Y, Y' \subset \mathcal{Y}. \\
 <span class="eqno">(5)<a class="headerlink" href="#equation-p-predict-4-2" title="Permalink to this equation">¶</a></span>\[P(y = l \; | \; x = x_j') = \frac{1}{| N(x_j') |}
 \Big| \big\{ x_r \in N(x_j') : y_r = l \big\} \Big|,
 \quad 1 \leq j \leq m, \; 0 \leq l &lt; c.\]</div>
+<p><strong>Option 5: Super lite.</strong> Do not say anything about conditional probability:</p>
+<div class="math notranslate nohighlight" id="equation-p-predict-5">
+<span class="eqno">(6)<a class="headerlink" href="#equation-p-predict-5" title="Permalink to this equation">¶</a></span>\[P_{jl} = \frac{1}{| N(x_j') |} \Big| \big\{ x_r \in N(x_j') : y_r = l
+\big\} \Big|, \quad 1 \leq j \leq m, \; 0 \leq l &lt; c.\]</div>
 </li>
 <li><p>Predict the class that has the highest probability for the feature vector
 <span class="math notranslate nohighlight">\(x_j'\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-y-predict">
-<span class="eqno">(6)<a class="headerlink" href="#equation-y-predict" title="Permalink to this equation">¶</a></span>\[y_j' = \mathrm{arg}\max_{0 \leq l &lt; c} P(y = l \; | \; x = x_j'),
+<span class="eqno">(7)<a class="headerlink" href="#equation-y-predict" title="Permalink to this equation">¶</a></span>\[y_j' = \mathrm{arg}\max_{0 \leq l &lt; c} P(y = l \; | \; x = x_j'),
 \quad 1 \leq j \leq m.\]</div>
 </li>
 </ol>
@@ -342,7 +346,7 @@ Y, Y' \subset \mathcal{Y}. \\
 feature vectors by iterating over all the pairs <span class="math notranslate nohighlight">\((x_j', x_i)\)</span> in the
 implementation defined order, <span class="math notranslate nohighlight">\(1 \leq i \leq n\)</span>, <span class="math notranslate nohighlight">\(1 \leq j \leq m\)</span>.
 The final prediction is computed according to the equations <a class="reference internal" href="#equation-p-predict">(1)</a> and
-<a class="reference internal" href="#equation-y-predict">(6)</a>.</p>
+<a class="reference internal" href="#equation-y-predict">(7)</a>.</p>
 </div>
 <div class="section" id="inference-method-k-d-tree">
 <span id="i-math-kd-tree"></span><h4>Inference method: <em>k-d tree</em><a class="headerlink" href="#inference-method-k-d-tree" title="Permalink to this headline">¶</a></h4>
@@ -355,7 +359,7 @@ the <span class="math notranslate nohighlight">\(x_j'\)</span> and respective pa
 distance between <span class="math notranslate nohighlight">\(x_j'\)</span> and the most distant feature vector from
 <span class="math notranslate nohighlight">\(\tilde{n}(x_j')\)</span>. Once tree traversal is finished, <span class="math notranslate nohighlight">\(\tilde{n}(x_j')
 \equiv N(x_j')\)</span>. The final prediction is computed according to the equations
-<a class="reference internal" href="#equation-p-predict">(1)</a> and <a class="reference internal" href="#equation-y-predict">(6)</a>.</p>
+<a class="reference internal" href="#equation-p-predict">(1)</a> and <a class="reference internal" href="#equation-y-predict">(7)</a>.</p>
 </div>
 </div>
 </div>
