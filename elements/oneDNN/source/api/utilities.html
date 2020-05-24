@@ -201,7 +201,7 @@
 
 <dl class="cpp struct">
 <dt id="_CPPv4N4dnnl19primitive_desc_baseE">
-<span id="_CPPv3N4dnnl19primitive_desc_baseE"></span><span id="_CPPv2N4dnnl19primitive_desc_baseE"></span><span id="dnnl::primitive_desc_base"></span><span class="target" id="structdnnl_1_1primitive__desc__base"></span><em class="property">struct </em><code class="sig-name descname">primitive_desc_base</code><a class="headerlink" href="#_CPPv4N4dnnl19primitive_desc_baseE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl19primitive_desc_baseE"></span><span id="_CPPv2N4dnnl19primitive_desc_baseE"></span><span id="dnnl::primitive_desc_base"></span><span class="target" id="structdnnl_1_1primitive__desc__base"></span><em class="property">struct </em><code class="sig-prename descclassname">dnnl<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">primitive_desc_base</code><a class="headerlink" href="#_CPPv4N4dnnl19primitive_desc_baseE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Base class for all primitive descriptors. </p>
 <p>Subclassed by <a class="reference internal" href="primitives/concat.html#structdnnl_1_1concat_1_1primitive__desc"><span class="std std-ref">dnnl::concat::primitive_desc</span></a>, dnnl::primitive_desc, <a class="reference internal" href="primitives/reorder.html#structdnnl_1_1reorder_1_1primitive__desc"><span class="std std-ref">dnnl::reorder::primitive_desc</span></a>, <a class="reference internal" href="primitives/sum.html#structdnnl_1_1sum_1_1primitive__desc"><span class="std std-ref">dnnl::sum::primitive_desc</span></a></p>
 <div class="breathe-sectiondef docutils container">
@@ -226,7 +226,7 @@
 <dt id="_CPPv4NK4dnnl19primitive_desc_base13impl_info_strEv">
 <span id="_CPPv3NK4dnnl19primitive_desc_base13impl_info_strEv"></span><span id="_CPPv2NK4dnnl19primitive_desc_base13impl_info_strEv"></span><span id="dnnl::primitive_desc_base::impl_info_strC"></span><span class="target" id="structdnnl_1_1primitive__desc__base_1ae680492d4e4b16a938cfc051e5c906be"></span><em class="property">const</em> char *<code class="sig-name descname">impl_info_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl19primitive_desc_base13impl_info_strEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns implementation name. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the implementation name. </p>
+<dt><strong>Return</strong></dt><dd><p>The implementation name. </p>
 </dd>
 </dl>
 </p>
@@ -251,7 +251,7 @@
 <span id="_CPPv3NK4dnnl19primitive_desc_base8query_mdE5queryi"></span><span id="_CPPv2NK4dnnl19primitive_desc_base8query_mdE5queryi"></span><span id="dnnl::primitive_desc_base::query_md__query.iC"></span><span class="target" id="structdnnl_1_1primitive__desc__base_1a35d24b553ba6aa807516e9470fdd7d16"></span><a class="reference internal" href="memory.html#_CPPv4N4dnnl6memoryE" title="dnnl::memory">memory</a>::<a class="reference internal" href="memory.html#_CPPv4N4dnnl6memory4descE" title="dnnl::memory::desc">desc</a> <code class="sig-name descname">query_md</code><span class="sig-paren">(</span>query <em>what</em>, int <em>idx</em> = 0<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl19primitive_desc_base8query_mdE5queryi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a memory descriptor.</p>
 <p><dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>There are convenience methods <a class="reference internal" href="#structdnnl_1_1primitive__desc__base_1af42e791f493e636c086e13c6d4c06b43"><span class="std std-ref">dnnl::primitive_desc_base::src_desc()</span></a>, <a class="reference internal" href="#structdnnl_1_1primitive__desc__base_1a495ee7c8e1ec3eab35f6329fdcd352bb"><span class="std std-ref">dnnl::primitive_desc_base::dst_desc()</span></a>, and others.</p>
+<dt><strong>Note</strong></dt><dd><p>There are also convenience methods <a class="reference internal" href="#structdnnl_1_1primitive__desc__base_1af42e791f493e636c086e13c6d4c06b43"><span class="std std-ref">dnnl::primitive_desc_base::src_desc()</span></a>, <a class="reference internal" href="#structdnnl_1_1primitive__desc__base_1a495ee7c8e1ec3eab35f6329fdcd352bb"><span class="std std-ref">dnnl::primitive_desc_base::dst_desc()</span></a>, and others.</p>
 </dd>
 <dt><strong>Return</strong></dt><dd><p>The requested memory descriptor. </p>
 </dd>
@@ -478,12 +478,22 @@
 </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt id="_CPPv4NK4dnnl19primitive_desc_base8get_kindEv">
+<span id="_CPPv3NK4dnnl19primitive_desc_base8get_kindEv"></span><span id="_CPPv2NK4dnnl19primitive_desc_base8get_kindEv"></span><span id="dnnl::primitive_desc_base::get_kindC"></span><span class="target" id="structdnnl_1_1primitive__desc__base_1a663f3511855bfc2625476019321c909d"></span>dnnl::<a class="reference internal" href="primitives/common.html#_CPPv4N4dnnl9primitiveE" title="dnnl::primitive">primitive</a>::<a class="reference internal" href="primitives/common.html#_CPPv4N4dnnl9primitive4kindE" title="dnnl::primitive::kind">kind</a> <code class="sig-name descname">get_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4dnnl19primitive_desc_base8get_kindEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the kind of the primitive descriptor. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>The kind of the primitive descriptor. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
 <dl class="cpp struct">
 <dt id="_CPPv4N4dnnl23rnn_primitive_desc_baseE">
-<span id="_CPPv3N4dnnl23rnn_primitive_desc_baseE"></span><span id="_CPPv2N4dnnl23rnn_primitive_desc_baseE"></span><span id="dnnl::rnn_primitive_desc_base"></span><span class="target" id="structdnnl_1_1rnn__primitive__desc__base"></span><em class="property">struct </em><code class="sig-name descname">rnn_primitive_desc_base</code> : <em class="property">public</em> dnnl::primitive_desc<a class="headerlink" href="#_CPPv4N4dnnl23rnn_primitive_desc_baseE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4dnnl23rnn_primitive_desc_baseE"></span><span id="_CPPv2N4dnnl23rnn_primitive_desc_baseE"></span><span id="dnnl::rnn_primitive_desc_base"></span><span class="target" id="structdnnl_1_1rnn__primitive__desc__base"></span><em class="property">struct </em><code class="sig-prename descclassname">dnnl<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">rnn_primitive_desc_base</code> : <em class="property">public</em> dnnl::primitive_desc<a class="headerlink" href="#_CPPv4N4dnnl23rnn_primitive_desc_baseE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Base class for primitive descriptors for RNN primitives. </p>
 <p>Subclassed by <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1gru__backward_1_1primitive__desc"><span class="std std-ref">dnnl::gru_backward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1gru__forward_1_1primitive__desc"><span class="std std-ref">dnnl::gru_forward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1lbr__gru__backward_1_1primitive__desc"><span class="std std-ref">dnnl::lbr_gru_backward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1lbr__gru__forward_1_1primitive__desc"><span class="std std-ref">dnnl::lbr_gru_forward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1lstm__backward_1_1primitive__desc"><span class="std std-ref">dnnl::lstm_backward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1lstm__forward_1_1primitive__desc"><span class="std std-ref">dnnl::lstm_forward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1vanilla__rnn__backward_1_1primitive__desc"><span class="std std-ref">dnnl::vanilla_rnn_backward::primitive_desc</span></a>, <a class="reference internal" href="primitives/rnn.html#structdnnl_1_1vanilla__rnn__forward_1_1primitive__desc"><span class="std std-ref">dnnl::vanilla_rnn_forward::primitive_desc</span></a></p>
 <div class="breathe-sectiondef docutils container">
