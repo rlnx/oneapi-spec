@@ -268,18 +268,24 @@ calls as shown in the example below.</p>
 support at least two:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Float</span></code> is a <a class="reference internal" href="#floating-point">floating-point type</a> that the algorithm
-uses for computations.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Method</span></code> is a tag-type that specifies an <a class="reference internal" href="#methods">computational method</a>.</p></li>
+uses for computations. This parameter is defined first and has the
+<code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">default_float_t</span></code> default value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Method</span></code> is a tag-type that specifies an <a class="reference internal" href="#methods">computational method</a>.
+This parameter is defined second and has the <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><span class="pre">by_default</span></code>
+default value.</p></li>
 </ul>
 <div class="section" id="floating-point-types">
 <span id="floating-point"></span><h3>Floating-point Types<a class="headerlink" href="#floating-point-types" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Float</span></code> is a floating-point type that the algorithm uses for computations.
-Algorithms are required to support only <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">double</span></code> types. The
-other floating-point types, e.g., <code class="docutils literal notranslate"><span class="pre">float16</span></code> or <code class="docutils literal notranslate"><span class="pre">bfloat16</span></code>, are optional
-and up to specific oneDAL implementation. This parameter is defined first and
-has the <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">default_float_t</span></code> default value.</p></li>
-</ul>
+<p>Algorithms are required to support only <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">double</span></code> types. The
+other floating-point types, e.g., <code class="docutils literal notranslate"><span class="pre">float16</span></code> or <code class="docutils literal notranslate"><span class="pre">bfloat16</span></code>, are optional and
+up to specific oneDAL implementation.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span> <span class="p">{</span>
+
+<span class="k">using</span> <span class="n">default_float_t</span> <span class="o">=</span> <span class="kt">float</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="c1">// namespace onedal</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="computational-methods">
 <span id="methods"></span><h3>Computational Methods<a class="headerlink" href="#computational-methods" title="Permalink to this headline">¶</a></h3>
@@ -302,8 +308,6 @@ this parameter specifies the method to use while some operation is performed.</p
 namespace nested to the algorithm’s namespace. Algorithm must support at least
 one computation method and define the <code class="docutils literal notranslate"><span class="pre">by_default</span></code> type alias that refers to
 the one of computational methods as shown in the example below.</p>
-<p>This parameter is defined second and has the <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><span class="pre">by_default</span></code>
-default value.</p>
 </li>
 </ul>
 </div>
