@@ -30,7 +30,7 @@ For more information about algorithms implemented in |dal_full_name|
    J. L. Bentley. Multidimensional Divide and Conquer. Communications of the
    ACM, 23(4):214--229, 1980.
 
-.. [Friedman2017]
+.. [Friedman17]
    J. Friedman, T. Hastie, R. Tibshirani. *The Elements of Statistical Learning
    Data Mining, Inference, and Prediction.* Springer, 2017.
 

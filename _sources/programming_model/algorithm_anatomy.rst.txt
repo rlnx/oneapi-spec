@@ -19,8 +19,8 @@ algorithm.
 Besides meta-parameters, machine learning algorithms may have different *stages*
 such as :term:`training <Training>` and :term:`inference <Inference>`. Moreover,
 the algorithm's stages may be implemented in a variety of *computational
-methods*. For instance, training of the linear regression model may be performed
-by solving system of linear equations [Friedman2017]_, while the applying
+methods*. For instance, training of the linear regression model can be performed
+by solving system of linear equations [Friedman17]_, while the applying
 iterative optimization solver directly to the empirical risk function is also
 possible [Zhang04]_.
 
@@ -68,7 +68,6 @@ strings shall be substituted:
 
 .. code-block:: cpp
    :name: descriptor-template
-   :caption: Common structure of descriptor's definition
 
    namespace onedal::%ALGORITHM% {
 
@@ -106,7 +105,6 @@ following requirements:
   calls as shown in the example below.
 
   .. code-block:: cpp
-     :caption: Example of chaining calls to set some property values to the descriptor
 
      auto desc = descriptor{}
         .set_property_name_1(value_1)
@@ -119,11 +117,11 @@ support at least two:
 
 - ``Float`` is a `floating-point type <floating-point_>`_ that the algorithm
   uses for computations. This parameter is defined first and has the
-  :expr:`onedal::default_float_t` default value.
+  ``onedal::default_float_t`` default value.
 
 - ``Method`` is a tag-type that specifies an `computational method <methods_>`_.
-  This parameter is defined second and has the :expr:`method::by_default`
-  default value.
+  This parameter is defined second and has the ``method::by_default`` default
+  value.
 
 
 .. _floating-point:
@@ -131,16 +129,18 @@ support at least two:
 Floating-point Types
 --------------------
 
-Algorithms are required to support only ``float`` and ``double`` types. The
-other floating-point types, e.g., ``float16`` or ``bfloat16``, are optional and
-up to specific oneDAL implementation.
+Algorithms are required to support at least one implementation-defined
+floating-point type. The other floating-point types, e.g., ``float``,
+``double``, ``float16`` and ``bfloat16``, are optional and up to specific oneDAL
+implementation.
+
+The floating-point type used as a default in descriptors is
+implementation-defined and shall be declared within the top-level namespace.
 
 .. code-block:: cpp
 
    namespace onedal {
-
-   using default_float_t = float;
-
+      using default_float_t = /* implementation defined */;
    } // namespace onedal
 
 
@@ -149,33 +149,21 @@ up to specific oneDAL implementation.
 Computational Methods
 ---------------------
 
+The supported computational methods are declared within the
+``%ALGORITHM%::method`` namespace using tag-types. Algorithm shall support at
+least one computation method and declare the ``by_default`` type alias that
+refers to the one of the computational methods as shown in the example below.
 
 
 .. code-block:: cpp
 
    namespace onedal::%ALGORITHM% {
-
-   namespace method {
-      struct x {};
-      struct y {};
-      using by_default = x;
-   } // namespace method
-
+      namespace method {
+         struct x {};
+         struct y {};
+         using by_default = x;
+      } // namespace method
    } // namespace onedal::%ALGORITHM%
-
-
-
-
-- ``Method`` is a tag-type that specifies an implementation of algorithm.
-  Computational scheme of the algorithm may be implemented in different ways, so
-  this parameter specifies the method to use while some operation is performed.
-
-  The supported computational methods are declared within the ``method``
-  namespace nested to the algorithm's namespace. Algorithm must support at least
-  one computation method and define the ``by_default`` type alias that refers to
-  the one of computational methods as shown in the example below.
-
-
 
 
 

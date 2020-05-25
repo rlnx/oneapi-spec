@@ -90,7 +90,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notations.html">Mathematical Notations</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming model</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic_usage_scenario.html">Basic usage scenario</a></li>
@@ -183,10 +183,10 @@ define dozen of meta-parameters or depend on the other algorithm as, for
 example, the logistic regression training procedure depends on optimization
 algorithm.</p>
 <p>Besides meta-parameters, machine learning algorithms may have different <em>stages</em>
-such as <span class="xref std std-term">training</span> and <span class="xref std std-term">inference</span>. Moreover,
+such as <a class="reference internal" href="../glossary.html#term-Training"><span class="xref std std-term">training</span></a> and <a class="reference internal" href="../glossary.html#term-Inference"><span class="xref std std-term">inference</span></a>. Moreover,
 the algorithm’s stages may be implemented in a variety of <em>computational
-methods</em>. For instance, training of the linear regression model may be performed
-by solving system of linear equations <a class="reference internal" href="../bibliography.html#friedman2017" id="id1"><span>[Friedman2017]</span></a>, while the applying
+methods</em>. For instance, training of the linear regression model can be performed
+by solving system of linear equations <a class="reference internal" href="../bibliography.html#friedman17" id="id1"><span>[Friedman17]</span></a>, while the applying
 iterative optimization solver directly to the empirical risk function is also
 possible <a class="reference internal" href="../bibliography.html#zhang04" id="id2"><span>[Zhang04]</span></a>.</p>
 <p>From computational perspective, algorithm implementation may relay on different
@@ -220,9 +220,7 @@ structures related to that algorithm shall be defined within the namespace.</p><
 <li><p><code class="docutils literal notranslate"><span class="pre">%PROPERTY_NAME%</span></code> and <code class="docutils literal notranslate"><span class="pre">%PROPERTY_TYPE%</span></code> are the name and type of the one
 of algorithm’s properties.</p></li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="descriptor-template">
-<div class="code-block-caption"><span class="caption-text">Common structure of descriptor’s definition</span><a class="headerlink" href="#descriptor-template" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::%</span><span class="n">ALGORITHM</span><span class="o">%</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate" id="descriptor-template"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::%</span><span class="n">ALGORITHM</span><span class="o">%</span> <span class="p">{</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Float</span>  <span class="o">=</span> <span class="n">default_float_t</span><span class="p">,</span>
           <span class="k">typename</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">method</span><span class="o">::</span><span class="n">by_default</span><span class="p">,</span>
@@ -239,7 +237,6 @@ of algorithm’s properties.</p></li>
 <span class="p">}</span> <span class="c1">// namespace onedal::%ALGORITHM%</span>
 </pre></div>
 </div>
-</div>
 <p>Each algorithm’s meta-parameter is mapped to the property that shall satisfy the
 following requirements:</p>
 <ul>
@@ -253,14 +250,11 @@ to the underlying class field.</p></li>
 are initialized by passing required parameters to the constructor.</p></li>
 <li><p>The setter returns a reference to the descriptor object to allow chaining
 calls as shown in the example below.</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">Example of chaining calls to set some property values to the descriptor</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">{}</span>
    <span class="p">.</span><span class="n">set_property_name_1</span><span class="p">(</span><span class="n">value_1</span><span class="p">)</span>
    <span class="p">.</span><span class="n">set_property_name_2</span><span class="p">(</span><span class="n">value_2</span><span class="p">)</span>
    <span class="p">.</span><span class="n">set_property_name_3</span><span class="p">(</span><span class="n">value_3</span><span class="p">);</span>
 </pre></div>
-</div>
 </div>
 </li>
 </ul>
@@ -269,47 +263,40 @@ support at least two:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Float</span></code> is a <a class="reference internal" href="#floating-point">floating-point type</a> that the algorithm
 uses for computations. This parameter is defined first and has the
-<code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">onedal</span><span class="pre">::</span><span class="pre">default_float_t</span></code> default value.</p></li>
+<code class="docutils literal notranslate"><span class="pre">onedal::default_float_t</span></code> default value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Method</span></code> is a tag-type that specifies an <a class="reference internal" href="#methods">computational method</a>.
-This parameter is defined second and has the <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><span class="pre">by_default</span></code>
-default value.</p></li>
+This parameter is defined second and has the <code class="docutils literal notranslate"><span class="pre">method::by_default</span></code> default
+value.</p></li>
 </ul>
 <div class="section" id="floating-point-types">
 <span id="floating-point"></span><h3>Floating-point Types<a class="headerlink" href="#floating-point-types" title="Permalink to this headline">¶</a></h3>
-<p>Algorithms are required to support only <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">double</span></code> types. The
-other floating-point types, e.g., <code class="docutils literal notranslate"><span class="pre">float16</span></code> or <code class="docutils literal notranslate"><span class="pre">bfloat16</span></code>, are optional and
-up to specific oneDAL implementation.</p>
+<p>Algorithms are required to support at least one implementation-defined
+floating-point type. The other floating-point types, e.g., <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+<code class="docutils literal notranslate"><span class="pre">double</span></code>, <code class="docutils literal notranslate"><span class="pre">float16</span></code> and <code class="docutils literal notranslate"><span class="pre">bfloat16</span></code>, are optional and up to specific oneDAL
+implementation.</p>
+<p>The floating-point type used as a default in descriptors is
+implementation-defined and shall be declared within the top-level namespace.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span> <span class="p">{</span>
-
-<span class="k">using</span> <span class="n">default_float_t</span> <span class="o">=</span> <span class="kt">float</span><span class="p">;</span>
-
+   <span class="k">using</span> <span class="n">default_float_t</span> <span class="o">=</span> <span class="cm">/* implementation defined */</span><span class="p">;</span>
 <span class="p">}</span> <span class="c1">// namespace onedal</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="computational-methods">
 <span id="methods"></span><h3>Computational Methods<a class="headerlink" href="#computational-methods" title="Permalink to this headline">¶</a></h3>
+<p>The supported computational methods are declared within the
+<code class="docutils literal notranslate"><span class="pre">%ALGORITHM%::method</span></code> namespace using tag-types. Algorithm shall support at
+least one computation method and declare the <code class="docutils literal notranslate"><span class="pre">by_default</span></code> type alias that
+refers to the one of the computational methods as shown in the example below.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">onedal</span><span class="o">::%</span><span class="n">ALGORITHM</span><span class="o">%</span> <span class="p">{</span>
-
-<span class="k">namespace</span> <span class="n">method</span> <span class="p">{</span>
-   <span class="k">struct</span> <span class="n">x</span> <span class="p">{};</span>
-   <span class="k">struct</span> <span class="n">y</span> <span class="p">{};</span>
-   <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-<span class="p">}</span> <span class="c1">// namespace method</span>
-
+   <span class="k">namespace</span> <span class="n">method</span> <span class="p">{</span>
+      <span class="k">struct</span> <span class="n">x</span> <span class="p">{};</span>
+      <span class="k">struct</span> <span class="n">y</span> <span class="p">{};</span>
+      <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+   <span class="p">}</span> <span class="c1">// namespace method</span>
 <span class="p">}</span> <span class="c1">// namespace onedal::%ALGORITHM%</span>
 </pre></div>
 </div>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Method</span></code> is a tag-type that specifies an implementation of algorithm.
-Computational scheme of the algorithm may be implemented in different ways, so
-this parameter specifies the method to use while some operation is performed.</p>
-<p>The supported computational methods are declared within the <code class="docutils literal notranslate"><span class="pre">method</span></code>
-namespace nested to the algorithm’s namespace. Algorithm must support at least
-one computation method and define the <code class="docutils literal notranslate"><span class="pre">by_default</span></code> type alias that refers to
-the one of computational methods as shown in the example below.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="operations">
