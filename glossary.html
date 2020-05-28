@@ -299,7 +299,13 @@ order of elements in a <a class="reference internal" href="#term-Contiguous-data
 <dt id="term-Data-type">Data type</dt><dd><p>An attribute of data used by a compiler to store and access them.
 Includes size in bytes, encoding principles, and available operations
 (in terms of a programming language).</p>
-<p><strong>Examples:</strong> int32_t, float, double</p>
+<p><strong>Examples:</strong> <code class="docutils literal notranslate"><span class="pre">int32_t</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code></p>
+</dd>
+<dt id="term-Getter">Getter</dt><dd><p>A method that returns the value of the private member variable.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">get_row_count</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
 </dd>
 <dt id="term-Heterogeneous-data">Heterogeneous data</dt><dd><p>Data which contain values either of different <a class="reference internal" href="#term-Data-type"><span class="xref std std-term">data types</span></a> or different sets of operations defined on them. One of the
 characteristics of a <a class="reference internal" href="#term-Data-format"><span class="xref std std-term">data format</span></a>.</p>
@@ -333,6 +339,13 @@ operations defined for this object are lightweight, which means that
 each time a new object is created, only the number of references is
 increased. An implementation is automatically freed when the number of
 references becomes equal to zero.</p>
+</dd>
+<dt id="term-Setter">Setter</dt><dd><p>A method that accepts the only parameter and assigns its value to the
+private member variable.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">set_row_count</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">row_count</span><span class="p">);</span>
+</pre></div>
+</div>
 </dd>
 <dt id="term-Table">Table</dt><dd><p>A oneDAL concept for a <a class="reference internal" href="#term-Dataset"><span class="xref std std-term">dataset</span></a> that contains only
 numerical data, <a class="reference internal" href="#term-Categorical-feature"><span class="xref std std-term">categorical</span></a> or
