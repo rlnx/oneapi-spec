@@ -340,7 +340,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>Float</strong> – The floating-point type that the algorithm uses for intermediate computations. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
 <li><p><strong>Method</strong> – Tag-type that specifies an implementation of algorithm. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3covE" title="oneapi::dal::pca::method::cov"><span class="pre">cov</span></a></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3svdE" title="oneapi::dal::pca::method::svd"><span class="pre">svd</span></a></code>.</p></li>
-<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p></li>
+<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -415,20 +415,20 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <div class="section" id="task-tags">
 <h4>Task tags<a class="headerlink" href="#task-tags" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">task</span> <span class="p">{</span>
-   <span class="k">struct</span> <span class="n">dimensionality_reduction</span> <span class="p">{};</span>
-   <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">dimensionality_reduction</span><span class="p">;</span>
+   <span class="k">struct</span> <span class="n">dim_reduction</span> <span class="p">{};</span>
+   <span class="k">using</span> <span class="n">by_default</span> <span class="o">=</span> <span class="n">dim_reduction</span><span class="p">;</span>
 <span class="p">}</span> <span class="c1">// namespace task</span>
 </pre></div>
 </div>
 <dl class="cpp struct">
-<dt id="_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE">
-<span id="_CPPv3N6oneapi3dal3pca4task24dimensionality_reductionE"></span><span id="_CPPv2N6oneapi3dal3pca4task24dimensionality_reductionE"></span><span id="oneapi::dal::pca::task::dimensionality_reduction"></span><em class="property">struct </em><code class="sig-name descname">dimensionality_reduction</code><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N6oneapi3dal3pca4task13dim_reductionE">
+<span id="_CPPv3N6oneapi3dal3pca4task13dim_reductionE"></span><span id="_CPPv2N6oneapi3dal3pca4task13dim_reductionE"></span><span id="oneapi::dal::pca::task::dim_reduction"></span><em class="property">struct </em><code class="sig-name descname">dim_reduction</code><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Tag-type that parametrizes entities used for solving dimensionality reduction problem.</p>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv4N6oneapi3dal3pca4task10by_defaultE">
-<span id="_CPPv3N6oneapi3dal3pca4task10by_defaultE"></span><span id="_CPPv2N6oneapi3dal3pca4task10by_defaultE"></span><em class="property">using </em><code class="sig-name descname">by_default</code> = <a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction">dimensionality_reduction</a><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N6oneapi3dal3pca4task10by_defaultE"></span><span id="_CPPv2N6oneapi3dal3pca4task10by_defaultE"></span><em class="property">using </em><code class="sig-name descname">by_default</code> = <a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction">dim_reduction</a><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Alias tag-type for dimensionality reduction task.</p>
 </dd></dl>
 
@@ -452,7 +452,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <span id="_CPPv3I0EN6oneapi3dal3pca5modelE"></span><span id="_CPPv2I0EN6oneapi3dal3pca5modelE"></span>template&lt;typename <code class="sig-name descname">Task</code> = task::<a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="oneapi::dal::pca::task::by_default">by_default</a>&gt;<br /><em class="property">class </em><code class="sig-name descname">model</code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal3pca5modelE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p>
+<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p>
 </dd>
 </dl>
 <p><strong>Constructors</strong></p>
@@ -513,7 +513,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <span id="_CPPv3I0EN6oneapi3dal3pca11train_inputE"></span><span id="_CPPv2I0EN6oneapi3dal3pca11train_inputE"></span>template&lt;typename <code class="sig-name descname">Task</code> = task::<a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="oneapi::dal::pca::task::by_default">by_default</a>&gt;<br /><em class="property">class </em><code class="sig-name descname">train_input</code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal3pca11train_inputE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p>
+<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p>
 </dd>
 </dl>
 <p><strong>Constructors</strong></p>
@@ -564,7 +564,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <span id="_CPPv3I0EN6oneapi3dal3pca12train_resultE"></span><span id="_CPPv2I0EN6oneapi3dal3pca12train_resultE"></span>template&lt;typename <code class="sig-name descname">Task</code> = task::<a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="oneapi::dal::pca::task::by_default">by_default</a>&gt;<br /><em class="property">class </em><code class="sig-name descname">train_result</code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal3pca12train_resultE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p>
+<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p>
 </dd>
 </dl>
 <p><strong>Constructors</strong></p>
@@ -653,7 +653,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>Float</strong> – The floating-point type that the algorithm uses for intermediate computations. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
 <li><p><strong>Method</strong> – Tag-type that specifies an implementation of algorithm. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3covE" title="oneapi::dal::pca::method::cov"><span class="pre">cov</span></a></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3svdE" title="oneapi::dal::pca::method::svd"><span class="pre">svd</span></a></code>.</p></li>
-<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p></li>
+<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Parameters</dt>
@@ -709,7 +709,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <span id="_CPPv3I0EN6oneapi3dal3pca11infer_inputE"></span><span id="_CPPv2I0EN6oneapi3dal3pca11infer_inputE"></span>template&lt;typename <code class="sig-name descname">Task</code> = task::<a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="oneapi::dal::pca::task::by_default">by_default</a>&gt;<br /><em class="property">class </em><code class="sig-name descname">infer_input</code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal3pca11infer_inputE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p>
+<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p>
 </dd>
 </dl>
 <p><strong>Constructors</strong></p>
@@ -765,7 +765,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <span id="_CPPv3I0EN6oneapi3dal3pca12infer_resultE"></span><span id="_CPPv2I0EN6oneapi3dal3pca12infer_resultE"></span>template&lt;typename <code class="sig-name descname">Task</code> = task::<a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task10by_defaultE" title="oneapi::dal::pca::task::by_default">by_default</a>&gt;<br /><em class="property">class </em><code class="sig-name descname">infer_result</code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal3pca12infer_resultE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p>
+<dd class="field-odd"><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p>
 </dd>
 </dl>
 <p><strong>Constructors</strong></p>
@@ -802,7 +802,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>Float</strong> – The floating-point type that the algorithm uses for intermediate computations. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
 <li><p><strong>Method</strong> – Tag-type that specifies an implementation of algorithm. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3covE" title="oneapi::dal::pca::method::cov"><span class="pre">cov</span></a></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3svdE" title="oneapi::dal::pca::method::svd"><span class="pre">svd</span></a></code>.</p></li>
-<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task24dimensionality_reductionE" title="oneapi::dal::pca::task::dimensionality_reduction"><span class="pre">dimensionality_reduction</span></a></code>.</p></li>
+<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3pca4task13dim_reductionE" title="oneapi::dal::pca::task::dim_reduction"><span class="pre">dim_reduction</span></a></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Parameters</dt>
