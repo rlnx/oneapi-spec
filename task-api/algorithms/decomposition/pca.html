@@ -396,19 +396,19 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp struct">
 <dt id="_CPPv4N6oneapi3dal3pca6method3covE">
 <span id="_CPPv3N6oneapi3dal3pca6method3covE"></span><span id="_CPPv2N6oneapi3dal3pca6method3covE"></span><span id="oneapi::dal::pca::method::cov"></span><em class="property">struct </em><code class="sig-name descname">cov</code><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca6method3covE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Tag-type that denotes <a class="reference external" href="pca_t_math_cov">brute-force</a> computational method.</p>
+<dd><p>Tag-type that denotes <a class="reference internal" href="#pca-t-math-cov">Covariance</a> computational method.</p>
 </dd></dl>
 
 <dl class="cpp struct">
 <dt id="_CPPv4N6oneapi3dal3pca6method3svdE">
 <span id="_CPPv3N6oneapi3dal3pca6method3svdE"></span><span id="_CPPv2N6oneapi3dal3pca6method3svdE"></span><span id="oneapi::dal::pca::method::svd"></span><em class="property">struct </em><code class="sig-name descname">svd</code><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca6method3svdE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Tag-type that denotes <a class="reference external" href="pca_t_math_svd">k-d tree</a> computational method.</p>
+<dd><p>Tag-type that denotes <a class="reference internal" href="#pca-t-math-svd">SVD</a> computational method.</p>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv4N6oneapi3dal3pca6method10by_defaultE">
 <span id="_CPPv3N6oneapi3dal3pca6method10by_defaultE"></span><span id="_CPPv2N6oneapi3dal3pca6method10by_defaultE"></span><em class="property">using </em><code class="sig-name descname">by_default</code> = <a class="reference internal" href="#_CPPv4N6oneapi3dal3pca6method3covE" title="oneapi::dal::pca::method::cov">cov</a><a class="headerlink" href="#_CPPv4N6oneapi3dal3pca6method10by_defaultE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Alias tag-type for <a class="reference external" href="pca_t_math_cov">brute-force</a> computational method.</p>
+<dd><p>Alias tag-type for <a class="reference internal" href="#pca-t-math-cov">Covariance</a> computational method.</p>
 </dd></dl>
 
 </div>
@@ -689,7 +689,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <div class="section" id="inference-infer">
 <span id="pca-i-api"></span><h3>Inference <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer"><span class="pre">infer</span></a><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span></code><a class="headerlink" href="#inference-infer" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="pca-i-api-input">
-<span id="id7"></span><h4>Input<a class="headerlink" href="#pca-i-api-input" title="Permalink to this headline">¶</a></h4>
+<span id="id6"></span><h4>Input<a class="headerlink" href="#pca-i-api-input" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Task</span> <span class="o">=</span> <span class="n">task</span><span class="o">::</span><span class="n">by_default</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">infer_input</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -750,7 +750,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 
 </div>
 <div class="section" id="pca-i-api-result">
-<span id="id8"></span><h4>Result<a class="headerlink" href="#pca-i-api-result" title="Permalink to this headline">¶</a></h4>
+<span id="id7"></span><h4>Result<a class="headerlink" href="#pca-i-api-result" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Task</span> <span class="o">=</span> <span class="n">task</span><span class="o">::</span><span class="n">by_default</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">infer_result</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -791,8 +791,8 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 </dd></dl>
 
 </div>
-<div class="section" id="id9">
-<h4>Operation<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>Operation<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <dl class="cpp function">
 <dt id="_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE">
 <span id="_CPPv3I000EN6oneapi3dal3pca5inferERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE"></span><span id="_CPPv2I000EN6oneapi3dal3pca5inferERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE"></span>template&lt;typename <code class="sig-name descname">Float</code>, typename <code class="sig-name descname">Method</code>, typename <code class="sig-name descname">Task</code>&gt;<br /><a class="reference internal" href="#_CPPv4I0EN6oneapi3dal3pca12infer_resultE" title="oneapi::dal::pca::infer_result">infer_result</a>&lt;<a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::Task">Task</a>&gt; <code class="sig-name descname">infer</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca10descriptorE" title="oneapi::dal::pca::descriptor">descriptor</a>&lt;<a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::Float">Float</a>, <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::Method">Method</a>, <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::Task">Task</a>&gt; &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal3pca11infer_inputE" title="oneapi::dal::pca::infer_input">infer_input</a>&lt;<a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::Task">Task</a>&gt; &amp;<em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="Permalink to this definition">¶</a><br /></dt>
