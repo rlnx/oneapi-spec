@@ -264,10 +264,10 @@ by the user.</p>
 <span class="math notranslate nohighlight">\(p\)</span>-dimensional feature vectors and the set <span class="math notranslate nohighlight">\(C = \{ c_1, \ldots, c_k
 \}\)</span> of centroids produced at the training stage, the problem is to predict the
 index <span class="math notranslate nohighlight">\(y_j' \in \{ 0, \ldots, k-1 \}\)</span>, <span class="math notranslate nohighlight">\(1 \leq j \leq m\)</span>, of the
-centroid according to some method-defined rule.</p>
+centroid in accordance with a method-defined rule.</p>
 <div class="section" id="inference-method-lloyd-s">
 <span id="kmeans-i-math-lloyd"></span><h4>Inference method: <em>Lloyd’s</em><a class="headerlink" href="#inference-method-lloyd-s" title="Permalink to this headline">¶</a></h4>
-<p>Lloyd’s inference method computes the <span class="math notranslate nohighlight">\(y_j'\)</span> as index of the centroid
+<p>Lloyd’s inference method computes the <span class="math notranslate nohighlight">\(y_j'\)</span> as an index of the centroid
 closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[y_j' = \mathrm{arg}\min_{1 \leq l \leq k} \| x_j' - c_l \|^2, \quad 1 \leq j \leq m.\]</div>
@@ -313,7 +313,7 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 </div>
 <div class="section" id="programming-interface">
 <h2>Programming Interface<a class="headerlink" href="#programming-interface" title="Permalink to this headline">¶</a></h2>
-<p>All type and function in this section shall be declared in the
+<p>All types and functions in this section shall be declared in the
 <code class="docutils literal notranslate"><span class="pre">oneapi::dal::kmeans</span></code> namespace and be available via inclusion of the
 <code class="docutils literal notranslate"><span class="pre">oneapi/dal/algo/kmeans.hpp</span></code> header file.</p>
 <div class="section" id="descriptor">
@@ -344,7 +344,7 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>Float</strong> – The floating-point type that the algorithm uses for intermediate computations. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
 <li><p><strong>Method</strong> – Tag-type that specifies an implementation of algorithm. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">method</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans6method5lloydE" title="oneapi::dal::kmeans::method::lloyd"><span class="pre">lloyd</span></a></code>.</p></li>
-<li><p><strong>Task</strong> – Tag-type that specifies type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans4task10clusteringE" title="oneapi::dal::kmeans::task::clustering"><span class="pre">clustering</span></a></code>.</p></li>
+<li><p><strong>Task</strong> – Tag-type that specifies the type of the problem to solve. Can be <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">task</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans4task10clusteringE" title="oneapi::dal::kmeans::task::clustering"><span class="pre">clustering</span></a></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -441,13 +441,13 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 <dl class="cpp struct">
 <dt id="_CPPv4N6oneapi3dal6kmeans4task10clusteringE">
 <span id="_CPPv3N6oneapi3dal6kmeans4task10clusteringE"></span><span id="_CPPv2N6oneapi3dal6kmeans4task10clusteringE"></span><span id="oneapi::dal::kmeans::task::clustering"></span><em class="property">struct </em><code class="sig-name descname">clustering</code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans4task10clusteringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Tag-type that parametrizes entities used for solving <a class="reference internal" href="../../glossary.html#term-Clustering"><span class="xref std std-term">clustering problem</span></a> .</p>
+<dd><p>Tag-type that parametrizes entities used for solving <a class="reference internal" href="../../glossary.html#term-Clustering"><span class="xref std std-term">clustering problem</span></a>.</p>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv4N6oneapi3dal6kmeans4task10by_defaultE">
 <span id="_CPPv3N6oneapi3dal6kmeans4task10by_defaultE"></span><span id="_CPPv2N6oneapi3dal6kmeans4task10by_defaultE"></span><em class="property">using </em><code class="sig-name descname">by_default</code> = <a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans4task10clusteringE" title="oneapi::dal::kmeans::task::clustering">clustering</a><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans4task10by_defaultE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Alias tag-type for custering task.</p>
+<dd><p>Alias tag-type for the clustering task.</p>
 </dd></dl>
 
 </div>

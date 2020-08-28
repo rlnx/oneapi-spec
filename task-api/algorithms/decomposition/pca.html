@@ -264,10 +264,11 @@ arbitrary technique that modifies the eigenvectors’ signs.</p>
 <p>Given the inference set <span class="math notranslate nohighlight">\(X' = \{ x_1', \ldots, x_m' \}\)</span> of
 <span class="math notranslate nohighlight">\(p\)</span>-dimensional feature vectors and the <span class="math notranslate nohighlight">\(r \times p\)</span> matrix
 <span class="math notranslate nohighlight">\(T\)</span> produced at the training stage, the problem is to transform <span class="math notranslate nohighlight">\(X'\)</span>
-to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, x_m'' \}\)</span>, where <span class="math notranslate nohighlight">\(x_{j}''\)</span> is
+to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, x_m'' \}\)</span>, where <span class="math notranslate nohighlight">\(x_{j}''\)</span> is an
 <span class="math notranslate nohighlight">\(r\)</span>-dimensional feature vector, <span class="math notranslate nohighlight">\(1 \leq j \leq m\)</span>.</p>
-<p>The feature vector <span class="math notranslate nohighlight">\(x_{j}''\)</span> is computed by applying linear transformation
-<a class="reference internal" href="../../bibliography.html#lang87" id="id3"><span>[Lang87]</span></a> with the matrix <span class="math notranslate nohighlight">\(T\)</span> to the feature vector <span class="math notranslate nohighlight">\(x_{j}'\)</span>,</p>
+<p>The feature vector <span class="math notranslate nohighlight">\(x_{j}''\)</span> is computed through applying linear
+transformation <a class="reference internal" href="../../bibliography.html#lang87" id="id3"><span>[Lang87]</span></a> defined by the matrix <span class="math notranslate nohighlight">\(T\)</span> to the feature vector
+<span class="math notranslate nohighlight">\(x_{j}'\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-x-transform">
 <span class="eqno">(1)<a class="headerlink" href="#equation-x-transform" title="Permalink to this equation">¶</a></span>\[x_{j}'' = T x_{j}', \quad 1 \leq j \leq m.\]</div>
 <div class="section" id="inference-methods-covariance-and-svd">
@@ -315,7 +316,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 </div>
 <div class="section" id="programming-interface">
 <h2>Programming Interface<a class="headerlink" href="#programming-interface" title="Permalink to this headline">¶</a></h2>
-<p>All type and function in this section shall be declared in the
+<p>All types and functions in this section shall be declared in the
 <code class="docutils literal notranslate"><span class="pre">oneapi::dal::pca</span></code> namespace and be available via inclusion of the
 <code class="docutils literal notranslate"><span class="pre">oneapi/dal/algo/pca.hpp</span></code> header file.</p>
 <div class="section" id="descriptor">
@@ -375,7 +376,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca10descriptor13deterministicE">
 <span id="_CPPv3N6oneapi3dal3pca10descriptor13deterministicE"></span><span id="_CPPv2N6oneapi3dal3pca10descriptor13deterministicE"></span><span id="oneapi::dal::pca::descriptor::deterministic__b"></span>bool <code class="sig-name descname">deterministic</code> = true<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca10descriptor13deterministicE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Specifies whether the algorithm applies the <a class="reference internal" href="#sign-flip-technique">Sign-flip technique</a>. If it is <cite>true</cite>, directions of the eigenvectors must be deterministic.</p>
+<dd><p>Specifies whether the algorithm applies the <a class="reference internal" href="#sign-flip-technique">Sign-flip technique</a>. If it is <cite>true</cite>, the directions of the eigenvectors must be deterministic.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">get_deterministic()</span> <span class="pre">const</span></code></div>
@@ -469,7 +470,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca5model12eigenvectorsE">
 <span id="_CPPv3N6oneapi3dal3pca5model12eigenvectorsE"></span><span id="_CPPv2N6oneapi3dal3pca5model12eigenvectorsE"></span><span id="oneapi::dal::pca::model::eigenvectors__tableCR"></span><em class="property">const</em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a> &amp;<code class="sig-name descname">eigenvectors</code> = <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a>{}<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca5model12eigenvectorsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><span class="math notranslate nohighlight">\(r \times p\)</span> table with the eigenvectors. Each row contains one eigenvector.</p>
+<dd><p>An <span class="math notranslate nohighlight">\(r \times p\)</span> table with the eigenvectors. Each row contains one eigenvector.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_eigenvectors()</span> <span class="pre">const</span></code></div>
@@ -530,7 +531,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca11train_input4dataE">
 <span id="_CPPv3N6oneapi3dal3pca11train_input4dataE"></span><span id="_CPPv2N6oneapi3dal3pca11train_input4dataE"></span><span id="oneapi::dal::pca::train_input::data__tableCR"></span><em class="property">const</em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a> &amp;<code class="sig-name descname">data</code> = <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a>{}<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca11train_input4dataE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> table with the training data, where each row stores one feature vector.</p>
+<dd><p>An <span class="math notranslate nohighlight">\(n \times p\)</span> table with the training data, where each row stores one feature vector.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_data()</span> <span class="pre">const</span></code></div>
@@ -593,7 +594,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca12train_result5meansE">
 <span id="_CPPv3N6oneapi3dal3pca12train_result5meansE"></span><span id="_CPPv2N6oneapi3dal3pca12train_result5meansE"></span><span id="oneapi::dal::pca::train_result::means__tableCR"></span><em class="property">const</em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a> &amp;<code class="sig-name descname">means</code> = <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a>{}<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca12train_result5meansE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><span class="math notranslate nohighlight">\(1 \times r\)</span> table that contains mean value for the first <span class="math notranslate nohighlight">\(r\)</span> features.</p>
+<dd><p>A <span class="math notranslate nohighlight">\(1 \times r\)</span> table that contains the mean values for the first <span class="math notranslate nohighlight">\(r\)</span> features.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_means()</span> <span class="pre">const</span></code></div>
@@ -605,7 +606,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca12train_result9variancesE">
 <span id="_CPPv3N6oneapi3dal3pca12train_result9variancesE"></span><span id="_CPPv2N6oneapi3dal3pca12train_result9variancesE"></span><span id="oneapi::dal::pca::train_result::variances__tableCR"></span><em class="property">const</em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a> &amp;<code class="sig-name descname">variances</code> = <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a>{}<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca12train_result9variancesE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><span class="math notranslate nohighlight">\(1 \times r\)</span> table that contains variance for the first <span class="math notranslate nohighlight">\(r\)</span> features.</p>
+<dd><p>A <span class="math notranslate nohighlight">\(1 \times r\)</span> table that contains the variances for the first <span class="math notranslate nohighlight">\(r\)</span> features.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_variances()</span> <span class="pre">const</span></code></div>
@@ -617,7 +618,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca12train_result11eigenvaluesE">
 <span id="_CPPv3N6oneapi3dal3pca12train_result11eigenvaluesE"></span><span id="_CPPv2N6oneapi3dal3pca12train_result11eigenvaluesE"></span><span id="oneapi::dal::pca::train_result::eigenvalues__tableCR"></span><em class="property">const</em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a> &amp;<code class="sig-name descname">eigenvalues</code> = <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a>{}<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca12train_result11eigenvaluesE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><span class="math notranslate nohighlight">\(1 \times r\)</span> table that contains eigenvalue for for the first <span class="math notranslate nohighlight">\(r\)</span> features.</p>
+<dd><p>A <span class="math notranslate nohighlight">\(1 \times r\)</span> table that contains the eigenvalues for for the first <span class="math notranslate nohighlight">\(r\)</span> features.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_eigenvalues()</span> <span class="pre">const</span></code></div>
@@ -629,7 +630,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3pca12train_result12eigenvectorsE">
 <span id="_CPPv3N6oneapi3dal3pca12train_result12eigenvectorsE"></span><span id="_CPPv2N6oneapi3dal3pca12train_result12eigenvectorsE"></span><span id="oneapi::dal::pca::train_result::eigenvectors__tableCR"></span><em class="property">const</em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a> &amp;<code class="sig-name descname">eigenvectors</code> = <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table">table</a>{}<a class="headerlink" href="#_CPPv4N6oneapi3dal3pca12train_result12eigenvectorsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><span class="math notranslate nohighlight">\(r \times p\)</span> table with the eigenvectors. Each row contains one eigenvector.</p>
+<dd><p>An <span class="math notranslate nohighlight">\(r \times p\)</span> table with the eigenvectors. Each row contains one eigenvector.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_eigenvectors()</span> <span class="pre">const</span></code></div>
@@ -650,7 +651,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dl class="cpp function">
 <dt id="_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE">
 <span id="_CPPv3I000EN6oneapi3dal3pca5trainERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE"></span><span id="_CPPv2I000EN6oneapi3dal3pca5trainERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE"></span>template&lt;typename <code class="sig-name descname">Float</code>, typename <code class="sig-name descname">Method</code>, typename <code class="sig-name descname">Task</code>&gt;<br /><a class="reference internal" href="#_CPPv4I0EN6oneapi3dal3pca12train_resultE" title="oneapi::dal::pca::train_result">train_result</a>&lt;<a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE" title="oneapi::dal::pca::train::Task">Task</a>&gt; <code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca10descriptorE" title="oneapi::dal::pca::descriptor">descriptor</a>&lt;<a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE" title="oneapi::dal::pca::train::Float">Float</a>, <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE" title="oneapi::dal::pca::train::Method">Method</a>, <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE" title="oneapi::dal::pca::train::Task">Task</a>&gt; &amp;<em>desc</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal3pca11train_inputE" title="oneapi::dal::pca::train_input">train_input</a>&lt;<a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE" title="oneapi::dal::pca::train::Task">Task</a>&gt; &amp;<em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I000EN6oneapi3dal3pca5trainE12train_resultI4TaskERK10descriptorI5Float6Method4TaskERK11train_inputI4TaskE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Runs the training operation for PCA. For more details see <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">oneapi</span><span class="pre">::</span><span class="pre">dal</span><span class="pre">::</span><span class="pre">train</span></code>.</p>
+<dd><p>Runs the training operation for PCA. For more details, see <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">oneapi</span><span class="pre">::</span><span class="pre">dal</span><span class="pre">::</span><span class="pre">train</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -819,7 +820,7 @@ to the set <span class="math notranslate nohighlight">\(X'' = \{ x_1'', \ldots, 
 <dt>Preconditions</dt><dd><div class="line-block">
 <div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::input"><span class="pre">input</span></a><span class="pre">.</span><span class="pre">data</span><span class="pre">.</span><span class="pre">has_data</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
 <div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::input"><span class="pre">input</span></a><span class="pre">.</span><span class="pre">model</span><span class="pre">.</span><span class="pre">eigenvectors</span><span class="pre">.</span><span class="pre">row_count</span> <span class="pre">==</span> <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::desc"><span class="pre">desc</span></a><span class="pre">.</span><span class="pre">component_count</span></code></div>
-<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::input"><span class="pre">input</span></a><span class="pre">.</span><span class="pre">model</span><span class="pre">.</span><span class="pre">eigenvectors</span><span class="pre">.</span><span class="pre">column_count</span> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::input"><span class="pre">input</span></a><span class="pre">.</span><span class="pre">data</span><span class="pre">.</span><span class="pre">column_count</span></code></div>
+<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::input"><span class="pre">input</span></a><span class="pre">.</span><span class="pre">model</span><span class="pre">.</span><span class="pre">eigenvectors</span><span class="pre">.</span><span class="pre">column_count</span> <span class="pre">==</span> <a class="reference internal" href="#_CPPv4I000EN6oneapi3dal3pca5inferE12infer_resultI4TaskERK10descriptorI5Float6Method4TaskERK11infer_inputI4TaskE" title="oneapi::dal::pca::infer::input"><span class="pre">input</span></a><span class="pre">.</span><span class="pre">data</span><span class="pre">.</span><span class="pre">column_count</span></code></div>
 </div>
 </dd>
 <dt>Postconditions</dt><dd><div class="line-block">
