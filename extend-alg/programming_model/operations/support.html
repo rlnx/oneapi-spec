@@ -181,7 +181,11 @@
             
   <div class="section" id="supported-operations">
 <span id="op-supported"></span><h1>Supported operations<a class="headerlink" href="#supported-operations" title="Permalink to this headline">¶</a></h1>
-<p>This section</p>
+<p>This section describes all operations supported by oneDAL, for more information
+about general operation definition, refer to <a class="reference internal" href="index.html#operations"><span class="std std-ref">Operations</span></a>
+section.</p>
+<p>The table bellow specifies wether an algorithm’s descriptor can be used together
+with an operation.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 35%" />
@@ -268,7 +272,8 @@ learning algorithm based on the model obtained as a result of training.</p>
 </div>
 <div class="section" id="compute">
 <span id="op-compute"></span><h2>Compute<a class="headerlink" href="#compute" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">compute</span></code> operation</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">compute</span></code> operation is used if an algorithm does not have well-defined
+training and inference stages.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span> <span class="p">{</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>

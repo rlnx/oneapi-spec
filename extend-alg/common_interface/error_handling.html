@@ -183,9 +183,9 @@ caught using standard C++ error handling mechanism.</p>
 <h2>Exception classification<a class="headerlink" href="#exception-classification" title="Permalink to this headline">¶</a></h2>
 <p>Exception classification in oneDAL is aligned with C++ Standard Library
 classification. oneDAL shall introduce abstract classes that define the base
-class in the hierarchy of exception classes. Concrete exception classes are
-derived from respective C++ Standard Library exception classes. oneDAL library
-shall throw exceptions represented with concrete classes.</p>
+class in the hierarchy of exception classes. Non-abstract exception classes are
+derived from the respective C++ Standard Library exception classes. oneDAL shall
+throw exceptions represented with non-abstract classes.</p>
 <p>In the hierarchy of oneDAL exceptions, <code class="docutils literal notranslate"><span class="pre">oneapi::dal::exception</span></code> is the base abstract
 class that all other exception classes are derived from.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">exception</span><span class="p">;</span>
@@ -205,7 +205,7 @@ class that all other exception classes are derived from.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::exception</span></code></p></td>
-<td><p>Base class of oneDAL exception hierarchy.</p></td>
+<td><p>The base class of oneDAL exception hierarchy.</p></td>
 <td><p>Yes</p></td>
 </tr>
 </tbody>
@@ -245,7 +245,7 @@ execution of oneDAL functionality.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::bad_alloc</span></code></p></td>
 <td><p>Reports failure to allocate storage.</p></td>
-<td><p>No</p></td>
+<td><p>Yes</p></td>
 </tr>
 </tbody>
 </table>
@@ -256,13 +256,13 @@ shall be divided into the following groups:</p>
 <li><p>domain errors</p></li>
 <li><p>out of range errors</p></li>
 <li><p>errors with an unimplemented method or algorithm</p></li>
-<li><p>unavailable device or data</p></li>
+<li><p>unsupported device</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">invalid_argument</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">invalid_argument</span><span class="p">;</span>
 <span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">domain_error</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">domain_error</span><span class="p">;</span>
 <span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">out_of_range</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">out_of_range</span><span class="p">;</span>
-<span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">unimplemented_error</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">logic_error</span><span class="p">;</span>
-<span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">unavailable_error</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">logic_error</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">unimplemented</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">logic_error</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">unsupported_device</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">logic_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">logic_error</span><span class="p">;</span>
 </pre></div>
 </div>
 <table class="colwidths-given docutils align-default">
@@ -279,7 +279,7 @@ shall be divided into the following groups:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::invalid_argument</span></code></p></td>
-<td><p>Reports situations when the argument was not been accepted.</p></td>
+<td><p>Reports situations when the argument was not accepted.</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::domain_error</span></code></p></td>
@@ -293,22 +293,25 @@ the operation is defined. Higher priority than
 than <code class="docutils literal notranslate"><span class="pre">oneapi::dal::invalid_argument</span></code>.</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::unimplemented_error</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::unimplemented</span></code></p></td>
 <td><p>Reports errors that arise because an algorithm or a method is not
 implemented.</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::unavailable_error</span></code></p></td>
-<td><p>Reports situations when a device or data is not available.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::unsupported_device</span></code></p></td>
+<td><p>Reports situations when a device is not supported.</p></td>
 <td><p>No</p></td>
 </tr>
 </tbody>
 </table>
-<p>If an error occurs during function execution after preconditions and invariants
-were checked, it is reported via <code class="docutils literal notranslate"><span class="pre">ondeal::runtime_error</span></code> inheritors. oneDAL
-distinguishes errors happened during interaction with OS facilities and errors
-of destination type’s range in internal computations, while other errors are
-reported via <code class="docutils literal notranslate"><span class="pre">oneapi::dal::internal_error</span></code>.</p>
+<p>Errors that occur during the execution of oneDAL functionality are represented
+with <code class="docutils literal notranslate"><span class="pre">oneapi::dal::runtime_error</span></code>. Two main groups of errors shall be
+distinguished:</p>
+<ul class="simple">
+<li><p>errors in the destination type range</p></li>
+<li><p>errors in the OS facilities interaction</p></li>
+</ul>
+<p>All other errors are reported via <code class="docutils literal notranslate"><span class="pre">oneapi::dal::internal_error</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">range_error</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">runtime_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">range_error</span><span class="p">;</span>
 <span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">system_error</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">runtime_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">system_error</span><span class="p">;</span>
 <span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">internal_error</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">runtime_error</span><span class="p">,</span> <span class="n">public</span> <span class="n">std</span><span class="p">::</span><span class="n">runtime_error</span><span class="p">;</span>
@@ -337,6 +340,39 @@ reported via <code class="docutils literal notranslate"><span class="pre">oneapi
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::internal_error</span></code></p></td>
 <td><p>Reports all runtime errors that couldn’t be assigned to other inheritors.</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>All memory allocation errors are represented by <code class="docutils literal notranslate"><span class="pre">oneapi::dal::bad_alloc</span></code>. They
+shall be divided into two groups based on where they occur:</p>
+<ul class="simple">
+<li><p>Host memory allocation error</p></li>
+<li><p>Device memory allocation error</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">host_bad_alloc</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">bad_alloc</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">device_bad_alloc</span> <span class="p">:</span>  <span class="n">public</span> <span class="n">oneapi</span><span class="p">::</span><span class="n">dal</span><span class="p">::</span><span class="n">bad_alloc</span><span class="p">;</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 65%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Exception</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Abstract</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::host_bad_alloc</span></code></p></td>
+<td><p>Reports failure to allocate storage on the host.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::device_bad_alloc</span></code></p></td>
+<td><p>Reports failure to allocate storage on the device.</p></td>
 <td><p>No</p></td>
 </tr>
 </tbody>
