@@ -226,8 +226,8 @@ templates shall be used for inference of the input and return types.</p></li>
 from <code class="docutils literal notranslate"><span class="pre">oneapi::dal::logic_error</span></code>.</p></li>
 <li><p>If a postcondition is violated, an operation shall throw an exception derived
 from <code class="docutils literal notranslate"><span class="pre">oneapi::dal::runtime_error</span></code>.</p></li>
-<li><p>If descriptor is incompatible with some operation, the error shall be reported
-at compile-time.</p></li>
+<li><p>If the descriptor is incompatible with some operation, an error shall be
+reported at compile-time.</p></li>
 <li><p>The exact list of compatible operations and pre-/post- conditions shall be
 defined by <a class="reference internal" href="../../algorithms/index.html#algorithms"><span class="std std-ref">a particular algorithm specification</span></a>.</p></li>
 </ul>
@@ -270,10 +270,9 @@ combination of two previous shortcuts.</p>
 </div>
 <div class="section" id="input">
 <span id="id2"></span><h2>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h2>
-<p>An input object aggregates all the data that algorithm requires for performing
-specific operation. The data represented via <a class="reference internal" href="../../data_management/index.html#table"><span class="std std-ref">tables</span></a>, so,
-typically, an input is a collection of tables, but not limited with them and can
-aggregate objects of arbitrary type.</p>
+<p>An input object aggregates all the data that the algorithm requires for
+performing a specific operation. The data is represented via <a class="reference internal" href="../../data_management/index.html#table"><span class="std std-ref">tables</span></a>, so, typically, an input is a collection of tables, but not limited to
+them and can aggregate objects of an arbitrary type.</p>
 <p>In general, input class definition is similar to <a class="reference internal" href="../descriptors.html#descriptors"><span class="std std-ref">descriptor</span></a>. An input defines properties that can be accessed by means of the
 corresponding <a class="reference internal" href="../../glossary.html#term-Getter"><span class="xref std std-term">getter</span></a> and <a class="reference internal" href="../../glossary.html#term-Setter"><span class="xref std std-term">setter</span></a> methods. Requirements to
 the input’s properties are the same as <a class="reference internal" href="../descriptors.html#property-reqs"><span class="std std-ref">requirements for descriptor’s
