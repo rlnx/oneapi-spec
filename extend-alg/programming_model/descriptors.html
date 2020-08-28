@@ -226,6 +226,10 @@ of the algorithm’s properties.</p></li>
           <span class="cm">/* more template parameters */</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">descriptor</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
+   <span class="cm">/* Constructor */</span>
+   <span class="n">descriptor</span><span class="p">(</span><span class="k">const</span> <span class="o">%</span><span class="n">PROPERTY_TYPE</span><span class="o">%&amp;</span> <span class="o">%</span><span class="n">PROPERTY_NAME</span><span class="o">%</span><span class="p">,</span>
+              <span class="cm">/* more properties */</span><span class="p">)</span>
+
    <span class="cm">/* Getter &amp; Setter for the property called `%PROPERTY_NAME%` */</span>
    <span class="n">descriptor</span><span class="o">&amp;</span> <span class="n">set_</span><span class="o">%</span><span class="n">PROPERTY_NAME</span><span class="o">%</span><span class="p">(</span><span class="o">%</span><span class="n">PROPERTY_TYPE</span><span class="o">%</span> <span class="n">value</span><span class="p">);</span>
    <span class="o">%</span><span class="n">PROPERTY_TYPE</span><span class="o">%</span> <span class="n">get_</span><span class="o">%</span><span class="n">PROPERTY_NAME</span><span class="o">%</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
@@ -238,7 +242,7 @@ of the algorithm’s properties.</p></li>
 </div>
 <p>Each meta-parameter of an algorithm is mapped to a property that shall satisfy
 the following requirements:</p>
-<ul>
+<ul id="property-reqs">
 <li><p>Properties are defined with getter and setter methods. The underlying
 class member variable that stores the property’s value is never exposed in the
 descriptor interface.</p></li>
@@ -293,8 +297,8 @@ the methods as shown in the example below.</p>
 namespace using tag-types. Algorithm shall support at least one task and declare
 the <code class="docutils literal notranslate"><span class="pre">by_default</span></code> type alias that refers to one of the tasks as shown in the
 example below.</p>
-<p>If an algorithm assumes separation on <code class="docutils literal notranslate"><span class="pre">classification</span></code> and <code class="docutils literal notranslate"><span class="pre">regression</span></code> tasks,
-the default task shall be <code class="docutils literal notranslate"><span class="pre">classification</span></code>.</p>
+<p>If an algorithm assumes both <code class="docutils literal notranslate"><span class="pre">classification</span></code> and <code class="docutils literal notranslate"><span class="pre">regression</span></code> tasks, the
+default task shall be <code class="docutils literal notranslate"><span class="pre">classification</span></code>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span><span class="o">::%</span><span class="n">ALGORITHM</span><span class="o">%</span> <span class="p">{</span>
    <span class="k">namespace</span> <span class="n">task</span> <span class="p">{</span>
       <span class="k">struct</span> <span class="n">classification</span> <span class="p">{};</span>

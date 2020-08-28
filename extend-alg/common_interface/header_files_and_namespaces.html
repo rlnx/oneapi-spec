@@ -194,18 +194,40 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi/dal/algo/%ALGO%.hpp</span></code></p></td>
 <td><p>A header file for a particular algorithm.
 The folder for the algorithm itself is <code class="docutils literal notranslate"><span class="pre">oneapi/dal/algo/%ALGO%/</span></code>.</p>
-<p>The string %ALGO% should be substituted with the name of the algorithm, for example, <code class="docutils literal notranslate"><span class="pre">kmeans</span></code> or <code class="docutils literal notranslate"><span class="pre">knn</span></code>.</p>
+<p>The string %ALGO% should be substituted with the name of the algorithm,
+for example, <code class="docutils literal notranslate"><span class="pre">kmeans</span></code> or <code class="docutils literal notranslate"><span class="pre">knn</span></code>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi/dal/algo/misc/%FUNC%.hpp</span></code></p></td>
-<td><p>A header file for miscellaneous data types and functionality that is intended to be used by oneDAL algorithms and applications
+<td><p>A header file for miscellaneous data types and functionality that is
+intended to be used by oneDAL algorithms and applications
 of the analytical pipeline.</p>
-<p>The string %FUNC% should be substituted with the functionality name, for example, <code class="docutils literal notranslate"><span class="pre">mt19937</span></code> or <code class="docutils literal notranslate"><span class="pre">cross_enthropy_loss</span></code>.</p>
+<p>The string %FUNC% should be substituted with the name of the
+functionality, for example, <code class="docutils literal notranslate"><span class="pre">mt19937</span></code> or <code class="docutils literal notranslate"><span class="pre">cross_enthropy_loss</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi/dal/table/%FILE%.hpp</span></code></p></td>
+<td><p>A header file for the types related to the <a class="reference internal" href="../data_management/index.html#table"><span class="std std-ref">table</span></a> concept.</p>
+<p>The string %FILE% should be substituted with the name of the
+functionality, for example, <code class="docutils literal notranslate"><span class="pre">common</span></code> for key concepts related to table
+types (e.g., <code class="docutils literal notranslate"><span class="pre">table</span></code>, <code class="docutils literal notranslate"><span class="pre">table_metadata</span></code>, <code class="docutils literal notranslate"><span class="pre">data_layout</span></code> classes). For
+entities that have the <code class="docutils literal notranslate"><span class="pre">_table</span></code> suffix in their names, the related
+header file shall not contain this suffix in its name, for example,
+<code class="docutils literal notranslate"><span class="pre">homogen</span></code> for <code class="docutils literal notranslate"><span class="pre">homogen_table</span></code> class.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi/dal/io/%FILE%.hpp</span></code></p></td>
+<td><p>A header file for the types and entities of input-output functionality.</p>
+<p>The string %FILE% should be substituted with the name of the
+functionality, for example, <code class="docutils literal notranslate"><span class="pre">csv</span></code> for reading and writing csv files.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi/dal/util/%UTIL%.hpp`</span></code></p></td>
-<td><p>A header file for auxiliary functionality, such as memory allocators or type traits, that is intended to be used for the design of classes and implementation of various methods.</p>
-<p>The string %UTIL% should be substituted with the auxiliary functionality name, for example, <code class="docutils literal notranslate"><span class="pre">usm_allocator</span></code> or <code class="docutils literal notranslate"><span class="pre">type_traits</span></code>.</p>
+<td><p>A header file for auxiliary functionality, such as memory allocators or
+type traits, that is intended to be used for the design of classes and
+implementation of various methods.</p>
+<p>The string %UTIL% should be substituted with the name of the auxiliary
+functionality, for example, <code class="docutils literal notranslate"><span class="pre">usm_allocator</span></code> or <code class="docutils literal notranslate"><span class="pre">type_traits</span></code>.</p>
 </td>
 </tr>
 </tbody>
@@ -226,25 +248,34 @@ of the analytical pipeline.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal</span></code></p></td>
-<td><p>The namespace of the library that contains externally visible data types, processing and service functionality of oneDAL.</p></td>
+<td><p>The namespace of the library that contains externally visible data
+types, data management entities, processing and service functionality of
+oneDAL.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::%ALGORITHM%</span></code></p></td>
 <td><p>The namespace of the algorithm.
-All classes and structures related to that algorithm shall be defined within a particular namespace.</p>
-<p>To define a specific algorithm, the string %ALGORITHM% should be substituted with its name,
-for example, <code class="docutils literal notranslate"><span class="pre">oneapi::dal::kmeans</span></code> or <code class="docutils literal notranslate"><span class="pre">oneapi::dal::knn</span></code>.</p>
+All classes and structures related to that algorithm shall be defined
+within this particular namespace.</p>
+<p>To define a namespace for a specific algorithm, the string %ALGORITHM%
+should be substituted with its name, for example, <code class="docutils literal notranslate"><span class="pre">oneapi::dal::kmeans</span></code>
+or <code class="docutils literal notranslate"><span class="pre">oneapi::dal::knn</span></code>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oneapi::dal::misc</span></code></p></td>
-<td><p>The namespace that contains miscellaneous data types and functionality intended to be used by oneDAL algorithms
-and applications for algorithm customization and optimization on various stages of the analytical pipeline.</p></td>
+<td><p>The namespace that contains miscellaneous data types and functionality
+intended to be used by oneDAL algorithms and applications for algorithm
+customization and optimization on various stages of the analytical
+pipeline.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%PARENT%::detail</span></code></p></td>
-<td><p>The namespace that contains implementation details of the data types and functionality for the parent namespace.
+<td><p>The namespace that contains implementation details of the data types and
+functionality for the parent namespace.
 The namespace can be on any level in the namespace hierarchy.</p>
-<p>To define a specific namespace, the string %PARENT% should be substituted with the namespace for which the details are provided,
-for example, <code class="docutils literal notranslate"><span class="pre">oneapi::dal::detail</span></code> or <code class="docutils literal notranslate"><span class="pre">oneapi::dal::kmeans::detail</span></code>.</p>
-<p>The application shall not use any data types nor call any functionality located in the <code class="docutils literal notranslate"><span class="pre">detail</span></code> namespaces.</p>
+<p>To define a specific namespace, the string %PARENT% should be substituted
+with the namespace for which the details are provided, for example,
+<code class="docutils literal notranslate"><span class="pre">oneapi::dal::detail</span></code> or <code class="docutils literal notranslate"><span class="pre">oneapi::dal::kmeans::detail</span></code>.</p>
+<p>The application shall not use any data types nor call any functionality
+located in the <code class="docutils literal notranslate"><span class="pre">detail</span></code> namespaces.</p>
 </td>
 </tr>
 </tbody>

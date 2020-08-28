@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Table Builders" href="table_builders.html" />
+    <link rel="next" title="Accessors" href="accessors.html" />
     <link rel="prev" title="Data Sources" href="data_sources.html" /> 
 </head>
 
@@ -99,7 +99,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Data management</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data_sources.html">Data Sources</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="table_builders.html">Table Builders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="accessors.html">Accessors</a></li>
 </ul>
 </li>
@@ -177,7 +176,7 @@
   <div class="section" id="tables">
 <span id="id1"></span><h1>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the types related to the <a class="reference internal" href="index.html#table"><span class="std std-ref">table</span></a> and
-<a class="reference internal" href="index.html#metadata"><span class="std std-ref">metadata</span></a> concepts. oneDAL defines the following types that
+<a class="reference internal" href="index.html#table-metadata"><span class="std std-ref">table metadata</span></a> concepts. oneDAL defines the following types that
 implement these concepts:</p>
 <ul class="simple">
 <li><p>The <code class="code docutils literal notranslate"><span class="pre">table</span></code> is a base class that implements the table concept and
@@ -196,7 +195,7 @@ table. Each derived table type may provide its own implementation of the
 <li><p>Follow definition of the table concept.</p></li>
 <li><p>Be derived from the <code class="code docutils literal notranslate"><span class="pre">table</span></code> class. The behavior of this class can be
 extended, but cannot be weaken.</p></li>
-<li><p>Provide an implementation of the <a class="reference internal" href="index.html#metadata"><span class="std std-ref">metadata</span></a> concept derived
+<li><p>Provide an implementation of the <a class="reference internal" href="index.html#table-metadata"><span class="std std-ref">table metadata</span></a> concept derived
 from the <code class="code docutils literal notranslate"><span class="pre">table_meta</span></code> class.</p></li>
 <li><p>Be <a class="reference internal" href="../glossary.html#term-Reference-counted-object"><span class="xref std std-term">reference-counted</span></a>. An assignment
 operator or copy constructor shall be used to create another reference to the
@@ -734,7 +733,7 @@ are available only with integer <code class="docutils literal notranslate"><span
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="table_builders.html" class="btn btn-neutral float-right" title="Table Builders" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="accessors.html" class="btn btn-neutral float-right" title="Accessors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="data_sources.html" class="btn btn-neutral float-left" title="Data Sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
