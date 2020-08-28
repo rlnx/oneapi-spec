@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Train" href="train.html" />
+    <link rel="next" title="Supported operations" href="support.html" />
     <link rel="prev" title="Descriptors" href="../descriptors.html" /> 
 </head>
 
@@ -97,9 +97,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming model</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../descriptors.html">Descriptors</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="train.html">Train</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infer.html">Infer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="compute.html">Compute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="support.html">Supported operations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../computational_modes.html">Computational modes</a></li>
@@ -182,19 +180,19 @@
   <div class="section" id="operations">
 <span id="id1"></span><h1>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
 <p><strong>An operation</strong> is a function that transforms <a class="reference internal" href="../descriptors.html#descriptors"><span class="std std-ref">a descriptor</span></a> and other arguments represented via <a class="reference internal" href="#input">an input</a> object
-to <a class="reference internal" href="#result">a result</a> object. An operation responsible for:</p>
+to <a class="reference internal" href="#result">a result</a> object. An operation is responsible for:</p>
 <ul class="simple">
-<li><p>Execution of all computational routines of the algorithm represented by the
+<li><p>Executing all of an algorithm’s computational routines represented by the
 descriptor.</p></li>
 <li><p>Passing SYCL* queue to computational routines.</p></li>
-<li><p>Verification of preconditions and postconditions, before and after execution
+<li><p>Verifying preconditions and postconditions before and after the execution
 of computational routines.</p></li>
 </ul>
 <div class="section" id="general-operation-definition">
 <span id="general-operation"></span><h2>General operation definition<a class="headerlink" href="#general-operation-definition" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#operation-template">The following code sample</a> shows the declaration for an
+<p><a class="reference internal" href="#operation-template">The following code sample</a> shows the declaration of an
 abstract operation. To declare a particular operation, the <code class="docutils literal notranslate"><span class="pre">%OPERATION%</span></code> shall
-be substituted.</p>
+be substituted with the name of the operation.</p>
 <div class="highlight-cpp notranslate" id="operation-template"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span> <span class="p">{</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
@@ -216,17 +214,17 @@ be substituted.</p>
 <ul class="simple">
 <li><p>An operation shall accept three parameters in the following order:</p>
 <ul>
-<li><p>The SYCL* queue object.</p></li>
-<li><p>The descriptor of the algorithm.</p></li>
-<li><p>The <a class="reference internal" href="#input">input object</a>.</p></li>
+<li><p>The SYCL* queue object</p></li>
+<li><p>The descriptor of the algorithm</p></li>
+<li><p>The <a class="reference internal" href="#input">input object</a></p></li>
 </ul>
 </li>
 <li><p>An operation shall return the <a class="reference internal" href="#result">result object</a>.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">%OPERATION%_input_t</span></code> and <code class="docutils literal notranslate"><span class="pre">%OPERATION%_result_t</span></code> alias
 templates shall be used for inference of the input and return types.</p></li>
-<li><p>If precondition is violated, an operation shall throw an exception derived
+<li><p>If a precondition is violated, an operation shall throw an exception derived
 from <code class="docutils literal notranslate"><span class="pre">oneapi::dal::logic_error</span></code>.</p></li>
-<li><p>If postcondition is violated, an operation shall throw an exception derived
+<li><p>If a postcondition is violated, an operation shall throw an exception derived
 from <code class="docutils literal notranslate"><span class="pre">oneapi::dal::runtime_error</span></code>.</p></li>
 <li><p>If descriptor is incompatible with some operation, the error shall be reported
 at compile-time.</p></li>
@@ -240,9 +238,9 @@ defined by <a class="reference internal" href="../../algorithms/index.html#algor
 following overloaded functions called <em>shortcuts</em> for each operation in addition
 to the general one described in section <a class="reference internal" href="#general-operation">General operation definition</a>.</p>
 <ul>
-<li><p>Shortcut for execution on <a class="reference internal" href="../../glossary.html#term-Host-Device"><span class="xref std std-term">host</span></a>. Performs the same
-operation as the general function on host, but does not require passing the
-queue explicitly.</p>
+<li><p>A shortcut for execution on <a class="reference internal" href="../../glossary.html#term-Host-Device"><span class="xref std std-term">host</span></a> that performs the same
+operation as the general function on host, but does not require the
+queue to be passed explicitly.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
 <span class="o">%</span><span class="n">OPERATION</span><span class="o">%</span><span class="n">_result_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;</span> <span class="o">%</span><span class="n">OPERATION</span><span class="o">%</span><span class="p">(</span>
    <span class="k">const</span> <span class="n">Descriptor</span><span class="o">&amp;</span> <span class="n">desc</span><span class="p">,</span>
@@ -250,7 +248,7 @@ queue explicitly.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Shortcut that allows omitting explicit input creation.</p>
+<li><p>A shortcut that allows omitting explicit input creation.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Args</span><span class="o">&gt;</span>
 <span class="o">%</span><span class="n">OPERATION</span><span class="o">%</span><span class="n">_result_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;</span> <span class="o">%</span><span class="n">OPERATION</span><span class="o">%</span><span class="p">(</span>
    <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
@@ -259,7 +257,7 @@ queue explicitly.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Shortcut that allows omitting explicit queue and input creation. This is
+<li><p>A shortcut that allows omitting explicit queue and input creation. This is a
 combination of two previous shortcuts.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Args</span><span class="o">&gt;</span>
 <span class="o">%</span><span class="n">OPERATION</span><span class="o">%</span><span class="n">_result_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;</span> <span class="o">%</span><span class="n">OPERATION</span><span class="o">%</span><span class="p">(</span>
@@ -272,7 +270,7 @@ combination of two previous shortcuts.</p>
 </div>
 <div class="section" id="input">
 <span id="id2"></span><h2>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h2>
-<p>An input objects aggregates all the data that algorithm requires for performing
+<p>An input object aggregates all the data that algorithm requires for performing
 specific operation. The data represented via <a class="reference internal" href="../../data_management/index.html#table"><span class="std std-ref">tables</span></a>, so,
 typically, an input is a collection of tables, but not limited with them and can
 aggregate objects of arbitrary type.</p>
@@ -317,7 +315,9 @@ properties.</p>
 </div>
 <div class="section" id="result">
 <span id="id3"></span><h2>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span><span class="o">::%</span><span class="n">ALGORITHM</span><span class="o">%</span> <span class="p">{</span>
+<p>A result object aggregates all output values computed by the algorithm. All
+assumptions about <a class="reference internal" href="#input">an input</a> is applied to a result.</p>
+<div class="highlight-cpp notranslate" id="result-template"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span><span class="o">::%</span><span class="n">ALGORITHM</span><span class="o">%</span> <span class="p">{</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Task</span> <span class="o">=</span> <span class="n">task</span><span class="o">::</span><span class="n">by_default</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">OPERATION_result</span> <span class="p">{</span>
@@ -336,12 +336,12 @@ properties.</p>
 <span class="p">}</span> <span class="c1">// namespace oneapi::dal::%ALGORITHM%</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="supported-operation">
+<h2>Supported operation<a class="headerlink" href="#supported-operation" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference internal" href="support.html#op-supported"><span class="std std-ref">Supported operations</span></a> section for
+more information about particular operations.</p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="train.html">Train</a></li>
-<li class="toctree-l1"><a class="reference internal" href="infer.html">Infer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compute.html">Compute</a></li>
-</ul>
 </div>
 </div>
 </div>
@@ -354,7 +354,7 @@ properties.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="train.html" class="btn btn-neutral float-right" title="Train" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="support.html" class="btn btn-neutral float-right" title="Supported operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../descriptors.html" class="btn btn-neutral float-left" title="Descriptors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

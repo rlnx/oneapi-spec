@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Infer &mdash; oneDAL  documentation</title>
+  <title>Operations support &mdash; oneDAL  documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Compute" href="compute.html" />
-    <link rel="prev" title="Train" href="train.html" /> 
+    <link rel="next" title="Computational modes" href="../computational_modes.html" />
+    <link rel="prev" title="Compute" href="compute.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,9 +98,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../descriptors.html">Descriptors</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Operations</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="train.html">Train</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Infer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="infer.html">Infer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="compute.html">Compute</a></li>
-<li class="toctree-l3"><a class="reference internal" href="compatibility.html">Compatibility with algorithms</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Operations support</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../computational_modes.html">Computational modes</a></li>
@@ -169,7 +169,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/programming_model/operations/infer.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/programming_model/operations/compatibility.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -182,8 +182,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="infer">
-<span id="op-infer"></span><h1>Infer<a class="headerlink" href="#infer" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="operations-support">
+<h1>Operations support<a class="headerlink" href="#operations-support" title="Permalink to this headline">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Algorithm</p></th>
+<th class="head" colspan="3"><p>Operations</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p><a class="reference internal" href="train.html#op-train"><span class="std std-ref">Train</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="infer.html#op-infer"><span class="std std-ref">Infer</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="compute.html#op-compute"><span class="std std-ref">Compute</span></a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../algorithms/clustering/kmeans.html#alg-kmeans"><span class="std std-ref">K-Means</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../algorithms/clustering/kmeans_init.html#alg-kmeans-init"><span class="std std-ref">K-Means Initialization</span></a></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../algorithms/nearest_neighbors/knn_classification.html#alg-knn"><span class="std std-ref">k-NN</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../algorithms/decomposition/pca.html#alg-pca"><span class="std std-ref">PCA</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -194,10 +233,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="compute.html" class="btn btn-neutral float-right" title="Compute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../computational_modes.html" class="btn btn-neutral float-right" title="Computational modes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="train.html" class="btn btn-neutral float-left" title="Train" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="compute.html" class="btn btn-neutral float-left" title="Compute" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

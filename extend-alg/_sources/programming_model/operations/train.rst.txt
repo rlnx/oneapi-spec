@@ -1,3 +1,23 @@
+.. _op_train:
+
 =====
 Train
 =====
+
+.. code-block:: cpp
+
+   namespace oneapi::dal {
+
+   template <typename Descriptor>
+   using train_input_t = /* implementation defined */;
+
+   template <typename Descriptor>
+   using train_result_t = /* implementation defined */;
+
+   template <typename Descriptor>
+   train_result_t<Descriptor> train(
+      sycl::queue& queue,
+      const Descriptor& desc,
+      const train_input_t<Descriptor>& input);
+
+   } // namespace oneapi::dal

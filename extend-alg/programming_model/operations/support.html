@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Train &mdash; oneDAL  documentation</title>
+  <title>Supported operations &mdash; oneDAL  documentation</title>
   
 
   
@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Infer" href="infer.html" />
+    <link rel="next" title="Computational modes" href="../computational_modes.html" />
     <link rel="prev" title="Operations" href="index.html" /> 
 </head>
 
@@ -97,10 +97,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Programming model</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../descriptors.html">Descriptors</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Operations</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Train</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infer.html">Infer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="compute.html">Compute</a></li>
-<li class="toctree-l3"><a class="reference internal" href="compatibility.html">Compatibility with algorithms</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Supported operations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../computational_modes.html">Computational modes</a></li>
@@ -169,7 +166,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/programming_model/operations/train.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/programming_model/operations/support.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -182,8 +179,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="train">
-<span id="op-train"></span><h1>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="supported-operations">
+<span id="op-supported"></span><h1>Supported operations<a class="headerlink" href="#supported-operations" title="Permalink to this headline">¶</a></h1>
+<p>This section</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Algorithm</p></th>
+<th class="head" colspan="3"><p>Operations</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p><a class="reference internal" href="#op-train"><span class="std std-ref">Train</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#op-infer"><span class="std std-ref">Infer</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#op-compute"><span class="std std-ref">Compute</span></a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../algorithms/clustering/kmeans.html#alg-kmeans"><span class="std std-ref">K-Means</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../algorithms/clustering/kmeans_init.html#alg-kmeans-init"><span class="std std-ref">K-Means Initialization</span></a></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../algorithms/nearest_neighbors/knn_classification.html#alg-knn"><span class="std std-ref">k-NN</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../algorithms/decomposition/pca.html#alg-pca"><span class="std std-ref">PCA</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="train">
+<span id="op-train"></span><h2>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">train</span></code> operation performs <a class="reference internal" href="../../glossary.html#term-Training"><span class="xref std std-term">training</span></a> procedure of a machine
+learning algorithm. The result obtained after the training contains a
+<a class="reference internal" href="../../glossary.html#term-Model"><span class="xref std std-term">model</span></a> that can be passed to the <code class="docutils literal notranslate"><span class="pre">infer</span></code> operation.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span> <span class="p">{</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
@@ -202,6 +244,50 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="infer">
+<span id="op-infer"></span><h2>Infer<a class="headerlink" href="#infer" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">infer</span></code> operation performs <a class="reference internal" href="../../glossary.html#term-Inference"><span class="xref std std-term">inference</span></a> procedure of a machine
+learning algorithm based on the model obtained as a result of training.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span> <span class="p">{</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">infer_input_t</span> <span class="o">=</span> <span class="cm">/* implementation defined */</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">infer_result_t</span> <span class="o">=</span> <span class="cm">/* implementation defined */</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
+<span class="n">infer_result_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;</span> <span class="n">infer</span><span class="p">(</span>
+   <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+   <span class="k">const</span> <span class="n">Descriptor</span><span class="o">&amp;</span> <span class="n">desc</span><span class="p">,</span>
+   <span class="k">const</span> <span class="n">infer_input_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;&amp;</span> <span class="n">input</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="c1">// namespace oneapi::dal</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compute">
+<span id="op-compute"></span><h2>Compute<a class="headerlink" href="#compute" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">compute</span></code> operation</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">oneapi</span><span class="o">::</span><span class="n">dal</span> <span class="p">{</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">compute_input_t</span> <span class="o">=</span> <span class="cm">/* implementation defined */</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
+<span class="k">using</span> <span class="n">compute_result_t</span> <span class="o">=</span> <span class="cm">/* implementation defined */</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Descriptor</span><span class="o">&gt;</span>
+<span class="n">compute_result_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;</span> <span class="n">compute</span><span class="p">(</span>
+   <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+   <span class="k">const</span> <span class="n">Descriptor</span><span class="o">&amp;</span> <span class="n">desc</span><span class="p">,</span>
+   <span class="k">const</span> <span class="n">compute_input_t</span><span class="o">&lt;</span><span class="n">Descriptor</span><span class="o">&gt;&amp;</span> <span class="n">input</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="c1">// namespace oneapi::dal</span>
+</pre></div>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -211,7 +297,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="infer.html" class="btn btn-neutral float-right" title="Infer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../computational_modes.html" class="btn btn-neutral float-right" title="Computational modes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

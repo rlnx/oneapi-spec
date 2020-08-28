@@ -1,0 +1,26 @@
+==================
+Operations support
+==================
+
+.. |train| replace:: :txtref:`Train <op_train>`
+.. |infer| replace:: :txtref:`Infer <op_infer>`
+.. |compute| replace:: :txtref:`Compute <op_compute>`
+
+.. |kmeans| replace:: :txtref:`K-Means <alg_kmeans>`
+.. |kmeans_init| replace:: :txtref:`K-Means Initialization <alg_kmeans_init>`
+.. |knn| replace:: :txtref:`k-NN <alg_knn>`
+.. |pca| replace:: :txtref:`PCA <alg_pca>`
+
++------------------+------------------------------------+
+|                  |             Operations             |
+|  Algorithm       +-----------+----------+-------------+
+|                  |  |train|  |  |infer| |  |compute|  |
++==================+===========+==========+=============+
+| |kmeans|         |   Yes     |   Yes    |    No       |
++------------------+-----------+----------+-------------+
+| |kmeans_init|    |   No      |   No     |    Yes      |
++------------------+-----------+----------+-------------+
+| |knn|            |   Yes     |   Yes    |    No       |
++------------------+-----------+----------+-------------+
+| |pca|            |   Yes     |   Yes    |    No       |
++------------------+-----------+----------+-------------+
