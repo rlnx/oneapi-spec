@@ -1,0 +1,1206 @@
+<!--
+SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+
+SPDX-License-Identifier: MIT
+-->
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array &#8212; oneDAL  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.9359c37b55a5988de97dce26f47073bc.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessors" href="accessors.html" />
+    <link rel="prev" title="Data management" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/oneapi-logo1.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">oneDAL  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notations.html">
+   Mathematical Notations
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../programming_model/index.html">
+   Programming model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../programming_model/end_to_end_example.html">
+     End-to-end example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../programming_model/descriptors.html">
+     Descriptors
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../programming_model/operations/index.html">
+     Operations
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../programming_model/operations/support.html">
+       Supported operations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../programming_model/computational_modes.html">
+     Computational modes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../common_interface/index.html">
+   Common Interface
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/spec_version.html">
+     Current Version of this oneDAL Specification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/header_files_and_namespaces.html">
+     Header files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/error_handling.html">
+     Error handling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/common_type_definitions.html">
+     Common type definitions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Data management
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Array
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="accessors.html">
+     Accessors
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="accessor/column.html">
+       Column accessor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="accessor/row.html">
+       Row accessor
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="data_sources.html">
+     Data Sources
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="csv_data_source.html">
+       CSV data source
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="tables.html">
+     Tables
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="table/homogen.html">
+       Homogeneous table
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/index.html">
+   Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../algorithms/clustering/index.html">
+     Clustering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/clustering/kmeans.html">
+       K-Means
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/clustering/kmeans_init.html">
+       K-Means initialization
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../algorithms/nearest_neighbors/index.html">
+     Nearest Neighbors (kNN)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/nearest_neighbors/knn_classification.html">
+       k-Nearest Neighbors Classification (k-NN)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../algorithms/decomposition/index.html">
+     Decomposition
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/decomposition/pca.html">
+       Principal Components Analysis (PCA)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/kd_tree.html">
+     k-d Tree
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/data_management/array.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-example">
+   Usage example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-ownership-requirements">
+   Data ownership requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-interface">
+   Programming interface
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="array">
+<h1>Array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h1>
+<p>The array is a simple concept over the data in oneDAL. It represents
+a storage that:</p>
+<ol class="arabic simple">
+<li><p>Holds the data allocated inside it or references to the external data. The
+data are organized as one <a class="reference internal" href="../glossary.html#term-Homogeneous-data"><span class="xref std std-term">homogeneous</span></a> and
+<a class="reference internal" href="../glossary.html#term-Contiguous-data"><span class="xref std std-term">contiguous</span></a> memory block.</p></li>
+<li><p>Contains information about the memory block’s size.</p></li>
+<li><p>Supports both <a class="reference internal" href="../glossary.html#term-Immutability"><span class="xref std std-term">immutable</span></a> and mutable data.</p></li>
+<li><p>Provides an ability to change the data state from immutable to
+mutable one.</p></li>
+<li><p>Holds ownership information on the data (see the <a class="reference internal" href="#data-ownership-requirements"><span class="std std-ref">data ownership requirements</span></a> section).</p></li>
+<li><p>Ownership information on the data can be shared between several arrays. It is
+possible to create a new array from another one without any data copies.</p></li>
+</ol>
+<div class="section" id="usage-example">
+<h2>Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<p>The following listing provides a brief introduction to the array API and an example of basic
+usage scenario:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;CL/sycl.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;oneapi/dal/array.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">oneapi</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">print_property</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">description</span><span class="p">,</span> <span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">property</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">description</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">property</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span> <span class="n">queue</span> <span class="p">{</span> <span class="n">sycl</span><span class="o">::</span><span class="n">default_selector</span><span class="p">()</span> <span class="p">};</span>
+
+   <span class="k">constexpr</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">data_count</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+   <span class="k">const</span> <span class="kt">float</span> <span class="n">data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">,</span> <span class="mf">3.0f</span><span class="p">,</span> <span class="mf">4.0f</span> <span class="p">};</span>
+
+   <span class="c1">// Creating an array from immutable user-defined memory</span>
+   <span class="k">auto</span> <span class="n">arr_data</span> <span class="o">=</span> <span class="n">dal</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">wrap</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data_count</span><span class="p">);</span>
+
+   <span class="c1">// Creating an array from internally allocated memory filled by ones</span>
+   <span class="k">auto</span> <span class="n">arr_ones</span> <span class="o">=</span> <span class="n">dal</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">full</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">data_count</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">);</span>
+
+   <span class="n">print_property</span><span class="p">(</span><span class="s">&quot;Is arr_data mutable&quot;</span><span class="p">,</span> <span class="n">arr_data</span><span class="p">.</span><span class="n">has_mutable_data</span><span class="p">());</span> <span class="c1">// false</span>
+   <span class="n">print_property</span><span class="p">(</span><span class="s">&quot;Is arr_ones mutable&quot;</span><span class="p">,</span> <span class="n">arr_ones</span><span class="p">.</span><span class="n">has_mutable_data</span><span class="p">());</span> <span class="c1">// true</span>
+
+   <span class="c1">// Creating new array from arr_data without data copy - they share ownership information.</span>
+   <span class="n">dal</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">arr_mdata</span> <span class="o">=</span> <span class="n">arr_data</span><span class="p">;</span>
+
+   <span class="n">print_property</span><span class="p">(</span><span class="s">&quot;arr_mdata elements count&quot;</span><span class="p">,</span> <span class="n">arr_mdata</span><span class="p">.</span><span class="n">get_count</span><span class="p">());</span> <span class="c1">// equal to data_count</span>
+   <span class="n">print_property</span><span class="p">(</span><span class="s">&quot;Is arr_mdata mutable&quot;</span><span class="p">,</span> <span class="n">arr_mdata</span><span class="p">.</span><span class="n">has_mutable_data</span><span class="p">());</span> <span class="c1">// false</span>
+
+   <span class="c1">/// Copying data inside arr_mdata to new mutable memory block.</span>
+   <span class="c1">/// arr_data still refers to the original data pointer.</span>
+   <span class="n">arr_mdata</span><span class="p">.</span><span class="n">need_mutable_data</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+
+   <span class="n">print_property</span><span class="p">(</span><span class="s">&quot;Is arr_data mutable&quot;</span><span class="p">,</span> <span class="n">arr_data</span><span class="p">.</span><span class="n">has_mutable_data</span><span class="p">());</span> <span class="c1">// false</span>
+   <span class="n">print_property</span><span class="p">(</span><span class="s">&quot;Is arr_mdata mutable&quot;</span><span class="p">,</span> <span class="n">arr_mdata</span><span class="p">.</span><span class="n">has_mutable_data</span><span class="p">());</span> <span class="c1">// true</span>
+
+   <span class="n">queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="o">&amp;</span> <span class="n">cgh</span><span class="p">){</span>
+      <span class="k">auto</span> <span class="n">mdata</span> <span class="o">=</span> <span class="n">arr_mdata</span><span class="p">.</span><span class="n">get_mutable_data</span><span class="p">();</span>
+      <span class="k">auto</span> <span class="n">cones</span> <span class="o">=</span> <span class="n">arr_ones</span><span class="p">.</span><span class="n">get_data</span><span class="p">();</span>
+      <span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">array_addition</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">data_count</span><span class="p">),</span> <span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">sycl</span><span class="o">::</span><span class="n">id</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">mdata</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">cones</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+      <span class="p">});</span>
+   <span class="p">}).</span><span class="n">wait</span><span class="p">();</span>
+
+   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;arr_mdata values: &quot;</span><span class="p">;</span>
+   <span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr_mdata</span><span class="p">.</span><span class="n">get_count</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">arr_mdata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-ownership-requirements">
+<span id="id1"></span><h2>Data ownership requirements<a class="headerlink" href="#data-ownership-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The array shall support the following requirements on the internal data management:</p>
+<ol class="arabic simple">
+<li><p>An array shall own two properties representing raw pointers to the data:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> for a pointer to immutable data block</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mutable_data</span></code> for a pointer to mutable data block (see the <a class="reference internal" href="#programming-interface"><span class="std std-ref">programming interface</span></a>)</p></li>
+</ul>
+</li>
+<li><p>If an array owns mutable data, both properties shall point to the same memory
+block.</p></li>
+<li><p>If an array owns immutable data, <code class="docutils literal notranslate"><span class="pre">mutable_data</span></code> shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p></li>
+<li><p>An array shall store the number of elements in the block it owns and shall update
+the <code class="docutils literal notranslate"><span class="pre">count</span></code> property when a new memory block is assigned to the array.</p></li>
+<li><p>An array shall store a pointer to the <strong>ownership structure</strong> of the data:</p>
+<ul class="simple">
+<li><p>The <strong>reference count</strong> indicating how many array objects refer to the
+same memory block.</p></li>
+<li><p>The <strong>deleter</strong> object used to free the memory block when
+reference count is zero.</p></li>
+</ul>
+</li>
+<li><p>An array shall create the ownership structure for a new memory block not
+associated with such structure.</p></li>
+<li><p>An array shall decrement the number of references to the memory block when the
+array goes out of the scope. If the number of references is zero, the
+array shall call the deleter on this memory block and free the ownership structure.</p></li>
+<li><p>An array shall store the pointer to the ownership structure created by another
+array when they share the data. An array shall increment the reference count
+for it to be equal to the number of array objects sharing the same data.</p></li>
+</ol>
+</div>
+<div class="section" id="programming-interface">
+<span id="id2"></span><h2>Programming interface<a class="headerlink" href="#programming-interface" title="Permalink to this headline">¶</a></h2>
+<p>All types and functions in this section shall be declared in the
+<code class="docutils literal notranslate"><span class="pre">oneapi::dal</span></code> namespace and be available via inclusion of the
+<code class="docutils literal notranslate"><span class="pre">oneapi/dal/array.hpp</span></code> header file.</p>
+<p>All the <code class="docutils literal notranslate"><span class="pre">array</span></code> class methods can be divided into several groups:</p>
+<ol class="arabic simple">
+<li><p>Constructors that are used to create an array from external, mutable or
+immutable memory.</p></li>
+<li><p>Constructors and assignment operators that are used to create an array that shares its data
+with another one.</p></li>
+<li><p>The group of <code class="docutils literal notranslate"><span class="pre">reset()</span></code> methods that are used to re-assign an array to another external
+memory block.</p></li>
+<li><p>The group of <code class="docutils literal notranslate"><span class="pre">reset()</span></code> methods that are used to re-assign an array to an internally
+allocated memory block.</p></li>
+<li><p>The methods that are used to access the data.</p></li>
+<li><p>Static methods that provide simplified ways to create an array either from external
+memory or by allocating it within a new object.</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Data</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">array</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">using</span> <span class="n">data_t</span> <span class="o">=</span> <span class="n">Data</span><span class="p">;</span>
+
+    <span class="k">static</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="n">empty</span><span class="p">(</span><span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+                             <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                             <span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">&amp;</span> <span class="n">alloc</span> <span class="o">=</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">::</span><span class="n">shared</span><span class="p">);</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Element</span><span class="o">&gt;</span>
+    <span class="k">static</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="n">full</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                            <span class="n">Element</span><span class="o">&amp;&amp;</span> <span class="n">element</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">&amp;</span> <span class="n">alloc</span> <span class="o">=</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">::</span><span class="n">shared</span><span class="p">);</span>
+
+    <span class="k">static</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="n">zeros</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+                             <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                             <span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">&amp;</span> <span class="n">alloc</span> <span class="o">=</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">::</span><span class="n">shared</span><span class="p">);</span>
+
+    <span class="k">static</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="n">wrap</span><span class="p">(</span><span class="n">Data</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;&amp;</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="p">{});</span>
+
+    <span class="k">static</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="n">wrap</span><span class="p">(</span><span class="k">const</span> <span class="n">Data</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;&amp;</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="p">{});</span>
+
+    <span class="n">array</span><span class="p">();</span>
+
+    <span class="n">array</span><span class="p">(</span><span class="k">const</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">);</span>
+
+    <span class="n">array</span><span class="p">(</span><span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;&amp;&amp;</span> <span class="n">other</span><span class="p">);</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Deleter</span><span class="o">&gt;</span>
+    <span class="k">explicit</span> <span class="n">array</span><span class="p">(</span><span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+                   <span class="n">Data</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+                   <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                   <span class="n">Deleter</span><span class="o">&amp;&amp;</span> <span class="n">deleter</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;&amp;</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="p">{});</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ConstDeleter</span><span class="o">&gt;</span>
+    <span class="k">explicit</span> <span class="n">array</span><span class="p">(</span><span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="n">Data</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+                   <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+                   <span class="n">ConstDeleter</span><span class="o">&amp;&amp;</span> <span class="n">deleter</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;&amp;</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="p">{});</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">RefData</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">ExtData</span><span class="o">&gt;</span>
+    <span class="k">explicit</span> <span class="n">array</span><span class="p">(</span><span class="k">const</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">RefData</span><span class="o">&gt;&amp;</span> <span class="n">ref</span><span class="p">,</span> <span class="n">ExtData</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">);</span>
+
+    <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">);</span>
+
+    <span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">array</span><span class="o">&lt;</span><span class="n">Data</span><span class="o">&gt;&amp;&amp;</span> <span class="n">other</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="n">Data</span><span class="o">*</span> <span class="nf">get_data</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="nf">has_mutable_data</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">Data</span><span class="o">*</span> <span class="nf">get_mutable_data</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="n">array</span><span class="o">&amp;</span> <span class="nf">need_mutable_data</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+                             <span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">&amp;</span> <span class="n">alloc</span> <span class="o">=</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">::</span><span class="n">shared</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="nf">get_count</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="nf">get_size</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="n">Data</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="nf">reset</span><span class="p">();</span>
+
+    <span class="kt">void</span> <span class="nf">reset</span><span class="p">(</span><span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="o">&amp;</span> <span class="n">queue</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+               <span class="k">const</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">&amp;</span> <span class="n">alloc</span> <span class="o">=</span> <span class="n">sycl</span><span class="o">::</span><span class="n">usm</span><span class="o">::</span><span class="n">alloc</span><span class="o">::</span><span class="n">shared</span><span class="p">);</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Deleter</span><span class="o">&gt;</span>
+    <span class="kt">void</span> <span class="n">reset</span><span class="p">(</span><span class="n">Data</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+               <span class="n">Deleter</span><span class="o">&amp;&amp;</span> <span class="n">deleter</span><span class="p">,</span>
+               <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;&amp;</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="p">{});</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ConstDeleter</span><span class="o">&gt;</span>
+    <span class="kt">void</span> <span class="n">reset</span><span class="p">(</span><span class="k">const</span> <span class="n">Data</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">,</span>
+               <span class="n">ConstDeleter</span><span class="o">&amp;&amp;</span> <span class="n">deleter</span><span class="p">,</span>
+               <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">event</span><span class="o">&gt;&amp;</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="p">{});</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">RefData</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">ExtData</span><span class="o">&gt;</span>
+    <span class="kt">void</span> <span class="n">reset</span><span class="p">(</span><span class="k">const</span> <span class="n">array</span><span class="o">&lt;</span><span class="n">RefData</span><span class="o">&gt;&amp;</span> <span class="n">ref</span><span class="p">,</span> <span class="n">ExtData</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">count</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN6oneapi3dal5arrayE">
+<span id="_CPPv3I0EN6oneapi3dal5arrayE"></span><span id="_CPPv2I0EN6oneapi3dal5arrayE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Data</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">array</span></code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5arrayE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Data</strong> – The type of the memory block elements within the array. <cite>Data</cite> can represent any <a class="reference internal" href="../glossary.html#term-Data-type"><span class="xref std std-term">data type</span></a>.</p>
+</dd>
+</dl>
+<p><strong>Public Static Methods</strong></p>
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5emptyERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE">
+<span id="_CPPv3N6oneapi3dal5array5emptyERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="_CPPv2N6oneapi3dal5array5emptyERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="oneapi::dal::array::empty__sycl::queueCR.std::int64_t.sycl::usm::allocCR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">empty</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5emptyERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance by allocating a mutable memory block. The created array manages lifetime of the allocated memory block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> to allocate memory for.</p></li>
+<li><p><strong>alloc</strong> – The kind of USM to be allocated.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN6oneapi3dal5array4fullE5arrayI4DataERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE">
+<span id="_CPPv3I0EN6oneapi3dal5array4fullERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE"></span><span id="_CPPv2I0EN6oneapi3dal5array4fullERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Element</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">full</span></code><span class="sig-paren">(</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array4fullE5arrayI4DataERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE" title="oneapi::dal::array::full::Element"><span class="pre">Element</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">element</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array4fullE5arrayI4DataERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance by allocating a mutable memory block and filling its content with a scalar value. The created array manages lifetime of the allocated memory block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Element</strong> – The type from which array elements of type <cite>Data</cite> can be constructed.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> to allocate memory for.</p></li>
+<li><p><strong>element</strong> – The value that is used to fill a memory block.</p></li>
+<li><p><strong>alloc</strong> – The kind of USM to be allocated.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()[i]</span> <span class="pre">==</span> <span class="pre">element,</span> <span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">count</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE">
+<span id="_CPPv3N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="_CPPv2N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="oneapi::dal::array::zeros__sycl::queueR.std::int64_t.sycl::usm::allocCR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">zeros</span></code><span class="sig-paren">(</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance by allocating a mutable memory block and filling its content with zeros. The created array manages lifetime of the allocated memory block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> to allocate memory for.</p></li>
+<li><p><strong>alloc</strong> – The kind of USM to be allocated.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()[i]</span> <span class="pre">==</span> <span class="pre">element,</span> <span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">count</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE">
+<span id="_CPPv3N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="oneapi::dal::array::wrap__DataP.std::int64_t.std::vector:sycl::event:CR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">wrap</span></code><span class="sig-paren">(</span><span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance from a pointer to externally-allocated mutable memory block. The created array does not manage lifetime of the user-provided memory block. It is the responsibility of the calling application to deallocate the memory block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The pointer to externally-allocated memory block.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the memory block.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_mutable_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE">
+<span id="_CPPv3N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="oneapi::dal::array::wrap__DataCP.std::int64_t.std::vector:sycl::event:CR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">wrap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance from a pointer to externally-allocated immutable memory block. The created array does not manage lifetime of the user-provided memory block. It is the responsibility of the calling application to deallocate the memory block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The pointer to externally-allocated memory block.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the memory block.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Constructors</strong></p>
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5arrayEv">
+<span id="_CPPv3N6oneapi3dal5array5arrayEv"></span><span id="_CPPv2N6oneapi3dal5array5arrayEv"></span><span id="oneapi::dal::array::array"></span><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5arrayEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates an empty array without memory allocation.</p>
+<dl>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5arrayERK5arrayI4DataE">
+<span id="_CPPv3N6oneapi3dal5array5arrayERK5arrayI4DataE"></span><span id="_CPPv2N6oneapi3dal5array5arrayERK5arrayI4DataE"></span><span id="oneapi::dal::array::array__array:Data:CR"></span><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N6oneapi3dal5array5arrayERK5arrayI4DataE" title="oneapi::dal::array::array"><span class="pre">array</span></a><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5arrayERK5arrayI4DataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance that shares an ownership with the <cite>other</cite> array.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5arrayERR5arrayI4DataE">
+<span id="_CPPv3N6oneapi3dal5array5arrayERR5arrayI4DataE"></span><span id="_CPPv2N6oneapi3dal5array5arrayERR5arrayI4DataE"></span><span id="oneapi::dal::array::array__array:Data:RR"></span><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N6oneapi3dal5array5arrayERR5arrayI4DataE" title="oneapi::dal::array::array"><span class="pre">array</span></a><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5arrayERR5arrayI4DataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance that transfers an ownership from the <cite>other</cite> array. After construction of the new instance, the <cite>other</cite> behaviour is implementation defined.</p>
+<dl>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">other.get_count()</span> <span class="pre">==</span> <span class="pre">0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">other.get_data()</span> <span class="pre">==</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE">
+<span id="_CPPv3I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Deleter</span></code><span class="pre">&gt;</span><br /><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE" title="oneapi::dal::array::array::Deleter"><span class="pre">Deleter</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">deleter</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance from a pointer to externally-allocated mutable memory block. The created array manages lifetime of the user-provided memory block. The memory block is deallocated using a custom deleter object provided by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Deleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>data</strong> – The pointer to externally-allocated mutable data.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the memory block.</p></li>
+<li><p><strong>deleter</strong> – The object used to deallocate <cite>data</cite>.</p></li>
+<li><p><strong>dependencies</strong> – Events that indicate when <cite>data</cite> becomes ready to be read or written.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_mutable_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE">
+<span id="_CPPv3I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstDeleter</span></code><span class="pre">&gt;</span><br /><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE" title="oneapi::dal::array::array::ConstDeleter"><span class="pre">ConstDeleter</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">deleter</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance from a pointer to externally-allocated immutable memory block. The created array manages lifetime of the user-provided memory block. The memory block is deallocated using a custom deleter object provided by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>ConstDeleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>data</strong> – The pointer to externally-allocated memory block.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
+<li><p><strong>deleter</strong> – The object used to dellocate <cite>data</cite>.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE">
+<span id="_CPPv3I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span id="_CPPv2I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">RefData</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ExtData</span></code><span class="pre">&gt;</span><br /><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::array"><span class="pre">array</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::array::RefData"><span class="pre">RefData</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">ref</span></em>, <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::array::ExtData"><span class="pre">ExtData</span></a> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new array instance that shares ownership with the reference array while storing pointer to another memory block provided by the user. Lifetime of the user-provided memory block is not managed by the created array. One of use cases of this constructor is creation of an array with offset, for example, <code class="docutils literal notranslate"><span class="pre">array{</span> <span class="pre">other,</span> <span class="pre">other.get_data()</span> <span class="pre">+</span> <span class="pre">offset</span> <span class="pre">}</span></code>. The array created this way, shared ownership with the <cite>other</cite> array, but points to its data with offset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RefData</strong> – The type of elements in the reference array.</p></li>
+<li><p><strong>ExtData</strong> – Either <cite>Data</cite> or <cite>const Data</cite> type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ref</strong> – The reference array which shares ownership with the created one.</p></li>
+<li><p><strong>data</strong> – The mutable or immutable unmanaged pointer hold by the created array.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Public Methods</strong></p>
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5arrayaSERK5arrayI4DataE">
+<span id="_CPPv3N6oneapi3dal5arrayaSERK5arrayI4DataE"></span><span id="_CPPv2N6oneapi3dal5arrayaSERK5arrayI4DataE"></span><span id="oneapi::dal::array::assign-operator__array:Data:CR"></span><span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5arrayaSERK5arrayI4DataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Replaces the immutable, mutable data pointers and the number of elements by the values stored in the <cite>other</cite> array.</p>
+<dl>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">other.get_data()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">other.get_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_mutable_data()</span> <span class="pre">==</span> <span class="pre">other.get_mutable_data()</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5arrayaSERR5arrayI4DataE">
+<span id="_CPPv3N6oneapi3dal5arrayaSERR5arrayI4DataE"></span><span id="_CPPv2N6oneapi3dal5arrayaSERR5arrayI4DataE"></span><span id="oneapi::dal::array::assign-operator__array:Data:RR"></span><span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5arrayaSERR5arrayI4DataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Replaces the immutable, mutable data pointers and the number of elements by the values stored in the <cite>other</cite> array.</p>
+<dl>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">other.get_data()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">other.get_count()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_mutable_data()</span> <span class="pre">==</span> <span class="pre">other.get_mutable_data()</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6oneapi3dal5array8get_dataEv">
+<span id="_CPPv3NK6oneapi3dal5array8get_dataEv"></span><span id="_CPPv2NK6oneapi3dal5array8get_dataEv"></span><span id="oneapi::dal::array::get_dataC"></span><em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">get_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5array8get_dataEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The pointer to the immutable memory block.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6oneapi3dal5array16has_mutable_dataEv">
+<span id="_CPPv3NK6oneapi3dal5array16has_mutable_dataEv"></span><span id="_CPPv2NK6oneapi3dal5array16has_mutable_dataEv"></span><span id="oneapi::dal::array::has_mutable_dataC"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">has_mutable_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5array16has_mutable_dataEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns whether array contains mutable data or not.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6oneapi3dal5array16get_mutable_dataEv">
+<span id="_CPPv3NK6oneapi3dal5array16get_mutable_dataEv"></span><span id="_CPPv2NK6oneapi3dal5array16get_mutable_dataEv"></span><span id="oneapi::dal::array::get_mutable_dataC"></span><span class="pre">Data</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">get_mutable_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5array16get_mutable_dataEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The pointer to the mutable memory block.</p>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code>, othewise throws <code class="docutils literal notranslate"><span class="pre">domain_error</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array17need_mutable_dataERN4sycl5queueERKN4sycl3usm5allocE">
+<span id="_CPPv3N6oneapi3dal5array17need_mutable_dataERN4sycl5queueERKN4sycl3usm5allocE"></span><span id="_CPPv2N6oneapi3dal5array17need_mutable_dataERN4sycl5queueERKN4sycl3usm5allocE"></span><span id="oneapi::dal::array::need_mutable_data__sycl::queueR.sycl::usm::allocCR"></span><span class="pre">array</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">need_mutable_data</span></code><span class="sig-paren">(</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array17need_mutable_dataERN4sycl5queueERKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Does nothing if array contains mutable data. Otherwise, allocates a mutable memory block and copies content of the immutable memory block into it. The array manages lifetime of the allocated mutable memory block. Returns reference to the same array instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>alloc</strong> – The kind of USM to be allocated.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6oneapi3dal5array9get_countEv">
+<span id="_CPPv3NK6oneapi3dal5array9get_countEv"></span><span id="_CPPv2NK6oneapi3dal5array9get_countEv"></span><span id="oneapi::dal::array::get_countC"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">get_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5array9get_countEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The number of elements of type <cite>Data</cite> in a memory block.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6oneapi3dal5array8get_sizeEv">
+<span id="_CPPv3NK6oneapi3dal5array8get_sizeEv"></span><span id="_CPPv2NK6oneapi3dal5array8get_sizeEv"></span><span id="oneapi::dal::array::get_sizeC"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">get_size</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5array8get_sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The size of memory block in bytes.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK6oneapi3dal5arrayixENSt7int64_tE">
+<span id="_CPPv3NK6oneapi3dal5arrayixENSt7int64_tE"></span><span id="_CPPv2NK6oneapi3dal5arrayixENSt7int64_tE"></span><span id="oneapi::dal::array::subscript-operator__std::int64_tC"></span><em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5arrayixENSt7int64_tE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides a read-only access to the elements of array.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5resetEv">
+<span id="_CPPv3N6oneapi3dal5array5resetEv"></span><span id="_CPPv2N6oneapi3dal5array5resetEv"></span><span id="oneapi::dal::array::reset"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5resetEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Releases ownership of the managed memory block.</p>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE">
+<span id="_CPPv3N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="_CPPv2N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="oneapi::dal::array::reset__sycl::queueCR.std::int64_t.sycl::usm::allocCR"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Releases ownership of the managed memory block and replace it by a newly allocated mutable memory block. The lifetime of the allocated memory block is managed by the array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> – The SYCL* queue object.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> to allocate memory for.</p></li>
+<li><p><strong>alloc</strong> – The kind of USM to be allocated.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">&gt;</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">&gt;</span> <span class="pre">count</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN6oneapi3dal5array5resetEvP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE">
+<span id="_CPPv3I0EN6oneapi3dal5array5resetEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2I0EN6oneapi3dal5array5resetEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Deleter</span></code><span class="pre">&gt;</span><br /><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array5resetEvP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE" title="oneapi::dal::array::reset::Deleter"><span class="pre">Deleter</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">deleter</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array5resetEvP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Releases ownership of the managed memory block and replace it by a pointer to externally-allocated mutable memory block. The lifetime of the memory block is managed by the array. The memory block is deallocated using a custom deleter object provided by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Deleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data</strong> – The pointer to externally-allocated memory block.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
+<li><p><strong>deleter</strong> – The object used to free <cite>data</cite>.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">true</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_mutable_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN6oneapi3dal5array5resetEvPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE">
+<span id="_CPPv3I0EN6oneapi3dal5array5resetEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2I0EN6oneapi3dal5array5resetEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstDeleter</span></code><span class="pre">&gt;</span><br /><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array5resetEvPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE" title="oneapi::dal::array::reset::ConstDeleter"><span class="pre">ConstDeleter</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">deleter</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array5resetEvPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Releases ownership of the managed memory block and replace it by a pointer to externally-allocated mutable memory block. The lifetime of the memory block is managed by the array. The memory block is deallocated using a custom deleter object provided by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>ConstDeleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data</strong> – The pointer to externally-allocated memory block.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
+<li><p><strong>deleter</strong> – The object used to free <cite>data</cite>.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">has_mutable_data()</span> <span class="pre">==</span> <span class="pre">false</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE">
+<span id="_CPPv3I00EN6oneapi3dal5array5resetERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span id="_CPPv2I00EN6oneapi3dal5array5resetERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">RefData</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ExtData</span></code><span class="pre">&gt;</span><br /><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">array</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::reset::RefData"><span class="pre">RefData</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">ref</span></em>, <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::reset::ExtData"><span class="pre">ExtData</span></a> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Releases ownership of the managed memory block and start managing lifetime of the reference array while storing pointer to another memory block provided by the user. Lifetime of the user-provided memory block is not managed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RefData</strong> – The type of elements in the reference array.</p></li>
+<li><p><strong>ExtData</strong> – Either <cite>Data</cite> or <cite>const Data</cite> type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ref</strong> – The reference array which shares ownership with the created one.</p></li>
+<li><p><strong>data</strong> – The mutable or immutable unmanaged pointer hold by the created array.</p></li>
+<li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Preconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">!=</span> <span class="pre">nullptr</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+<dt>Postconditions</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">count</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">get_data()</span> <span class="pre">==</span> <span class="pre">data</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Data management</a>
+    <a class='right-next' id="next-link" href="accessors.html" title="next page">Accessors</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Intel<br/>
+        
+            &copy; Copyright 2021, Intel.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

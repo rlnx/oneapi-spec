@@ -1,0 +1,666 @@
+<!--
+SPDX-FileCopyrightText: 2019-2020 Intel Corporation
+
+SPDX-License-Identifier: MIT
+-->
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV data source &#8212; oneDAL  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.9359c37b55a5988de97dce26f47073bc.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <link rel="shortcut icon" href="../_static/favicons.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tables" href="tables.html" />
+    <link rel="prev" title="Data Sources" href="data_sources.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/oneapi-logo1.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">oneDAL  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notations.html">
+   Mathematical Notations
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../programming_model/index.html">
+   Programming model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../programming_model/end_to_end_example.html">
+     End-to-end example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../programming_model/descriptors.html">
+     Descriptors
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../programming_model/operations/index.html">
+     Operations
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../programming_model/operations/support.html">
+       Supported operations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../programming_model/computational_modes.html">
+     Computational modes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../common_interface/index.html">
+   Common Interface
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/spec_version.html">
+     Current Version of this oneDAL Specification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/header_files_and_namespaces.html">
+     Header files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/error_handling.html">
+     Error handling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../common_interface/common_type_definitions.html">
+     Common type definitions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Data management
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="array.html">
+     Array
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="accessors.html">
+     Accessors
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="accessor/column.html">
+       Column accessor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="accessor/row.html">
+       Row accessor
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="data_sources.html">
+     Data Sources
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       CSV data source
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="tables.html">
+     Tables
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="table/homogen.html">
+       Homogeneous table
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/index.html">
+   Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../algorithms/clustering/index.html">
+     Clustering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/clustering/kmeans.html">
+       K-Means
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/clustering/kmeans_init.html">
+       K-Means initialization
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../algorithms/nearest_neighbors/index.html">
+     Nearest Neighbors (kNN)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/nearest_neighbors/knn_classification.html">
+       k-Nearest Neighbors Classification (k-NN)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../algorithms/decomposition/index.html">
+     Decomposition
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../algorithms/decomposition/pca.html">
+       Principal Components Analysis (PCA)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendix
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/kd_tree.html">
+     k-d Tree
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/data_management/csv_data_source.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-example">
+   Usage example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-interface">
+   Programming Interface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-oneapi-dal-read-object">
+   Reading
+   <code class="xref cpp cpp-expr docutils literal notranslate">
+    <span class="pre">
+     oneapi
+    </span>
+    <span class="pre">
+     ::
+    </span>
+    <span class="pre">
+     dal
+    </span>
+    <span class="pre">
+     ::
+    </span>
+    <span class="pre">
+     read
+    </span>
+    <span class="pre">
+     &lt;
+    </span>
+    <span class="pre">
+     Object
+    </span>
+    <span class="pre">
+     &gt;
+    </span>
+    <span class="sig-paren">
+     (
+    </span>
+    <span class="pre">
+     ...
+    </span>
+    <span class="sig-paren">
+     )
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#args">
+     Args
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operation">
+     Operation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="csv-data-source">
+<span id="id1"></span><h1>CSV data source<a class="headerlink" href="#csv-data-source" title="Permalink to this headline">¶</a></h1>
+<p>Class <code class="docutils literal notranslate"><span class="pre">csv::data_source</span></code> is an API for accessing the data source represented
+as a <a class="reference internal" href="../glossary.html#term-CSV-file"><span class="xref std std-term">csv file</span></a>. CSV data source shall be used with
+<code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">read</span></code> operation to extract data in text format from the given input file,
+process it using provided parameters (such as delimiter and read options),
+transform it into numerical representation, and store it as an in-memory
+<a class="reference internal" href="index.html#dataset"><span class="std std-ref">dataset</span></a> of a chosen type.</p>
+<p>Supported type of in-memory object for <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">read</span></code> operation with CSV data
+source is <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">oneapi</span><span class="pre">::</span><span class="pre">dal</span><span class="pre">::</span><a class="reference internal" href="tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a></code>.</p>
+<p>CSV data source requires input file name to be set in the constructor, while the
+other parameters of the constructor such as delimiter and read options rely on
+default values.</p>
+<div class="section" id="usage-example">
+<h2>Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="nn">oneapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="k">auto</span> <span class="n">data_source</span> <span class="o">=</span> <span class="n">dal</span><span class="o">::</span><span class="n">csv</span><span class="o">::</span><span class="n">data_source</span><span class="p">(</span><span class="s">&quot;data.csv&quot;</span><span class="p">,</span> <span class="sc">&#39;,&#39;</span><span class="p">);</span>
+
+<span class="k">const</span> <span class="k">auto</span> <span class="n">table</span> <span class="o">=</span> <span class="n">dal</span><span class="o">::</span><span class="n">read</span><span class="o">&lt;</span><span class="n">dal</span><span class="o">::</span><span class="n">table</span><span class="o">&gt;</span><span class="p">(</span><span class="n">data_source</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="programming-interface">
+<h2>Programming Interface<a class="headerlink" href="#programming-interface" title="Permalink to this headline">¶</a></h2>
+<p>All types and functions in this section shall be declared in the
+<code class="docutils literal notranslate"><span class="pre">oneapi::dal::csv</span></code> namespace and be available via inclusion of the
+<code class="docutils literal notranslate"><span class="pre">oneapi/dal/io/csv.hpp</span></code> header file.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="k">class</span> <span class="nc">read_options</span> <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="p">{</span>
+   <span class="n">none</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="n">parse_header</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span>
+<span class="p">};</span>
+
+<span class="k">constexpr</span> <span class="kt">char</span> <span class="n">default_delimiter</span> <span class="o">=</span> <span class="sc">&#39;,&#39;</span><span class="p">;</span>
+<span class="k">constexpr</span> <span class="n">read_options</span> <span class="n">default_read_options</span> <span class="o">=</span> <span class="n">read_options</span><span class="o">::</span><span class="n">none</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">data_source</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+   <span class="n">data_source</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">file_name</span><span class="p">,</span>
+               <span class="kt">char</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="n">default_delimiter</span><span class="p">,</span>
+               <span class="n">read_options</span> <span class="n">opts</span> <span class="o">=</span> <span class="n">default_read_options</span><span class="p">);</span>
+
+   <span class="n">data_source</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span>
+               <span class="kt">char</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="n">default_delimiter</span><span class="p">,</span>
+               <span class="n">read_options</span> <span class="n">opts</span> <span class="o">=</span> <span class="n">default_read_options</span><span class="p">);</span>
+
+   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">get_file_name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="nf">get_delimiter</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+   <span class="n">read_options</span> <span class="nf">get_read_options</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="cpp class">
+<dt id="_CPPv4N6oneapi3dal3csv11data_sourceE">
+<span id="_CPPv3N6oneapi3dal3csv11data_sourceE"></span><span id="_CPPv2N6oneapi3dal3csv11data_sourceE"></span><span id="oneapi::dal::csv::data_source"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">data_source</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv11data_sourceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options">
+<span id="_CPPv3N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options"></span><span id="_CPPv2N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options"></span><span id="oneapi::dal::csv::data_source::data_source__cCP.c.read_options"></span><code class="sig-name descname"><span class="pre">data_source</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">file_name</span></em>, <span class="pre">char</span> <em><span class="pre">delimiter</span></em> <span class="pre">=</span> <span class="pre">default_delimiter</span>, <span class="pre">read_options</span> <em><span class="pre">opts</span></em> <span class="pre">=</span> <span class="pre">default_read_options</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new instance of a CSV data source with the given
+<code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options" title="oneapi::dal::csv::data_source::data_source::file_name"><span class="pre">file_name</span></a></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options" title="oneapi::dal::csv::data_source::data_source::delimiter"><span class="pre">delimiter</span></a></code> and read options <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceEPKcc12read_options" title="oneapi::dal::csv::data_source::data_source::opts"><span class="pre">opts</span></a></code> flag.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options">
+<span id="_CPPv3N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options"></span><span id="_CPPv2N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options"></span><span id="oneapi::dal::csv::data_source::data_source__ssCR.c.read_options"></span><code class="sig-name descname"><span class="pre">data_source</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">file_name</span></em>, <span class="pre">char</span> <em><span class="pre">delimiter</span></em> <span class="pre">=</span> <span class="pre">default_delimiter</span>, <span class="pre">read_options</span> <em><span class="pre">opts</span></em> <span class="pre">=</span> <span class="pre">default_read_options</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new instance of a CSV data source with the given
+<code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options" title="oneapi::dal::csv::data_source::data_source::file_name"><span class="pre">file_name</span></a></code>, <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options" title="oneapi::dal::csv::data_source::data_source::delimiter"><span class="pre">delimiter</span></a></code> and read options <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_source11data_sourceERKNSt6stringEc12read_options" title="oneapi::dal::csv::data_source::data_source::opts"><span class="pre">opts</span></a></code> flag.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal3csv11data_source9file_nameE">
+<span id="_CPPv3N6oneapi3dal3csv11data_source9file_nameE"></span><span id="_CPPv2N6oneapi3dal3csv11data_source9file_nameE"></span><span id="oneapi::dal::csv::data_source::file_name__ss"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">file_name</span></code> <span class="pre">=</span> <span class="pre">&quot;&quot;</span><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv11data_source9file_nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A string that contains the name of the file with the dataset to read.</p>
+<dl>
+<dt>Getter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">std::string</span> <span class="pre">get_filename()</span> <span class="pre">const</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal3csv11data_source9delimiterE">
+<span id="_CPPv3N6oneapi3dal3csv11data_source9delimiterE"></span><span id="_CPPv2N6oneapi3dal3csv11data_source9delimiterE"></span><span id="oneapi::dal::csv::data_source::delimiter__c"></span><span class="pre">char</span> <code class="sig-name descname"><span class="pre">delimiter</span></code> <span class="pre">=</span> <span class="pre">default_delimiter</span><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv11data_source9delimiterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A character that represents the delimiter between separate features in the
+input file.</p>
+<dl>
+<dt>Getter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">get_delimter()</span> <span class="pre">const</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal3csv11data_source7optionsE">
+<span id="_CPPv3N6oneapi3dal3csv11data_source7optionsE"></span><span id="_CPPv2N6oneapi3dal3csv11data_source7optionsE"></span><span id="oneapi::dal::csv::data_source::options__read_options"></span><span class="pre">read_options</span> <code class="sig-name descname"><span class="pre">options</span></code> <span class="pre">=</span> <span class="pre">default_read_options</span><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv11data_source7optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Value that stores read options to be applied during reading of the input
+file. Enabled <code class="docutils literal notranslate"><span class="pre">parse_header</span></code> option indicates that the first line in the
+input file shall be processed as a header record with features names.</p>
+<dl>
+<dt>Getter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">read_options</span> <span class="pre">get_read_options()</span> <span class="pre">const</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="reading-oneapi-dal-read-object">
+<h2>Reading <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">oneapi</span><span class="pre">::</span><span class="pre">dal</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal4readE6ObjectRK10DataSource" title="oneapi::dal::read"><span class="pre">read</span></a><span class="pre">&lt;</span><span class="pre">Object</span><span class="pre">&gt;</span><span class="sig-paren">(</span><span class="pre">...</span><span class="sig-paren">)</span></code><a class="headerlink" href="#reading-oneapi-dal-read-object" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="args">
+<h3>Args<a class="headerlink" href="#args" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Object</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">read_args</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+   <span class="n">read_args</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN6oneapi3dal3csv9read_argsE">
+<span id="_CPPv3I0EN6oneapi3dal3csv9read_argsE"></span><span id="_CPPv2I0EN6oneapi3dal3csv9read_argsE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Object</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">read_args</span></code><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal3csv9read_argsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp function">
+<dt id="_CPPv4N6oneapi3dal3csv9read_args9read_argsEv">
+<span id="_CPPv3N6oneapi3dal3csv9read_args9read_argsEv"></span><span id="_CPPv2N6oneapi3dal3csv9read_args9read_argsEv"></span><span id="oneapi::dal::csv::read_args::read_args"></span><code class="sig-name descname"><span class="pre">read_args</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal3csv9read_args9read_argsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates args for the read operation with the default attribute
+values.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="operation">
+<h3>Operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h3>
+<p><code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">oneapi</span><span class="pre">::</span><span class="pre">dal</span><span class="pre">::</span><a class="reference internal" href="tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a></code> is the only supported value of the <code class="code docutils literal notranslate"><span class="pre">Object</span></code>
+template parameter for <code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal4readE6ObjectRK10DataSource" title="oneapi::dal::read"><span class="pre">read</span></a></code> operation with CSV data source.</p>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN6oneapi3dal4readE6ObjectRK10DataSource">
+<span id="_CPPv3I00EN6oneapi3dal4readERK10DataSource"></span><span id="_CPPv2I00EN6oneapi3dal4readERK10DataSource"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Object</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">DataSource</span></code><span class="pre">&gt;</span><br /><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal4readE6ObjectRK10DataSource" title="oneapi::dal::read::Object"><span class="pre">Object</span></a> <code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal4readE6ObjectRK10DataSource" title="oneapi::dal::read::DataSource"><span class="pre">DataSource</span></a> <span class="pre">&amp;</span><em><span class="pre">ds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN6oneapi3dal4readE6ObjectRK10DataSource" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Object</strong> – oneDAL object type that shall be produced as a result of
+reading from the data source.</p></li>
+<li><p><strong>DataSource</strong> – CSV data source <code class="xref cpp cpp-expr docutils literal notranslate"><span class="pre">csv</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N6oneapi3dal3csv11data_sourceE" title="oneapi::dal::csv::data_source"><span class="pre">data_source</span></a></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="data_sources.html" title="previous page">Data Sources</a>
+    <a class='right-next' id="next-link" href="tables.html" title="next page">Tables</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Intel<br/>
+        
+            &copy; Copyright 2021, Intel.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
