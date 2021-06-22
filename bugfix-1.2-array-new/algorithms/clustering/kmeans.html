@@ -746,17 +746,17 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 
 <p><strong>Properties</strong></p>
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE">
-<span id="_CPPv3N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="oneapi::dal::kmeans::descriptor::max_iteration_count__int64_t"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">max_iteration_count</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The maximum number of iterations <span class="math notranslate nohighlight">\(T\)</span>. <strong>Default value</strong>: 100.</p>
+<dt id="_CPPv4N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE">
+<span id="_CPPv3N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE"></span><span id="oneapi::dal::kmeans::descriptor::accuracy_threshold__double"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">accuracy_threshold</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The threshold <span class="math notranslate nohighlight">\(\varepsilon\)</span> for the stop condition. <strong>Default value</strong>: 0.0.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">int64_t</span> <span class="pre">get_max_iteration_count()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">descriptor</span> <span class="pre">&amp;</span> <span class="pre">set_max_iteration_count(int64_t)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">get_accuracy_threshold()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">descriptor</span> <span class="pre">&amp;</span> <span class="pre">set_accuracy_threshold(double)</span></code></div>
 </div>
 </dd>
 <dt>Invariants</dt><dd><div class="line-block">
-<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="oneapi::dal::kmeans::descriptor::max_iteration_count"><span class="pre">max_iteration_count</span></a> <span class="pre">&gt;=</span> <span class="pre">0</span></code></div>
+<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE" title="oneapi::dal::kmeans::descriptor::accuracy_threshold"><span class="pre">accuracy_threshold</span></a> <span class="pre">&gt;=</span> <span class="pre">0.0</span></code></div>
 </div>
 </dd>
 </dl>
@@ -780,17 +780,17 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 </dd></dl>
 
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE">
-<span id="_CPPv3N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE"></span><span id="oneapi::dal::kmeans::descriptor::accuracy_threshold__double"></span><span class="pre">double</span> <code class="sig-name descname"><span class="pre">accuracy_threshold</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The threshold <span class="math notranslate nohighlight">\(\varepsilon\)</span> for the stop condition. <strong>Default value</strong>: 0.0.</p>
+<dt id="_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE">
+<span id="_CPPv3N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="oneapi::dal::kmeans::descriptor::max_iteration_count__int64_t"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">max_iteration_count</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The maximum number of iterations <span class="math notranslate nohighlight">\(T\)</span>. <strong>Default value</strong>: 100.</p>
 <dl>
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">get_accuracy_threshold()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">descriptor</span> <span class="pre">&amp;</span> <span class="pre">set_accuracy_threshold(double)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">int64_t</span> <span class="pre">get_max_iteration_count()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">descriptor</span> <span class="pre">&amp;</span> <span class="pre">set_max_iteration_count(int64_t)</span></code></div>
 </div>
 </dd>
 <dt>Invariants</dt><dd><div class="line-block">
-<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor18accuracy_thresholdE" title="oneapi::dal::kmeans::descriptor::accuracy_threshold"><span class="pre">accuracy_threshold</span></a> <span class="pre">&gt;=</span> <span class="pre">0.0</span></code></div>
+<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="oneapi::dal::kmeans::descriptor::max_iteration_count"><span class="pre">max_iteration_count</span></a> <span class="pre">&gt;=</span> <span class="pre">0</span></code></div>
 </div>
 </dd>
 </dl>
