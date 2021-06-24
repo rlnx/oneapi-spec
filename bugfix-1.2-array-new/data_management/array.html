@@ -538,6 +538,11 @@ construction. If no deleter object provided, an array calls the default dealloca
 function that corresponds to the internal memory allocation mechanism.</p></li>
 </ul>
 </li>
+<li><p>If the managed pointer to the data block is replaced by the other pointer via <code class="docutils literal notranslate"><span class="pre">reset()</span></code>, an
+array releases the ownership of the managed pointer and start managing lifetime of the data block
+represented by the other pointer.</p></li>
+<li><p>If an array changes its state from immutable to mutable via <code class="docutils literal notranslate"><span class="pre">need_mutable_data()</span></code>, it releases
+the ownership of immutable data block and start managing lifetime of the mutable data block.</p></li>
 <li><p>An array object may own no data. An array like this is called <strong>zero-sized</strong>:</p>
 <ul class="simple">
 <li><p>Pointers to the immutable and mutable data of the zero-sized array shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>;</p></li>
@@ -562,23 +567,23 @@ function that corresponds to the internal memory allocation mechanism.</p></li>
 <ul class="simple">
 <li><p>A pointer to either immutable or mutable data block;</p></li>
 <li><p>The deleter object;</p></li>
-<li><p>The reference count (the number of array instances that own the associated data block);</p></li>
+<li><p>The reference count (the number of array objects that own the associated data block);</p></li>
 </ul>
 </li>
-<li><p>The destructor of an array decrements the reference count. If that count reaches zero, the
-ownership structure deallocates the associated memory block and the array destroys the ownership
-structure.</p></li>
-<li><p>If an array object changes its state from immutable to mutable, the reference count of the
-ownership structure is decremented.</p>
+<li><p>If an array starts managing the lifetime of the data block represented by the pointer <code class="docutils literal notranslate"><span class="pre">p</span></code> and
+deleter <code class="docutils literal notranslate"><span class="pre">d</span></code>, it creates the ownership structure object and initialize it with <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code>.
+The reference count of the ownership structure is assigned one.</p></li>
+<li><p>If an array object releases the ownership, the reference count of the ownership structure is
+decremented.</p>
 <ul class="simple">
-<li><p>If that count reaches zero, the ownership structure
-deallocates the immutable memory block and the array destroys the ownership structure. The new
-instance of the ownership structure owning the mutable data block is created, and it replaces the old one.</p></li>
-<li><p>If that count is greater than zero, the ownership structure is not destroyed. The new
-instance of the ownership structure owning the mutable data block is created, and it replaces the old
-one.</p></li>
+<li><p>If that count reaches zero, the ownership structure deallocates the memory block and
+the array destroys the ownership structure.</p></li>
+<li><p>If that count is greater than zero, the ownership structure is not destroyed.</p></li>
 </ul>
 </li>
+<li><p>If a copy of the array object is created, the reference count of the ownership structure is
+incremented and a pointer to the same ownership structure assigned to the created copy.
+The other member variables of an array class are copied as is.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -879,7 +884,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE">
 <span id="_CPPv3I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span id="_CPPv2I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">RefData</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ExtData</span></code><span class="pre">&gt;</span><br /><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::array"><span class="pre">array</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::array::RefData"><span class="pre">RefData</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">ref</span></em>, <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::array::ExtData"><span class="pre">ExtData</span></a> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN6oneapi3dal5array5arrayERK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance that shares the ownership with the reference array while storing the pointer to another memory block provided by the user. The lifetime of the user-provided memory block is not managed by the created array. One of the use cases of this constructor is the creation of an array with an offset, for example, <code class="docutils literal notranslate"><span class="pre">array{</span> <span class="pre">other,</span> <span class="pre">other.get_data()</span> <span class="pre">+</span> <span class="pre">offset</span> <span class="pre">}</span></code>. The array created this way shares the ownership with the <cite>other</cite>, but points to its data with an offset.</p>
+<dd><p>Creates a new array instance that shares the ownership with the reference array while storing the pointer to another memory block provided by the user. The lifetime of the user-provided memory block is not managed by the created array. One of the use cases of this constructor is the creation of an array with an offset, for example, <code class="docutils literal notranslate"><span class="pre">array{</span> <span class="pre">other,</span> <span class="pre">other.get_data()</span> <span class="pre">+</span> <span class="pre">offset</span> <span class="pre">}</span></code>. The array created this way shares the ownership with the <cite>other</cite>, but points to its data with an offset. It is the responsibility of the programmer to make sure that <cite>data</cite> pointer remains valid as long as this array object exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
 <dd class="field-odd"><ul class="simple">

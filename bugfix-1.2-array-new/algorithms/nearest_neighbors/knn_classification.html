@@ -912,19 +912,6 @@ distance between <span class="math notranslate nohighlight">\(x_j'\)</span> and 
 
 <p><strong>Properties</strong></p>
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal3knn11train_input4dataE">
-<span id="_CPPv3N6oneapi3dal3knn11train_input4dataE"></span><span id="_CPPv2N6oneapi3dal3knn11train_input4dataE"></span><span id="oneapi::dal::knn::train_input::data__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3knn11train_input4dataE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The training set <span class="math notranslate nohighlight">\(X\)</span>. <strong>Default value</strong>: table{}.</p>
-<dl>
-<dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_data()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">train_input</span> <span class="pre">&amp;</span> <span class="pre">set_data(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3knn11train_input6labelsE">
 <span id="_CPPv3N6oneapi3dal3knn11train_input6labelsE"></span><span id="_CPPv2N6oneapi3dal3knn11train_input6labelsE"></span><span id="oneapi::dal::knn::train_input::labels__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">labels</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3knn11train_input6labelsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Vector of labels <span class="math notranslate nohighlight">\(y\)</span> for the training set <span class="math notranslate nohighlight">\(X\)</span>. <strong>Default value</strong>: table{}.</p>
@@ -932,6 +919,19 @@ distance between <span class="math notranslate nohighlight">\(x_j'\)</span> and 
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_labels()</span> <span class="pre">const</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">train_input</span> <span class="pre">&amp;</span> <span class="pre">set_labels(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal3knn11train_input4dataE">
+<span id="_CPPv3N6oneapi3dal3knn11train_input4dataE"></span><span id="_CPPv2N6oneapi3dal3knn11train_input4dataE"></span><span id="oneapi::dal::knn::train_input::data__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3knn11train_input4dataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The training set <span class="math notranslate nohighlight">\(X\)</span>. <strong>Default value</strong>: table{}.</p>
+<dl>
+<dt>Getter &amp; Setter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_data()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">train_input</span> <span class="pre">&amp;</span> <span class="pre">set_data(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
 </div>
 </dd>
 </dl>
@@ -1052,19 +1052,6 @@ distance between <span class="math notranslate nohighlight">\(x_j'\)</span> and 
 
 <p><strong>Properties</strong></p>
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal3knn11infer_input5modelE">
-<span id="_CPPv3N6oneapi3dal3knn11infer_input5modelE"></span><span id="_CPPv2N6oneapi3dal3knn11infer_input5modelE"></span><span id="oneapi::dal::knn::infer_input::model__model:Task:CR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N6oneapi3dal3knn11infer_input5modelE" title="oneapi::dal::knn::infer_input::model"><span class="pre">model</span></a><span class="pre">&lt;</span><span class="pre">Task</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">model</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3knn11infer_input5modelE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The trained <span class="math notranslate nohighlight">\(k\)</span>-NN model. <strong>Default value</strong>: model&lt;Task&gt;{}.</p>
-<dl>
-<dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">model&lt;</span> <span class="pre">Task</span> <span class="pre">&gt;</span> <span class="pre">&amp;</span> <span class="pre">get_model()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">infer_input</span> <span class="pre">&amp;</span> <span class="pre">set_model(const</span> <span class="pre">model</span> <span class="pre">&amp;)</span></code></div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal3knn11infer_input4dataE">
 <span id="_CPPv3N6oneapi3dal3knn11infer_input4dataE"></span><span id="_CPPv2N6oneapi3dal3knn11infer_input4dataE"></span><span id="oneapi::dal::knn::infer_input::data__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3knn11infer_input4dataE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The dataset for inference <span class="math notranslate nohighlight">\(X'\)</span>. <strong>Default value</strong>: table{}.</p>
@@ -1072,6 +1059,19 @@ distance between <span class="math notranslate nohighlight">\(x_j'\)</span> and 
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_data()</span> <span class="pre">const</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">infer_input</span> <span class="pre">&amp;</span> <span class="pre">set_data(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal3knn11infer_input5modelE">
+<span id="_CPPv3N6oneapi3dal3knn11infer_input5modelE"></span><span id="_CPPv2N6oneapi3dal3knn11infer_input5modelE"></span><span id="oneapi::dal::knn::infer_input::model__model:Task:CR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N6oneapi3dal3knn11infer_input5modelE" title="oneapi::dal::knn::infer_input::model"><span class="pre">model</span></a><span class="pre">&lt;</span><span class="pre">Task</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">model</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal3knn11infer_input5modelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The trained <span class="math notranslate nohighlight">\(k\)</span>-NN model. <strong>Default value</strong>: model&lt;Task&gt;{}.</p>
+<dl>
+<dt>Getter &amp; Setter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">model&lt;</span> <span class="pre">Task</span> <span class="pre">&gt;</span> <span class="pre">&amp;</span> <span class="pre">get_model()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">infer_input</span> <span class="pre">&amp;</span> <span class="pre">set_model(const</span> <span class="pre">model</span> <span class="pre">&amp;)</span></code></div>
 </div>
 </dd>
 </dl>
