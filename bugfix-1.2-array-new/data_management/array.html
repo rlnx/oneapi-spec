@@ -535,9 +535,9 @@ usage scenario:</p>
 construction.</p></li>
 </ul>
 </li>
-<li><p>An array object may own no data. In this case, it is called <strong>empty</strong>:</p>
+<li><p>An array object may own no data. In this case, it is called <strong>zero-sized</strong>:</p>
 <ul class="simple">
-<li><p>Pointers to the immutable and mutable data of the empty array shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>;</p></li>
+<li><p>Pointers to the immutable and mutable data of the zero-sized array shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>;</p></li>
 <li><p>The data block size shall be <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 </ul>
 </li>
@@ -847,7 +847,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4N6oneapi3dal5array5arrayEv">
 <span id="_CPPv3N6oneapi3dal5array5arrayEv"></span><span id="_CPPv2N6oneapi3dal5array5arrayEv"></span><span id="oneapi::dal::array::array"></span><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5arrayEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates an empty array without memory allocation.</p>
+<dd><p>Creates a zero-sized array without memory allocation.</p>
 <dl>
 <dt>Postconditions</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">get_count()</span> <span class="pre">==</span> <span class="pre">0</span></code></div>

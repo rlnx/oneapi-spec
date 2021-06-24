@@ -763,23 +763,6 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 </dd></dl>
 
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE">
-<span id="_CPPv3N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="oneapi::dal::kmeans::descriptor::max_iteration_count__int64_t"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">max_iteration_count</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The maximum number of iterations <span class="math notranslate nohighlight">\(T\)</span>. <strong>Default value</strong>: 100.</p>
-<dl>
-<dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">int64_t</span> <span class="pre">get_max_iteration_count()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">descriptor</span> <span class="pre">&amp;</span> <span class="pre">set_max_iteration_count(int64_t)</span></code></div>
-</div>
-</dd>
-<dt>Invariants</dt><dd><div class="line-block">
-<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="oneapi::dal::kmeans::descriptor::max_iteration_count"><span class="pre">max_iteration_count</span></a> <span class="pre">&gt;=</span> <span class="pre">0</span></code></div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal6kmeans10descriptor13cluster_countE">
 <span id="_CPPv3N6oneapi3dal6kmeans10descriptor13cluster_countE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor13cluster_countE"></span><span id="oneapi::dal::kmeans::descriptor::cluster_count__int64_t"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">cluster_count</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor13cluster_countE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The number of clusters <span class="math notranslate nohighlight">\(k\)</span>. <strong>Default value</strong>: 2.</p>
@@ -791,6 +774,23 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 </dd>
 <dt>Invariants</dt><dd><div class="line-block">
 <div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor13cluster_countE" title="oneapi::dal::kmeans::descriptor::cluster_count"><span class="pre">cluster_count</span></a> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE">
+<span id="_CPPv3N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="_CPPv2N6oneapi3dal6kmeans10descriptor19max_iteration_countE"></span><span id="oneapi::dal::kmeans::descriptor::max_iteration_count__int64_t"></span><span class="pre">int64_t</span> <code class="sig-name descname"><span class="pre">max_iteration_count</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The maximum number of iterations <span class="math notranslate nohighlight">\(T\)</span>. <strong>Default value</strong>: 100.</p>
+<dl>
+<dt>Getter &amp; Setter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">int64_t</span> <span class="pre">get_max_iteration_count()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">descriptor</span> <span class="pre">&amp;</span> <span class="pre">set_max_iteration_count(int64_t)</span></code></div>
+</div>
+</dd>
+<dt>Invariants</dt><dd><div class="line-block">
+<div class="line"><code class="xref cpp cpp-expr docutils literal notranslate"><a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans10descriptor19max_iteration_countE" title="oneapi::dal::kmeans::descriptor::max_iteration_count"><span class="pre">max_iteration_count</span></a> <span class="pre">&gt;=</span> <span class="pre">0</span></code></div>
 </div>
 </dd>
 </dl>
@@ -920,19 +920,6 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 
 <p><strong>Properties</strong></p>
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal6kmeans11train_input17initial_centroidsE">
-<span id="_CPPv3N6oneapi3dal6kmeans11train_input17initial_centroidsE"></span><span id="_CPPv2N6oneapi3dal6kmeans11train_input17initial_centroidsE"></span><span id="oneapi::dal::kmeans::train_input::initial_centroids__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">initial_centroids</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans11train_input17initial_centroidsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A <span class="math notranslate nohighlight">\(k \times p\)</span> table with the initial centroids, where each row stores one centroid.</p>
-<dl>
-<dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_initial_centroids()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">train_input</span> <span class="pre">&amp;</span> <span class="pre">set_initial_centroids(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal6kmeans11train_input4dataE">
 <span id="_CPPv3N6oneapi3dal6kmeans11train_input4dataE"></span><span id="_CPPv2N6oneapi3dal6kmeans11train_input4dataE"></span><span id="oneapi::dal::kmeans::train_input::data__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans11train_input4dataE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An <span class="math notranslate nohighlight">\(n \times p\)</span> table with the data to be clustered, where each row stores one feature vector.</p>
@@ -940,6 +927,19 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_data()</span> <span class="pre">const</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">train_input</span> <span class="pre">&amp;</span> <span class="pre">set_data(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal6kmeans11train_input17initial_centroidsE">
+<span id="_CPPv3N6oneapi3dal6kmeans11train_input17initial_centroidsE"></span><span id="_CPPv2N6oneapi3dal6kmeans11train_input17initial_centroidsE"></span><span id="oneapi::dal::kmeans::train_input::initial_centroids__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">initial_centroids</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans11train_input17initial_centroidsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A <span class="math notranslate nohighlight">\(k \times p\)</span> table with the initial centroids, where each row stores one centroid.</p>
+<dl>
+<dt>Getter &amp; Setter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_initial_centroids()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">train_input</span> <span class="pre">&amp;</span> <span class="pre">set_initial_centroids(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
 </div>
 </dd>
 </dl>
@@ -1091,19 +1091,6 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 
 <p><strong>Properties</strong></p>
 <dl class="cpp member">
-<dt id="_CPPv4N6oneapi3dal6kmeans11infer_input5modelE">
-<span id="_CPPv3N6oneapi3dal6kmeans11infer_input5modelE"></span><span id="_CPPv2N6oneapi3dal6kmeans11infer_input5modelE"></span><span id="oneapi::dal::kmeans::infer_input::model__model:Task:CR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans11infer_input5modelE" title="oneapi::dal::kmeans::infer_input::model"><span class="pre">model</span></a><span class="pre">&lt;</span><span class="pre">Task</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">model</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans11infer_input5modelE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>An <span class="math notranslate nohighlight">\(n \times p\)</span> table with the data to be assigned to the clusters, where each row stores one feature vector. <strong>Default value</strong>: model&lt;Task&gt;{}.</p>
-<dl>
-<dt>Getter &amp; Setter</dt><dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">model&lt;</span> <span class="pre">Task</span> <span class="pre">&gt;</span> <span class="pre">&amp;</span> <span class="pre">get_model()</span> <span class="pre">const</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">infer_input</span> <span class="pre">&amp;</span> <span class="pre">set_model(const</span> <span class="pre">model&lt;</span> <span class="pre">Task</span> <span class="pre">&gt;</span> <span class="pre">&amp;)</span></code></div>
-</div>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp member">
 <dt id="_CPPv4N6oneapi3dal6kmeans11infer_input4dataE">
 <span id="_CPPv3N6oneapi3dal6kmeans11infer_input4dataE"></span><span id="_CPPv2N6oneapi3dal6kmeans11infer_input4dataE"></span><span id="oneapi::dal::kmeans::infer_input::data__tableCR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../../data_management/tables.html#_CPPv4N6oneapi3dal5tableE" title="oneapi::dal::table"><span class="pre">table</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans11infer_input4dataE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The trained K-Means model. <strong>Default value</strong>: table{}.</p>
@@ -1111,6 +1098,19 @@ closest to the feature vector <span class="math notranslate nohighlight">\(x_j'\
 <dt>Getter &amp; Setter</dt><dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">table</span> <span class="pre">&amp;</span> <span class="pre">get_data()</span> <span class="pre">const</span></code></div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">infer_input</span> <span class="pre">&amp;</span> <span class="pre">set_data(const</span> <span class="pre">table</span> <span class="pre">&amp;)</span></code></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp member">
+<dt id="_CPPv4N6oneapi3dal6kmeans11infer_input5modelE">
+<span id="_CPPv3N6oneapi3dal6kmeans11infer_input5modelE"></span><span id="_CPPv2N6oneapi3dal6kmeans11infer_input5modelE"></span><span id="oneapi::dal::kmeans::infer_input::model__model:Task:CR"></span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N6oneapi3dal6kmeans11infer_input5modelE" title="oneapi::dal::kmeans::infer_input::model"><span class="pre">model</span></a><span class="pre">&lt;</span><span class="pre">Task</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">model</span></code><a class="headerlink" href="#_CPPv4N6oneapi3dal6kmeans11infer_input5modelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <span class="math notranslate nohighlight">\(n \times p\)</span> table with the data to be assigned to the clusters, where each row stores one feature vector. <strong>Default value</strong>: model&lt;Task&gt;{}.</p>
+<dl>
+<dt>Getter &amp; Setter</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">model&lt;</span> <span class="pre">Task</span> <span class="pre">&gt;</span> <span class="pre">&amp;</span> <span class="pre">get_model()</span> <span class="pre">const</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">infer_input</span> <span class="pre">&amp;</span> <span class="pre">set_model(const</span> <span class="pre">model&lt;</span> <span class="pre">Task</span> <span class="pre">&gt;</span> <span class="pre">&amp;)</span></code></div>
 </div>
 </dd>
 </dl>
