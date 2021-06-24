@@ -515,30 +515,33 @@ usage scenario:</p>
 <ol class="arabic simple">
 <li><p>An array shall retain:</p>
 <ul class="simple">
-<li><p>Pointer to the immutable data block;</p></li>
-<li><p>Pointer to the mutable data block.</p></li>
+<li><p>A pointer to the immutable data block of size <code class="docutils literal notranslate"><span class="pre">count</span></code>;</p></li>
+<li><p>A pointer to the mutable data block of size <code class="docutils literal notranslate"><span class="pre">count</span></code>.</p></li>
 </ul>
 </li>
 <li><p>If an array represents mutable data, both pointers shall point to the mutable data block.</p></li>
 <li><p>If an array represents immutable data, pointer to the mutable data block shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p></li>
-<li><p>An array shall use shared ownership semantics to manage lifetime of the stored data blocks:</p>
+<li><p>An array shall use shared ownership semantics to manage lifetime of the stored data block:</p>
 <ul class="simple">
-<li><p>Several arrays objects may own the same data block;</p></li>
-<li><p>The memory block is deallocated when either of the following happens:</p>
+<li><p>Several array objects may own the same data block;</p></li>
+<li><p>An array releases the ownership when one of the following happens:</p>
 <ul>
-<li><p>The last remaining array owning data block is destroyed;</p></li>
-<li><p>The last remaining array owning data block is assigned another memory block via
+<li><p>The array owning the data block is destroyed;</p></li>
+<li><p>The array owning the data block is assigned another memory block via
 <code class="docutils literal notranslate"><span class="pre">operator=</span></code> or <code class="docutils literal notranslate"><span class="pre">reset()</span></code>;</p></li>
 </ul>
 </li>
+<li><p>If the array that releases the ownership is the last remaining object owning the data block,
+the release of ownership is followed by the data block deallocation.</p></li>
 <li><p>The data block is deallocated using the deleter object that is provided to array during
-construction.</p></li>
+construction. If no deleter object provided, an array calls the default deallocating
+function that corresponds to the internal memory allocation mechanism.</p></li>
 </ul>
 </li>
-<li><p>An array object may own no data. In this case, it is called <strong>zero-sized</strong>:</p>
+<li><p>An array object may own no data. An array like this is called <strong>zero-sized</strong>:</p>
 <ul class="simple">
 <li><p>Pointers to the immutable and mutable data of the zero-sized array shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>;</p></li>
-<li><p>The data block size shall be <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p>The data block size <code class="docutils literal notranslate"><span class="pre">count</span></code> shall be <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 </ul>
 </li>
 </ol>
@@ -549,37 +552,37 @@ construction.</p></li>
 <ol class="arabic simple">
 <li><p>An array class has the following member variables:</p>
 <ul class="simple">
-<li><p>Pointer to the immutable data block;</p></li>
-<li><p>Pointer to the mutable data block;</p></li>
-<li><p>Pointer to the ownership structure that implements the shared ownership semantics;</p></li>
-<li><p>The data block size;</p></li>
+<li><p>A pointer to the immutable data block;</p></li>
+<li><p>A pointer to the mutable data block;</p></li>
+<li><p>A pointer to the ownership structure that implements the shared ownership semantics;</p></li>
+<li><p>The data block size <code class="docutils literal notranslate"><span class="pre">count</span></code>;</p></li>
 </ul>
 </li>
-<li><p>The ownership structure is an object that stores:</p>
+<li><p>An ownership structure is an object that stores:</p>
 <ul class="simple">
-<li><p>Either a pointer immutable or mutable data block;</p></li>
+<li><p>A pointer to either immutable or mutable data block;</p></li>
 <li><p>The deleter object;</p></li>
-<li><p>The reference count (the number of array instances that owns the associated data block);</p></li>
+<li><p>The reference count (the number of array instances that own the associated data block);</p></li>
 </ul>
 </li>
 <li><p>The destructor of an array decrements the reference count. If that count reaches zero, the
 ownership structure deallocates the associated memory block and the array destroys the ownership
 structure.</p></li>
-<li><p>If the array object changes its state from immutable to mutable, the reference count of the
+<li><p>If an array object changes its state from immutable to mutable, the reference count of the
 ownership structure is decremented.</p>
 <ul class="simple">
 <li><p>If that count reaches zero, the ownership structure
 deallocates the immutable memory block and the array destroys the ownership structure. The new
-instance of ownership structure owning the mutable data block is created and replaces the old one.</p></li>
-<li><p>If that count greater than zero, the ownership structure is not destroyed. The new
-instance of ownership structure owning the mutable data block is created and replaces the old
+instance of the ownership structure owning the mutable data block is created, and it replaces the old one.</p></li>
+<li><p>If that count is greater than zero, the ownership structure is not destroyed. The new
+instance of the ownership structure owning the mutable data block is created, and it replaces the old
 one.</p></li>
 </ul>
 </li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Implementer can choose an arbitrary implementation strategy that satisfy an array requirements.</p>
+<p>You may choose an arbitrary implementation strategy that satisfies array requirements.</p>
 </div>
 </div>
 <div class="section" id="programming-interface">
