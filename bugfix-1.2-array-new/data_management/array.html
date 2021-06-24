@@ -440,7 +440,7 @@ a storage that:</p>
 data are organized as one <a class="reference internal" href="../glossary.html#term-Homogeneous-data"><span class="xref std std-term">homogeneous</span></a> and
 <a class="reference internal" href="../glossary.html#term-Contiguous-data"><span class="xref std std-term">contiguous</span></a> memory block.</p></li>
 <li><p>Contains information about the memory block’s size.</p></li>
-<li><p>Supports both <a class="reference internal" href="../glossary.html#term-Immutability"><span class="xref std std-term">immutable</span></a> and mutable data.</p></li>
+<li><p>Represents either <a class="reference internal" href="../glossary.html#term-Immutability"><span class="xref std std-term">immutable</span></a> or mutable data.</p></li>
 <li><p>Provides an ability to change the data state from immutable to
 mutable one.</p></li>
 <li><p>Holds ownership information on the data (see the <a class="reference internal" href="#data-ownership-requirements"><span class="std std-ref">data ownership requirements</span></a> section).</p></li>
@@ -513,7 +513,6 @@ usage scenario:</p>
 <span id="id1"></span><h2>Data ownership requirements<a class="headerlink" href="#data-ownership-requirements" title="Permalink to this headline">¶</a></h2>
 <p>The array shall satisfy the following requirements on managing the memory blocks:</p>
 <ol class="arabic simple">
-<li><p>An array represents either immutable or mutable data.</p></li>
 <li><p>An array shall retain:</p>
 <ul class="simple">
 <li><p>Pointer to the immutable data block;</p></li>
@@ -521,7 +520,7 @@ usage scenario:</p>
 </ul>
 </li>
 <li><p>If an array represents mutable data, both pointers shall point to the mutable data block.</p></li>
-<li><p>If an array represents immutable data, pointer to the mutable data shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p></li>
+<li><p>If an array represents immutable data, pointer to the mutable data block shall be <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p></li>
 <li><p>An array shall use shared ownership semantics to manage lifetime of the stored data blocks:</p>
 <ul class="simple">
 <li><p>Several arrays objects may own the same data block;</p></li>
@@ -546,36 +545,42 @@ construction.</p></li>
 </div>
 <div class="section" id="implementation-notes">
 <span id="id2"></span><h2>Implementation notes<a class="headerlink" href="#implementation-notes" title="Permalink to this headline">¶</a></h2>
+<p>A typical array implementation may be organized in the following way:</p>
 <ol class="arabic simple">
-<li><p>An array implementation holds the following member variables:</p>
+<li><p>An array class has the following member variables:</p>
 <ul class="simple">
-<li><p>Pointer to the immutable data;</p></li>
-<li><p>Pointer to the mutable data;</p></li>
-<li><p>Pointer to the ownership structure;</p></li>
+<li><p>Pointer to the immutable data block;</p></li>
+<li><p>Pointer to the mutable data block;</p></li>
+<li><p>Pointer to the ownership structure that implements the shared ownership semantics;</p></li>
 <li><p>The data block size;</p></li>
 </ul>
 </li>
 <li><p>The ownership structure is an object that stores:</p>
 <ul class="simple">
-<li><p>Either a pointer immutable or mutable data block:</p>
-<ul>
-<li><p>If an array represents the immutable data, pointer to immutable data;</p></li>
-<li><p>If an array represents the mutable data, pointer to mutable data;</p></li>
-</ul>
-</li>
+<li><p>Either a pointer immutable or mutable data block;</p></li>
 <li><p>The deleter object;</p></li>
-<li><p>The reference counter (the number of array instances that owns the associated data block);</p></li>
+<li><p>The reference count (the number of array instances that owns the associated data block);</p></li>
 </ul>
 </li>
-<li><p>The destructor of an array decrements the reference counter. If that counter reaches zero, the
-ownership structure deallocates the associated memory block and the ownership structure instance is
-destoryed itself.</p></li>
-<li><p>If the array object changes its state from immutable to mutable via <code class="docutils literal notranslate"><span class="pre">need_mutable_data()</span></code>,
-the reference counter of the ownership structure is decremented. If that counter reaches zero,
-the ownership structure deallocates the immutable memory block and the ownership structure
-instance is destoryed itself. The new instance of ownership structure owning the mutable data
-block is created and replaces the old one.</p></li>
+<li><p>The destructor of an array decrements the reference count. If that count reaches zero, the
+ownership structure deallocates the associated memory block and the array destroys the ownership
+structure.</p></li>
+<li><p>If the array object changes its state from immutable to mutable, the reference count of the
+ownership structure is decremented.</p>
+<ul class="simple">
+<li><p>If that count reaches zero, the ownership structure
+deallocates the immutable memory block and the array destroys the ownership structure. The new
+instance of ownership structure owning the mutable data block is created and replaces the old one.</p></li>
+<li><p>If that count greater than zero, the ownership structure is not destroyed. The new
+instance of ownership structure owning the mutable data block is created and replaces the old
+one.</p></li>
+</ul>
+</li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Implementer can choose an arbitrary implementation strategy that satisfy an array requirements.</p>
+</div>
 </div>
 <div class="section" id="programming-interface">
 <span id="id3"></span><h2>Programming interface<a class="headerlink" href="#programming-interface" title="Permalink to this headline">¶</a></h2>
@@ -726,7 +731,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4I0EN6oneapi3dal5array4fullE5arrayI4DataERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE">
 <span id="_CPPv3I0EN6oneapi3dal5array4fullERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE"></span><span id="_CPPv2I0EN6oneapi3dal5array4fullERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Element</span></code><span class="pre">&gt;</span><br /><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">full</span></code><span class="sig-paren">(</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array4fullE5arrayI4DataERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE" title="oneapi::dal::array::full::Element"><span class="pre">Element</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">element</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array4fullE5arrayI4DataERN4sycl5queueENSt7int64_tERR7ElementRKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance by allocating a mutable memory block and filling its content with a scalar value. The created array manages lifetime of the allocated memory block.</p>
+<dd><p>Creates a new array instance by allocating a mutable memory block and filling its content with a scalar value. The created array manages the lifetime of the allocated memory block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
 <dd class="field-odd"><p><strong>Element</strong> – The type from which array elements of type <cite>Data</cite> can be constructed.</p>
@@ -757,7 +762,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE">
 <span id="_CPPv3N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="_CPPv2N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="oneapi::dal::array::zeros__sycl::queueR.std::int64_t.sycl::usm::allocCR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">zeros</span></code><span class="sig-paren">(</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5zerosERN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance by allocating a mutable memory block and filling its content with zeros. The created array manages lifetime of the allocated memory block.</p>
+<dd><p>Creates a new array instance by allocating a mutable memory block and filling its content with zeros. The created array manages the lifetime of the allocated memory block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -784,13 +789,13 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE">
 <span id="_CPPv3N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="oneapi::dal::array::wrap__DataP.std::int64_t.std::vector:sycl::event:CR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">wrap</span></code><span class="sig-paren">(</span><span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array4wrapEP4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance from a pointer to externally-allocated mutable memory block. The created array does not manage lifetime of the user-provided memory block. It is the responsibility of the calling application to deallocate the memory block.</p>
+<dd><p>Creates a new array instance from a pointer to externally-allocated mutable memory block. The created array does not manage the lifetime of the user-provided memory block. It is the responsibility of the calling application to deallocate the memory block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – The pointer to the mutable externally-allocated memory block.</p></li>
 <li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the memory block.</p></li>
-<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating the availability of the <cite>data</cite> for reading or writing.</p></li>
 </ul>
 </dd>
 </dl>
@@ -813,13 +818,13 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE">
 <span id="_CPPv3N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE"></span><span id="oneapi::dal::array::wrap__DataCP.std::int64_t.std::vector:sycl::event:CR"></span><em class="property"><span class="pre">static</span></em> <span class="pre">array</span><span class="pre">&lt;</span><span class="pre">Data</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">wrap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array4wrapEPK4DataNSt7int64_tERKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance from a pointer to externally-allocated immutable memory block. The created array does not manage lifetime of the user-provided memory block. It is the responsibility of the calling application to deallocate the memory block.</p>
+<dd><p>Creates a new array instance from a pointer to externally-allocated immutable memory block. The created array does not manage the lifetime of the user-provided memory block. It is the responsibility of the calling application to deallocate the memory block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – The pointer to the immutable externally-allocated memory block.</p></li>
 <li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the memory block.</p></li>
-<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating the availability of the <cite>data</cite> for reading or writing.</p></li>
 </ul>
 </dd>
 </dl>
@@ -876,10 +881,10 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE">
 <span id="_CPPv3I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Deleter</span></code><span class="pre">&gt;</span><br /><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE" title="oneapi::dal::array::array::Deleter"><span class="pre">Deleter</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">deleter</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEP4DataNSt7int64_tERR7DeleterRKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance from a pointer to externally-allocated mutable memory block. The created array manages lifetime of the user-provided memory block. The memory block is deallocated using a custom deleter object provided by the user.</p>
+<dd><p>Creates a new array instance from a pointer to externally-allocated mutable memory block. The created array manages the lifetime of the user-provided memory block. The memory block is deallocated using a custom deleter object provided by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Deleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+<dd class="field-odd"><p><strong>Deleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed (can be compiled) and not throw any exceptions.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><ul class="simple">
@@ -910,10 +915,10 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE">
 <span id="_CPPv3I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE"></span><span id="_CPPv2I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstDeleter</span></code><span class="pre">&gt;</span><br /><code class="sig-name descname"><span class="pre">array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <a class="reference internal" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE" title="oneapi::dal::array::array::ConstDeleter"><span class="pre">ConstDeleter</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">deleter</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><span class="pre">sycl</span><span class="pre">::</span><span class="pre">event</span><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">dependencies</span></em> <span class="pre">=</span> <span class="pre">{</span><span class="pre">}</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6oneapi3dal5array5arrayERKN4sycl5queueEPK4DataNSt7int64_tERR12ConstDeleterRKNSt6vectorIN4sycl5eventEEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new array instance from a pointer to externally-allocated immutable memory block. The created array manages lifetime of the user-provided memory block. The memory block is deallocated using a custom deleter object provided by the user.</p>
+<dd><p>Creates a new array instance from a pointer to externally-allocated immutable memory block. The created array manages the lifetime of the user-provided memory block. The memory block is deallocated using a custom deleter object provided by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>ConstDeleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+<dd class="field-odd"><p><strong>ConstDeleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed (can be compiled) and not throw any exceptions.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><ul class="simple">
@@ -921,7 +926,7 @@ memory or by allocating it within a new object.</p></li>
 <li><p><strong>data</strong> – The pointer to the immutable externally-allocated memory block.</p></li>
 <li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
 <li><p><strong>deleter</strong> – The object used to dellocate <cite>data</cite>.</p></li>
-<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating the availability of the <cite>data</cite> for reading or writing.</p></li>
 </ul>
 </dd>
 </dl>
@@ -953,7 +958,7 @@ memory or by allocating it within a new object.</p></li>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>ref</strong> – The reference array which shares ownership with the created one.</p></li>
+<li><p><strong>ref</strong> – The reference array which shares the ownership with the created one.</p></li>
 <li><p><strong>data</strong> – The unmanaged pointer to the mutable or immutable externally-allocated memory block.</p></li>
 <li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
 </ul>
@@ -1061,7 +1066,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4NK6oneapi3dal5arrayixENSt7int64_tE">
 <span id="_CPPv3NK6oneapi3dal5arrayixENSt7int64_tE"></span><span id="_CPPv2NK6oneapi3dal5arrayixENSt7int64_tE"></span><span id="oneapi::dal::array::subscript-operator__std::int64_tC"></span><em class="property"><span class="pre">const</span></em> <span class="pre">Data</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator[]</span></code><span class="sig-paren">(</span><span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4NK6oneapi3dal5arrayixENSt7int64_tE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Provides a read-only access to the elements of an array.</p>
+<dd><p>Provides a read-only access to the elements of an array. No bounds checking is performed.</p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -1084,7 +1089,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE">
 <span id="_CPPv3N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="_CPPv2N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE"></span><span id="oneapi::dal::array::reset__sycl::queueCR.std::int64_t.sycl::usm::allocCR"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">queue</span> <span class="pre">&amp;</span><em><span class="pre">queue</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span> <span class="pre">&amp;</span><em><span class="pre">alloc</span></em> <span class="pre">=</span> <span class="pre">sycl</span><span class="pre">::</span><span class="pre">usm</span><span class="pre">::</span><span class="pre">alloc</span><span class="pre">::</span><span class="pre">shared</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6oneapi3dal5array5resetERKN4sycl5queueENSt7int64_tERKN4sycl3usm5allocE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Releases the ownership of the managed memory block and replace it by a newly allocated mutable memory block. The lifetime of the allocated memory block is managed by the array.</p>
+<dd><p>Releases the ownership of the managed memory block and replaces it by a newly allocated mutable memory block. The lifetime of the allocated memory block is managed by the array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1112,14 +1117,14 @@ memory or by allocating it within a new object.</p></li>
 <dd><p>Releases the ownership of the managed memory block and replace it by a pointer to externally-allocated mutable memory block. The lifetime of the memory block is managed by the array. The memory block is deallocated using a custom deleter object provided by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>Deleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+<dd class="field-odd"><p><strong>Deleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed (can be compiled) and not throw any exceptions.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>data</strong> – The pointer to the mutable externally-allocated memory block.</p></li>
 <li><p><strong>count</strong> – The number of elements of type <cite>Data</cite> in the <cite>data</cite>.</p></li>
 <li><p><strong>deleter</strong> – The object used to deallocate <cite>data</cite>.</p></li>
-<li><p><strong>dependencies</strong> – Events indicating availability of the <cite>data</cite> for reading or writing.</p></li>
+<li><p><strong>dependencies</strong> – Events indicating the availability of the <cite>data</cite> for reading or writing.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1145,7 +1150,7 @@ memory or by allocating it within a new object.</p></li>
 <dd><p>Releases the ownership of the managed memory block and replace it by a pointer to externally-allocated mutable memory block. The lifetime of the memory block is managed by the array. The memory block is deallocated using a custom deleter object provided by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
-<dd class="field-odd"><p><strong>ConstDeleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed and not throw any exceptions.</p>
+<dd class="field-odd"><p><strong>ConstDeleter</strong> – The type of a deleter used to deallocate the <cite>data</cite>. The expression <code class="docutils literal notranslate"><span class="pre">deleter(data)</span></code> must be well-formed (can be compiled) and not throw any exceptions.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
 <dd class="field-even"><ul class="simple">
@@ -1174,7 +1179,7 @@ memory or by allocating it within a new object.</p></li>
 <dl class="cpp function">
 <dt id="_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE">
 <span id="_CPPv3I00EN6oneapi3dal5array5resetERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span id="_CPPv2I00EN6oneapi3dal5array5resetERK5arrayI7RefDataEP7ExtDataNSt7int64_tE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">RefData</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ExtData</span></code><span class="pre">&gt;</span><br /><span class="pre">void</span> <code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">array</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::reset::RefData"><span class="pre">RefData</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">ref</span></em>, <a class="reference internal" href="#_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="oneapi::dal::array::reset::ExtData"><span class="pre">ExtData</span></a> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">std</span><span class="pre">::</span><span class="pre">int64_t</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN6oneapi3dal5array5resetEvRK5arrayI7RefDataEP7ExtDataNSt7int64_tE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Releases the ownership of the managed memory block and starts managing the lifetime of the reference array while storing the pointer to another memory block provided by the user. The lifetime of the user-provided memory block is not managed.</p>
+<dd><p>Releases the ownership of the managed memory block and starts managing the lifetime of the reference array while storing the pointer to another memory block provided by the user. The lifetime of the user-provided memory block is not managed. It is the responsibility of the programmer to make sure that <cite>data</cite> pointer remains valid as long as this array object exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
 <dd class="field-odd"><ul class="simple">
